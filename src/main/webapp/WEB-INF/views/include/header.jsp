@@ -1,8 +1,11 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="path0" value="${pageContext.request.contextPath }"/>
+<%@ taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions"%>
+<%@ page import="java.util.*, java.lang.*" %>
+<%@ page import="java.text.*, java.net.InetAddress" %>
+<c:set var="path1" value="${pageContext.servletContext.contextPath }" />
 
 <header class="navigation">
   <div class="header-top">
@@ -34,7 +37,7 @@
     <div class="container">
       <div class="navbar-brand">
         <a class="navbar-item" href="index.html">
-          <img src="${path0}/resources/images/haebeop.png" alt="logo">
+          <img src="${path1}/resources/images/haebeop.png" alt="logo">
         </a>
         <button role="button" class="navbar-burger burger" data-hidden="true" data-target="navigation">
           <span aria-hidden="true"></span>
@@ -48,13 +51,13 @@
           <li class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">수강신청</a>
             <div class="navbar-dropdown">
-              <a class="navbar-item" href="#">강의 게시판</a>
-              <a class="navbar-item" href="#">지금 모집하는 강의</a>
+              <a class="navbar-item" href="#">수강신청</a>
+              <a class="navbar-item" href="#">개강일정</a>
             </div>
           </li>
 
           <li class="navbar-item">
-            <a class="navbar-link" href="#">무료 강의</a>
+            <a class="navbar-link" href="#">무료강의</a>
           </li>
 
           <li class="navbar-item has-dropdown is-hoverable">
