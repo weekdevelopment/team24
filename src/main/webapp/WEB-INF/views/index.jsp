@@ -73,7 +73,7 @@
         <div class="columns is-multiline is-justify-content-center">
             <div class="column is-4-desktop is-6-tablet">
                 <div class="blog-item">
-                    <img src="${path0}/resources/images/blog/blog_1.jpg" alt="" class="">
+                    <img src="${path1}/resources/images/blog/blog_1.jpg" alt="" class="">
 
                     <div class="card-body mt-2">
                         <span class="text-sm text-color is-uppercase has-text-weight-bold">January 3, 2019</span>
@@ -85,7 +85,7 @@
 
             <div class="column is-4-desktop is-6-tablet">
                 <div class="blog-item">
-                    <img src="${path0}/resources/images/blog/blog_2.jpg" alt="" class="">
+                    <img src="${path1}/resources/images/blog/blog_2.jpg" alt="" class="">
 
                     <div class="card-body mt-2">
                         <span class="text-sm text-color is-uppercase has-text-weight-bold">January 3, 2019</span>
@@ -97,7 +97,7 @@
 
             <div class="column is-4-desktop is-6-tablet">
                 <div class="blog-item">
-                    <img src="${path0}/resources/images/blog/blog_3.jpg" alt="" class="">
+                    <img src="${path1}/resources/images/blog/blog_3.jpg" alt="" class="">
 
                     <div class="card-body mt-2">
                         <span class="text-sm text-color is-uppercase has-text-weight-bold">January 3, 2019</span>
