@@ -1,11 +1,10 @@
 package kr.ed.haebeop.config;
 //주입 설정 및 빈 등록 파일 : ApplicationConfig.java
+import kr.ed.haebeop.repository.FileRepository;
+import kr.ed.haebeop.repository.FileRepositoryImpl;
 import kr.ed.haebeop.repository.TestRepository;
 import kr.ed.haebeop.repository.TestRepositoryImpl;
-import kr.ed.haebeop.service.MemberService;
-import kr.ed.haebeop.service.MemberServiceImpl;
-import kr.ed.haebeop.service.TestService;
-import kr.ed.haebeop.service.TestServiceImpl;
+import kr.ed.haebeop.service.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,4 +19,9 @@ public class ApplicationConfig {
     public TestRepository testRepository(){ return new TestRepositoryImpl(); }
     @Bean
     public MemberService memberService(){ return new MemberServiceImpl(); }
+    // file
+    @Bean
+    public FileRepository fileRepository() {return new FileRepositoryImpl();}
+    @Bean
+    public FileService fileService() { return new FileServiceImpl(); }
 }
