@@ -327,6 +327,13 @@
       <version>1.3.2</version>
     </dependency>
 
+    <!-- 채팅 웹소켓  추가 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-websocket</artifactId>
+      <version>5.3.20</version>
+    </dependency>
+
   </dependencies>
   <build>
     <finalName>team24</finalName>

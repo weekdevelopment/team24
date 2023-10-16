@@ -55,5 +55,10 @@ public class RootConfig {
         return commonsMultipartResolver;
     }
 
+    @Bean(name = "uploadPath")
+    public String uploadPath() { // 멀티파트 업로드 디렉토리 지정
+        return "/Users/otaehun/Desktop/team04/team24/src/main/webapp/resources/upload";
+    }
+
     //HikariCP 를 활용하는 방안은 가장 밖에 있는 RootConfig2.java 파일을 참조할 것.
 }
