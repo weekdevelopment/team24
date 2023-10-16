@@ -15,19 +15,35 @@
         </div>
         <div class="column is-6-desktop is-8-tablet">
           <div class="header-top-right has-text-right-tablet has-text-centered-mobile">
-            <%--<a href="https://www.facebook.com/themefisher" target="_blank"><i class="icofont-facebook"></i></a>
-            <a href="https://github.com/themefisher/" target="_blank"><i class="icofont-github"></i></a>
-            <a href="#" target="_blank"><i class="icofont-linkedin"></i></a>--%>
-            <a href="#">
-              <i class="icofont-login has-text-white"> 로그인</i>
-            </a>
-            <a href="#">
-              <i class="icofont-user has-text-white"> 회원가입</i>
-            </a>
-            <a href="#">
-              <i class="icofont-google-map has-text-white"> 오시는길</i>
-            </a>
-            <%--<a href="donation.html" class="top-btn">Donate Now</a>--%>
+            <c:if test="${!empty sid}">
+              <a href="${path1}/member/logout.do">
+                <i class="icofont-logout has-text-white"> 로그아웃</i>
+              </a>
+              <c:if test="${sid.equals('admin')}">
+                <a href="${path1}/member/list.do">
+                  <i class="icofont-users has-text-white"> 회원목록</i>
+                </a>
+                <a href="${path1}/member/list.do">
+                  <i class="icofont-user-suited has-text-white"> 관리자페이지</i>
+                </a>
+
+              </c:if>
+              <a href="${path1}/contact/login.do">
+                <i class="icofont-google-map has-text-white"> 오시는길</i>
+              </a>
+            </c:if>
+
+            <c:if test="${empty sid}">
+              <a href="${path1}/member/login.do">
+                <i class="icofont-login has-text-white"> 로그인</i>
+              </a>
+              <a href="${path1}/member/term.do">
+                <i class="icofont-user has-text-white"> 회원가입</i>
+              </a>
+              <a href="${path1}/contact.do">
+                <i class="icofont-google-map has-text-white"> 오시는길</i>
+              </a>
+            </c:if>
           </div>
         </div>
       </div>
@@ -36,7 +52,7 @@
   <nav id="navbar" class="navbar main-nav">
     <div class="container">
       <div class="navbar-brand">
-        <a class="navbar-item" href="index.html">
+        <a class="navbar-item" href="${path1}">
           <img src="${path1}/resources/images/haebeop.png" alt="logo">
         </a>
         <button role="button" class="navbar-burger burger" data-hidden="true" data-target="navigation">
@@ -51,8 +67,8 @@
           <li class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">수강신청</a>
             <div class="navbar-dropdown">
-              <a class="navbar-item" href="#">수강신청</a>
-              <a class="navbar-item" href="#">개강일정</a>
+              <a class="navbar-item" href="${path1}/course/list.do">수강신청</a>
+              <a class="navbar-item" href="${path1}/course/schedule.do">개강일정</a>
             </div>
           </li>
 
@@ -70,11 +86,8 @@
           </li>
 
           <li class="navbar-item">
-            <a class="navbar-link" href="#">자료실</a>
+            <a class="navbar-link" href="${path1}/file/filelist1.do">자료실</a>
           </li>
-          <%--<li class="navbar-item">
-              <a class="navbar-link" href="contact.html">Contact</a>
-          </li>--%>
         </ul>
       </div>
     </div>
