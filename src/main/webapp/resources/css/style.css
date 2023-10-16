@@ -62,7 +62,8 @@ p {
 
 input[type=email], input[type=password], input[type=text], input[type=tel] {
   box-shadow: none;
-  height: 45px;
+  height: 40px;
+
   outline: none;
   font-size: 14px;
 }
