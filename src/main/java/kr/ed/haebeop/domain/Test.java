@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Test {
-    private int no;
-    private String name;
-    private String email;
-    private String tel;
+    private int num;
+    private String title;
 }
