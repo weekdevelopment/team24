@@ -24,6 +24,7 @@
 <!-- Main Stylesheet -->
 <link rel="stylesheet" href="${path0}/resources/css/style.css">
 <link rel="stylesheet" href="${path0}/resources/css/ft.css" />
+<link rel="stylesheet" href="${path0}/resources/css/styles2.css" />
 
 
 <!-- Essential Scripts =====================================-->

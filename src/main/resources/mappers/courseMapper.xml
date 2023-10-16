@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ed.haebeop.persistence.CourseMapper">
+    <select id="getCourseList" resultType="kr.ed.haebeop.domain.Course">
+        select * from course;
+    </select>
+    <select id="getCourse" resultType="kr.ed.haebeop.domain.Course">
+        select * from course where cno = #{cno }
+    </select>
+    <insert id="insertEnroll">
+        INSERT INTO enroll VALUES(DEFAULT, #{cno }, #{id }, DEFAULT, DEFAULT, #{enroll_price },10000)
+    </insert>
+    <!-- 등록할 때 강의 테이블의 현재 신청 인원 +1 추가-->
+    <update id="updateStudentNum">
+        update course set curr_num =1+curr_num where cno=#{cno }
+    </update>
+    <!-- 수강등록 테이블에 해당 회원의 등록 여부 확인 -->
+    <select id="isEnroll" resultType="kr.ed.haebeop.domain.Enroll">
+        select * from enroll where id = #{sid } and cno=#{cno}
+    </select>
+    <!-- 마이페이지에서 회원의 수강등록 현황 보기-->
+    <select id="getEnrollList" resultType="kr.ed.haebeop.domain.Enroll">
+        SELECT c.cno, c.course_name, c.start_date, c.end_date, c.imgsrc1, e.eno, e.id, e.complete, u.name
+        FROM course c
+                 INNER JOIN enroll e ON c.cno = e.cno
+                 INNER JOIN user u ON e.id = u.id
+        WHERE u.id = #{id } and e.complete = #{complete }
+    </select>
+    <update id="complete">
+        update enroll set complete =1 where eno=#{eno }
+    </update>
+    <select id="getUserName" resultType="kr.ed.haebeop.domain.User">
+        select name from user where id = #{id };
+    </select>
+</mapper>
