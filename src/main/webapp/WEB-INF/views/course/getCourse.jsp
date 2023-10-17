@@ -235,6 +235,13 @@
         .breadcrumb a {
             color: #464646;
         }
+        .menu-list li{
+            padding: 5px;
+            border: 1px solid #ccc;
+            margin: 1px 0;
+            border-radius: 20px;
+            background-color: #f1f4f9;
+        }
     </style>
 </head>
 <body>
@@ -398,7 +405,7 @@
             } else {
                 //if (${sid ne null && isEnroll eq true })
                 alert("이미 수강신청한 강의입니다. ");
-                window.location.href = '${path1}/course/list.do';
+                window.location.href = '${path1 }/course/mypageCourse?complete=0';
             }
         });
     });
