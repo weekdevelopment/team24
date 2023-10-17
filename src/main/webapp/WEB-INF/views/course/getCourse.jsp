@@ -232,12 +232,24 @@
             background-color: #008CD6;
             color: #fff;
         }
+        .breadcrumb a {
+            color: #464646;
+        }
     </style>
 </head>
 <body>
 <!-- 헤더 부분 인클루드 -->
 <jsp:include page="../include/header.jsp"></jsp:include>
-<div class="container is-fullhd" style="min-height: 1000px; padding-top: 100px;">
+<nav class="breadcrumb has-succeeds-separator is-medium is-right mt-3 p-4" style="background: #f1f4f9" aria-label="breadcrumbs">
+    <ul class="mr-5">
+        <li><a href="${path1}"><i class="xi-home is-size-3"></i></a></li>
+        <li><a href="${path1}/course/list.do">수강신청</a></li>
+        <li class="is-active"><a href="${path1 }/course/getCourse?cno=${course.cno }" aria-current="page">수강신청</a></li>
+    </ul>
+
+    <p class="title has-text-centered mt-1 mb-2">수강신청</p>
+</nav>
+<div class="container is-fullhd" style="min-height: 1000px;">
     <div class="columns">
         <div class="column is-8">
             <div class="conwrap">
@@ -266,9 +278,9 @@
         </div>
         <div class="column is-4">
             <aside class="menu">
-				<!-- <span class="box has-text-white has-text-weight-semibold has-text-centered is-size-5" style="color: black;">
-					과정정보
-				</span> -->
+                <!-- <span class="box has-text-white has-text-weight-semibold has-text-centered is-size-5" style="color: black;">
+                    과정정보
+                </span> -->
                 <div class="box view_info has-text-white has-text-weight-semibold has-text-centered is-size-5">
                     <span class="course" style="color: black;">과정정보</span>
                     <dl>
@@ -292,23 +304,23 @@
                     <li>
                         <!-- 수강료 안내 -->
                         <div class="price_in">
-                        <div class="price_scroll mCustomScrollbar _mCS_1 mCS_no_scrollbar">
-                            <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0">
-                                <div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
-                                    <p class="price_h4">수강료</p>
-                                    <span class="pointColor price" id="price"><strong id="course_price" class="eng">${course.price}원</strong></span>
-                                </div>
-                            <!--<div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: none;">
-                                <div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; height: 0px; top: 0px;">
-                                    <div class="mCSB_dragger_bar" style="line-height: 30px;">
+                            <div class="price_scroll mCustomScrollbar _mCS_1 mCS_no_scrollbar">
+                                <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0">
+                                    <div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
+                                        <p class="price_h4">수강료</p>
+                                        <span class="pointColor price" id="price"><strong id="course_price" class="eng">${course.price}원</strong></span>
                                     </div>
+                                    <!--<div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: none;">
+                                        <div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; height: 0px; top: 0px;">
+                                            <div class="mCSB_dragger_bar" style="line-height: 30px;">
+                                            </div>
+                                        </div>
+                                            <div class="mCSB_draggerRail">
+                                            </div>
+                                        </div>
+                                    </div>-->
                                 </div>
-                                    <div class="mCSB_draggerRail">
-                                    </div>
-                                </div>
-                            </div>-->
                             </div>
-                        </div>
                         </div>
                         <!-- 최종 금액 -->
                         <div class="total">
@@ -329,8 +341,8 @@
                         </div>
                         <!-- 신청 버튼 -->
                         <div class="applyBtn">
-                            <a href="#" class="cart pointColor pointBorder"><i class="fa-solid fa-cart-shopping"></i>장바구니</a>
-                            <a id="apply" class="apply bgColor"><i class="fa-solid fa-pencil"></i>수강신청</a>
+                            <a href="#" class="cart pointColor pointBorder"><i class="icofont-cart"></i> 장바구니</a>
+                            <a id="apply" class="apply bgColor"><i class="icofont-pencil"></i> 수강신청</a>
                         </div>
                     </li>
 
@@ -364,22 +376,32 @@
             });
             $("#apply").on("click", function() { fn3() });
     });
-*/
+ */
+
     $(document).ready(function(){
         $("#apply").click(function(){
             // 회원만 수강 신청 가능
             if(${sid eq null }){
                 alert("수강신청은 로그인 후 가능합니다.");
                 window.location.href = '${path1}/user/loginForm';
-            } else if (${sid ne null && course.curr_num == course.total_num }){
-                alert("모집이 마감된 강의입니다.");
-                window.location.href = '${path1}/course/list';
+            } else if (${sid ne null && isEnroll eq false }){
+                if (${course.curr_num == course.total_num }) {
+                    alert("모집이 마감된 강의입니다.");
+                    window.location.href = '${path1}/course/list.do';
+                } else {
+                    if($("#book_price").is(":checked")){
+                        window.location.href = '${path1}/course/signIn?cno=${course.cno}&book=1';
+                    } else {
+                        window.location.href = '${path1}/course/signIn?cno=${course.cno}&book=0';
+                    }
+                }
             } else {
-                window.location.href = '${path1}/course/signIn?price=${total_price}&cno=${course.cno}';
+                //if (${sid ne null && isEnroll eq true })
+                alert("이미 수강신청한 강의입니다. ");
+                window.location.href = '${path1}/course/list.do';
             }
         });
     });
-
 </script>
 <!-- 푸터 부분 인클루드 -->
 <jsp:include page="../include/footer.jsp"></jsp:include>

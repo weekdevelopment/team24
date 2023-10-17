@@ -29,4 +29,6 @@ public interface CourseService {
     public void complete(int eno);
 
     public User getUserName(String id);
+    public Enroll isEnroll(Enroll enroll);
+
 }
