@@ -102,7 +102,6 @@
                 <tr>
                     <td colspan="2">
                         <input type="submit" class="submit success button" value="회원 정보 수정" style="background-color: #00A2FF; color: white; border-radius: 5px;" >
-                        <input type="reset" class="reset button" value="다시 작성" style="background-color: #565d64; border-radius: 5px;">
                         <c:if test="${sid!='admin' }">
                             <a href="${path1 }/user/delete.do?id=${sid }" class="button btn-danger" style="border-radius: 5px; width:100%; background-color: darkred; ">회원 탈퇴</a>
                         </c:if>

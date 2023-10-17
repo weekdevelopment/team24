@@ -40,6 +40,15 @@ public class UserController {
         return  "/user/getUser";
     }
 
+    @RequestMapping(value = "aGetUser", method = RequestMethod.GET)
+    public String aGetUser(Model model, HttpServletRequest request) throws Exception {
+//      String id = (String) request.getParameter("sid"); 테스트용
+        String id = request.getParameter("id");
+        User user = userService.getUser(id);
+        model.addAttribute("user", user);
+        return  "/user/getUser";
+    }
+
     @RequestMapping(value = "agree", method = RequestMethod.GET)
     public String getAgree(Model model) throws Exception {
         return "/user/agree";

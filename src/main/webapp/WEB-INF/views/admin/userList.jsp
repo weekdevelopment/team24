@@ -20,13 +20,11 @@
   <link rel="stylesheet" type="text/css" href="${path1 }/resources/css/admin.css">
 
   <style>
-    .column.is-6, .column.is-6-tablet { width: 100%; }
+    .column.is-6 { width:100%; }
   </style>
 </head>
 <body>
-
 <jsp:include page="../include/header.jsp" />
-
 <div class="container">
   <div class="columns">
     <div class="column is-3 ">
@@ -35,7 +33,7 @@
           회원관리
         </p>
         <ul class="menu-list">
-          <%--          <li><a class="is-active">Dashboard</a></li>--%>
+          <li><a class="is-active">Dashboard</a></li>
           <li><a href="${path1 }/admin/userList.do">회원목록 조회 및 변경</a></li>
           <%--          <li>--%>
           <%--            <a>수강 내역 관리</a>--%>
@@ -93,18 +91,55 @@
         <div class="column is-6">
           <div class="card events-card">
             <header class="card-header">
-              <p class="card-header-title">
-                회원 목록
-              </p>
-              <a href="#" class="card-header-icon" aria-label="more options">
-                  <span class="icon">
-                    <i class="fa fa-angle-down" aria-hidden="true"></i>
-                  </span>
-              </a>
+              내용 제목
             </header>
+            <div>
+              <p>
+                회원목록
+              </p>
+              <p>
+              <table>
+                <thead>
+                  <th>번호</th>
+                  <th>id</th>
+                  <th>이름</th>
+                  <th>이메일</th>
+                  <th>전화번호</th>
+                  <th>주소</th>
+                  <th>가입일</th>
+                  <th>생년월일</th>
+                  <th>포인트</th>
+                  <th>방문횟수</th>
+
+                </thead>
+                <tbody>
+                <c:forEach var="user" items="${userList }" varStatus="status">
+                  <tr>
+                    <td class="item1">${status.count }</td>
+                    <td class="item2">
+                      <a href="${path1 }/user/aGetUser?id=${user.id }" class="al">${user.id }</a>
+                    </td>
+                    <td class="item3">${user.name }</td>
+                    <td class="item3">${user.email }</td>
+                    <td class="item3">${user.tel }</td>
+                    <td class="item3">(${user.postcode }) ${user.addr1 } ${user.addr2 } </td>
+                    <td class="item3">${user.regdate }</td>
+                    <td class="item3">${user.birth }</td>
+                    <td class="item3">${user.pt }</td>
+                    <td class="item3">${user.visited }</td>
+                  </tr>
+                </c:forEach>
+                </tbody>
+              </table>
+              </p>
+            </div>
           </div>
         </div>
-        <jsp:include page="../include/footer.jsp" />
-        <script async type="text/javascript" src="${path1 }/resources/js/bulma.js"></script>
+      </div>
+    </div>
+  </div>
+  <script async type="text/javascript" src="${path1 }/resources/js/bulma.js"></script>
+</div>
+<jsp:include page="../include/footer.jsp" />
 </body>
 </html>

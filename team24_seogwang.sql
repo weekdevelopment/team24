@@ -22,5 +22,7 @@ INSERT INTO USER(id, pw, NAME) VALUES('seo','1234','서광');
 INSERT INTO USER(id, pw, NAME) VALUES('shin','1234','신수현');
 INSERT INTO USER(id, pw, NAME) VALUES('jun','1234','서준혁');
 
+DROP TABLE user;
+
 COMMIT;
 UPDATE USER set pw='$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte';

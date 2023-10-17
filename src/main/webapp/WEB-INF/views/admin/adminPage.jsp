@@ -20,23 +20,20 @@
   <link rel="stylesheet" type="text/css" href="${path1 }/resources/css/admin.css">
 
   <style>
-    .column.is-6, .column.is-6-tablet { width: 100%; }
   </style>
 </head>
 <body>
-
 <jsp:include page="../include/header.jsp" />
-
-<div class="container">
-  <div class="columns">
-    <div class="column is-3 ">
-      <aside class="menu is-hidden-mobile">
-        <p class="menu-label">
-          회원관리
-        </p>
-        <ul class="menu-list">
-<%--          <li><a class="is-active">Dashboard</a></li>--%>
-          <li><a href="${path1 }/admin/userList.do">회원목록 조회 및 변경</a></li>
+    <div class="container">
+      <div class="columns">
+        <div class="column is-3 ">
+          <aside class="menu is-hidden-mobile">
+            <p class="menu-label">
+              회원관리
+            </p>
+            <ul class="menu-list">
+          <li><a href="/admin/" class="is-active">Dashboard</a></li>
+             <li><a href="${path1 }/admin/userList.do">회원목록 조회 및 변경</a></li>
 <%--          <li>--%>
 <%--            <a>수강 내역 관리</a>--%>
 <%--            <ul>--%>
@@ -46,79 +43,67 @@
 <%--              <li><a>내역 4</a></li>--%>
 <%--            </ul>--%>
 <%--          </li>--%>
-        </ul>
-        <p class="menu-label">
-          수강신청 관리
-        </p>
-        <ul class="menu-list">
-          <li><a>수강신청 관리</a></li>
-          <li><a>개강일정 관리</a></li>
-        </ul>
-        <p class="menu-label">
-          시범강의 관리
-        </p>
-        <ul class="menu-list">
-          <li><a>시범강의 관리</a></li>
-        </ul>
-        <p class="menu-label">
-          커뮤니티 관리
-        </p>
-        <ul class="menu-list">
-          <li><a>공지사항 관리</a></li>
-          <li><a>자주 묻는 질문 관리</a></li>
-          <li><a>후기 관리</a></li>
-        </ul>
-        <p class="menu-label">
-          자료실 관리
-        </p>
-        <ul class="menu-list">
-          <li><a>자료실 관리</a></li>
-        </ul>
-      </aside>
-    </div>
-    <div class="column is-9">
-      <section class="hero is-info welcome is-small">
-        <div class="hero-body">
-          <div class="container">
-            <h1 class="title">
-              관리자 페이지
-            </h1>
-            <h2 class="subtitle">
-              관리자 페이지에 오신 것을 환영합니다.
-            </h2>
+            </ul>
+            <p class="menu-label">
+              수강신청 관리
+            </p>
+            <ul class="menu-list">
+              <li><a>수강신청 관리</a></li>
+              <li><a>개강일정 관리</a></li>
+            </ul>
+            <p class="menu-label">
+              시범강의 관리
+            </p>
+            <ul class="menu-list">
+              <li><a>시범강의 관리</a></li>
+            </ul>
+            <p class="menu-label">
+              커뮤니티 관리
+            </p>
+            <ul class="menu-list">
+              <li><a>공지사항 관리</a></li>
+              <li><a>자주 묻는 질문 관리</a></li>
+              <li><a>후기 관리</a></li>
+            </ul>
+            <p class="menu-label">
+              자료실 관리
+            </p>
+            <ul class="menu-list">
+              <li><a>자료실 관리</a></li>
+            </ul>
+          </aside>
+        </div>
+        <div class="column is-9">
+          <section class="hero is-info welcome is-small">
+            <div class="hero-body">
+              <div class="container">
+                <h1 class="title">
+                  관리자 페이지
+                </h1>
+                <h2 class="subtitle">
+                  관리자 페이지에 오신 것을 환영합니다.
+                </h2>
+              </div>
+            </div>
+          </section>
+          <div class="columns">
+            <div class="column is-6">
+              <div class="card events-card">
+                <header class="card-header">
+                    통계, 작업 예정 중
+                </header>
+                <div>
+                    <p>
+                        총 회원수
+                    </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
-      <div class="columns">
-        <div class="column is-6">
-          <div class="card events-card">
-            <header class="card-header">
-              <p class="card-header-title">
-                회원 목록
-              </p>
-                <div>
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>ID</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                      <td>${userList.id }</td>
-                    </tr>
-                    </tbody>
-                  </table>
-                </div>
-              <a href="#" class="card-header-icon" aria-label="more options">
-                  <span class="icon">
-                    <i class="fa fa-angle-down" aria-hidden="true"></i>
-                  </span>
-              </a>
-            </header>
-  </div>
-</div>
-<%--        <jsp:include page="../include/footer.jsp" />--%>
-<script async type="text/javascript" src="${path1 }/resources/js/bulma.js"></script>
+      </div>
+    <script async type="text/javascript" src="${path1 }/resources/js/bulma.js"></script>
+    </div>
+<jsp:include page="../include/footer.jsp" />
 </body>
 </html>
