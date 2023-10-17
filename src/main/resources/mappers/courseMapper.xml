@@ -64,7 +64,7 @@
     </update>
     <!-- 수강등록 테이블에 해당 회원의 등록 여부 확인 -->
     <select id="isEnroll" resultType="kr.ed.haebeop.domain.Enroll">
-        select * from enroll where id = #{sid } and cno=#{cno}
+        select * from enroll where id = #{id } and cno=#{cno}
     </select>
     <!-- 마이페이지에서 회원의 수강등록 현황 보기-->
     <select id="getEnrollList" resultType="kr.ed.haebeop.domain.Enroll">
