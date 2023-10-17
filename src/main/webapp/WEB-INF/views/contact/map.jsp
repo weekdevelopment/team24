@@ -9,21 +9,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>오시는 길</title>
-  <jsp:include page="../include/head_sg.jsp" />
+  <jsp:include page="../include/head.jsp" />
 
-  <!-- 스타일 초기화 : reset.css 또는 normalize.css -->
-<%--  <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet">--%>
-
-  <!-- 필요한 폰트를 로딩 : 구글 웹 폰트에서 폰트를 선택하여 해당 내용을 붙여 넣기 -->
-  <link rel="stylesheet" href="../google.css">
-  <link rel="stylesheet" href="../fonts.css">
-
-  <!-- 필요한 플러그인 연결 -->
+  <%-- 필요한 플러그인 연결 --%>
   <script src="https://code.jquery.com/jquery-latest.js"></script>
   <style>
-    /* 본문 영역 스타일 */
+    <%-- 본문 영역 스타일 --%>
     .wrap { background-color: #fffcf2; }
-    .title { width: 450px; margin: 10px auto; font-size: 2em; font-weight: bold; text-align: center; color:#00A2FF; padding-top:20px; padding-bottom:34px; }
+    .wrap .content .title { width: 450px; margin: 10px auto; font-family: Sans-Serif; font-size: 2em; font-weight: bold; text-align: center; color:#00A2FF; padding-top:20px; padding-bottom:34px; }
 
     .content { padding-top: 60px; }
 
