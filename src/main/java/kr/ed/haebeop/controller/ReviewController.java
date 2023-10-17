@@ -1,6 +1,8 @@
 package kr.ed.haebeop.controller;
 
+import kr.ed.haebeop.domain.Comment;
 import kr.ed.haebeop.domain.Review;
+import kr.ed.haebeop.service.CommentService;
 import kr.ed.haebeop.service.ReviewService;
 import kr.ed.haebeop.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ public class ReviewController {
 
     @Autowired
     private ReviewService reviewService;
+
+    @Autowired
+    private CommentService commentService;
 
     @Autowired
     HttpSession session;
@@ -60,6 +65,11 @@ public class ReviewController {
         int no = Integer.parseInt(request.getParameter("no"));
         Review domain = reviewService.reviewDetail(no);
         model.addAttribute("domain", domain);
+
+        // 댓글 불러오기
+        List<Comment> comment = commentService.commentList(no);
+        model.addAttribute("domain", domain);
+        model.addAttribute("commentList", comment);
 
         return "/review/reviewDetail";
     }
