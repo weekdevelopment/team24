@@ -220,6 +220,13 @@
         .breadcrumb a {
             color: #464646;
         }
+        .menu-list li{
+            padding: 5px;
+            border: 1px solid #ccc;
+            margin: 1px 0;
+            border-radius: 20px;
+            background-color: #f1f4f9;
+        }
     </style>
 </head>
 <body>

@@ -13,6 +13,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="${path0}/resources/css/styles2.css" />
     <title>마이페이지 - 수강 </title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
@@ -35,6 +36,13 @@
             letter-spacing: -0.7pt;
             line-height: 1;
             margin: 0 0 22px;
+        }
+        .menu-list li{
+            padding: 5px;
+            border: 1px solid #ccc;
+            margin: 1px 0;
+            border-radius: 20px;
+            background-color: #f1f4f9;
         }
     </style>
 </head>
