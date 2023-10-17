@@ -20,13 +20,12 @@
   <link rel="stylesheet" type="text/css" href="${path1 }/resources/css/admin.css">
 
   <style>
-    .container { margin-top: 70px; }
     .column.is-6, .column.is-6-tablet { width: 100%; }
   </style>
 </head>
 <body>
 
-<jsp:include page="../include/hd.jsp" />
+<jsp:include page="../include/header.jsp" />
 
 <div class="container">
   <div class="columns">
@@ -119,7 +118,7 @@
             </header>
           </div>
         </div>
-        <jsp:include page="../include/ft.jsp" />
+        <jsp:include page="../include/footer.jsp" />
         <script async type="text/javascript" src="${path1 }/resources/js/bulma.js"></script>
 </body>
 </html>

@@ -20,13 +20,12 @@
   <link rel="stylesheet" type="text/css" href="${path1 }/resources/css/admin.css">
 
   <style>
-    .container { margin-top: 70px; }
     .column.is-6, .column.is-6-tablet { width: 100%; }
   </style>
 </head>
 <body>
 
-<jsp:include page="../include/hd.jsp" />
+<jsp:include page="../include/header.jsp" />
 
 <div class="container">
   <div class="columns">
@@ -36,36 +35,30 @@
           회원관리
         </p>
         <ul class="menu-list">
-          <li><a class="is-active">Dashboard</a></li>
+<%--          <li><a class="is-active">Dashboard</a></li>--%>
           <li><a href="${path1 }/admin/userList.do">회원목록 조회 및 변경</a></li>
+<%--          <li>--%>
+<%--            <a>수강 내역 관리</a>--%>
+<%--            <ul>--%>
+<%--              <li><a>내역 1</a></li>--%>
+<%--              <li><a>내역 2</a></li>--%>
+<%--              <li><a>내역 3</a></li>--%>
+<%--              <li><a>내역 4</a></li>--%>
+<%--            </ul>--%>
+<%--          </li>--%>
         </ul>
         <p class="menu-label">
           수강신청 관리
         </p>
         <ul class="menu-list">
-          <li><a>과목 관리</a></li>
-          <li>
-            <a>수강 내역 관리</a>
-            <ul>
-              <li><a>내역 1</a></li>
-              <li><a>내역 2</a></li>
-              <li><a>내역 3</a></li>
-              <li><a>내역 4</a></li>
-            </ul>
-          </li>
-          <li><a>Invitations</a></li>
-          <li><a>Cloud Storage Environment Settings</a></li>
-          <li><a>Authentication</a></li>
-          <li><a>Payments</a></li>
+          <li><a>수강신청 관리</a></li>
+          <li><a>개강일정 관리</a></li>
         </ul>
         <p class="menu-label">
-          무료강의
+          시범강의 관리
         </p>
         <ul class="menu-list">
-          <li><a>Payments</a></li>
-          <li><a>Transfers</a></li>
-          <li><a>Balance</a></li>
-          <li><a>Reports</a></li>
+          <li><a>시범강의 관리</a></li>
         </ul>
         <p class="menu-label">
           커뮤니티 관리
@@ -73,12 +66,14 @@
         <ul class="menu-list">
           <li><a>공지사항 관리</a></li>
           <li><a>자주 묻는 질문 관리</a></li>
-          <li><a>질문하기 관리</a></li>
-          <li><a>상담소개 관리</a></li>
+          <li><a>후기 관리</a></li>
         </ul>
         <p class="menu-label">
-          자료실
+          자료실 관리
         </p>
+        <ul class="menu-list">
+          <li><a>자료실 관리</a></li>
+        </ul>
       </aside>
     </div>
     <div class="column is-9">
@@ -123,7 +118,7 @@
             </header>
   </div>
 </div>
-        <jsp:include page="../include/ft.jsp" />
+<%--        <jsp:include page="../include/footer.jsp" />--%>
 <script async type="text/javascript" src="${path1 }/resources/js/bulma.js"></script>
 </body>
 </html>

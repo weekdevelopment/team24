@@ -1,5 +1,6 @@
 package kr.ed.haebeop.config;
 //주입 설정 및 빈 등록 파일 : ApplicationConfig.java
+import kr.ed.haebeop.domain.User;
 import kr.ed.haebeop.repository.FileRepository;
 import kr.ed.haebeop.repository.FileRepositoryImpl;
 import kr.ed.haebeop.repository.TestRepository;
@@ -19,6 +20,8 @@ public class ApplicationConfig {
     public TestRepository testRepository(){ return new TestRepositoryImpl(); }
     @Bean
     public MemberService memberService(){ return new MemberServiceImpl(); }
+    @Bean
+    public UserService userService() { return new UserServiceImpl(); }
     // file
     @Bean
     public FileRepository fileRepository() {return new FileRepositoryImpl();}

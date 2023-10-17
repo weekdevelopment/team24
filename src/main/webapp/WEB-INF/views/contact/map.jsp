@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions"%>
@@ -8,7 +9,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>오시는 길</title>
-  <jsp:include page="../include/head.jsp" />
+  <jsp:include page="../include/head_sg.jsp" />
 
   <!-- 스타일 초기화 : reset.css 또는 normalize.css -->
 <%--  <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet">--%>
@@ -59,7 +60,7 @@
 <body>
 <div class="wrap">
   <header class="hd" id="hd">
-    <jsp:include page="../include/hd.jsp" />
+    <jsp:include page="../include/header.jsp" />
   </header>
   <div class="content container" id="content">
     <h2 class="title">오시는 길</h2>
@@ -107,7 +108,7 @@
     </div>
   </div>
   <footer class="ft" id="ft">
-    <jsp:include page="../include/ft.jsp" />
+    <jsp:include page="../include/footer.jsp" />
   </footer>
 </div>
 </body>

@@ -26,6 +26,7 @@ public class ServletContext implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
         registry.addResourceHandler("/admin/**").addResourceLocations("/WEB-INF/views/admin");
+        registry.addResourceHandler("/contact/**").addResourceLocations("/WEB-INF/views/contact");
         registry.addResourceHandler("/ajax/**").addResourceLocations("/WEB-INF/views/ajax");
         registry.addResourceHandler("/api/**").addResourceLocations("/WEB-INF/views/api");
         registry.addResourceHandler("/board/**").addResourceLocations("/WEB-INF/views/board");
@@ -38,6 +39,7 @@ public class ServletContext implements WebMvcConfigurer {
         registry.addResourceHandler("/guestbook/**").addResourceLocations("/WEB-INF/views/guestbook");
         registry.addResourceHandler("/include/**").addResourceLocations("/WEB-INF/views/include");
         registry.addResourceHandler("/member/**").addResourceLocations("/WEB-INF/views/member");
+        registry.addResourceHandler("/user/**").addResourceLocations("/WEB-INF/views/user");
         registry.addResourceHandler("/notice/**").addResourceLocations("/WEB-INF/views/notice");
         registry.addResourceHandler("/qna/**").addResourceLocations("/WEB-INF/views/qna");
         registry.addResourceHandler("/reserv/**").addResourceLocations("/WEB-INF/views/reserv");
