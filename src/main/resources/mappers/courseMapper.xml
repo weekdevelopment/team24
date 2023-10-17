@@ -2,11 +2,59 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.ed.haebeop.persistence.CourseMapper">
     <select id="getCourseList" resultType="kr.ed.haebeop.domain.Course">
-        select * from course;
+        <![CDATA[
+        select * from course
+        ]]>
+        <where>
+            <if test="searchType != null">
+                <choose>
+                    <when test="searchType == 'title'.toString()">
+                        course_name LIKE concat('%', #{searchKeyword}, '%')
+                    </when>
+                    <when test="searchType == 'content'.toString()">
+                        content LIKE concat('%', #{searchKeyword}, '%')
+                    </when>
+                </choose>
+            </if>
+        </where>
+        <![CDATA[
+        order by cno desc LIMIT #{postStart}, #{postCount}
+        ]]>
     </select>
     <select id="getCourse" resultType="kr.ed.haebeop.domain.Course">
         select * from course where cno = #{cno }
     </select>
+    <insert id="insertCourse">
+        INSERT INTO course VALUES(DEFAULT, #{course_name}, #{price}, #{start_date}, #{end_date},
+                                  #{total_num}, #{curr_num}, #{teacher_name}, #{content},
+                                  #{book_name}, #{book_price}, #{imgsrc1}, #{imgsrc2})
+    </insert>
+    <update id="updateCourse">
+        UPDATE course SET course_name = #{course_name} WHERE cno = #{cno}
+    </update>
+    <delete id="deleteCourse">
+        DELETE FROM course WHERE cno = #{cno}
+    </delete>
+
+    <!-- 글 수 카운트 -->
+    <select id="countCourse" resultType="integer">
+        <![CDATA[
+        select count(*) from course
+        ]]>
+        <where>
+            <if test="searchType != null">
+                <choose>
+                    <when test="searchType == 'title'.toString()">
+                        course_name LIKE concat('%', #{searchKeyword}, '%')
+                    </when>
+                    <when test="searchType == 'content'.toString()">
+                        content LIKE concat('%', #{searchKeyword}, '%')
+                    </when>
+                </choose>
+            </if>
+        </where>
+    </select>
+
     <insert id="insertEnroll">
         INSERT INTO enroll VALUES(DEFAULT, #{cno }, #{id }, DEFAULT, DEFAULT, #{enroll_price },10000)
     </insert>
