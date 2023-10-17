@@ -56,21 +56,34 @@ public class CourseController {
     }
 
     @RequestMapping(value = "getCourse", method = RequestMethod.GET)
-    public String getCourse(@RequestParam int cno, Model model) throws Exception {
+    public String getCourse(@RequestParam int cno, Model model,HttpServletRequest request ) throws Exception {
         Course course = courseService.getCourse(cno);
         model.addAttribute("course", course);
+        Enroll enroll = new Enroll();
+        if (session.getAttribute("sid") != null) {
+            String id = (String) session.getAttribute("sid");
+            enroll.setId(id);
+            enroll.setCno(cno);
+            boolean isEnroll = false;
+            if(courseService.isEnroll(enroll) != null) {
+                isEnroll = true;
+            }
+            model.addAttribute("isEnroll", isEnroll);
+        }
+
         return "/course/getCourse";
     }
 
     @RequestMapping(value = "signIn", method = RequestMethod.GET)
-    public String signInCourse(@RequestParam int cno, @RequestParam int price, Model model) throws Exception {
+    public String signInCourse(@RequestParam int cno,@RequestParam int book, Model model ) throws Exception {
         Course course = courseService.getCourse(cno);
         model.addAttribute("course", course);
-        model.addAttribute("price", price);
+        model.addAttribute("book", book);
         return "/course/signInCourse";
     }
 
-    @RequestMapping(value = "signIn", method = RequestMethod.POST)
+
+    @RequestMapping(value="signIn", method = RequestMethod.POST)
     public String insertEnrollPro(Enroll enroll, String sid, Model model) throws Exception {
         courseService.insertEnroll(enroll);
         courseService.updateStudentNum(enroll.getCno());
@@ -78,8 +91,8 @@ public class CourseController {
     }
 
     //회원의 수강 신청 정보 보기
-    @RequestMapping(value = "mypageCourse", method = RequestMethod.GET)
-    public String userPageCourse(Model model, HttpServletRequest request, @RequestParam int complete) throws Exception {
+    @RequestMapping(value="mypageCourse", method = RequestMethod.GET)
+    public String userPageCourse(Model model, HttpServletRequest request,@RequestParam int complete) throws Exception {
         String id = (String) session.getAttribute("sid");
         Enroll enroll = new Enroll();
 
@@ -89,7 +102,17 @@ public class CourseController {
             List<Enroll> getEnrollList = courseService.getEnrollList(enroll);
             User user = courseService.getUserName(id);
             model.addAttribute("getEnrollList", getEnrollList);
-            model.addAttribute("user", user);
+            model.addAttribute("user",user);
+
+            int size = courseService.getEnrollList(enroll).size();
+            model.addAttribute("size",size);
+            enroll.setComplete(true);
+            size += courseService.getEnrollList(enroll).size();
+
+            if (size != 0) {
+                int enrollNum = (int) Math.ceil( 100.0 / (double) size);
+                model.addAttribute("enrollNum",enrollNum);
+            }
             return "/course/mypageCourse";
         } else {
             enroll.setId(id);
@@ -97,14 +120,22 @@ public class CourseController {
             List<Enroll> getEnrollList = courseService.getEnrollList(enroll);
             User user = courseService.getUserName(id);
             model.addAttribute("getEnrollList", getEnrollList);
-            model.addAttribute("user", user);
+            model.addAttribute("user",user);
+
+            int size = courseService.getEnrollList(enroll).size();
+            model.addAttribute("size",size);
+            enroll.setComplete(false);
+            size += courseService.getEnrollList(enroll).size();
+
+            if (size != 0) {
+                int enrollNum = (int) Math.ceil( 100.0 / (double) size);
+                model.addAttribute("enrollNum",enrollNum);
+            }
             return "/course/completedCourse";
         }
-
     }
-
     //회원의 수강완료 버튼 누르기
-    @RequestMapping(value = "complete", method = RequestMethod.POST)
+    @RequestMapping(value="complete", method = RequestMethod.POST)
     public String completePro(int eno) throws Exception {
         courseService.complete(eno);
         return "redirect:/course/mypageCourse?complete=0";

@@ -69,4 +69,10 @@ public class CourseServiceImpl implements CourseService {
     public User getUserName(String id) {
         return courseMapper.getUserName(id);
     }
+
+    @Override
+    public Enroll isEnroll(Enroll enroll) {
+        return courseMapper.isEnroll(enroll);
+    }
+
 }
