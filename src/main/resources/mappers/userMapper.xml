@@ -28,7 +28,7 @@
         insert into user values(#{id }, #{pw }, #{name }, #{email }, #{tel }, #{addr1 }, #{addr2}, #{postcode }, default, #{birth }, #{pt }, #{visited })
     </insert>
     <update id="userUpdate">
-        update user set pw=#{pw }, name=#{name }, email=#{email }, tel=#{tel }, addr1=#{addr1 }, addr2=#{addr2 }, postcode=#{postcode }
+        update user set pw=#{pw }, name=#{name }, email=#{email }, tel=#{tel }, addr1=#{addr1 }, addr2=#{addr2 }, postcode=#{postcode } where id=${id }
     </update>
     <delete id="userDelete">
         delete from user where id=#{id }
