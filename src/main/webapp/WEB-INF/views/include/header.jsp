@@ -35,6 +35,9 @@
               <a href="${path1 }/user/getUser">
                 <i class="icofont-login has-text-white"> 마이페이지</i>
               </a>
+              <a href="${path1 }/course/mypageCourse?complete=0">
+                <i class="icofont-ui-clip-board has-text-white"> 학습 현황</i>
+              </a>
             </c:if>
             <c:if test="${!empty sid}">
               <a href="${path1 }/user/logout.do">

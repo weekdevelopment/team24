@@ -398,7 +398,7 @@
             } else {
                 //if (${sid ne null && isEnroll eq true })
                 alert("이미 수강신청한 강의입니다. ");
-                window.location.href = '${path1}/course/list.do';
+                window.location.href = '${path1 }/course/mypageCourse?complete=0';
             }
         });
     });

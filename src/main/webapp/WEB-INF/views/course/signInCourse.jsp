@@ -199,17 +199,43 @@
         .applyBtn a.cart {
             margin-right: 4px;
         }
-        .applyBtn a.apply {
+        .applyBtn button.apply {
             margin-right: 4px;
             background-color: #008CD6;
             color: #fff;
+            clear: both;
+            width: 115px;
+            height: 47px;
+            line-height: 32px;
+            border-radius: 55px;
+            vertical-align: middle;
+            background-repeat: no-repeat;
+            box-sizing: border-box;
+            letter-spacing: -0.5pt;
+            font-weight: bold;
+            white-space: nowrap;
+            font-size: 16px;
+            border:0;
+        }
+        .breadcrumb a {
+            color: #464646;
         }
     </style>
 </head>
 <body>
 <!-- 헤더 부분 인클루드 -->
 <jsp:include page="../include/header.jsp"></jsp:include>
-<div class="container is-fullhd" style="min-height: 1000px; padding-top: 100px;">
+<nav class="breadcrumb has-succeeds-separator is-medium is-right mt-3 p-4" style="background: #f1f4f9" aria-label="breadcrumbs">
+    <ul class="mr-5">
+        <li><a href="${path1}"><i class="xi-home is-size-3"></i></a></li>
+        <li><a href="${path1}/course/list.do">수강신청</a></li>
+        <li><a href="${path1 }/course/getCourse?cno=${course.cno }" aria-current="page">수강신청</a></li>
+        <li><a href="${path1}/course/signIn?cno=${course.cno}&book=${book }" aria-current="page">결제하기</a></li>
+    </ul>
+
+    <p class="title has-text-centered mt-1 mb-2">결제하기</p>
+</nav>
+<div class="container is-fullhd" style="min-height: 1000px;">
     <div class="columns">
         <div class="column is-8">
             <div class="conwrap">
@@ -273,11 +299,11 @@
                             <p>
                                 <i>교재금액</i>
                                 <b id="book_price">
-                                    <c:if test="${course.price == price}">
-                                        0원
+                                    <c:if test="${book == 1}">
+                                        ${course.book_price }원
                                     </c:if>
-                                    <c:if test="${course.price < price}">
-                                        ${book.price }원
+                                    <c:if test="${book == 0}">
+                                        0원
                                     </c:if>
                                 </b>
                             </p>
@@ -285,16 +311,30 @@
                                 <i>할인금액</i>
                                 <b id="discount_price" class="red">0원</b>
                             </p>-->
-                            <h4><i style="margin-top: 8px; margin-right: 16px;">총 결제금액</i><span class="pointColor price"><strong id="total_price" class="eng">${price }원</strong></span></h4>
+                            <h4><i style="margin-top: 8px; margin-right: 16px;">총 결제금액</i><span class="pointColor price">
+                                <strong id="total_price" class="eng">
+                                    <c:if test="${book == 1}">
+                                        ${course.book_price +course.price }원
+                                    </c:if>
+                                    <c:if test="${book == 0}">
+                                        ${course.price }원
+                                    </c:if>
+                                </strong></span></h4>
                         </div>
                         <!-- 신청 버튼-->
                         <form action="${path1 }/course/signIn" method="post">
-                        <div class="applyBtn">
-                            <a href="${path1 }/course/getCourse?cno=${course.cno }" class="cart pointColor pointBorder"><i class="fa-solid fa-cart-shopping"></i>취소</a>
-                            <button id="apply" class="apply bgColor"><i class="fa-solid fa-pencil"></i>결제하기</button>
-                        </div>
-                        <!-- hidden으로 form 넘기기 -->
-                            <input type="hidden" id="enroll_price" name="enroll_price" value="${price }">
+                            <div class="applyBtn">
+                                <a href="${path1 }/course/getCourse?cno=${course.cno }" class="cart pointColor pointBorder"><i class="fa-solid fa-cart-shopping"></i>취소</a>
+                                <button id="apply" class="apply bgColor"><i class="icofont-credit-card"></i> 결제하기</button>
+                            </div>
+                            <!-- hidden으로 form 넘기기 -->
+                            <c:if test="${book == 1}">
+                                <input type="hidden" id="enroll_price" name="enroll_price" value="${course.book_price +course.price }">
+                            </c:if>
+                            <c:if test="${book == 0}">
+                                <input type="hidden" id="enroll_price" name="enroll_price" value="${course.price }">
+                            </c:if>
+                            <input type="hidden" id="book" name="book" value="${book }">
                             <input type="hidden" id="cno" name="cno" value="${course.cno }">
                             <input type="hidden" id="id" name="id" value="${sid }">
                             <input type="hidden" id="book_name" name="book_name" value="${course.book_name }">
