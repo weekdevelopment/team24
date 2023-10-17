@@ -15,35 +15,36 @@
         </div>
         <div class="column is-6-desktop is-8-tablet">
           <div class="header-top-right has-text-right-tablet has-text-centered-mobile">
+            <%--<a href="https://www.facebook.com/themefisher" target="_blank"><i class="icofont-facebook"></i></a>
+            <a href="https://github.com/themefisher/" target="_blank"><i class="icofont-github"></i></a>
+            <a href="#" target="_blank"><i class="icofont-linkedin"></i></a>--%>
+            <c:if test="${sid.equals('admin')}">
+              <a href="${path1}/admin/">
+                <i class="icofont-login has-text-white" style="color: red; font-weight: bold;"> 관리자페이지</i>
+              </a>
+            </c:if>
+            <c:if test="${empty sid }">
+            <a href="${path1 }/user/loginForm">
+              <i class="icofont-login has-text-white"> 로그인</i>
+            </a>
+            <a href="${path1 }/user/agree">
+              <i class="icofont-user has-text-white"> 회원가입</i>
+            </a>
+            </c:if>
+            <c:if test="${!empty sid && !sid.equals('admin') }">
+              <a href="${path1 }/user/getUser">
+                <i class="icofont-login has-text-white"> 마이페이지</i>
+              </a>
+            </c:if>
             <c:if test="${!empty sid}">
-              <a href="${path1}/member/logout.do">
-                <i class="icofont-logout has-text-white"> 로그아웃</i>
-              </a>
-              <c:if test="${sid.equals('admin')}">
-                <a href="${path1}/member/list.do">
-                  <i class="icofont-users has-text-white"> 회원목록</i>
-                </a>
-                <a href="${path1}/member/list.do">
-                  <i class="icofont-user-suited has-text-white"> 관리자페이지</i>
-                </a>
-
-              </c:if>
-              <a href="${path1}/contact/login.do">
-                <i class="icofont-google-map has-text-white"> 오시는길</i>
+              <a href="${path1 }/user/logout.do">
+                <i class="icofont-login has-text-white"> 로그아웃</i>
               </a>
             </c:if>
-
-            <c:if test="${empty sid}">
-              <a href="${path1}/member/login.do">
-                <i class="icofont-login has-text-white"> 로그인</i>
-              </a>
-              <a href="${path1}/member/term.do">
-                <i class="icofont-user has-text-white"> 회원가입</i>
-              </a>
-              <a href="${path1}/contact.do">
-                <i class="icofont-google-map has-text-white"> 오시는길</i>
-              </a>
-            </c:if>
+            <a href="${path1 }/contact">
+              <i class="icofont-google-map has-text-white"> 오시는길</i>
+            </a>
+            <%--<a href="donation.html" class="top-btn">Donate Now</a>--%>
           </div>
         </div>
       </div>
