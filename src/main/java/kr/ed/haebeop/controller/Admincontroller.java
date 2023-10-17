@@ -4,11 +4,16 @@ import kr.ed.haebeop.domain.User;
 import kr.ed.haebeop.persistence.UserMapper;
 import kr.ed.haebeop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -17,8 +22,12 @@ public class Admincontroller {
     @Autowired
     private UserService userService;
 
+    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public String adminPage() throws Exception {
+    public String adminPage(Model model) throws Exception {
+        int totUser = userService.userCount();
+        model.addAttribute("totUser", totUser);
         return "/admin/adminPage";
     }
 
@@ -27,6 +36,33 @@ public class Admincontroller {
         List<User> userList = userService.userList();
         model.addAttribute("userList", userList);
         System.out.println(userList);
+        return "/admin/userList";
+    }
+
+    @RequestMapping(value="userDelete.do", method = RequestMethod.GET)
+    public String userDelete(@RequestParam String id, Model model, HttpSession session) throws Exception {
+        userService.userDelete(id);
+        session.invalidate();
+        return "redirect:/admin/userList.do";
+    }
+
+    @RequestMapping(value = "aGetUser", method = RequestMethod.GET)
+    public String aGetUser(Model model, HttpServletRequest request) throws Exception {
+//      String id = (String) request.getParameter("sid"); 테스트용
+        String id = request.getParameter("id");
+        User user = userService.getUser(id);
+        model.addAttribute("user", user);
+        return  "/admin/editUser";
+    }
+
+    @RequestMapping(value="userUpdate.do", method = RequestMethod.POST)
+    public String userUpdate(User user, Model model) throws Exception {
+        String pwd = "";
+        if(user.getPw().length()<=16) {
+            pwd = passwordEncoder.encode(user.getPw());
+            user.setPw(pwd);
+        }
+        userService.userUpdate(user);
         return "/admin/userList";
     }
 }

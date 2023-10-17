@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
+import java.util.List;
 
 @Controller
 @RequestMapping("/user/")
@@ -35,15 +36,6 @@ public class UserController {
     public String getUser(Model model, HttpServletRequest request) throws Exception {
 //      String id = (String) request.getParameter("sid"); 테스트용
         String id = (String) session.getAttribute("sid");
-        User user = userService.getUser(id);
-        model.addAttribute("user", user);
-        return  "/user/getUser";
-    }
-
-    @RequestMapping(value = "aGetUser", method = RequestMethod.GET)
-    public String aGetUser(Model model, HttpServletRequest request) throws Exception {
-//      String id = (String) request.getParameter("sid"); 테스트용
-        String id = request.getParameter("id");
         User user = userService.getUser(id);
         model.addAttribute("user", user);
         return  "/user/getUser";
@@ -116,12 +108,5 @@ public class UserController {
         }
         userService.userUpdate(user);
         return "redirect:/";
-    }
-
-    @RequestMapping(value="delete.do", method = RequestMethod.GET)
-    public String userDelete(@RequestParam String id, Model model, HttpSession session) throws Exception {
-            userService.userDelete(id);
-            session.invalidate();
-            return "redirect:/";
     }
 }
