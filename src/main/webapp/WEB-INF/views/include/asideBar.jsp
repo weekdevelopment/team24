@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path1" value="${pageContext.servletContext.contextPath }" />
 
-<aside class="menu is-hidden-mobile">
+<aside class="menu is-hidden-mobile" style="width: 25%">
   <p class="menu-label">
     회원관리
   </p>
@@ -26,22 +26,22 @@
     수강신청 관리
   </p>
   <ul class="menu-list">
-    <li><a>수강신청 관리</a></li>
-    <li><a>개강일정 관리</a></li>
+    <li><a>수강 신청 관리</a></li>
+    <li><a>개강 일정 관리</a></li>
   </ul>
   <p class="menu-label">
-    시범강의 관리
+    시범 강의 관리
   </p>
   <ul class="menu-list">
-    <li><a>시범강의 관리</a></li>
+    <li><a>시범 강의 관리</a></li>
   </ul>
   <p class="menu-label">
     커뮤니티 관리
   </p>
   <ul class="menu-list">
-    <li><a>공지사항 관리</a></li>
-    <li><a>자주 묻는 질문 관리</a></li>
-    <li><a>후기 관리</a></li>
+    <li><a href="${path1 }/admin/notice/list.do">공지사항 관리</a></li>
+
+    <li><a href="${path1 }/admin/review/list.do">후기 관리</a></li>
   </ul>
   <p class="menu-label">
     자료실 관리

@@ -66,6 +66,7 @@
             padding: 15px 5px;
             border-bottom: 1px solid #d0cfd5;
             text-align: center;
+            vertical-align: middle;
         }
 
         .item2 .al{
@@ -74,7 +75,7 @@
             display: block;
             text-overflow: ellipsis;
             max-height: 2.8em;
-            line-height: 3.4em;
+            line-height: 1;
             word-wrap: break-word;
             overflow: hidden;
             display: -webkit-box;
@@ -177,14 +178,14 @@
                 <tr>
                     <th class="item1">번호</th>
                     <th class="item2">제목</th>
-                    <th class="item3">아이디</th>
+                    <th class="item3">작성자</th>
                     <th class="item4">등록일</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach var="review" items="${reviewList }" varStatus="status">
                     <tr>
-                        <td class="item1">${status.count }</td>
+                        <td class="item1">${status.count + ((curPage - 1) * page.postCount) }</td>
                         <td class="item2">
                             <a href="${path1 }/review/detail.do?no=${review.no }" class="al">${review.title }</a>
                         </td>

@@ -134,7 +134,10 @@
         .item1 {
             width:10%;
         }
-        .item2 { width:50%; }
+        .item2 { width:30%; }
+        .item3 {
+            width:5%;
+        }
 
         #page-nation1 { width: 960px; margin:20px auto; }
 
@@ -197,10 +200,10 @@
                 <div class="card events-card mb-5 px-3" style="height: auto;">
                     <div>
                         <p style="text-align: center; font-size: 30px; line-height: 100px;">
-                            「 공지사항 」
+                            「 후기 」
                         </p>
 
-                        <form action="${path1 }/admin/notice/list.do" method="get" class="field has-addons has-addons-right">
+                        <form action="${path1 }/admin/review/list.do" method="get" class="field has-addons has-addons-right">
                             <p class="control">
                                 <span class="select">
                                     <select id="type" name="type">
@@ -221,22 +224,21 @@
                             <thead>
                             <th>번호</th>
                             <th>제목</th>
+                            <th>작성자</th>
                             <th>
-                                <a class="button2" href="${path1 }/notice/insert.do">글쓰기</a>
+                                <a class="button2" href="${path1 }/review/insert.do">글쓰기</a>
                             </th>
                             </thead>
                             <tbody>
-                            <c:forEach var="noti" items="${noticeList }" varStatus="status">
+                            <c:forEach var="review" items="${reviewList }" varStatus="status">
                                 <tr>
                                     <td class="item1" style="text-align: center; line-height: 50px;">${status.count }</td>
                                     <td class="item2" style="text-align: center; line-height: 50px;">
-                                        <a href="${path1 }/notice/detail.do?no=${noti.no }" class="al">${noti.title }</a>
+                                        <a href="${path1 }/review/detail.do?no=${review.no }" class="al">${review.title }</a>
                                     </td>
+                                    <td class="item1" style="text-align: center; line-height: 50px;">${review.id }</td>
                                     <td class="item3">
-                                        <div class="btn-group">
-                                            <a class="button3" href="${path1 }/notice/edit.do?no=${noti.no}">수정</a>
-                                            <a class="button3"  href="${path1 }/notice/delete.do?no=${noti.no}">삭제</a>
-                                        </div>
+                                            <a class="button3"  href="${path1 }/review/delete.do?no=${review.no}">삭제</a>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -245,10 +247,10 @@
                     </div>
                     <nav class="pagination is-rounded is-centered mb-6" role="navigation" aria-label="pagination">
                         <c:if test="${curPage > page.pageCount }">
-                            <a href="${path1 }/admin/notice/list.do?page=${page.blockStartNum - 1 }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-previous">Previous</a>
+                            <a href="${path1 }/admin/review/list.do?page=${page.blockStartNum - 1 }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-previous">Previous</a>
                         </c:if>
                         <c:if test="${page.blockLastNum < page.totalPageCount }">
-                            <a href="${path1 }/admin/notice/list.do?page=${page.blockLastNum + 1 }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-next">Next page</a>
+                            <a href="${path1 }/admin/review/list.do?page=${page.blockLastNum + 1 }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-next">Next page</a>
                         </c:if>
 
                         <ul class="pagination-list">
@@ -256,12 +258,12 @@
                                 <c:choose>
                                     <c:when test="${i == curPage }">
                                         <li>
-                                            <a href="${path1 }/admin/notice/list.do?page=${i }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-link is-current" aria-label="Page ${i }" aria-current="page" >${i }</a>
+                                            <a href="${path1 }/admin/review/list.do?page=${i }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-link is-current" aria-label="Page ${i }" aria-current="page" >${i }</a>
                                         </li>
                                     </c:when>
                                     <c:otherwise>
                                         <li>
-                                            <a href="${path1 }/admin/notice/list.do?page=${i }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-link" aria-label="Page ${i }" aria-current="page">${i }</a>
+                                            <a href="${path1 }/admin/review/list.do?page=${i }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-link" aria-label="Page ${i }" aria-current="page">${i }</a>
                                         </li>
                                     </c:otherwise>
                                 </c:choose>

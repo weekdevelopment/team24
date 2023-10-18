@@ -721,3 +721,55 @@ UPDATE user SET pw='$2a$10$TMTp1e7vW8nx7l7B49a2d.0robqb2qUFTuBPntKHRvVILg0CmBkqW
 UPDATE user SET pw='$2a$10$TMTp1e7vW8nx7l7B49a2d.0robqb2qUFTuBPntKHRvVILg0CmBkqW' WHERE id='han';
 UPDATE user SET pw='$2a$10$TMTp1e7vW8nx7l7B49a2d.0robqb2qUFTuBPntKHRvVILg0CmBkqW' WHERE id='seo';
 UPDATE user SET pw='$2a$10$TMTp1e7vW8nx7l7B49a2d.0robqb2qUFTuBPntKHRvVILg0CmBkqW' WHERE id='oh';
+
+-- 후기 댓글
+
+DROP TABLE comment;
+
+CREATE TABLE COMMENT(
+dno INT PRIMARY KEY AUTO_INCREMENT, -- 댓글 번호
+author VARCHAR(20) NOT NULL, -- 댓글 작성자
+content VARCHAR(500) NOT NULL, -- 댓글 내용
+regdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 댓글 등록일
+par INT(10) NOT NULL -- 해당 후기 번호
+);
+
+INSERT INTO comment VALUES(
+DEFAULT,
+'seo',
+'좋은 정보 감사합니다!',
+DEFAULT,
+'6'
+);
+
+INSERT INTO comment VALUES(
+DEFAULT,
+'leeeunyoung',
+'우왕~ 참고할게욧!',
+DEFAULT,
+'6'
+);
+
+INSERT INTO comment VALUES(
+DEFAULT,
+'leesoyoon',
+'스마트해법 짱ㅋ',
+DEFAULT,
+'6'
+);
+
+INSERT INTO comment VALUES(
+DEFAULT,
+'han',
+'허허,,, 그렇군요,,,',
+DEFAULT,
+'6'
+);
+
+INSERT INTO comment VALUES(
+DEFAULT,
+'oh',
+'엥',
+DEFAULT,
+'6'
+);
