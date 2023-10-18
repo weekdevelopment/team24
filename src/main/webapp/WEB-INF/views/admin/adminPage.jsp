@@ -20,9 +20,9 @@
   <link rel="stylesheet" type="text/css" href="${path1 }/resources/css/admin.css">
 
   <style>
-    .card-header { color:#00A2FF; font-size: 1.2em; font-family: Sans-Serif; margin: 0 auto; }
+    .card-header { color:#00A2FF; font-size: 1.2em; font-family: "Nanum Gothic Coding"; margin: 0 auto; }
     .container { margin-top: 20px; }
-    .hero.welcome .title, .hero.welcome .subtitle { font-family: Sans-Serif;  }
+    .hero.welcome .title, .hero.welcome .subtitle { font-family: "Nanum Gothic Coding";  }
 
   </style>
 </head>
@@ -42,7 +42,7 @@
                   관리자 페이지
                 </h1>
                 <h2 class="subtitle">
-                  관리자 페이지에 오신 것을 환영합니다.
+
                 </h2>
               </div>
             </div>

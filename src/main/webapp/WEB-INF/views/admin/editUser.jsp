@@ -23,7 +23,7 @@
     .column.is-6 { width:100%; }
     table td:not([align]), table th:not([align]) { text-align: center; }
     .input, .textarea { width: 100%; height: 30px;  }
-    .card-header { font-size: 1.2em; font-family: Sans-Serif; }
+    .card-header { font-size: 1.2em; font-family: "Nanum Gothic Coding"; }
 
     .from_wrap { width: 60%; margin: 0 auto; }
 
@@ -31,7 +31,7 @@
 
     .field.is-grouped { margin-bottom: 30px; }
 
-    .hero.welcome .title, .hero.welcome .subtitle { font-family: Sans-Serif;  }
+    .hero.welcome .title, .hero.welcome .subtitle { font-family: "Nanum Gothic Coding";  }
 
     .button, .file-cta, .file-name, .input, .pagination-ellipsis, .pagination-link, .pagination-next, .pagination-previous, .select select, .textarea { vertical-align: middle; }
   </style>
@@ -52,7 +52,7 @@
               관리자 페이지
             </h1>
             <h2 class="subtitle">
-              관리자 페이지에 오신 것을 환영합니다.
+
             </h2>
           </div>
         </div>
