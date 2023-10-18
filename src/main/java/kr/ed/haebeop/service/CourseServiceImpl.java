@@ -21,6 +21,11 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
+    public List<Course> courseList() throws Exception {
+        return courseMapper.courseList();
+    }
+
+    @Override
     public Course getCourse(int cno) throws Exception {
         return courseMapper.getCourse(cno);
     }
