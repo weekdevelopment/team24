@@ -101,6 +101,34 @@
             display: inline-block;
             width: 30%;
         }
+
+        .applyBtn {
+            clear: both;
+            margin: 13px 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .applyBtn a {
+            clear: both;
+            width: 115px;
+            height: 47px;
+            line-height: 32px;
+            border-radius: 55px;
+            vertical-align: middle;
+            background-repeat: no-repeat;
+            box-sizing: border-box;
+            letter-spacing: -0.5pt;
+            font-weight: bold;
+            background-color: #008CD6;
+            color: #ffffff;
+            white-space: nowrap;
+            font-size: 16px;
+            margin-right: 4px;
+        }
+
+
     </style>
 <%--    <video src="${path1}/resources/video/${domain.videofile}" controls></video>--%>
 </head>
@@ -139,7 +167,8 @@
                     </table>
                 </div>
             </div>
-            <div class="button" style="float: right; ">
+            <div class="applyBtn" style="float: right; ">
+                <a href="${path1 }/course/getCourse?cno=${domain.no }" id="apply" class="apply bgColor button"><i class="icofont-pencil"></i> 수강신청</a>
                 <a href="${path1 }/video/list.do" class="button">목록으로</a>
             </div>
             <c:if test= "${sid.equals('admin')}">

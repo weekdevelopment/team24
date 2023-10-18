@@ -23,6 +23,9 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
         .column.is-6 { width:100%; }
+        *{
+            font-family: 'Nanum Gothic Coding', monospace;
+        }
         .card-header { font-size: 1.2em; font-family: "Nanum Gothic Coding"; font-weight: bolder; color:#00A2FF; margin-top:20px; margin-bottom: 20px; }
         .table td, .table th { font-size: 0.8em; }
         .hero.welcome .title, .hero.welcome .subtitle { font-family: "Nanum Gothic Coding";  }
