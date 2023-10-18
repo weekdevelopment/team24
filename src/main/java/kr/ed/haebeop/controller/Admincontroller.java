@@ -1,14 +1,8 @@
 package kr.ed.haebeop.controller;
 
-import kr.ed.haebeop.domain.Notice;
-import kr.ed.haebeop.domain.Review;
-import kr.ed.haebeop.domain.User;
-import kr.ed.haebeop.domain.Video;
+import kr.ed.haebeop.domain.*;
 import kr.ed.haebeop.persistence.UserMapper;
-import kr.ed.haebeop.service.NoticeService;
-import kr.ed.haebeop.service.ReviewService;
-import kr.ed.haebeop.service.UserService;
-import kr.ed.haebeop.service.VideoService;
+import kr.ed.haebeop.service.*;
 import kr.ed.haebeop.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -165,5 +159,42 @@ public class Admincontroller {
         model.addAttribute("videoList", videoList);
 
         return "admin/video/videoList";
+    }
+
+    //수강생 관리
+    @Autowired
+    private CourseService courseService;
+
+    //관리자페이지 수강 관리
+    @RequestMapping(value="enrollList", method = RequestMethod.GET)
+    public String admonEnroll(HttpServletRequest request, Model model) {
+        String type = request.getParameter("type");
+        String keyword = request.getParameter("keyword");
+        int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
+
+        Page page = new Page();
+        page.setSearchType(type);
+        page.setSearchKeyword(keyword);
+        int total = courseService.countEnroll(page);
+
+        page.makeBlock(curPage, total);
+        page.makeLastPageNum(total);
+        page.makePostStart(curPage, total);
+
+        model.addAttribute("type", type);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("page", page);
+        model.addAttribute("curPage", curPage);
+
+        List<Enroll> enrollList = courseService.enrollList(page);
+        model.addAttribute("enrollList", enrollList);
+
+        return "/admin/EnrollList";
+    }
+    //수강생 삭제
+    @RequestMapping(value="enrollDelete", method = RequestMethod.GET)
+    public String enrollDelete(@RequestParam int eno) throws Exception {
+        courseService.enrollDelete(eno);
+        return "redirect:/admin/EnrollList";
     }
 }
