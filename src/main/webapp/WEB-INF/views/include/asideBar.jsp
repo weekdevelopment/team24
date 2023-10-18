@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path1" value="${pageContext.servletContext.contextPath }" />
 
-<aside class="menu is-hidden-mobile" style="width: 25%">
+<aside class="menu is-hidden-mobile">
   <p class="menu-label">
     회원관리
   </p>
