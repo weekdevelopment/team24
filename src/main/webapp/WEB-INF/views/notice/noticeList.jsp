@@ -66,6 +66,7 @@
             padding: 15px 5px;
             border-bottom: 1px solid #d0cfd5;
             text-align: center;
+            vertical-align: middle;
         }
 
         .item2 .al{
@@ -74,7 +75,7 @@
             display: block;
             text-overflow: ellipsis;
             max-height: 2.8em;
-            line-height: 1.4em;
+            line-height: 1;
             word-wrap: break-word;
             overflow: hidden;
             display: -webkit-box;
@@ -137,7 +138,7 @@
             display: block;
             text-overflow: ellipsis;
             max-height: 2.8em;
-            line-height: 3.4em;
+            line-height: 1;
             word-wrap: break-word;
             overflow: hidden;
             display: -webkit-box;
@@ -196,7 +197,7 @@
                 <tbody>
                 <c:forEach var="noti" items="${noticeList }" varStatus="status">
                     <tr>
-                        <td class="item1">${status.count }</td>
+                        <td class="item1">${status.count + ((curPage - 1) * page.postCount) }</td>
                         <td class="item2">
                             <a href="${path1 }/notice/detail.do?no=${noti.no }" class="al">${noti.title }</a>
                         </td>
@@ -206,11 +207,11 @@
                 </tbody>
             </table>
 
-            <c:if test= "${sid.equals('admin')}">
-            <div class="button-group">
-                <a class="button2" href="${path1 }/notice/insert.do">글쓰기</a>
-            </div>
-            </c:if>
+<%--            <c:if test= "${sid.equals('admin')}">--%>
+<%--            <div class="button-group">--%>
+<%--                <a class="button2" href="${path1 }/notice/insert.do">글쓰기</a>--%>
+<%--            </div>--%>
+<%--            </c:if>--%>
         </div>
     </div>
     <nav class="pagination is-rounded is-centered mb-6" role="navigation" aria-label="pagination">

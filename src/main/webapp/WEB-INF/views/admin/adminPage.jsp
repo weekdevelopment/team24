@@ -63,7 +63,7 @@
             <ul class="menu-list">
               <li><a href="${path1 }/admin/notice/list.do">공지사항 관리</a></li>
 
-              <li><a>후기 관리</a></li>
+              <li><a href="${path1 }/admin/review/list.do">후기 관리</a></li>
             </ul>
             <p class="menu-label">
               자료실 관리
