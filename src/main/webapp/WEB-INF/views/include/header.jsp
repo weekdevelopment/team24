@@ -69,15 +69,18 @@
       <div class="navbar-menu mr-0" id="navigation">
         <ul class="navbar-start" style="flex-grow: 1; justify-content: center;">
           <li class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">수강신청</a>
+            <a class="navbar-link">수강</a>
             <div class="navbar-dropdown">
               <a class="navbar-item" href="${path1}/course/list.do">수강신청</a>
               <a class="navbar-item" href="${path1}/course/schedule.do">개강일정</a>
             </div>
           </li>
 
-          <li class="navbar-item">
-            <a class="navbar-link" href="${path1}/video/list.do">시범강의</a>
+          <li class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">시범강의</a>
+            <div class="navbar-dropdown">
+              <a class="navbar-link" href="${path1}/video/list.do" style="height:47.9px;">시범강의</a>
+            </div>
           </li>
 
           <li class="navbar-item has-dropdown is-hoverable">
@@ -89,8 +92,11 @@
             </div>
           </li>
 
-          <li class="navbar-item">
-            <a class="navbar-link" href="${path1}/file/filelist1.do">자료실</a>
+          <li class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">자료실</a>
+            <div class="navbar-dropdown">
+              <a class="navbar-link" href="${path1}/file/filelist1.do" style="height:47.9px;">자료실</a>
+            </div>
           </li>
         </ul>
       </div>

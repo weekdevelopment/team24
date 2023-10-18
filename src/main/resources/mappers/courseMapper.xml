@@ -80,4 +80,46 @@
     <select id="getUserName" resultType="kr.ed.haebeop.domain.User">
         select name from user where id = #{id };
     </select>
+    <select id="enrollList" resultType="kr.ed.haebeop.domain.Enroll">
+        <![CDATA[
+        SELECT e.eno, e.cno, c.course_name, u.name,e.id, e.complete, e.book, e.enroll_price
+        FROM enroll e INNER JOIN course c ON e.cno = c.cno INNER JOIN user u ON e.id = u.id
+        ]]>
+        <where>
+            <if test="searchType != null">
+                <choose>
+                    <when test="searchType == 'title'.toString()">
+                        course_name LIKE concat('%', #{searchKeyword}, '%')
+                    </when>
+                    <when test="searchType == 'content'.toString()">
+                        name LIKE concat('%', #{searchKeyword}, '%')
+                    </when>
+                </choose>
+            </if>
+        </where>
+        <![CDATA[
+        order by e.eno desc LIMIT #{postStart}, #{postCount}
+        ]]>
+    </select>
+    <delete id="enrollDelete">
+        DELETE FROM enroll WHERE eno =#{eno }
+    </delete>
+    <select id="countEnroll" resultType="integer">
+        <![CDATA[
+        SELECT COUNT(*) FROM enroll e
+            INNER JOIN course c ON e.cno = c.cno INNER JOIN user u ON e.id = u.id
+        ]]>
+        <where>
+            <if test="searchType != null">
+                <choose>
+                    <when test="searchType == 'title'.toString()">
+                        course_name LIKE concat('%', #{searchKeyword}, '%')
+                    </when>
+                    <when test="searchType == 'name'.toString()">
+                        name LIKE concat('%', #{searchKeyword}, '%')
+                    </when>
+                </choose>
+            </if>
+        </where>
+    </select>
 </mapper>

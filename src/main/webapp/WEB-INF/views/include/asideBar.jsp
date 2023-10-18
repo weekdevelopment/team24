@@ -26,7 +26,7 @@
     수강신청 관리
   </p>
   <ul class="menu-list">
-    <li><a>수강 신청 관리</a></li>
+    <li><a href="${path1 }/admin/enrollList">수강 신청 관리</a></li>
     <li><a>개강 일정 관리</a></li>
   </ul>
   <p class="menu-label">

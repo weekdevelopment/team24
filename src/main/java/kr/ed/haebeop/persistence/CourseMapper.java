@@ -32,4 +32,7 @@ public interface CourseMapper {
 
     public User getUserName(String id);
     public Enroll isEnroll(Enroll enroll);
+    public List<Enroll> enrollList(Page page);
+    public void enrollDelete(int eno);
+    public int countEnroll(Page page);
 }
