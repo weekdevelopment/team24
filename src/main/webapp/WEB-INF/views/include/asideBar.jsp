@@ -33,7 +33,7 @@
     시범 강의 관리
   </p>
   <ul class="menu-list">
-    <li><a>시범 강의 관리</a></li>
+    <li><a href="${path1 }/admin/video/list.do">시범 강의 관리</a></li>
   </ul>
   <p class="menu-label">
     커뮤니티 관리

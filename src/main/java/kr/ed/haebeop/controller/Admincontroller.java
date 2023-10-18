@@ -3,10 +3,12 @@ package kr.ed.haebeop.controller;
 import kr.ed.haebeop.domain.Notice;
 import kr.ed.haebeop.domain.Review;
 import kr.ed.haebeop.domain.User;
+import kr.ed.haebeop.domain.Video;
 import kr.ed.haebeop.persistence.UserMapper;
 import kr.ed.haebeop.service.NoticeService;
 import kr.ed.haebeop.service.ReviewService;
 import kr.ed.haebeop.service.UserService;
+import kr.ed.haebeop.service.VideoService;
 import kr.ed.haebeop.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -47,8 +49,34 @@ public class Admincontroller {
         return "/admin/userList";
     }
 
-    // 공지사항 관리자 페이지 연결
+    @RequestMapping(value="userDelete.do", method = RequestMethod.GET)
+    public String userDelete(@RequestParam String id, Model model, HttpSession session) throws Exception {
+        userService.userDelete(id);
+        session.invalidate();
+        return "redirect:/admin/userList.do";
+    }
 
+    @RequestMapping(value = "aGetUser", method = RequestMethod.GET)
+    public String aGetUser(Model model, HttpServletRequest request) throws Exception {
+//      String id = (String) request.getParameter("sid"); 테스트용
+        String id = request.getParameter("id");
+        User user = userService.getUser(id);
+        model.addAttribute("user", user);
+        return  "/admin/editUser";
+    }
+
+    @RequestMapping(value="userUpdate.do", method = RequestMethod.POST)
+    public String userUpdate(User user, Model model) throws Exception {
+        String pwd = "";
+        if(user.getPw().length()<=16) {
+            pwd = passwordEncoder.encode(user.getPw());
+            user.setPw(pwd);
+        }
+        userService.userUpdate(user);
+        return "/admin/userList";
+    }
+
+    // 공지사항 관리자 페이지 연결
     @Autowired
     private NoticeService noticeService;
 
@@ -76,33 +104,6 @@ public class Admincontroller {
         model.addAttribute("noticeList", noticeList);
 
         return "admin/notice/noticeList";
-    }
-
-    @RequestMapping(value="userDelete.do", method = RequestMethod.GET)
-    public String userDelete(@RequestParam String id, Model model, HttpSession session) throws Exception {
-        userService.userDelete(id);
-        session.invalidate();
-        return "redirect:/admin/userList.do";
-    }
-
-    @RequestMapping(value = "aGetUser", method = RequestMethod.GET)
-    public String aGetUser(Model model, HttpServletRequest request) throws Exception {
-//      String id = (String) request.getParameter("sid"); 테스트용
-        String id = request.getParameter("id");
-        User user = userService.getUser(id);
-        model.addAttribute("user", user);
-        return  "/admin/editUser";
-    }
-
-    @RequestMapping(value="userUpdate.do", method = RequestMethod.POST)
-    public String userUpdate(User user, Model model) throws Exception {
-        String pwd = "";
-        if(user.getPw().length()<=16) {
-            pwd = passwordEncoder.encode(user.getPw());
-            user.setPw(pwd);
-        }
-        userService.userUpdate(user);
-        return "/admin/userList";
     }
 
 
@@ -134,5 +135,35 @@ public class Admincontroller {
         model.addAttribute("reviewList", reviewList);
 
         return "admin/review/reviewList";
+    }
+
+    // 시범 강의 관리자 페이지 연결
+    @Autowired
+    private VideoService videoService;
+
+    @RequestMapping(value = "video/list.do", method = RequestMethod.GET)
+    public String getVideoList(HttpServletRequest request, Model model) throws Exception {
+        String type = request.getParameter("type");
+        String keyword = request.getParameter("keyword");
+        int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
+
+        Page page = new Page();
+        page.setSearchType(type);
+        page.setSearchKeyword(keyword);
+        int total = videoService.totalCount(page);
+
+        page.makeBlock(curPage, total);
+        page.makeLastPageNum(total);
+        page.makePostStart(curPage, total);
+
+        model.addAttribute("type", type);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("page", page);
+        model.addAttribute("curPage", curPage);
+
+        List<Video> videoList = videoService.videoList(page);
+        model.addAttribute("videoList", videoList);
+
+        return "admin/video/videoList";
     }
 }
