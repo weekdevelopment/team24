@@ -21,6 +21,11 @@
         order by cno desc LIMIT #{postStart}, #{postCount}
         ]]>
     </select>
+
+    <select id="courseList" resultType="kr.ed.haebeop.domain.Course">
+        select * from course
+    </select>
+
     <select id="getCourse" resultType="kr.ed.haebeop.domain.Course">
         select * from course where cno = #{cno }
     </select>

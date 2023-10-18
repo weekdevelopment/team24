@@ -12,6 +12,8 @@ import java.util.List;
 public interface CourseMapper {
     public List<Course> getCourseList(Page page);
 
+    public List<Course> courseList();
+
     public Course getCourse(int cno);
 
     public void insertCourse(Course course);
@@ -31,5 +33,6 @@ public interface CourseMapper {
     public void complete(int eno);
 
     public User getUserName(String id);
+
     public Enroll isEnroll(Enroll enroll);
 }

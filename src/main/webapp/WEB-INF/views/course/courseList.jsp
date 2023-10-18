@@ -77,7 +77,7 @@
                         <p class="is-size-5" style="margin-top: -12px;">
                             <a href="${path1 }/course/getCourse?cno=${course.cno }">${course.course_name }</a>
                         </p>
-                        <span>수강료 : ${course.price }원</span>
+                        <span>수강료 : <fmt:formatNumber value="${course.price }" pattern="#,###" />원</span>
                     </div>
                     <div class="column is-3" style="display: flex; flex-direction: column; justify-content: center;">
                         <p style="margin-top: -12px; text-align: center">
