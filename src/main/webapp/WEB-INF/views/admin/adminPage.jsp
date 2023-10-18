@@ -14,15 +14,29 @@
   <jsp:include page="../include/head.jsp" />
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+<%--  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">--%>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <!-- Bulma Version 0.9.0-->
   <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.4/css/bulma.min.css" />
   <link rel="stylesheet" type="text/css" href="${path1 }/resources/css/admin.css">
 
   <style>
-    .card-header { color:#00A2FF; font-size: 1.2em; font-family: "Nanum Gothic Coding"; margin: 0 auto; }
+
+    @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
+
+    *{
+      font-family: 'Nanum Gothic Coding', monospace;
+    }
+
+    .card-header { color:#00A2FF; font-size: 1.2em; margin: 0 auto; }
     .container { margin-top: 20px; }
-    .hero.welcome .title, .hero.welcome .subtitle { font-family: "Nanum Gothic Coding";  }
+
+    .title, .hero, .hero, .welcome, .subtitle{
+      font-family: 'Nanum Gothic Coding', monospace;
+      font-weight: 700;
+    }
+
 
   </style>
 </head>
