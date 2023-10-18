@@ -21,6 +21,9 @@
 
   <style>
     .column.is-6 { width:100%; }
+    .card-header { font-size: 1.2em; font-family: Sans-Serif; font-weight: bolder; color:#00A2FF; margin-top:20px; margin-bottom: 20px; }
+    .table td, .table th { font-size: 0.8em; }
+    .hero.welcome .title, .hero.welcome .subtitle { font-family: Sans-Serif;  }
   </style>
 </head>
 <body>
@@ -28,51 +31,8 @@
 <div class="container">
   <div class="columns">
     <div class="column is-3 ">
-      <aside class="menu is-hidden-mobile">
-        <p class="menu-label">
-          회원관리
-        </p>
-        <ul class="menu-list">
-          <li><a class="is-active">Dashboard</a></li>
-          <li><a href="${path1 }/admin/userList.do">회원목록 조회 및 변경</a></li>
-          <%--          <li>--%>
-          <%--            <a>수강 내역 관리</a>--%>
-          <%--            <ul>--%>
-          <%--              <li><a>내역 1</a></li>--%>
-          <%--              <li><a>내역 2</a></li>--%>
-          <%--              <li><a>내역 3</a></li>--%>
-          <%--              <li><a>내역 4</a></li>--%>
-          <%--            </ul>--%>
-          <%--          </li>--%>
-        </ul>
-        <p class="menu-label">
-          수강신청 관리
-        </p>
-        <ul class="menu-list">
-          <li><a>수강신청 관리</a></li>
-          <li><a>개강일정 관리</a></li>
-        </ul>
-        <p class="menu-label">
-          시범강의 관리
-        </p>
-        <ul class="menu-list">
-          <li><a>시범강의 관리</a></li>
-        </ul>
-        <p class="menu-label">
-          커뮤니티 관리
-        </p>
-        <ul class="menu-list">
-          <li><a>공지사항 관리</a></li>
-          <li><a>자주 묻는 질문 관리</a></li>
-          <li><a>후기 관리</a></li>
-        </ul>
-        <p class="menu-label">
-          자료실 관리
-        </p>
-        <ul class="menu-list">
-          <li><a>자료실 관리</a></li>
-        </ul>
-      </aside>
+      <%-- 관리자 네비게이션 바 --%>
+      <jsp:include page="../include/asideBar.jsp" />
     </div>
     <div class="column is-9">
       <section class="hero is-info welcome is-small">
@@ -89,19 +49,16 @@
       </section>
       <div class="columns">
         <div class="column is-6">
+          <header class="card-header">
+            회원 목록
+          </header>
           <div class="card events-card">
-            <header class="card-header">
-              내용 제목
-            </header>
             <div>
               <p>
-                회원목록
-              </p>
-              <p>
-              <table>
+              <table class="table">
                 <thead>
                   <th>번호</th>
-                  <th>id</th>
+                  <th>아이디</th>
                   <th>이름</th>
                   <th>이메일</th>
                   <th>전화번호</th>
@@ -110,14 +67,17 @@
                   <th>생년월일</th>
                   <th>포인트</th>
                   <th>방문횟수</th>
+                  <th>회원정보수정</th>
+                  <th>회원정보삭제</th>
 
                 </thead>
                 <tbody>
                 <c:forEach var="user" items="${userList }" varStatus="status">
+                  <c:if test="${(user.id != 'admin') }">
                   <tr>
-                    <td class="item1">${status.count }</td>
+                    <td class="item1">${status.count -1 }</td>
                     <td class="item2">
-                      <a href="${path1 }/user/aGetUser?id=${user.id }" class="al">${user.id }</a>
+                      ${user.id }
                     </td>
                     <td class="item3">${user.name }</td>
                     <td class="item3">${user.email }</td>
@@ -127,7 +87,11 @@
                     <td class="item3">${user.birth }</td>
                     <td class="item3">${user.pt }</td>
                     <td class="item3">${user.visited }</td>
+                    <td><a href="${path1 }/admin/aGetUser?id=${user.id }"><button class="button is-primary is-rounded" style="scale: 70%;">수정</button></a></td>
+                    <td><a href="${path1 }/admin/userDelete.do?id=${user.id }"><button class="button is-danger is-rounded" style="scale: 70%;">삭제</button></a></td>
+                    <td></td>
                   </tr>
+                  </c:if>
                 </c:forEach>
                 </tbody>
               </table>
