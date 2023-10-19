@@ -82,32 +82,6 @@
                 </div>
             </section>
             <section class="info-tiles">
-                <%--                <div class="tile is-ancestor has-text-centered">--%>
-                <%--                    <div class="tile is-parent">--%>
-                <%--                        <article class="tile is-child box">--%>
-                <%--                            <p class="title">439k</p>--%>
-                <%--                            <p class="subtitle">Users</p>--%>
-                <%--                        </article>--%>
-                <%--                    </div>--%>
-                <%--                    <div class="tile is-parent">--%>
-                <%--                        <article class="tile is-child box">--%>
-                <%--                            <p class="title">59k</p>--%>
-                <%--                            <p class="subtitle">Products</p>--%>
-                <%--                        </article>--%>
-                <%--                    </div>--%>
-                <%--                    <div class="tile is-parent">--%>
-                <%--                        <article class="tile is-child box">--%>
-                <%--                            <p class="title">3.4k</p>--%>
-                <%--                            <p class="subtitle">Open Orders</p>--%>
-                <%--                        </article>--%>
-                <%--                    </div>--%>
-                <%--                    <div class="tile is-parent">--%>
-                <%--                        <article class="tile is-child box">--%>
-                <%--                            <p class="title">19</p>--%>
-                <%--                            <p class="subtitle">Exceptions</p>--%>
-                <%--                        </article>--%>
-                <%--                    </div>--%>
-                <%--                </div>--%>
                 <c:if test="${enrollNum ne null}">
                     <p>학습 현황 그래프</p>
                     <progress class="progress  is-large is-success" style="height:2rem;" value="${100 - enrollNum*size }" max="100"></progress>
@@ -124,7 +98,7 @@
                                 <div class="card is-shady">
                                     <div class="card-image">
                                         <figure class="image is-4by3">
-                                            <img src="${path1 }/resources/upload/${course.imgsrc1 }" alt="Placeholder image" class="modal-button" data-target="modal-image2">
+                                            <img src="${path1 }/resources/upload/${enroll.imgsrc1 }" alt="Placeholder image" class="modal-button" data-target="modal-image2">
                                         </figure>
                                     </div>
                                     <div class="card-content">
@@ -132,7 +106,7 @@
                                             <h4>${enroll.course_name }</h4>
                                             <h4>수강 종료일 | ${enroll.end_date }</h4>
                                             <form action="${path1 }/course/complete" method="post">
-                                                <button class="button is-link modal-button" data-target="modal-image2">수강 완료</button>
+                                                <button id="confettiButton" class="button is-link modal-button " data-target="modal-image2">수강 완료</button>
                                                 <input type="hidden" id="eno" name="eno" value="${enroll.eno }" >
                                             </form>
                                         </div>
