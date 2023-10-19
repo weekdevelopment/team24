@@ -19,25 +19,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
-
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
-
+        /*
         *{
             font-family: 'Nanum Gothic Coding', monospace;
-        }
+        } */
 
-        .title {
+        /*.title {
             font-family: 'Nanum Gothic Coding', monospace;
             margin-top: 55px;
             text-align: center;
             font-weight: 700;
-        }
-
-        .contents {
-            font-family: 'Nanum Gothic Coding', monospace;
-            text-align: center;
-            font-weight: 200;
-        }
+        }*/
 
     *{
         padding: 0;
@@ -109,11 +102,11 @@
 <jsp:include page="../include/header.jsp"></jsp:include>
 <nav class="breadcrumb has-succeeds-separator is-medium is-right mt-3 p-4" style="background: #f1f4f9" aria-label="breadcrumbs">
     <ul class="mr-5">
-        <li><a style="color: black;" href="${path1}"><i class="xi-home is-size-3"></i></a></li>
-        <li><a style="color: black;">커뮤니티</a></li>
-        <li><a style="color: black; "href="${path1}/faq/list.do">자주 묻는 질문</a></li>
+        <li><a href="${path1}"><i class="xi-home is-size-3"></i></a></li>
+        <li><a>커뮤니티</a></li>
+        <li><a href="${path1}/faq/list.do">자주 묻는 질문</a></li>
     </ul>
-    <h2 class="title">자주 묻는 질문</h2>
+    <p class="title has-text-centered mt-1 mb-2">자주 묻는 질문</p>
 <%--    <h3 class="contents">고객님들과 학생들이 자주 묻는 질문들을 한 눈에 볼 수 있는 해법의 FAQ입니다.</h3>--%>
 </nav>
 <div class="wrapper">

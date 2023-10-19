@@ -19,25 +19,12 @@
     <%--    <%@ include file="../common.jsp"%>--%>
 
     <style>
-
+        .breadcrumb a { color: #464646; }
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
-
+        /*
         *{
             font-family: 'Nanum Gothic Coding', monospace;
-        }
-
-        .title {
-            font-family: 'Nanum Gothic Coding', monospace;
-            margin-top: 55px;
-            text-align: center;
-            font-weight: 700;
-        }
-
-        .contents {
-            font-family: 'Nanum Gothic Coding', monospace;
-            text-align: center;
-            font-weight: 200;
-        }
+        } */
 
         .button2 {
             text-decoration: none;
@@ -90,14 +77,14 @@
             clear: both;
         }
 
-        ul {
+/*        ul {
             margin-top: 0;
             margin-bottom: 1rem;
         }
 
         ul {
             padding-left: 2rem;
-        }
+        }*/
 
         .tab {
             position: relative;
@@ -122,11 +109,6 @@
             font-weight: 600;
         }
 
-        .title {
-            margin-top: 55px;
-            text-align: center;
-        }
-
         .box_wrap thead th {
             padding: 15px 5px;
             border-bottom: 1px solid #d0cfd5;
@@ -146,14 +128,6 @@
             border-bottom: 1px solid #ddd;
             overflow: hidden;
         }
-
-        /*.evt-list li .img img {*/
-        /*    position: absolute;*/
-        /*    top: 0;*/
-        /*    left: 0;*/
-        /*    width: 100%;*/
-        /*    height: 100%;*/
-        /*}*/
 
         .video-list {
             list-style: none;
@@ -207,8 +181,6 @@
             width: calc(100%- 600px);
             padding: 6px 0 0 45px;
         }
-
-
     </style>
 
 </head>
@@ -217,15 +189,11 @@
 
 <nav class="breadcrumb has-succeeds-separator is-medium is-right mt-3 p-4" style="background: #f1f4f9" aria-label="breadcrumbs">
     <ul class="mr-5">
-        <li><a style="color: black;" href="${path1}"><i class="xi-home is-size-3"></i></a></li>
-        <li><a style="color: black;"href="${path1}/video/list.do">시범강의</a></li>
+        <li><a href="${path1}"><i class="xi-home is-size-3"></i></a></li>
+        <li><a href="${path1}/video/list.do">시범강의</a></li>
     </ul>
-    <h1 class="title">
-        시범 강의
-    </h1>
-    <h3 class="contents">
-        강의 구매 전에 맛보기 강의로 강의 내용을 미리 확인해 보세요!
-    </h3>
+
+    <p class="title has-text-centered mt-1 mb-2">시범강의</p>
 </nav>
 
 <div class="container-fluid">
