@@ -22,6 +22,8 @@ import java.io.*;
 import java.util.List;
 import java.util.UUID;
 
+import static java.lang.System.out;
+
 @Controller
 @RequestMapping("/review/")
 public class ReviewController {
@@ -93,7 +95,11 @@ public class ReviewController {
         if(filter.check(title) || filter.check(content) ){
             title = "";
             content = "";
-            msg = "욕설은 등록할 수 없습니다.";
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('비속어가 포함되어 있습니다!');");
+            out.println("history.back();");
+            out.println("</script>");
+            msg = "redirect:insert.do";
         } else {
             domain.setTitle(title);
             domain.setContent(content);
@@ -195,7 +201,7 @@ public class ReviewController {
 
         //서버에 저장된 이미지 경로
         String path = "E:\\springframework\\pro04_2\\src\\main\\webapp\\resources\\upload" + "ckImage/";    // 저장된 이미지 경로
-        System.out.println("path:" + path);
+        out.println("path:" + path);
         String sDirPath = path + uid + "_" + fileName;
 
         File imgFile = new File(sDirPath);

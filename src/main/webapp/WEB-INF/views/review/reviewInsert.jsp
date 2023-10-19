@@ -85,7 +85,7 @@
             <h2 class="h2">후기 남기기</h2>
             <hr>
             <div class="container">
-                <form action="${path1 }/review/insert.do" method="post">
+                <form action="${path1 }/review/insert.do" method="post" onsubmit="return badwordcheck(this)">
                     <table id="table1">
                         <tbody>
                         <tr>
@@ -113,6 +113,18 @@
                         </tbody>
                     </table>
                 </form>
+                <script>
+                    function joinCheck(f){
+                        if(f.pw.value!=f.pw2.value){
+                            alert("비밀번호와 비밀번호 확인이 서로 다릅니다.");
+                            f.pw.focus();
+                            return false;
+                        }
+                        if(f.idck.value!="yes"){
+                            alert("아이디 중복 체크를 하지 않으셨습니다.");
+                            return false;
+                        }
+                </script>
             </div>
         </div>
     </div>
