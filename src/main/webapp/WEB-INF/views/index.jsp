@@ -12,6 +12,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>해법학원</title>
     <jsp:include page="./include/head.jsp" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <style>
+        .swiper { width: 100%; max-height: 500px; }
+        .swiper-slide { text-align: center; display: flex; justify-content: center; align-items: center; }
+    </style>
 </head>
 <body>
 <!-- Header Start -->
@@ -19,18 +24,28 @@
 <!-- Header Close -->
 
 <!-- Slider Start -->
-<section class="slider">
-    <div class="container">
-        <div class="columns is-justify-content-center">
-            <div class="column is-9-desktop is-10-tablet">
-                <div class="block has-text-centered">
-                    <span class="is-block mb-4 text-white is-capitalized">Small help can make change</span>
-                    <h1 class="mb-5">New hope for <br>near future</h1>
-                    <p class="mb-6">Your small contribution means a lot. Natus officia amet <br>accusamus repellat magni reprehenderit dolorem.</p>
-                    <a href="#" target="_blank" class="btn btn-main is-rounded">Donate Now</a>
+<section style="background: #F1F4F9;">
+    <div class="swiper my-swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="slide_wrap">
+                    <img class="bg1" src="${path1 }/resources/images/slide1.jpg" />
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="slide_wrap">
+                    <img class="bg2" src="${path1 }/resources/images/slide2.jpg" />
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="slide_wrap">
+                    <img class="bg2" src="${path1 }/resources/images/slide3.jpg" />
                 </div>
             </div>
         </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
     </div>
 </section>
 
@@ -113,5 +128,30 @@
 <!-- Footer Start -->
 <jsp:include page="./include/footer.jsp" />
 <!-- Footer Close -->
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<!-- Initialize Swiper -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Swiper 초기화
+        var mySwiper = new Swiper(".my-swiper", {
+            loop: true,
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    });
+</script>
 </body>
 </html>
