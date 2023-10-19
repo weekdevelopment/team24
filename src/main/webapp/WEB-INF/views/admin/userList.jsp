@@ -13,68 +13,52 @@
   <title>메인</title>
   <jsp:include page="../include/head.jsp" />
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+<%--  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">--%>
   <!-- Bulma Version 0.9.0-->
   <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.4/css/bulma.min.css" />
   <link rel="stylesheet" type="text/css" href="${path1 }/resources/css/admin.css">
 
   <style>
-    .column.is-6, .column.is-6-tablet { width: 100%; }
+
+    @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
+
+    *{
+      font-family: 'Nanum Gothic Coding', monospace;
+    }
+
+    .title, .hero, .hero, .welcome, .subtitle{
+      font-family: 'Nanum Gothic Coding', monospace;
+      font-weight: 700;
+    }
+
+    .column.is-6 { width:100%; }
+    .card-header { font-size: 1.2em; font-weight: bolder; color:#00A2FF; margin-top:20px; margin-bottom: 20px; }
+    .table td, .table th { font-size: 0.8em; }
+
+
+    .item1 { width : 10%; }
+    .item2 { width : 10%; }
+    .item3 { width : 10%; }
+    .item4 { width : 10%; }
+    .item5 { width : 15%; }
+    .item6 { width : 25%; }
+    .item7 { width : 10%; }
+    .item8 { width : 10%; }
+    .item9 { width : 10%; }
+    .item10 { width : 5%; }
+    .item11 { width : 5%; }
+
   </style>
 </head>
 <body>
-
 <jsp:include page="../include/header.jsp" />
-
 <div class="container">
   <div class="columns">
     <div class="column is-3 ">
-      <aside class="menu is-hidden-mobile">
-        <p class="menu-label">
-          회원관리
-        </p>
-        <ul class="menu-list">
-          <%--          <li><a class="is-active">Dashboard</a></li>--%>
-          <li><a href="${path1 }/admin/userList.do">회원목록 조회 및 변경</a></li>
-          <%--          <li>--%>
-          <%--            <a>수강 내역 관리</a>--%>
-          <%--            <ul>--%>
-          <%--              <li><a>내역 1</a></li>--%>
-          <%--              <li><a>내역 2</a></li>--%>
-          <%--              <li><a>내역 3</a></li>--%>
-          <%--              <li><a>내역 4</a></li>--%>
-          <%--            </ul>--%>
-          <%--          </li>--%>
-        </ul>
-        <p class="menu-label">
-          수강신청 관리
-        </p>
-        <ul class="menu-list">
-          <li><a>수강신청 관리</a></li>
-          <li><a>개강일정 관리</a></li>
-        </ul>
-        <p class="menu-label">
-          시범강의 관리
-        </p>
-        <ul class="menu-list">
-          <li><a>시범강의 관리</a></li>
-        </ul>
-        <p class="menu-label">
-          커뮤니티 관리
-        </p>
-        <ul class="menu-list">
-          <li><a>공지사항 관리</a></li>
-          <li><a>자주 묻는 질문 관리</a></li>
-          <li><a>후기 관리</a></li>
-        </ul>
-        <p class="menu-label">
-          자료실 관리
-        </p>
-        <ul class="menu-list">
-          <li><a>자료실 관리</a></li>
-        </ul>
-      </aside>
+      <%-- 관리자 네비게이션 바 --%>
+      <jsp:include page="../include/asideBar.jsp" />
     </div>
     <div class="column is-9">
       <section class="hero is-info welcome is-small">
@@ -84,27 +68,66 @@
               관리자 페이지
             </h1>
             <h2 class="subtitle">
-              관리자 페이지에 오신 것을 환영합니다.
+
             </h2>
           </div>
         </div>
       </section>
       <div class="columns">
         <div class="column is-6">
+          <header class="card-header">
+            회원 목록
+          </header>
           <div class="card events-card">
-            <header class="card-header">
-              <p class="card-header-title">
-                회원 목록
+            <div>
+              <p>
+              <table class="table">
+                <thead>
+                  <th>번호</th>
+                  <th>아이디</th>
+                  <th>이름</th>
+                  <th>이메일</th>
+                  <th>전화번호</th>
+                  <th>주소</th>
+<%--                  <th>가입일</th>--%>
+<%--                  <th>생년월일</th>--%>
+                  <th>포인트</th>
+                  <th>회원수정</th>
+                  <th>회원삭제</th>
+
+                </thead>
+                <tbody>
+                <c:forEach var="user" items="${userList }" varStatus="status">
+                  <c:if test="${(user.id != 'admin') }">
+                  <tr>
+                    <td class="item1">${status.count -1 }</td>
+                    <td class="item2">
+                      ${user.id }
+                    </td>
+                    <td class="item3">${user.name }</td>
+                    <td class="item4">${user.email }</td>
+                    <td class="item5">${user.tel }</td>
+                    <td class="item6">(${user.postcode }) ${user.addr1 } ${user.addr2 } </td>
+<%--                    <td class="item7">${user.regdate }</td>--%>
+<%--                    <td class="item8">${user.birth }</td>--%>
+                    <td class="item9">${user.pt }</td>
+                    <td class="item10"><a href="${path1 }/admin/aGetUser?id=${user.id }"><button class="button is-primary is-rounded" style="scale: 70%;">수정</button></a></td>
+                    <td class="item11"><a href="${path1 }/admin/userDelete.do?id=${user.id }"><button class="button is-danger is-rounded" style="scale: 70%;">삭제</button></a></td>
+                    <td></td>
+                  </tr>
+                  </c:if>
+                </c:forEach>
+                </tbody>
+              </table>
               </p>
-              <a href="#" class="card-header-icon" aria-label="more options">
-                  <span class="icon">
-                    <i class="fa fa-angle-down" aria-hidden="true"></i>
-                  </span>
-              </a>
-            </header>
+            </div>
           </div>
         </div>
-        <jsp:include page="../include/footer.jsp" />
-        <script async type="text/javascript" src="${path1 }/resources/js/bulma.js"></script>
+      </div>
+    </div>
+  </div>
+  <script async type="text/javascript" src="${path1 }/resources/js/bulma.js"></script>
+</div>
+<jsp:include page="../include/footer.jsp" />
 </body>
 </html>

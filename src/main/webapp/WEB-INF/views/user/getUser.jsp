@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-prototype.min.css">
     <link href='https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.js"></script>
 
@@ -44,7 +43,7 @@
 <div class="content container" id="content">
     <div class="container">
         <c:if test="${sid!='admin' }">
-            <h2 class="title">마이 페이지</h2>
+            <h2 class="title">회원 정보 수정</h2>
         </c:if>
 
         <form name="frm1" id="frm1" action="${path1 }/user/update.do" method="post" onsubmit="return updateCheck(this)">
@@ -78,7 +77,7 @@
                         <!-- <input type="date" name="birth" id="birth" data-placeholder="생년월일" required> -->
                         <fmt:parseDate value="${user.birth }" var="birth" pattern="yyyy-MM-dd" />
                         <span style="display:none"><fmt:formatDate var="br" value="${birth }" pattern="yyyy-MM-dd" /></span>
-                        <input type="date" name="birth" id="birth" value="${br }">
+                        <input type="date" name="birth" id="birth" value="${br }" readonly>
                     </td>
                 </tr>
                 <tr>
@@ -102,7 +101,6 @@
                 <tr>
                     <td colspan="2">
                         <input type="submit" class="submit success button" value="회원 정보 수정" style="background-color: #00A2FF; color: white; border-radius: 5px;" >
-                        <input type="reset" class="reset button" value="다시 작성" style="background-color: #565d64; border-radius: 5px;">
                         <c:if test="${sid!='admin' }">
                             <a href="${path1 }/user/delete.do?id=${sid }" class="button btn-danger" style="border-radius: 5px; width:100%; background-color: darkred; ">회원 탈퇴</a>
                         </c:if>

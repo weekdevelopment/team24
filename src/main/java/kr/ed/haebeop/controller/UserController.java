@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
+import java.util.List;
 
 @Controller
 @RequestMapping("/user/")
@@ -107,12 +108,5 @@ public class UserController {
         }
         userService.userUpdate(user);
         return "redirect:/";
-    }
-
-    @RequestMapping(value="delete.do", method = RequestMethod.GET)
-    public String userDelete(@RequestParam String id, Model model, HttpSession session) throws Exception {
-            userService.userDelete(id);
-            session.invalidate();
-            return "redirect:/";
     }
 }

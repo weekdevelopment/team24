@@ -214,16 +214,23 @@
 </head>
 <body>
 <jsp:include page="../include/header.jsp"></jsp:include>
+
+<nav class="breadcrumb has-succeeds-separator is-medium is-right mt-3 p-4" style="background: #f1f4f9" aria-label="breadcrumbs">
+    <ul class="mr-5">
+        <li><a style="color: black;" href="${path1}"><i class="xi-home is-size-3"></i></a></li>
+        <li><a style="color: black;"href="${path1}/video/list.do">시범강의</a></li>
+    </ul>
+    <h1 class="title">
+        시범 강의
+    </h1>
+    <h3 class="contents">
+        강의 구매 전에 맛보기 강의로 강의 내용을 미리 확인해 보세요!
+    </h3>
+</nav>
+
 <div class="container-fluid">
     <h2 class="title"></h2>
     <div class="container" id="container">
-        <h1 class="title">
-            시범 강의
-        </h1>
-        <h3 class="contents">
-            강의 구매 전에 맛보기 강의로 강의 내용을 미리 확인해 보세요!
-        </h3>
-        <br>
         <form action="${path1 }/video/list.do" method="get" class="field has-addons has-addons-right">
             <p class="control">
                 <span class="select">
@@ -240,8 +247,6 @@
                 <input type="submit" class="button is-mainColor" value="검색" />
             </p>
         </form>
-        <br>
-        
         <div class="video-list">
             <c:forEach var="video" items="${videoList }" varStatus="status">
                 <a href="${path1}/video/detail.do?no=${video.no}">
@@ -264,11 +269,11 @@
             </c:forEach>
         </div>
 
-<%--        <c:if test= "${sid.equals('admin')}">--%>
+        <c:if test= "${sid.equals('admin')}">
             <div class="button-group">
                 <a class="button2" href="${path1 }/video/insert.do">영상 올리기</a>
             </div>
-<%--        </c:if>--%>
+        </c:if>
 
     </div>
     <br>

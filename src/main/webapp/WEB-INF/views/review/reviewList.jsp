@@ -66,6 +66,7 @@
             padding: 15px 5px;
             border-bottom: 1px solid #d0cfd5;
             text-align: center;
+            vertical-align: middle;
         }
 
         .item2 .al{
@@ -74,7 +75,7 @@
             display: block;
             text-overflow: ellipsis;
             max-height: 2.8em;
-            line-height: 3.4em;
+            line-height: 1;
             word-wrap: break-word;
             overflow: hidden;
             display: -webkit-box;
@@ -148,10 +149,16 @@
 </head>
 <body>
 <jsp:include page="../include/header.jsp"></jsp:include>
-<div class="container-fluid">
+<nav class="breadcrumb has-succeeds-separator is-medium is-right mt-3 p-4" style="background: #f1f4f9" aria-label="breadcrumbs">
+    <ul class="mr-5">
+        <li><a style="color: black;" href="${path1}"><i class="xi-home is-size-3"></i></a></li>
+        <li><a style="color: black;">커뮤니티</a></li>
+        <li><a style="color: black; "href="${path1}/review/list.do">후기</a></li>
+    </ul>
     <h2 class="title">후기</h2>
-    <h3 class="contents">해법의 장점과 특히 만족과 함께 성적 향상을 경험한 학생들의 솔직한 수업만족도 체험수기입니다.</h3>
-    <br>
+<%--    <h3 class="contents">해법의 장점과 특히 만족과 함께 성적 향상을 경험한 학생들의 솔직한 수업만족도 체험수기입니다.</h3>--%>
+</nav>
+<div class="container-fluid">
     <form action="${path1 }/review/list.do" method="get" class="field has-addons has-addons-right"
           style="margin-right: 315px;">
         <p class="control">
@@ -177,14 +184,14 @@
                 <tr>
                     <th class="item1">번호</th>
                     <th class="item2">제목</th>
-                    <th class="item3">아이디</th>
+                    <th class="item3">작성자</th>
                     <th class="item4">등록일</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach var="review" items="${reviewList }" varStatus="status">
                     <tr>
-                        <td class="item1">${status.count }</td>
+                        <td class="item1">${status.count + ((curPage - 1) * page.postCount) }</td>
                         <td class="item2">
                             <a href="${path1 }/review/detail.do?no=${review.no }" class="al">${review.title }</a>
                         </td>

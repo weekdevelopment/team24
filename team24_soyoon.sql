@@ -46,5 +46,4 @@ CREATE TABLE enroll (
 	book_name VARCHAR(100) NOT NULL -- 교재 이름
 );
 
-
 INSERT INTO enroll VALUES(DEFAULT, 1, "park", DEFAULT, DEFAULT, 141000, "리딩북");
