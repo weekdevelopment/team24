@@ -51,7 +51,7 @@
                 <p class="control">
                     <span class="select">
                         <select id="type" name="type">
-                            <option value="title">제목</option>
+                            <option value="title">강의명</option>
                             <option value="content">내용</option>
                         </select>
                     </span>
@@ -84,10 +84,6 @@
                             <a href="${path1 }/course/getCourse?cno=${course.cno }" class="button is-info is-medium" style="border-radius: 100px">
                                 <i class="icofont-pencil"> 수강신청</i>
                             </a>
-                            <c:if test="${sid.equals('admin')}">
-                                <a class="button is-dark" href="${path1 }/course/insert.do">수정</a>
-                                <a class="button is-danger" href="${path1 }/course/delete.do?cno=${course.cno}">삭제</a>
-                            </c:if>
                         </p>
                     </div>
                 </article>

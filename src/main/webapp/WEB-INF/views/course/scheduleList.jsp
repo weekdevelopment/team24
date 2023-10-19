@@ -65,8 +65,8 @@
                             <tr>
                                 <td class="has-text-centered" id="c_name"></td>
                                 <td class="has-text-centered" id="c_date"></td>
-                                <td class="has-text-centered" id="c_tea">윤지혜</td>
-                                <td class="has-text-centered" id="c_cost">200,000원</td>
+                                <td class="has-text-centered" id="c_tea"></td>
+                                <td class="has-text-centered" id="c_cost"></td>
                             </tr>
                             </tbody>
                         </table>
