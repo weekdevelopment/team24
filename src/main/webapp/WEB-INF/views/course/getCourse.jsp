@@ -268,7 +268,7 @@
                 <div class="card-content">
                     <div class="media">
                         <div class="media-content has-text-centered">
-                            <h1 class="title article-title">${course.course_name }</h1>
+                            <img src="${path1 }/resources/upload/${course.imgsrc1 }" alt="강의사진" style="border-radius: 20px; width:300px; max-height: 200px;" >
                         </div>
                     </div>
                     <hr>
@@ -348,7 +348,6 @@
                         </div>
                         <!-- 신청 버튼 -->
                         <div class="applyBtn">
-                            <a href="#" class="cart pointColor pointBorder"><i class="icofont-cart"></i> 장바구니</a>
                             <a id="apply" class="apply bgColor"><i class="icofont-pencil"></i> 수강신청</a>
                         </div>
                     </li>
