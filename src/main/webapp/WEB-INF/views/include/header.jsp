@@ -90,7 +90,7 @@
           </li>
 
           <li class="navbar-item">
-            <a class="navbar-link" href="${path1}/file/filelist1.do">자료실</a>
+            <a class="navbar-link" href="${path1}/file/list.do">자료실</a>
           </li>
         </ul>
       </div>

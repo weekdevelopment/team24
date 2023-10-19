@@ -35,17 +35,7 @@
           회원관리
         </p>
         <ul class="menu-list">
-<%--          <li><a class="is-active">Dashboard</a></li>--%>
           <li><a href="${path1 }/admin/userList.do">회원목록 조회 및 변경</a></li>
-<%--          <li>--%>
-<%--            <a>수강 내역 관리</a>--%>
-<%--            <ul>--%>
-<%--              <li><a>내역 1</a></li>--%>
-<%--              <li><a>내역 2</a></li>--%>
-<%--              <li><a>내역 3</a></li>--%>
-<%--              <li><a>내역 4</a></li>--%>
-<%--            </ul>--%>
-<%--          </li>--%>
         </ul>
         <p class="menu-label">
           수강신청 관리
@@ -72,7 +62,7 @@
           자료실 관리
         </p>
         <ul class="menu-list">
-          <li><a>자료실 관리</a></li>
+          <li><a href="${path1 }/admin/fileList.do">자료실 관리</a></li>
         </ul>
       </aside>
     </div>
@@ -116,6 +106,10 @@
                   </span>
               </a>
             </header>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <%--        <jsp:include page="../include/footer.jsp" />--%>

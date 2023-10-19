@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="fileboard"> <!-- 수정된 부분 -->
-    <!-- 파일 목록 -->
+
     <select id="fileList" resultType="kr.ed.haebeop.domain.FileDTO">
         select * from fileobj order by uploaddate desc, no asc
+    </select>
+    <!-- 파일 목록 -->
+    <select id="fileboardList" resultType="kr.ed.haebeop.domain.FileBoard">
+        <![CDATA[
+    select * from fileboard
+    ]]>
+        <where>
+            <if test="searchType != null">
+                <choose>
+                    <when test="searchType == 'title'.toString()">
+                        title LIKE concat('%', #{searchKeyword}, '%')
+                    </when>
+                </choose>
+            </if>
+        </where>
+        <![CDATA[
+    order by regdate desc LIMIT #{postStart}, #{postCount}
+    ]]>
     </select>
     <!-- 파일 목록 -->
     <select id="fileGroupList" resultType="kr.ed.haebeop.domain.FileDTO">
@@ -29,10 +47,10 @@
     <delete id="fileObjDelete">
         delete from fileobj where no=#{no}
     </delete>
-    <!-- 파일 자료실 목록 -->
-    <select id="fileboardList" resultType="kr.ed.haebeop.domain.FileBoard">
-        select * from fileboard order by postno desc
-    </select>
+<!--    &lt;!&ndash; 파일 자료실 목록 &ndash;&gt;-->
+<!--    <select id="fileboardList" resultType="kr.ed.haebeop.domain.FileBoard">-->
+<!--        select * from fileboard order by postno desc-->
+<!--    </select>-->
     <!-- 파일 자료 상세보기 -->
     <select id="fileboardDetail" resultType="kr.ed.haebeop.domain.FileBoard">
         select * from fileboard where postno=#{postNo}
@@ -57,4 +75,58 @@
     <update id="countUp">
         update fileboard set visited=visited+1 where postno=#{postNo}
     </update>
+
+    <!-- 검색창 (제목, 내용) -->
+    <sql id="criteria">
+        <where>
+            <trim prefixOverrides="OR">
+                <foreach item="type" collection="typeArr">
+                    <trim prefixOverrides="OR">
+                        <choose>
+                            <when test="type == 'T'.toString()">
+                                title LIKE '%' || #{keyword} || '%'
+                            </when>
+                            <when test="type == 'C'.toString()">
+                                content LIKE '%' || #{keyword} || '%'
+                            </when>
+                        </choose>
+                    </trim>
+                </foreach>
+            </trim>
+        </where>
+    </sql>
+
+    <!-- 글 수 카운트 -->
+    <select id="totalCount" resultType="integer">
+        <![CDATA[
+    select count(*) from fileboard
+       ]]>
+        <where>
+            <if test="searchType != null">
+                <choose>
+                    <when test="searchType == 'title'.toString()">
+                        title LIKE concat('%', #{searchKeyword}, '%')
+                    </when>
+                    <when test="searchType == 'content'.toString()">
+                        content LIKE concat('%', #{searchKeyword}, '%')
+                    </when>
+                </choose>
+            </if>
+        </where>
+    </select>
+
+    <!-- 페이징 처리 -->
+    <select id="getListWithPaging" resultType="kr.ed.haebeop.domain.FileBoard">
+        <![CDATA[
+        select * from fileboard
+        ]]>
+        <include refid="criteria" />
+        <![CDATA[
+        ORDER BY regdate DESC LIMIT ((#{pageNum} - 1) * #{amount}), #{amount}
+        ]]>
+    </select>
+
+
 </mapper>
+
+
