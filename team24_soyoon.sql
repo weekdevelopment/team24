@@ -47,4 +47,3 @@ CREATE TABLE enroll (
 );
 
 INSERT INTO enroll VALUES(DEFAULT, 1, "park", DEFAULT, DEFAULT, 141000, "리딩북");
-
