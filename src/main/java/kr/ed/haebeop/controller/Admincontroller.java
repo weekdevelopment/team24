@@ -49,16 +49,22 @@ public class Admincontroller {
         page.setSearchType(type);
         page.setSearchKeyword(keyword);
         int total = userService.userCount(page);
+
         page.makeBlock(curPage, total);
         page.makeLastPageNum(total);
         page.makePostStart(curPage, total);
+
         model.addAttribute("type", type);
         model.addAttribute("keyword", keyword);
+        model.addAttribute("page", page);
         model.addAttribute("curpage", curPage);
 
         List<User> userList = userService.userList(page);
         model.addAttribute("userList", userList);
-        System.out.println(userList);
+
+        System.out.println("curPage : " + curPage);
+        System.out.println("page.getpageCount : " + page.getPageCount());
+
         return "/admin/userList";
     }
 
@@ -85,7 +91,7 @@ public class Admincontroller {
             user.setPw(pwd);
         }
         userService.userUpdate(user);
-        return "/admin/userList";
+        return "redirect:/admin/userList.do";
     }
 
     // 공지사항 관리자 페이지 연결

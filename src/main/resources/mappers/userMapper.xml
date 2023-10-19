@@ -26,7 +26,7 @@
              </if>
         </where>
         <![CDATA[
-            order by regdate desc LIMIT #{postStart}, #{postCount}
+            order by id asc LIMIT #{postStart}, #{postCount}
         ]]>
     </select>
 
@@ -85,7 +85,7 @@
         ]]>
         <include refid="criteria" />
         <![CDATA[
-            ORDER BY regdate DESC LIMIT ((#{pageNum} - 1) * #{amount}), #{amount}
+            ORDER BY id ASC LIMIT ((#{pageNum} - 1) * #{amount}), #{amount}
         ]]>
     </select>
 
