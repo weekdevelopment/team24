@@ -4,11 +4,91 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.ed.haebeop.persistence.UserMapper">
     <select id="userList" resultType="kr.ed.haebeop.domain.User">
-        select * from user
+        <![CDATA[
+            select * from user
+        ]]>
+        <where>
+             <if test="searchType != null">
+                <choose>
+                    <when test="searchType == 'id'.toString()">
+                        id LIKE concat('%', #{searchKeyword}, '%')
+                    </when>
+                    <when test="searchType == 'name'.toString()">
+                        name LIKE concat('%', #{searchKeyword}, '%')
+                    </when>
+                    <when test="searchType == 'email'.toString()">
+                        email LIKE concat('%', #{searchKeyword}, '%')
+                    </when>
+                    <when test="searchType == 'tel'.toString()">
+                        tel LIKE concat('%', #{searchKeyword}, '%')
+                    </when>
+                </choose>
+             </if>
+        </where>
+        <![CDATA[
+            order by regdate desc LIMIT #{postStart}, #{postCount}
+        ]]>
     </select>
+
     <select id="userCount" resultType="integer">
-        select count(*) from user
+        <![CDATA[
+            select count(*) from user
+        ]]>
+            <where>
+                    <if test="searchType != null">
+                        <choose>
+                            <when test="searchType == 'id'.toString()">
+                                id LIKE concat('%', #{searchKeyword}, '%')
+                            </when>
+                            <when test="searchType == 'name'.toString()">
+                                name LIKE concat('%', #{searchKeyword}, '%')
+                            </when>
+                            <when test="searchType == 'email'.toString()">
+                                email LIKE concat('%', #{searchKeyword}, '%')
+                            </when>
+                            <when test="searchType == 'tel'.toString()">
+                                tel LIKE concat('%', #{searchKeyword}, '%')
+                            </when>
+                        </choose>
+                    </if>
+            </where>
     </select>
+
+    <sql id="criteria">
+        <where>
+            <trim prefixOverrides="OR">
+                <foreach item="type" collection="typeArr">
+                    <trim prefixOverrides="OR">
+                        <choose>
+                            <when test="type == 'I'.toString()">
+                                id LIKE '%' || #{keyword } || '%'
+                            </when>
+                            <when test="type == 'N'.toString()">
+                                name LIKE '%' || #{keyword } || '%'
+                            </when>
+                            <when test="type == 'E'.toString()">
+                                email LIKE '%' || #{keyword } || '%'
+                            </when>
+                            <when test="type == 'T'.toString()">
+                                tel LIKE '%' || #{keyword } || '%'
+                            </when>
+                        </choose>
+                    </trim>
+                </foreach>
+            </trim>
+        </where>
+    </sql>
+
+    <select id="getListWithPaging" resultType="kr.ed.haebeop.domain.User">
+        <![CDATA[
+            select * from user
+        ]]>
+        <include refid="criteria" />
+        <![CDATA[
+            ORDER BY regdate DESC LIMIT ((#{pageNum} - 1) * #{amount}), #{amount}
+        ]]>
+    </select>
+
     <select id="getUser" resultType="kr.ed.haebeop.domain.User">
         select * from user where id=#{id }
     </select>

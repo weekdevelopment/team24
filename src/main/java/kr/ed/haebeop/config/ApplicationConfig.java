@@ -19,8 +19,6 @@ public class ApplicationConfig {
     @Bean
     public TestRepository testRepository(){ return new TestRepositoryImpl(); }
     @Bean
-    public MemberService memberService(){ return new MemberServiceImpl(); }
-    @Bean
     public UserService userService() { return new UserServiceImpl(); }
     // file
     @Bean
