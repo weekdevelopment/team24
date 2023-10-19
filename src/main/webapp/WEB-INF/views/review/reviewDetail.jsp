@@ -186,31 +186,27 @@
 
         <c:choose>
           <c:when test="${not empty sid && sid eq 'admin'}">
-            <div class="column is-2">
-              <a class="button3" style="float: right" href="${path1 }/review/delete.do?no=${domain.no}">삭제</a>
-            </div>
-            <div class="column is-3">
-              <a class="button" style="left: 1090px" href="${path1 }/review/list.do">목록으로</a>
+            <div class="column">
+              <a class="button3" href="${path1 }/review/delete.do?no=${domain.no}">삭제</a>
+              <a class="button" href="${path1 }/review/list.do">목록으로</a>
             </div>
           </c:when>
 
           <c:when test="${not empty sid && sid eq domain.id}">
-            <div class="column is-2">
-              <a class="button3" style="float: right" href="${path1 }/review/edit.do?no=${domain.no}">수정</a>
-              <a class="button3" style="float: right" href="${path1 }/review/delete.do?no=${domain.no}">삭제</a>
-            </div>
-            <div class="column is-3">
-              <a class="button" style="left: 1090px" href="${path1 }/review/list.do">목록으로</a>
+            <div class="column">
+              <a class="button3" href="${path1 }/review/edit.do?no=${domain.no}">수정</a>
+              <a class="button3" href="${path1 }/review/delete.do?no=${domain.no}">삭제</a>
+              <a class="button" href="${path1 }/review/list.do">목록으로</a>
             </div>
           </c:when>
 
           <c:otherwise>
-            <div class="column is-3">
-              <a class="button" style="left: 1090px" href="${path1 }/review/list.do">목록으로</a>
+            <div class="column">
+              <a class="button" href="${path1 }/review/list.do">목록으로</a>
             </div>
           </c:otherwise>
         </c:choose>
-
+        <br>
       </div>
     </div>
   </div>
