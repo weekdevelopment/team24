@@ -162,10 +162,16 @@
 </head>
 <body>
 <jsp:include page="../include/header.jsp"></jsp:include>
-<div class="container-fluid">
+<nav class="breadcrumb has-succeeds-separator is-medium is-right mt-3 p-4" style="background: #f1f4f9" aria-label="breadcrumbs">
+    <ul class="mr-5">
+        <li><a style="color: black;" href="${path1}"><i class="xi-home is-size-3"></i></a></li>
+        <li><a style="color: black;">커뮤니티</a></li>
+        <li><a style="color: black; "href="${path1}/notice/list.do">공지사항</a></li>
+    </ul>
     <h2 class="title">공지사항</h2>
-    <h3 class="contents">일정 및 행사 안내, 이벤트 발표, 채널 등 해법의 커뮤니티 게시판입니다.</h3>
-    <br>
+<%--    <h3 class="contents">일정 및 행사 안내, 이벤트 발표, 채널 등 해법의 커뮤니티 게시판입니다.</h3>--%>
+</nav>
+<div class="container-fluid">
     <form action="${path1 }/notice/list.do" method="get" class="field has-addons has-addons-right"
           style="margin-right: 315px;">
         <p class="control">

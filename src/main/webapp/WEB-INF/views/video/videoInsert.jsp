@@ -64,6 +64,13 @@
 <body>
 <!-- 헤더 부분 인클루드 -->
 <jsp:include page="../include/header.jsp"></jsp:include>
+<nav class="breadcrumb has-succeeds-separator is-medium is-right mt-3 p-4" style="background: #f1f4f9" aria-label="breadcrumbs">
+    <ul class="mr-5">
+        <li><a style="color: black;" href="${path1}"><i class="xi-home is-size-3"></i></a></li>
+        <li><a style="color: black;"href="${path1}/video/list.do">시범강의</a></li>
+        <li><a style="color: black; "href="${path1}/video/insert.do">영상 올리기</a></li>
+    </ul>
+</nav>
 <div class="container is-fullhd">
     <div class="content" id="contents">
         <div class="row column1 text-center">
