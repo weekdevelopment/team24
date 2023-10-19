@@ -68,7 +68,7 @@ public class Admincontroller {
         return "/admin/userList";
     }
 
-    @RequestMapping(value="userDelete.do", method = RequestMethod.GET)
+    @RequestMapping(value = "userDelete.do", method = RequestMethod.GET)
     public String userDelete(@RequestParam String id, Model model, HttpSession session) throws Exception {
         userService.userDelete(id);
         session.invalidate();
@@ -83,10 +83,10 @@ public class Admincontroller {
         return  "/admin/editUser";
     }
 
-    @RequestMapping(value="userUpdate.do", method = RequestMethod.POST)
+    @RequestMapping(value = "userUpdate.do", method = RequestMethod.POST)
     public String userUpdate(User user, Model model) throws Exception {
         String pwd = "";
-        if(user.getPw().length()<=16) {
+        if (user.getPw().length() <= 16) {
             pwd = passwordEncoder.encode(user.getPw());
             user.setPw(pwd);
         }
@@ -190,7 +190,7 @@ public class Admincontroller {
     private CourseService courseService;
 
     //관리자페이지 수강 관리
-    @RequestMapping(value="enrollList", method = RequestMethod.GET)
+    @RequestMapping(value = "enrollList", method = RequestMethod.GET)
     public String admonEnroll(HttpServletRequest request, Model model) {
         String type = request.getParameter("type");
         String keyword = request.getParameter("keyword");
@@ -217,7 +217,7 @@ public class Admincontroller {
     }
 
     //수강생 삭제
-    @RequestMapping(value="enrollDelete", method = RequestMethod.GET)
+    @RequestMapping(value = "enrollDelete", method = RequestMethod.GET)
     public String enrollDelete(@RequestParam int eno) throws Exception {
         courseService.enrollDelete(eno);
         return "redirect:/admin/EnrollList";

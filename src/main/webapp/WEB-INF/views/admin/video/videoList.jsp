@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     <!-- Bulma Version 0.9.0-->
-    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.4/css/bulma.min.css" />
+    <%--<link rel="stylesheet" href="https://unpkg.com/bulma@0.9.4/css/bulma.min.css" />--%>
     <link rel="stylesheet" type="text/css" href="${path1 }/resources/css/admin.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -28,7 +28,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
 
         *{
-            font-family: 'Nanum Gothic Coding', monospace;
+            font-family: "Montserrat", sans-serif;
         }
 
         .title, .subtitle{
@@ -219,7 +219,7 @@
                                 <input class="input" type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요" value="${keyword }">
                             </p>
                             <p class="control">
-                                <input type="submit" class="button is-mainColor" value="검색" />
+                                <input type="submit" class="button" value="검색" />
                             </p>
                         </form>
                         <p>
