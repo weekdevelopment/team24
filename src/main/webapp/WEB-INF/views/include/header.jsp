@@ -91,7 +91,7 @@
           <li class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">자료실</a>
             <div class="navbar-dropdown">
-              <a class="navbar-item" href="${path1}/file/filelist1.do">자료실</a>
+              <a class="navbar-item" href="${path1}/file/list.do">자료실</a>
             </div>
           </li>
         </ul>
