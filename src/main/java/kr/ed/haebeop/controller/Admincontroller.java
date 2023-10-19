@@ -197,4 +197,36 @@ public class Admincontroller {
         courseService.enrollDelete(eno);
         return "redirect:/admin/EnrollList";
     }
+
+    @GetMapping("courseList")
+    public String getCourseList(HttpServletRequest request, Model model) throws Exception {
+        String type = request.getParameter("type");
+        String keyword = request.getParameter("keyword");
+        int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
+
+        Page page = new Page();
+        page.setSearchType(type);
+        page.setSearchKeyword(keyword);
+        int total = courseService.countCourse(page);
+
+        page.makeBlock(curPage, total);
+        page.makeLastPageNum(total);
+        page.makePostStart(curPage, total);
+
+        model.addAttribute("type", type);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("page", page);
+        model.addAttribute("curPage", curPage);
+
+        List<Course> courseList = courseService.getCourseList(page);
+        model.addAttribute("courseList", courseList);
+        return "admin/courseList";
+    }
+
+    @GetMapping("courseDelete")
+    public String deleteCourse(HttpServletRequest request, Model model) throws Exception {
+        int cno = Integer.parseInt(request.getParameter("cno"));
+        courseService.deleteCourse(cno);
+        return "redirect:/admin/courseList";
+    }
 }

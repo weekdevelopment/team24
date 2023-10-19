@@ -17,7 +17,7 @@
           <div class="header-top-right has-text-right-tablet has-text-centered-mobile">
             <c:if test="${sid.equals('admin')}">
               <a href="${path1}/admin/">
-                <i class="icofont-login has-text-white" style="color: red; font-weight: bold;"> 관리자페이지</i>
+                <i class="icofont-settings has-text-white"> 관리자페이지</i>
               </a>
             </c:if>
             <c:if test="${empty sid }">
@@ -30,7 +30,7 @@
             </c:if>
             <c:if test="${!empty sid && !sid.equals('admin') }">
               <a href="${path1 }/user/getUser">
-                <i class="icofont-login has-text-white"> 마이페이지</i>
+                <i class="icofont-user has-text-white"> 마이페이지</i>
               </a>
               <a href="${path1 }/course/mypageCourse?complete=0">
                 <i class="icofont-ui-clip-board has-text-white"> 학습 현황</i>
