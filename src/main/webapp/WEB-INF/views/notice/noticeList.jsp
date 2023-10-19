@@ -20,19 +20,21 @@
     <script src=""></script>
 
     <style>
+        .breadcrumb a { color: #464646; }
 
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
-
+        /*
         *{
             font-family: 'Nanum Gothic Coding', monospace;
-        }
+        } */
 
+        /*
         .title {
             font-family: 'Nanum Gothic Coding', monospace;
             margin-top: 55px;
             text-align: center;
             font-weight: 700;
-        }
+        } */
 
         .contents {
             font-family: 'Nanum Gothic Coding', monospace;
@@ -168,7 +170,7 @@
         <li><a style="color: black;">커뮤니티</a></li>
         <li><a style="color: black; "href="${path1}/notice/list.do">공지사항</a></li>
     </ul>
-    <h2 class="title">공지사항</h2>
+    <p class="title has-text-centered mt-1 mb-2">공지사항</p>
 <%--    <h3 class="contents">일정 및 행사 안내, 이벤트 발표, 채널 등 해법의 커뮤니티 게시판입니다.</h3>--%>
 </nav>
 <div class="container-fluid">
