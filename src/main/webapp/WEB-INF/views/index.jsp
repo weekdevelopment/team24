@@ -29,17 +29,17 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <div class="slide_wrap">
-                    <img class="bg1" src="${path1 }/resources/images/slide1.jpg" />
+                    <img class="bg1" src="${path1 }/resources/images/배너1.png" />
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="slide_wrap">
-                    <img class="bg2" src="${path1 }/resources/images/slide2.jpg" />
+                    <img class="bg2" src="${path1 }/resources/images/배너2.png" />
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="slide_wrap">
-                    <img class="bg2" src="${path1 }/resources/images/slide3.jpg" />
+                    <img class="bg2" src="${path1 }/resources/images/배너3.png" />
                 </div>
             </div>
         </div>

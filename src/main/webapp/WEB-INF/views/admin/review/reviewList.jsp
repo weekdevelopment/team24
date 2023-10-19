@@ -152,7 +152,6 @@
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             word-break: keep-all;
-
             .column.is-6 { width:100%; }
         }
 

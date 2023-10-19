@@ -12,14 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.util.List;
 
 @Controller
@@ -28,6 +26,9 @@ public class Admincontroller {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private FileService fileService;
+
     BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @RequestMapping(value = "", method = RequestMethod.GET)
@@ -35,7 +36,7 @@ public class Admincontroller {
         Page page = new Page();
         int totUser = userService.userCount(page);
         model.addAttribute("totUser", totUser);
-        return "/admin/adminPage";
+        return "/admin/userList";
     }
 
     @RequestMapping(value = "userList.do", method = RequestMethod.GET)
@@ -48,16 +49,22 @@ public class Admincontroller {
         page.setSearchType(type);
         page.setSearchKeyword(keyword);
         int total = userService.userCount(page);
+
         page.makeBlock(curPage, total);
         page.makeLastPageNum(total);
         page.makePostStart(curPage, total);
+
         model.addAttribute("type", type);
         model.addAttribute("keyword", keyword);
+        model.addAttribute("page", page);
         model.addAttribute("curpage", curPage);
 
         List<User> userList = userService.userList(page);
         model.addAttribute("userList", userList);
-        System.out.println(userList);
+
+        System.out.println("curPage : " + curPage);
+        System.out.println("page.getpageCount : " + page.getPageCount());
+
         return "/admin/userList";
     }
 
@@ -70,11 +77,10 @@ public class Admincontroller {
 
     @RequestMapping(value = "aGetUser", method = RequestMethod.GET)
     public String aGetUser(Model model, HttpServletRequest request) throws Exception {
-//      String id = (String) request.getParameter("sid"); 테스트용
         String id = request.getParameter("id");
         User user = userService.getUser(id);
         model.addAttribute("user", user);
-        return "/admin/editUser";
+        return  "/admin/editUser";
     }
 
     @RequestMapping(value = "userUpdate.do", method = RequestMethod.POST)
@@ -85,7 +91,7 @@ public class Admincontroller {
             user.setPw(pwd);
         }
         userService.userUpdate(user);
-        return "/admin/userList";
+        return "redirect:/admin/userList.do";
     }
 
     // 공지사항 관리자 페이지 연결
@@ -249,10 +255,7 @@ public class Admincontroller {
         return "redirect:/admin/courseList";
     }
 
-
-    @Autowired
-    private FileService fileService;
-
+    // 관리자 파일 처리 시스템
     @RequestMapping(value = "fileList.do", method = RequestMethod.GET)
     public String getFileList(HttpServletRequest request, Model model) throws Exception {
         String type = request.getParameter("type");
@@ -279,7 +282,6 @@ public class Admincontroller {
         return "/admin/file/fileList";
     }
 
-    //getFileboard.do
     @GetMapping("getFileboard.do")
     public String getFileboard(@RequestParam int postNo, Model model) throws Exception {
         FileVO fileboard = fileService.getFilebord(postNo);
@@ -287,5 +289,34 @@ public class Admincontroller {
         return "/admin/file/getFileboard";
     }
 
+    @GetMapping("removeFileboard.do")
+    public String removeFileboard(@RequestParam int postNo, HttpServletRequest req) throws Exception {
 
+        //실제 파일 삭제 로직
+        //파일 경로 지정
+        String path = req.getRealPath("/resources/upload");
+        List<FileDTO> fileList = fileService.getFileGroupList(postNo);
+        for(FileDTO fileobj : fileList) {
+            File file = new File(path + "/" + fileobj.getOriginFile());
+            if (file.exists()) { // 해당 파일이 존재하면
+                file.delete(); // 파일 삭제
+            }
+        }
+        //데이터베이스의 파일 자료실과 파일의 내용 삭제
+        fileService.removeFileboard(postNo);
+        return "redirect:/admin/fileList.do";
+    }
+
+    @PostMapping("fileRemove.do")
+    public String fileRemove(HttpServletRequest request, Model model) throws Exception {
+        int no = Integer.parseInt(request.getParameter("no"));
+        int postNo = Integer.parseInt(request.getParameter("postNo"));
+        String path = request.getRealPath("/resources/upload");
+        FileDTO fileobj = fileService.getFile(no);
+        File file = new File(path + "/" + fileobj.getOriginFile());
+        if (file.exists()) { // 해당 파일이 존재하면
+            file.delete(); // 파일 삭제
+        }
+        return "/file/getFileboard.do?postNo="+postNo;
+    }
 }

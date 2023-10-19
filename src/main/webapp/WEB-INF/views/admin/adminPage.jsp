@@ -69,7 +69,7 @@
                 </header>
                 <div>
                     <p style="font-size: 2em; text-align: center;">
-                        ${totUser} 명
+                        ${totUser } 명
                     </p>
                 </div>
               </div>
