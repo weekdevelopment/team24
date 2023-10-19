@@ -160,18 +160,8 @@
 </nav>
 <div class="container">
     <div class="columns is-multiline mt-1">
-        <div class="column is-1">
-            <c:choose>
-                <c:when test="${not empty sid }">
-                    <a class="button is-link is-medium" href="${path1 }/review/insert.do">글쓰기</a>
-                </c:when>
-                <c:otherwise>
-                    <a class="button is-link is-medium" href="javascript:checkLogin()">글쓰기</a>
-                </c:otherwise>
-            </c:choose>
-        </div>
-        <div class="column is-4 is-offset-7">
-            <form action="${path1 }/review/list.do" method="get" class="field has-addons has-addons-right">
+        <div class="column is-4">
+            <form action="${path1 }/review/list.do" method="get" class="field has-addons">
                 <p class="control">
                 <span class="select">
                     <select id="type" name="type">
@@ -187,6 +177,16 @@
                     <input type="submit" class="button" value="검색" />
                 </p>
             </form>
+        </div>
+        <div class="column is-2 is-offset-6 has-text-centered">
+            <c:choose>
+                <c:when test="${not empty sid }">
+                    <a class="button is-link is-medium" href="${path1 }/review/insert.do">글쓰기</a>
+                </c:when>
+                <c:otherwise>
+                    <a class="button is-link is-medium" href="javascript:checkLogin()">글쓰기</a>
+                </c:otherwise>
+            </c:choose>
         </div>
     </div>
     <br>

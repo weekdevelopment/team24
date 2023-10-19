@@ -40,13 +40,8 @@
 
 <div class="container">
     <div class="columns is-multiline border-bottom mt-1">
-        <div class="column is-1">
-            <c:if test="${sid.equals('admin')}">
-                <a class="button is-link is-medium" href="${path1 }/course/insert.do">강의 등록</a>
-            </c:if>
-        </div>
-        <div class="column is-4 is-offset-7">
-            <form action="${path1 }/course/list.do" method="get" class="field has-addons has-addons-right">
+        <div class="column is-4">
+            <form action="${path1 }/course/list.do" method="get" class="field has-addons">
                 <p class="control">
                     <span class="select">
                         <select id="type" name="type">
@@ -62,6 +57,11 @@
                     <input type="submit" class="button" value="검색" />
                 </p>
             </form>
+        </div>
+        <div class="column is-2 is-offset-6 has-text-centered">
+            <c:if test="${sid.equals('admin')}">
+                <a class="button is-link is-medium" href="${path1 }/course/insert.do">강의 등록</a>
+            </c:if>
         </div>
     </div>
 
