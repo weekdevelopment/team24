@@ -11,16 +11,16 @@
     <jsp:include page="../include/head.jsp" />
     <style>
         .breadcrumb a { color: #464646; }
-        .pagination-link.is-current {
+        /*.pagination-link.is-current {
             background-color:#2B3A55;
             border-color: #2B3A55;
         }
         .pagination-link {
             background-color: #ffffff;
-        }
-        .select:not(.is-multiple):not(.is-loading)::after {
+        }*/
+        /*.select:not(.is-multiple):not(.is-loading)::after {
             border-color: #2B3A55;
-        }
+        }*/
     </style>
 
 </head>
@@ -39,19 +39,18 @@
 </nav>
 
 <div class="container">
-    <div class="columns border-bottom">
+    <div class="columns is-multiline border-bottom mt-1">
         <div class="column is-1">
             <c:if test="${sid.equals('admin')}">
-                <a class="button is-primary" href="${path1 }/course/insert.do">강의 등록</a>
+                <a class="button is-link is-medium" href="${path1 }/course/insert.do">강의 등록</a>
             </c:if>
-            <%--<a class="button is-primary" href="${path1 }/course/insert.do">강의 등록</a>--%>
         </div>
         <div class="column is-4 is-offset-7">
-            <form action="${path1 }/course/list.do" method="get" class="field has-addons">
+            <form action="${path1 }/course/list.do" method="get" class="field has-addons has-addons-right">
                 <p class="control">
                     <span class="select">
                         <select id="type" name="type">
-                            <option value="title">강의명</option>
+                            <option value="title">제목</option>
                             <option value="content">내용</option>
                         </select>
                     </span>
@@ -60,11 +59,12 @@
                     <input class="input" type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요" value="${keyword }">
                 </p>
                 <p class="control">
-                    <input type="submit" class="button is-mainColor" value="검색" />
+                    <input type="submit" class="button" value="검색" />
                 </p>
             </form>
         </div>
     </div>
+
 
     <div class="columns is-multiline">
         <div class="column is-12">

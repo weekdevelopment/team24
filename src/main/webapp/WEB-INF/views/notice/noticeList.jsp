@@ -36,11 +36,13 @@
             font-weight: 700;
         } */
 
+        /*
         .contents {
             font-family: 'Nanum Gothic Coding', monospace;
             text-align: center;
             font-weight: 200;
         }
+        */
 
         .box_wrap {
             margin-top: 15px;
@@ -124,9 +126,6 @@
             font-size: 18px;
         }
 
-
-
-
         #tb1 { width:980px; margin:40px auto; }
         #tb1 th { background-color: #00A2FF; color:#fff;  font-size: 20px;}
         .item1 { width:10%; }
@@ -166,31 +165,42 @@
 <jsp:include page="../include/header.jsp"></jsp:include>
 <nav class="breadcrumb has-succeeds-separator is-medium is-right mt-3 p-4" style="background: #f1f4f9" aria-label="breadcrumbs">
     <ul class="mr-5">
-        <li><a style="color: black;" href="${path1}"><i class="xi-home is-size-3"></i></a></li>
-        <li><a style="color: black;">커뮤니티</a></li>
-        <li><a style="color: black; "href="${path1}/notice/list.do">공지사항</a></li>
+        <li><a href="${path1}"><i class="xi-home is-size-3"></i></a></li>
+        <li><a>커뮤니티</a></li>
+        <li><a href="${path1}/notice/list.do">공지사항</a></li>
     </ul>
     <p class="title has-text-centered mt-1 mb-2">공지사항</p>
 <%--    <h3 class="contents">일정 및 행사 안내, 이벤트 발표, 채널 등 해법의 커뮤니티 게시판입니다.</h3>--%>
 </nav>
-<div class="container-fluid">
-    <form action="${path1 }/notice/list.do" method="get" class="field has-addons has-addons-right"
-          style="margin-right: 315px;">
-        <p class="control">
+<div class="container">
+    <div class="columns is-multiline mt-1">
+        <div class="column is-1">
+            <%--<c:if test= "${sid.equals('admin')}">
+                <a class="button is-link" href="${path1 }/video/insert.do">영상 올리기</a>
+            </c:if>--%>
+            <c:if test= "${sid.equals('admin')}">
+                <a class="button is-link is-medium" href="${path1 }/notice/insert.do">글쓰기</a>
+            </c:if>
+        </div>
+        <div class="column is-4 is-offset-7">
+            <form action="${path1 }/notice/list.do" method="get" class="field has-addons has-addons-right">
+                <p class="control">
                 <span class="select">
                     <select id="type" name="type">
                         <option value="title">제목</option>
                         <option value="content">내용</option>
                     </select>
                 </span>
-        </p>
-        <p class="control">
-            <input class="input" type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요" value="${keyword }">
-        </p>
-        <p class="control">
-            <input type="submit" class="button is-mainColor" value="검색" />
-        </p>
-    </form>
+                </p>
+                <p class="control">
+                    <input class="input" type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요" value="${keyword }">
+                </p>
+                <p class="control">
+                    <input type="submit" class="button" value="검색" />
+                </p>
+            </form>
+        </div>
+    </div>
     <br>
     <div class="container">
         <div class="box_wrap">

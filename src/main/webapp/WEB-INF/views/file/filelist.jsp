@@ -181,7 +181,7 @@
     border: #ddd 1px solid;">
             </p>
             <p class="control">
-                <input type="submit" class="button is-mainColor" value="검색" />
+                <input type="submit" class="button" value="검색" />
             </p>
         </form>
     </div>

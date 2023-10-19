@@ -158,24 +158,37 @@
     <p class="title has-text-centered mt-1 mb-2">후기</p>
 <%--    <h3 class="contents">해법의 장점과 특히 만족과 함께 성적 향상을 경험한 학생들의 솔직한 수업만족도 체험수기입니다.</h3>--%>
 </nav>
-<div class="container-fluid">
-    <form action="${path1 }/review/list.do" method="get" class="field has-addons has-addons-right"
-          style="margin-right: 315px;">
-        <p class="control">
+<div class="container">
+    <div class="columns is-multiline mt-1">
+        <div class="column is-1">
+            <c:choose>
+                <c:when test="${not empty sid }">
+                    <a class="button is-link is-medium" href="${path1 }/review/insert.do">글쓰기</a>
+                </c:when>
+                <c:otherwise>
+                    <a class="button is-link is-medium" href="javascript:checkLogin()">글쓰기</a>
+                </c:otherwise>
+            </c:choose>
+        </div>
+        <div class="column is-4 is-offset-7">
+            <form action="${path1 }/review/list.do" method="get" class="field has-addons has-addons-right">
+                <p class="control">
                 <span class="select">
                     <select id="type" name="type">
                         <option value="title">제목</option>
                         <option value="content">내용</option>
                     </select>
                 </span>
-        </p>
-        <p class="control">
-            <input class="input" type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요" value="${keyword }">
-        </p>
-        <p class="control">
-            <input type="submit" class="button is-mainColor" value="검색" />
-        </p>
-    </form>
+                </p>
+                <p class="control">
+                    <input class="input" type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요" value="${keyword }">
+                </p>
+                <p class="control">
+                    <input type="submit" class="button" value="검색" />
+                </p>
+            </form>
+        </div>
+    </div>
     <br>
     <div class="container">
         <div class="box_wrap">
@@ -202,43 +215,42 @@
                 </tbody>
             </table>
         </div>
-
-        <c:choose>
+        <%--<c:choose>
             <c:when test="${not empty sid }">
-                <a class="button2" href="${path1 }/review/insert.do">글쓰기</a>
+                <a class="button is-link" href="${path1 }/review/insert.do">글쓰기</a>
             </c:when>
             <c:otherwise>
-                <a class="button2" href="javascript:checkLogin()">글쓰기</a>
+                <a class="button is-link" href="javascript:checkLogin()">글쓰기</a>
             </c:otherwise>
-        </c:choose>
-
+        </c:choose>--%>
     </div>
-    <nav class="pagination is-rounded is-centered mb-6" role="navigation" aria-label="pagination">
-        <c:if test="${curPage > page.pageCount }">
-            <a href="${path1 }/review/list.do?page=${page.blockStartNum - 1 }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-previous">Previous</a>
-        </c:if>
-        <c:if test="${page.blockLastNum < page.totalPageCount }">
-            <a href="${path1 }/review/list.do?page=${page.blockLastNum + 1 }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-next">Next page</a>
-        </c:if>
-
-        <ul class="pagination-list">
-            <c:forEach var="i" begin="${page.blockStartNum }" end="${page.blockLastNum }">
-                <c:choose>
-                    <c:when test="${i == curPage }">
-                        <li>
-                            <a href="${path1 }/review/list.do?page=${i }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-link is-current" aria-label="Page ${i }" aria-current="page" >${i }</a>
-                        </li>
-                    </c:when>
-                    <c:otherwise>
-                        <li>
-                            <a href="${path1 }/review/list.do?page=${i }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-link" aria-label="Page ${i }" aria-current="page">${i }</a>
-                        </li>
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>
-        </ul>
-    </nav>
 </div>
+<nav class="pagination is-rounded is-centered mb-6" role="navigation" aria-label="pagination">
+    <c:if test="${curPage > page.pageCount }">
+        <a href="${path1 }/review/list.do?page=${page.blockStartNum - 1 }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-previous">Previous</a>
+    </c:if>
+    <c:if test="${page.blockLastNum < page.totalPageCount }">
+        <a href="${path1 }/review/list.do?page=${page.blockLastNum + 1 }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-next">Next page</a>
+    </c:if>
+
+    <ul class="pagination-list">
+        <c:forEach var="i" begin="${page.blockStartNum }" end="${page.blockLastNum }">
+            <c:choose>
+                <c:when test="${i == curPage }">
+                    <li>
+                        <a href="${path1 }/review/list.do?page=${i }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-link is-current" aria-label="Page ${i }" aria-current="page" >${i }</a>
+                    </li>
+                </c:when>
+                <c:otherwise>
+                    <li>
+                        <a href="${path1 }/review/list.do?page=${i }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-link" aria-label="Page ${i }" aria-current="page">${i }</a>
+                    </li>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
+    </ul>
+</nav>
+
 <script>
     function checkLogin() {
         var confirmLogin = confirm("글 작성은 로그인이 필요해요! 로그인하시겠어요?");
