@@ -149,10 +149,16 @@
 </head>
 <body>
 <jsp:include page="../include/header.jsp"></jsp:include>
-<div class="container-fluid">
+<nav class="breadcrumb has-succeeds-separator is-medium is-right mt-3 p-4" style="background: #f1f4f9" aria-label="breadcrumbs">
+    <ul class="mr-5">
+        <li><a style="color: black;" href="${path1}"><i class="xi-home is-size-3"></i></a></li>
+        <li><a style="color: black;">커뮤니티</a></li>
+        <li><a style="color: black; "href="${path1}/review/list.do">후기</a></li>
+    </ul>
     <h2 class="title">후기</h2>
-    <h3 class="contents">해법의 장점과 특히 만족과 함께 성적 향상을 경험한 학생들의 솔직한 수업만족도 체험수기입니다.</h3>
-    <br>
+<%--    <h3 class="contents">해법의 장점과 특히 만족과 함께 성적 향상을 경험한 학생들의 솔직한 수업만족도 체험수기입니다.</h3>--%>
+</nav>
+<div class="container-fluid">
     <form action="${path1 }/review/list.do" method="get" class="field has-addons has-addons-right"
           style="margin-right: 315px;">
         <p class="control">

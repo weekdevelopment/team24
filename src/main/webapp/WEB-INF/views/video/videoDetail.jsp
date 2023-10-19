@@ -69,27 +69,6 @@
             color: #ffffff;
         }
 
-        .button2 {
-            text-decoration: none;
-            border-radius: 20px;
-            margin: 10px;
-            padding: 25px;
-            float: right;
-            background-color: #FFA500;
-            border-color: #FFA500;
-            color: #ffffff;
-        }
-
-        .button3 {
-            text-decoration: none;
-            border-radius: 20px;
-            margin: 15px;
-            padding: 10px;
-            float: right;
-            background-color: #FFA500;
-            border-color: #FFA500;
-            color: #ffffff;
-        }
 
         .video-container {
             display: inline-block;
@@ -110,6 +89,16 @@
             align-items: center;
             justify-content: center;
         }
+
+        .button3 {
+            clear: both;
+            margin: 13px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .applyBtn a {
             clear: both;
             width: 115px;
@@ -128,6 +117,23 @@
             margin-right: 4px;
         }
 
+        .button3 a {
+            clear: both;
+            width: 115px;
+            height: 47px;
+            line-height: 47px;
+            border-radius: 55px;
+            vertical-align: middle;
+            background-repeat: no-repeat;
+            box-sizing: border-box;
+            letter-spacing: -0.5pt;
+            font-weight: bold;
+            background-color: #FFA500;
+            white-space: nowrap;
+            font-size: 16px;
+            margin-right: 4px;
+        }
+
 
     </style>
 <%--    <video src="${path1}/resources/video/${domain.videofile}" controls></video>--%>
@@ -135,6 +141,13 @@
 <body>
 <!-- 헤더 부분 인클루드 -->
 <jsp:include page="../include/header.jsp"></jsp:include>
+<nav class="breadcrumb has-succeeds-separator is-medium is-right mt-3 p-4" style="background: #f1f4f9" aria-label="breadcrumbs">
+    <ul class="mr-5">
+        <li><a style="color: black;" href="${path1}"><i class="xi-home is-size-3"></i></a></li>
+        <li><a style="color: black;" href="${path1}/video/list.do">시범강의</a></li>
+        <li><a style="color: black; ">${domain.title }</a></li>
+    </ul>
+</nav>
 <div class="container is-fullhd">
     <div class="content" id="contents">
         <div class="row column1 text-center" style="margin-bottom: 80px;">
@@ -167,15 +180,17 @@
                     </table>
                 </div>
             </div>
+
             <div class="applyBtn" style="float: right; ">
                 <a href="${path1 }/course/getCourse?cno=${domain.no }" id="apply" class="apply bgColor button"><i class="icofont-pencil"></i> 수강신청</a>
                 <a href="${path1 }/video/list.do" class="button">목록으로</a>
-            </div>
-            <c:if test= "${sid.equals('admin')}">
-                <div class="button-group">
-                    <a class="button3" href="${path1 }/video/delete.do?no=${domain.no}">삭제</a>
+                <div class="button3">
+                    <c:if test= "${sid.equals('admin')}">
+                        <a href="${path1 }/video/delete.do?no=${domain.no}">삭제</a>
+                    </c:if>
                 </div>
-            </c:if>
+            </div>
+
         </div>
     </div>
 </div>
