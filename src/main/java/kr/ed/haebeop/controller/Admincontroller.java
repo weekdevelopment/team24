@@ -1,23 +1,23 @@
 package kr.ed.haebeop.controller;
 
+import kr.ed.haebeop.domain.FileVO;
+import kr.ed.haebeop.domain.User;
 import kr.ed.haebeop.domain.*;
 import kr.ed.haebeop.persistence.UserMapper;
-import kr.ed.haebeop.service.*;
+import kr.ed.haebeop.service.FileService;
+import kr.ed.haebeop.service.UserService;
 import kr.ed.haebeop.util.Page;
+import kr.ed.haebeop.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import javax.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.util.List;
 
 @Controller
@@ -25,6 +25,9 @@ import java.util.List;
 public class Admincontroller {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private FileService fileService;
 
     BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -74,7 +77,6 @@ public class Admincontroller {
 
     @RequestMapping(value = "aGetUser", method = RequestMethod.GET)
     public String aGetUser(Model model, HttpServletRequest request) throws Exception {
-//      String id = (String) request.getParameter("sid"); 테스트용
         String id = request.getParameter("id");
         User user = userService.getUser(id);
         model.addAttribute("user", user);
@@ -213,10 +215,108 @@ public class Admincontroller {
 
         return "/admin/EnrollList";
     }
+
     //수강생 삭제
     @RequestMapping(value="enrollDelete", method = RequestMethod.GET)
     public String enrollDelete(@RequestParam int eno) throws Exception {
         courseService.enrollDelete(eno);
         return "redirect:/admin/EnrollList";
+    }
+
+    @GetMapping("courseList")
+    public String getCourseList(HttpServletRequest request, Model model) throws Exception {
+        String type = request.getParameter("type");
+        String keyword = request.getParameter("keyword");
+        int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
+
+        Page page = new Page();
+        page.setSearchType(type);
+        page.setSearchKeyword(keyword);
+        int total = courseService.countCourse(page);
+
+        page.makeBlock(curPage, total);
+        page.makeLastPageNum(total);
+        page.makePostStart(curPage, total);
+
+        model.addAttribute("type", type);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("page", page);
+        model.addAttribute("curPage", curPage);
+
+        List<Course> courseList = courseService.getCourseList(page);
+        model.addAttribute("courseList", courseList);
+        return "admin/courseList";
+    }
+
+    @GetMapping("courseDelete")
+    public String deleteCourse(HttpServletRequest request, Model model) throws Exception {
+        int cno = Integer.parseInt(request.getParameter("cno"));
+        courseService.deleteCourse(cno);
+        return "redirect:/admin/courseList";
+    }
+
+    // 관리자 파일 처리 시스템
+    @RequestMapping(value = "fileList.do", method = RequestMethod.GET)
+    public String getFileList(HttpServletRequest request, Model model) throws Exception {
+        String type = request.getParameter("type");
+        String keyword = request.getParameter("keyword");
+        int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
+
+        Page page = new Page();
+        page.setSearchType(type);
+        page.setSearchKeyword(keyword);
+        int total = fileService.totalCount(page);
+
+        page.makeBlock(curPage, total);
+        page.makeLastPageNum(total);
+        page.makePostStart(curPage, total);
+
+        model.addAttribute("type", type);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("page", page);
+        model.addAttribute("curPage", curPage);
+
+
+        List<FileVO> fileboardList = fileService.getFileList(page);
+        model.addAttribute("fileboardList", fileboardList);
+        return "/admin/file/fileList";
+    }
+
+    @GetMapping("getFileboard.do")
+    public String getFileboard(@RequestParam int postNo, Model model) throws Exception {
+        FileVO fileboard = fileService.getFilebord(postNo);
+        model.addAttribute("fileboard", fileboard);
+        return "/admin/file/getFileboard";
+    }
+
+    @GetMapping("removeFileboard.do")
+    public String removeFileboard(@RequestParam int postNo, HttpServletRequest req) throws Exception {
+
+        //실제 파일 삭제 로직
+        //파일 경로 지정
+        String path = req.getRealPath("/resources/upload");
+        List<FileDTO> fileList = fileService.getFileGroupList(postNo);
+        for(FileDTO fileobj : fileList) {
+            File file = new File(path + "/" + fileobj.getOriginFile());
+            if (file.exists()) { // 해당 파일이 존재하면
+                file.delete(); // 파일 삭제
+            }
+        }
+        //데이터베이스의 파일 자료실과 파일의 내용 삭제
+        fileService.removeFileboard(postNo);
+        return "redirect:/admin/fileList.do";
+    }
+
+    @PostMapping("fileRemove.do")
+    public String fileRemove(HttpServletRequest request, Model model) throws Exception {
+        int no = Integer.parseInt(request.getParameter("no"));
+        int postNo = Integer.parseInt(request.getParameter("postNo"));
+        String path = request.getRealPath("/resources/upload");
+        FileDTO fileobj = fileService.getFile(no);
+        File file = new File(path + "/" + fileobj.getOriginFile());
+        if (file.exists()) { // 해당 파일이 존재하면
+            file.delete(); // 파일 삭제
+        }
+        return "/file/getFileboard.do?postNo="+postNo;
     }
 }

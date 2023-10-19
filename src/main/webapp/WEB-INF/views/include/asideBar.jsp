@@ -27,7 +27,7 @@
   </p>
   <ul class="menu-list">
     <li><a href="${path1 }/admin/enrollList">수강 신청 관리</a></li>
-    <li><a>개강 일정 관리</a></li>
+    <li><a href="${path1 }/admin/courseList">강의 목록 관리</a></li>
   </ul>
   <p class="menu-label">
     시범 강의 관리
@@ -47,6 +47,6 @@
     자료실 관리
   </p>
   <ul class="menu-list">
-    <li><a>자료실 관리</a></li>
+    <li><a href="${path1 }/admin/fileList.do">자료실 관리</a></li>
   </ul>
 </aside>

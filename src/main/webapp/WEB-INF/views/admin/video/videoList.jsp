@@ -185,7 +185,10 @@
 <jsp:include page="../../include/header.jsp" />
 <div class="container">
     <div class="columns">
-        <jsp:include page="../../include/asideBar.jsp" />
+        <div class="column is-3 ">
+            <%-- 관리자 네비게이션 바 --%>
+            <jsp:include page="../../include/asideBar.jsp" />
+        </div>
         <div class="column is-9" style="overflow: hidden;">
             <section class="hero is-info welcome is-small">
                 <div class="hero-body">

@@ -108,7 +108,7 @@
                     <tr>
                         <td>
                             <input type="submit" class="button is-danger" value="자료 수정" />
-                            <a href="${path1}/file/filelist1.do" class="button is-primary">파일 자료 목록</a>
+                            <a href="${path1}/file/list.do" class="button is-primary">파일 자료 목록</a>
                         </td>
                     </tr>
                     </tbody>

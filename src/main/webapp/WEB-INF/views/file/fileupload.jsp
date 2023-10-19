@@ -78,7 +78,7 @@
                 </div>
                 <div class="button-group">
                     <input type="submit" value="파일 업로드" class="button is-info">
-                    <a href="${path1}/file/filelist1.do" class="button is-primary">파일 자료 목록</a>
+                    <a href="${path1}/file/list.do" class="button is-primary">파일 자료 목록</a>
                 </div>
             </form>
         </div>
