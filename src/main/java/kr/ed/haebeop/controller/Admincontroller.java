@@ -36,7 +36,7 @@ public class Admincontroller {
         Page page = new Page();
         int totUser = userService.userCount(page);
         model.addAttribute("totUser", totUser);
-        return "/admin/adminPage";
+        return "/admin/userList";
     }
 
     @RequestMapping(value = "userList.do", method = RequestMethod.GET)

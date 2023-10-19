@@ -4,6 +4,7 @@ import kr.ed.haebeop.domain.Comment;
 import kr.ed.haebeop.domain.Review;
 import kr.ed.haebeop.service.CommentService;
 import kr.ed.haebeop.service.ReviewService;
+import kr.ed.haebeop.util.BadWordFilter;
 import kr.ed.haebeop.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -81,12 +82,26 @@ public class ReviewController {
 
     @PostMapping("insert.do")
     public String reviewInsert(HttpServletRequest request, Model model) throws Exception {
+        String msg = "";
+
         Review domain = new Review();
-        domain.setTitle(request.getParameter("title"));
-        domain.setContent(request.getParameter("content"));
-        domain.setId((String) session.getAttribute("sid"));
-        reviewService.reviewInsert(domain);
-        return "redirect:list.do";
+        String title = request.getParameter("title");
+        String content = request.getParameter("content");
+
+        BadWordFilter filter = new BadWordFilter();
+
+        if(filter.check(title) || filter.check(content) ){
+            title = "";
+            content = "";
+            msg = "욕설은 등록할 수 없습니다.";
+        } else {
+            domain.setTitle(title);
+            domain.setContent(content);
+            domain.setId((String) session.getAttribute("sid"));
+            reviewService.reviewInsert(domain);
+            return "redirect:list.do";
+        }
+        return msg;
     }
 
     @GetMapping("delete.do")
