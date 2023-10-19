@@ -47,6 +47,6 @@
     자료실 관리
   </p>
   <ul class="menu-list">
-    <li><a>자료실 관리</a></li>
+    <li><a href="${path1 }/admin/fileList.do">자료실 관리</a></li>
   </ul>
 </aside>
