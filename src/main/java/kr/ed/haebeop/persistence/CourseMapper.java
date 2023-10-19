@@ -38,4 +38,5 @@ public interface CourseMapper {
     public List<Enroll> enrollList(Page page);
     public void enrollDelete(int eno);
     public int countEnroll(Page page);
+    public void updateUserPt(User user);
 }

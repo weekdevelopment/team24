@@ -127,4 +127,7 @@
             </if>
         </where>
     </select>
+    <update id="updateUserPt">
+        UPDATE user SET pt = #{pt } WHERE id =#{id }
+    </update>
 </mapper>

@@ -92,4 +92,9 @@ public class CourseServiceImpl implements CourseService {
     public int countEnroll(Page page) {
         return courseMapper.countEnroll(page);
     }
+
+    @Override
+    public void updateUserPt(User user) {
+        courseMapper.updateUserPt(user);
+    }
 }
