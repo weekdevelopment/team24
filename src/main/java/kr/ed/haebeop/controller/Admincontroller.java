@@ -29,14 +29,30 @@ public class Admincontroller {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String adminPage(Model model) throws Exception {
-        int totUser = userService.userCount();
+        Page page = new Page();
+        int totUser = userService.userCount(page);
         model.addAttribute("totUser", totUser);
         return "/admin/adminPage";
     }
 
     @RequestMapping(value = "userList.do", method = RequestMethod.GET)
-    public String userList(Model model) throws Exception {
-        List<User> userList = userService.userList();
+    public String userList(HttpServletRequest request, Model model) throws Exception {
+        String type = request.getParameter("type");
+        String keyword = request.getParameter("keyword");
+        int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
+
+        Page page = new Page();
+        page.setSearchType(type);
+        page.setSearchKeyword(keyword);
+        int total = userService.userCount(page);
+        page.makeBlock(curPage, total);
+        page.makeLastPageNum(total);
+        page.makePostStart(curPage, total);
+        model.addAttribute("type", type);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("curpage", curPage);
+
+        List<User> userList = userService.userList(page);
         model.addAttribute("userList", userList);
         System.out.println(userList);
         return "/admin/userList";

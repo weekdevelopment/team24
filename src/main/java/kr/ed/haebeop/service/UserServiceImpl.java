@@ -2,6 +2,7 @@ package kr.ed.haebeop.service;
 
 import kr.ed.haebeop.domain.User;
 import kr.ed.haebeop.persistence.UserMapper;
+import kr.ed.haebeop.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,13 +21,13 @@ public class UserServiceImpl implements UserService {
     BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Override
-    public List<User> userList() {
-        return userMapper.userList();
+    public List<User> userList(Page page) {
+        return userMapper.userList(page);
     }
 
     @Override
-    public int userCount() {
-        return userMapper.userCount();
+    public int userCount(Page page) {
+        return userMapper.userCount(page);
     }
 
     @Override
