@@ -608,9 +608,11 @@
                             <!-- hidden으로 form 넘기기 -->
                             <c:if test="${book == 1}">
                                 <input type="hidden" id="enroll_price" name="enroll_price" value="${course.book_price +course.price }">
+                                <input type="hidden" id="pt" name="pt" value="${user.pt -  (course.book_price +course.price)}">
                             </c:if>
                             <c:if test="${book == 0}">
                                 <input type="hidden" id="enroll_price" name="enroll_price" value="${course.price }">
+                                <input type="hidden" id="pt" name="pt" value="${user.pt - course.price}">
                             </c:if>
                             <input type="hidden" id="book" name="book" value="${book }">
                             <input type="hidden" id="cno" name="cno" value="${course.cno }">
@@ -629,7 +631,23 @@
     var apply = document.getElementById("apply");
     apply.addEventListener("click", function(){
         if(ck_item1.checked && ck_item2.checked){
-            document.getElementById("applyForm").submit();
+            if (${book == 1 }) {
+                if (${user.pt >= course.book_price +course.price }) {
+                    document.getElementById("applyForm").submit();
+                } else {
+                    alert("포인트가 부족합니다.");
+                    event.preventDefault();
+                    window.location.href = window.location.href;
+                }
+            } else {
+                if (${user.pt >= course.price }) {
+                    document.getElementById("applyForm").submit();
+                } else {
+                    alert("포인트가 부족합니다.");
+                    event.preventDefault();
+                    window.location.href = window.location.href;
+                }
+            }
         } else {
             alert("약관 및 개인정보처리 방침에 동의하지 않으셨습니다.");
             event.preventDefault();

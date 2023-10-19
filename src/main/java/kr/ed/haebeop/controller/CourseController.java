@@ -4,6 +4,7 @@ import kr.ed.haebeop.domain.Course;
 import kr.ed.haebeop.domain.Enroll;
 import kr.ed.haebeop.domain.User;
 import kr.ed.haebeop.service.CourseService;
+import kr.ed.haebeop.service.UserService;
 import kr.ed.haebeop.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,9 @@ import java.util.*;
 public class CourseController {
     @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     HttpSession session;
@@ -76,16 +80,24 @@ public class CourseController {
     @RequestMapping(value = "signIn", method = RequestMethod.GET)
     public String signInCourse(@RequestParam int cno, @RequestParam int book, Model model) throws Exception {
         Course course = courseService.getCourse(cno);
+        String id = (String) session.getAttribute("sid");
+        User user = userService.getUser(id);
         model.addAttribute("course", course);
         model.addAttribute("book", book);
+        model.addAttribute("user", user);
         return "/course/signInCourse";
     }
 
 
     @RequestMapping(value = "signIn", method = RequestMethod.POST)
-    public String insertEnrollPro(Enroll enroll, String sid, Model model) throws Exception {
+    public String insertEnrollPro(Enroll enroll, String sid, Model model, int pt) throws Exception {
         courseService.insertEnroll(enroll);
         courseService.updateStudentNum(enroll.getCno());
+        String id = (String) session.getAttribute("sid");
+        User user = new User();
+        user.setId(id);
+        user.setPt(pt);
+        courseService.updateUserPt(user);
         return "redirect:/";
     }
 
