@@ -154,6 +154,11 @@ public class CourseController {
         courseService.complete(eno);
         return "redirect:/course/mypageCourse?complete=0";
     }
+    @RequestMapping(value = "cancel", method = RequestMethod.POST)
+    public String cancelPro(int eno) throws Exception {
+        courseService.cancel(eno);
+        return "redirect:/course/mypageCourse?complete=0";
+    }
 
     @GetMapping("insert.do")
     public String insertForm(HttpServletRequest request, Model model) {

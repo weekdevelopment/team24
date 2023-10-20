@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.4/css/bulma.min.css" />
     <link rel="stylesheet" type="text/css" href="${path1 }/resources/css/admin.css" />
     <link rel="stylesheet" type="text/css" href="${path1 }/resources/css/hero.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <jsp:include page="../include/head.jsp"></jsp:include>
     <style>
         .card-container {
@@ -36,6 +37,7 @@
             letter-spacing: -0.7pt;
             line-height: 1;
             margin: 0 0 22px;
+
         }
         .menu-list li{
             padding: 5px;
@@ -43,6 +45,10 @@
             margin: 1px 0;
             border-radius: 20px;
             background-color: #f1f4f9;
+        }
+        .form_button {
+            display: flex;
+            flex-direction: row;
         }
     </style>
 </head>
@@ -104,11 +110,25 @@
                                     <div class="card-content">
                                         <div class="content">
                                             <h4>${enroll.course_name }</h4>
-                                            <h4>수강 종료일 | ${enroll.end_date }</h4>
-                                            <form action="${path1 }/course/complete" method="post">
-                                                <button id="confettiButton" class="button is-link modal-button " data-target="modal-image2">수강 완료</button>
-                                                <input type="hidden" id="eno" name="eno" value="${enroll.eno }" >
-                                            </form>
+                                            <h4 class="enddate">수강 종료일 | ${enroll.end_date }</h4>
+                                            <h4 class="date"></h4>
+                                            <c:if test="${enroll.cancel == true }">
+                                                <div class="form_button">
+                                                        <p style="color: #ff0000; margin:38px 0 0px; ">철회 신청 대기 중</p>
+                                                </div>
+                                            </c:if>
+                                            <c:if test="${enroll.cancel == false }">
+                                                <div class="form_button">
+                                                    <form action="${path1 }/course/complete" method="post" style="margin-right:10px;">
+                                                        <button id="confettiButton" class="button is-link modal-button " data-target="modal-image2">수강 완료</button>
+                                                        <input type="hidden" id="eno" name="eno" value="${enroll.eno }" >
+                                                    </form>
+                                                    <form action="${path1 }/course/cancel" method="post">
+                                                        <button id="confettiButton2" class="button is-danger modal-button " data-target="modal-image2">수강 철회</button>
+                                                        <input type="hidden" id="eno2" name="eno" value="${enroll.eno }" >
+                                                    </form>
+                                                </div>
+                                            </c:if>
                                         </div>
                                     </div>
                                 </div>
@@ -127,6 +147,34 @@
 </div>
 <jsp:include page="../include/footer.jsp"></jsp:include>
 <script async type="text/javascript" src="${path1 }/resources/js/bulma.js"></script>
+<script>
+    $(document).ready(function() {
+        // 오늘 날짜를 가져오는 함수
+        function getToday() {
+            const today = new Date();
+            return today;
+        }
+
+        // 날짜 차이를 계산하는 함수
+        function calculateDateDifference(endDate) {
+            const today = getToday();
+            const end = new Date(endDate);
+            const timeDiff = end - today;
+            const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+            return daysDiff;
+        }
+
+        // forEach 루프를 사용하여 남은 일 수를 각 enroll 항목에 추가
+        $(".is-shady").each(function() {
+            const endDateElement = $(this).find(".enddate");
+            const dateElement = $(this).find(".date");
+            const endDate = new Date(endDateElement.text().trim());
+            const daysRemaining = calculateDateDifference(endDate);
+            const remainingText = `남은 수강일 | `+daysRemaining+ `일`;
+            dateElement.text(remainingText);
+        });
+    });
+</script>
 </body>
 
 </html>
