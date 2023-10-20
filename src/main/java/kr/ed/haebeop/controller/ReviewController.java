@@ -85,6 +85,8 @@ public class ReviewController {
     @PostMapping("insert.do")
     public String reviewInsert(HttpServletRequest request, Model model) throws Exception {
         String msg = "";
+        String result = "";
+        boolean ckrt = false;
 
         Review domain = new Review();
         String title = request.getParameter("title");
@@ -93,13 +95,8 @@ public class ReviewController {
         BadWordFilter filter = new BadWordFilter();
 
         if(filter.check(title) || filter.check(content) ){
-            title = "";
-            content = "";
-            out.println("<script type=\"text/javascript\">");
-            out.println("alert('비속어가 포함되어 있습니다!');");
-            out.println("history.back();");
-            out.println("</script>");
-            msg = "redirect:insert.do";
+            msg = "제목 또는 내용에 비속어가 포함되어 있습니다.";
+            ckrt = true;
         } else {
             domain.setTitle(title);
             domain.setContent(content);
@@ -107,7 +104,7 @@ public class ReviewController {
             reviewService.reviewInsert(domain);
             return "redirect:list.do";
         }
-        return msg;
+        return "redirect:insert.do";
     }
 
     @GetMapping("delete.do")
