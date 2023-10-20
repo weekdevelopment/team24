@@ -26,6 +26,11 @@
         select * from course
     </select>
 
+    <!-- 신규 강의 3개 -->
+    <select id="newCourses" resultType="kr.ed.haebeop.domain.Course">
+        select * from course order by cno desc limit 3;
+    </select>
+
     <select id="getCourse" resultType="kr.ed.haebeop.domain.Course">
         select * from course where cno = #{cno }
     </select>

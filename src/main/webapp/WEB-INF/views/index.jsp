@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>해법학원</title>
+    <title>스마트해법</title>
     <jsp:include page="./include/head.jsp" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -20,19 +20,12 @@
 
         .tab-pane {
             display: none;
-            /*width: 20%;*/
             position: relative;
-            /*left: 20%;*/
-            /*transform: translateX(-50%);*/
         }
         .tab-pane.is-active {
             display: block;
-            /*width: 20%;*/
             position: relative;
-            /*left: 20%;*/
-            /*transform: translateX(-50%);*/
         }
-
         .tabs { overflow: visible; }
         .tabs ul { border-bottom: none; }
         .tabs.is-boxed a {
@@ -44,7 +37,6 @@
             border: 2px solid;
             border-bottom-color: #4a4a4a!important;
         }
-
         .tabs.is-boxed li.is-active a {
             border: 2px solid;
             border-bottom-color: #485fc7!important;
@@ -52,6 +44,11 @@
         .tabs li.is-active a {
             border: 2px solid #dbdbdb;
         }
+
+        .course-tit a { font-size: 1.3rem; }
+        .course-tit a:hover { text-decoration: underline; color: initial }
+        .blog-item img { transition: transform 0.2s; }
+        .blog-item img:hover { transform: scale(1.03); }
     </style>
 </head>
 <body>
@@ -95,7 +92,7 @@
     </div>
 </section>
 
-<div class="tabs is-boxed is-centered <%--main-menu--%>" id="nav">
+<div class="tabs is-boxed is-centered" id="nav">
     <ul>
         <li data-target="pane-1" id="1" class="is-active">
             <a>
@@ -117,8 +114,8 @@
 <div class="tab-content">
     <div class="tab-pane is-active" id="pane-1">
         <div class="container">
-            <div class="has-text-centered mt-3">
-            <span style="font-size: 2rem">
+            <div class="has-text-centered my-6">
+            <span class="has-text-weight-semibold" style="font-size: 2rem">
             1:1 맞춤학습 시스템을 기반으로<br>
             깊이 있는 개인 맞춤 학습이 완성됩니다.
             </span>
@@ -130,7 +127,7 @@
                     <span class="has-text-grey-dark">
                         단순히 진단 테스트를 통해 파악된 레벨의 문제를<br>
                         제공하는 것은 진정한 맞춤학습 프로그램이 아닙니다.<br><br>
-                        스마트 해법은 천재교육의 빅데이터를<br>
+                        스마트해법은 천재교육의 빅데이터를<br>
                         활용하여 학생별로 다른 맞춤형 문제를 제공합니다.<br><br>
                         개인별 학습 수준에 따라 최적화된 맞춤 문제를 통해<br>
                         자기주도 학습을 완성할 수 있으며,<br>
@@ -146,8 +143,8 @@
     </div>
     <div class="tab-pane" id="pane-2">
         <div class="container">
-            <div class="has-text-centered mt-3">
-            <span style="font-size: 2rem">
+            <div class="has-text-centered my-6">
+            <span class="has-text-weight-semibold" style="font-size: 2rem">
             최적화된 학습환경을 혼합하여<br>
             더욱 효율적인 자기주도학습을 실현합니다.
             </span>
@@ -158,7 +155,7 @@
                     <p class="title">블렌디드러닝(Blended Learning)</p>
                     <span class="has-text-grey-dark">
                         능동적인 학습 습관 형성과 실력 극대화를 위해<br>
-                        e해법수학·셀파수학교실에서는<br>
+                        스마트해법에서는<br>
                         블렌디드 러닝이라는 새로운 패러다임을 만들어가고 있습니다.<br><br>
                         오프라인에서의 밀도 높은 1:1 밀착 코칭에서부터<br>
                         디지털 디바이스를 이용한 최정상 강사의 동영상 강의,<br>
@@ -178,8 +175,8 @@
 
     <div class="tab-pane" id="pane-3">
         <div class="container">
-            <div class="has-text-centered mt-3">
-            <span style="font-size: 2rem">
+            <div class="has-text-centered my-6">
+            <span class="has-text-weight-semibold" style="font-size: 2rem">
             세분화된 커리큘럼을 바탕으로<br>
             체계적인 학습 습관을 형성합니다.
             </span>
@@ -207,56 +204,89 @@
     </div>
 </div>
 
-<section class="section latest-blog">
-    <div class="container">
-        <div class="columns is-justify-content-center is-desktop">
-            <div class="column is-7-desktop has-text-centered">
-                <div class="section-title">
-                    <span class="text-color">신규 개설강의</span>
-                    <h2 class="mt-4 content-title">Latest articles to enrich knowledge</h2>
-                </div>
-            </div>
-        </div>
-
-        <div class="columns is-multiline is-justify-content-center">
-            <div class="column is-4-desktop is-6-tablet">
-                <div class="blog-item">
-                    <img src="${path1}/resources/images/blog/blog_1.jpg" alt="" class="">
-
-                    <div class="card-body mt-2">
-                        <span class="text-sm text-color is-uppercase has-text-weight-bold">January 3, 2019</span>
-                        <h3 class="mb-3"><a href="blog-single.html" class="">We can make a difference in families lives</a></h3>
-                        <p class="mb-4">Aspernatur obcaecati unde, quasi nihil neque, voluptatem. Consectetur.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="column is-4-desktop is-6-tablet">
-                <div class="blog-item">
-                    <img src="${path1}/resources/images/blog/blog_2.jpg" alt="" class="">
-
-                    <div class="card-body mt-2">
-                        <span class="text-sm text-color is-uppercase has-text-weight-bold">January 3, 2019</span>
-                        <h3 class="mb-3"><a href="blog-single.html" class="">A place where start new life with peace</a></h3>
-                        <p class="mb-4">Aspernatur obcaecati unde, quasi nihil neque, voluptatem. Consectetur.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="column is-4-desktop is-6-tablet">
-                <div class="blog-item">
-                    <img src="${path1}/resources/images/blog/blog_3.jpg" alt="" class="">
-
-                    <div class="card-body mt-2">
-                        <span class="text-sm text-color is-uppercase has-text-weight-bold">January 3, 2019</span>
-                        <h3 class="mb-3"><a href="blog-single.html" class="">Build school for poor childrens</a></h3>
-                        <p class="mb-4">Aspernatur obcaecati unde, quasi nihil neque, voluptatem. Consectetur.</p>
-                    </div>
-                </div>
-            </div>
+<div class="container my-6">
+    <div class="columns is-justify-content-center is-desktop">
+        <div class="column is-7-desktop has-text-centered">
+            <p class="text-color is-size-3 has-text-weight-semibold">신규 강의</p>
         </div>
     </div>
-</section>
+
+    <div class="columns is-multiline is-justify-content-center">
+        <c:choose>
+            <c:when test="${empty newCourseList}">
+                <p>신규 강의가 존재하지 않습니다.</p>
+            </c:when>
+            <c:otherwise>
+                <c:forEach items="${newCourseList}" var="course" varStatus="status">
+                    <c:if test="${status.index < 3}">
+                        <%--<a href="${path1 }/course/getCourse?cno=${course.cno }">
+                            <div>
+                                <i class="fa fa-solid fa-seedling"></i>
+                                    ${course.course_name }
+                            </div>
+                        </a>--%>
+                        <div class="column is-4-desktop is-6-tablet">
+                            <div class="blog-item">
+                                <div class="has-text-centered">
+                                    <a href="${path1 }/course/getCourse?cno=${course.cno }">
+                                        <img src="${path1 }/resources/upload/${course.imgsrc1 }" alt="강의사진" style="width: 350px; height: 230px;">
+                                    </a>
+                                </div>
+                                <div class="my-2 ml-6">
+                                    <p class="course-tit mb-1">
+                                        <a href="${path1 }/course/getCourse?cno=${course.cno }" class="">${course.course_name }</a>
+                                    </p>
+                                    <span class="is-size-6 text-color has-text-weight-semibold">
+                                        ${course.start_date } ~ ${course.end_date }
+                                    </span>
+                                    <p class="mb-4 has-text-grey-darker"><fmt:formatNumber value="${course.price }" pattern="#,###" />원</p>
+                                </div>
+                            </div>
+                        </div>
+                    </c:if>
+                </c:forEach>
+            </c:otherwise>
+        </c:choose>
+
+
+        <%--<div class="column is-4-desktop is-6-tablet">
+            <div class="blog-item">
+                <img src="${path1}/resources/images/blog/blog_1.jpg" alt="" class="">
+
+                <div class="card-body mt-2">
+                    <span class="text-sm text-color is-uppercase has-text-weight-bold">January 3, 2019</span>
+                    <h3 class="mb-3"><a href="blog-single.html" class="">We can make a difference in families lives</a></h3>
+                    <p class="mb-4">Aspernatur obcaecati unde, quasi nihil neque, voluptatem. Consectetur.</p>
+                </div>
+            </div>
+        </div>--%>
+        <%--
+        <div class="column is-4-desktop is-6-tablet">
+            <div class="blog-item">
+                <img src="${path1}/resources/images/blog/blog_2.jpg" alt="" class="">
+
+                <div class="card-body mt-2">
+                    <span class="text-sm text-color is-uppercase has-text-weight-bold">January 3, 2019</span>
+                    <h3 class="mb-3"><a href="blog-single.html" class="">A place where start new life with peace</a></h3>
+                    <p class="mb-4">Aspernatur obcaecati unde, quasi nihil neque, voluptatem. Consectetur.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="column is-4-desktop is-6-tablet">
+            <div class="blog-item">
+                <img src="${path1}/resources/images/blog/blog_3.jpg" alt="" class="">
+
+                <div class="card-body mt-2">
+                    <span class="text-sm text-color is-uppercase has-text-weight-bold">January 3, 2019</span>
+                    <h3 class="mb-3"><a href="blog-single.html" class="">Build school for poor childrens</a></h3>
+                    <p class="mb-4">Aspernatur obcaecati unde, quasi nihil neque, voluptatem. Consectetur.</p>
+                </div>
+            </div>
+        </div>
+        --%>
+    </div>
+</div>
 
 <!-- Footer Start -->
 <jsp:include page="./include/footer.jsp" />

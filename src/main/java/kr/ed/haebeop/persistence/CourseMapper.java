@@ -14,6 +14,8 @@ public interface CourseMapper {
 
     public List<Course> courseList();
 
+    public List<Course> newCourses();
+
     public Course getCourse(int cno);
 
     public void insertCourse(Course course);
