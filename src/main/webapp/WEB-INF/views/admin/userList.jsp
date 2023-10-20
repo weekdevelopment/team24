@@ -78,7 +78,7 @@
 </head>
 <body>
 <jsp:include page="../include/header.jsp" />
-<div class="container">
+<div class="container" style="min-height: 62vh; ">
   <div class="columns">
     <div class="column is-3 ">
       <%-- 관리자 네비게이션 바 --%>
