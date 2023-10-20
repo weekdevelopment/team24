@@ -42,6 +42,7 @@
             <hr>
             <div class="container">
                 <form enctype="multipart/form-data" method="post" action="${path1}/file/modifyFileboard.do">
+                    <input type="hidden" name="postNo" value="${postNo}" />
                     <table id="table1">
                         <tbody>
                             <tr>

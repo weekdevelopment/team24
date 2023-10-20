@@ -47,10 +47,6 @@
     <delete id="fileObjDelete">
         delete from fileobj where no=#{no}
     </delete>
-<!--    &lt;!&ndash; 파일 자료실 목록 &ndash;&gt;-->
-<!--    <select id="fileboardList" resultType="kr.ed.haebeop.domain.FileBoard">-->
-<!--        select * from fileboard order by postno desc-->
-<!--    </select>-->
     <!-- 파일 자료 상세보기 -->
     <select id="fileboardDetail" resultType="kr.ed.haebeop.domain.FileBoard">
         select * from fileboard where postno=#{postNo}
@@ -67,6 +63,15 @@
     <update id="fileboardEdit">
         update fileboard set title=#{title}, content=#{content} where postno=#{postNo}
     </update>
+
+    <insert id="fileUpdate">
+        <choose>
+            <when test="originFile != null and originFile.trim() != ''">
+                insert into fileobj values (default, #{postNo}, #{saveFolder}, #{originFile}, #{saveFile}, #{fileSize}, #{uploadDate})
+            </when>
+        </choose>
+    </insert>
+
     <!-- 파일 자료 삭제 -->
     <delete id="fileboardDelete">
         delete from fileboard where postno=#{postno}
