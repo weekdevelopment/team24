@@ -19,12 +19,14 @@
 
 </head>
 <style>
+    .breadcrumb a { color: #464646; }
 
     @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
 
+    /*
     *{
         font-family: 'Nanum Gothic Coding', monospace;
-    }
+    } */
 
     .h2{
         font-family: 'Nanum Gothic Coding', monospace;
@@ -66,16 +68,17 @@
 <jsp:include page="../include/header.jsp"></jsp:include>
 <nav class="breadcrumb has-succeeds-separator is-medium is-right mt-3 p-4" style="background: #f1f4f9" aria-label="breadcrumbs">
     <ul class="mr-5">
-        <li><a style="color: black;" href="${path1}"><i class="xi-home is-size-3"></i></a></li>
-        <li><a style="color: black;"href="${path1}/video/list.do">시범강의</a></li>
-        <li><a style="color: black; "href="${path1}/video/insert.do">영상 올리기</a></li>
+        <li><a href="${path1}"><i class="xi-home is-size-3"></i></a></li>
+        <li><a href="${path1}/video/list.do">시범강의</a></li>
+        <li><a href="${path1}/video/insert.do">영상 업로드</a></li>
     </ul>
+    <p class="title has-text-centered mt-1 mb-2">시범 강의 업로드</p>
 </nav>
 <div class="container is-fullhd">
     <div class="content" id="contents">
         <div class="row column1 text-center">
-            <h2 class="h2">시범 강의 올리기</h2>
-            <hr>
+            <%--<h2 class="h2">시범 강의 올리기</h2>
+            <hr>--%>
             <div class="container">
                 <form action="${path1 }/video/insert.do" method="post" enctype="multipart/form-data">
                     <table id="table1">
