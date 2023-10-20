@@ -12,6 +12,8 @@ public interface CourseService {
 
     public List<Course> courseList() throws Exception;
 
+    public List<Course> getNewCourses() throws Exception;
+
     public Course getCourse(int cno) throws Exception;
 
     public void insertCourse(Course course) throws Exception;
