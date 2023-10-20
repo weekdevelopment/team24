@@ -34,7 +34,8 @@
         .item1 {width:10%;}
         .item2 { width:50%; }
         .item2 .al {text-decoration-line: none;color: black;display: block;text-overflow: ellipsis;max-height: 2.8em;line-height: 3.4em;word-wrap: break-word;overflow: hidden;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;word-break: keep-all;}
-        .button2 {text-decoration: none;border-radius: 20px;padding: 10px;float: right;background-color: yellow;border-color: yellow;color: black;}
+        .button2 {text-decoration: none;border-radius: 20px;padding: 10px;float: right;background-color: #008CD6 ;border-color: #008CD6; color: #FFFFFF;}
+        .button3 {text-decoration: none;border-radius: 20px;margin-right: 10px;padding: 10px;float: right;background-color: #FF968A;border-color: #FF968A;color: #ffffff;}
     </style>
 </head>
 <body>
@@ -60,7 +61,7 @@
                 <div class="card events-card mb-5 px-3" style="height: auto;">
                     <div>
                         <p style="text-align: center; font-size: 30px; line-height: 100px;">
-                            「 공지사항 」
+                            「 자료실 」
                         </p>
 
                         <form action="${path1 }/file/list.do" method="get" class="field has-addons has-addons-right">
@@ -98,6 +99,8 @@
                                     <td class="item3">
                                         <div class="btn-group">
                                             <a href="${path1}/admin/removeFileboard.do?postNo=${board.fileBoard.postNo}" class="button2">자료 삭제</a>
+
+                                            <a href="${path1}/file/modifyFileboard.do?postNo=${board.fileBoard.postNo}" class="button3">자료 수정</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -118,12 +121,12 @@
                                 <c:choose>
                                     <c:when test="${i == curPage }">
                                         <li>
-                                            <a href="${path1 }/admin/file/filelist1.do?page=${i }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-link is-current" aria-label="Page ${i }" aria-current="page" >${i }</a>
+                                            <a href="${path1 }/admin/file/fileList.do?page=${i }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-link is-current" aria-label="Page ${i }" aria-current="page" >${i }</a>
                                         </li>
                                     </c:when>
                                     <c:otherwise>
                                         <li>
-                                            <a href="${path1 }/admin/file/filelist1.do?page=${i }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-link" aria-label="Page ${i }" aria-current="page">${i }</a>
+                                            <a href="${path1 }/admin/file/filelist.do?page=${i }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-link" aria-label="Page ${i }" aria-current="page">${i }</a>
                                         </li>
                                     </c:otherwise>
                                 </c:choose>
