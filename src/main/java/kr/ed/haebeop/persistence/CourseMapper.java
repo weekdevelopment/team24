@@ -41,4 +41,5 @@ public interface CourseMapper {
     public void enrollDelete(int eno);
     public int countEnroll(Page page);
     public void updateUserPt(User user);
+    public void rollbackStudentNum(int cno);
 }
