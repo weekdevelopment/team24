@@ -166,7 +166,7 @@
                         <tbody>
                         <tr>
                             <th style="background-color:#dcdcdc">내용</th>
-                            <td class="p"><p>${domain.content }</p></td>
+                            <td class="p"><p style="word-break: keep-all;">${domain.content }</p></td>
                         </tr>
                         <tr>
                             <th style="background-color:#dcdcdc">선생님</th>

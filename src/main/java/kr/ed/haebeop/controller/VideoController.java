@@ -111,7 +111,7 @@ public class VideoController {
             }
 
             videoService.videoInsert(domain);
-            return "redirect:list.do";
+            return "redirect:/admin/video/list.do";
 
 
         }
@@ -122,7 +122,7 @@ public class VideoController {
         public String videoDelete(HttpServletRequest request, Model model) throws Exception {
             int no = Integer.parseInt(request.getParameter("no"));
             videoService.videoDelete(no);
-            return "redirect:list.do";
+            return "redirect:/admin/video/list.do";
         }
 
         @GetMapping("edit.do")
