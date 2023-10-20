@@ -315,7 +315,7 @@
                                 <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0">
                                     <div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
                                         <p class="price_h4">수강료</p>
-                                        <span class="pointColor price" id="price"><strong id="course_price" class="eng">${course.price}원</strong></span>
+                                        <span class="pointColor price" id="price"><strong id="course_price" class="eng"><fmt:formatNumber value="${course.price }" pattern="#,###" />원</strong></span>
                                     </div>
                                     <!--<div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: none;">
                                         <div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; height: 0px; top: 0px;">
@@ -333,18 +333,18 @@
                         <div class="total">
                             <p>
                                 <i>판매금액</i>
-                                <b id="sum_price">${course.price }원</b>
+                                <b id="sum_price"><fmt:formatNumber value="${course.price }" pattern="#,###" />원</b>
                             </p>
                             <p style="display: flex">
                                 <input type="checkbox" id="book_price" name="book_price" checked >
                                 <label for="book_price"><i> 교재금액</i></label>
-                                <b id="delivery_price">${course.book_price }원</b>
+                                <b id="delivery_price"><fmt:formatNumber value="${course.book_price }" pattern="#,###" />원</b>
                             </p>
                             <!--<p>
                                 <i>할인금액</i>
                                 <b id="discount_price" class="red">0원</b>
                             </p>-->
-                            <h4><i style="margin-top: 8px;">총 결제금액</i><span class="pointColor price"><strong id="total_price" class="eng">${total_price }원</strong></span></h4>
+                            <h4><i style="margin-top: 8px;">총 결제금액</i><span class="pointColor price"><strong id="total_price" class="eng"><fmt:formatNumber value="${total_price }" pattern="#,###" />원</strong></span></h4>
                         </div>
                         <!-- 신청 버튼 -->
                         <div class="applyBtn">
@@ -364,13 +364,26 @@
     $(document).ready(function(){
         $("#book_price").change(function(){
             if($("#book_price").is(":checked")){
-                $('#total_price').text((${course.price }+${course.book_price })+'원');
+                $('#total_price').text((${course.book_price +course.price })+'원');
             } else {
                 $('#total_price').text(${course.price }+'원');
             }
         });
     });
+    $(document).ready(function(){
+        // 숫자 포맷 함수
+        function formatNumber(number) {
+            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
 
+        $("#book_price").change(function(){
+            if($("#book_price").is(":checked")){
+                $('#total_price').text(formatNumber(${course.book_price + course.price }) + '원');
+            } else {
+                $('#total_price').text(formatNumber(${course.price }) + '원');
+            }
+        });
+    });
     /*$(document).ready(function(){
             var price=$("#total_price").val();
             let fn3 = () =>  $.ajax({

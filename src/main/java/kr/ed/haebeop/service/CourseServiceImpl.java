@@ -102,4 +102,9 @@ public class CourseServiceImpl implements CourseService {
     public void updateUserPt(User user) {
         courseMapper.updateUserPt(user);
     }
+
+    @Override
+    public void rollbackStudentNum(int cno) {
+        courseMapper.rollbackStudentNum(cno);
+    }
 }

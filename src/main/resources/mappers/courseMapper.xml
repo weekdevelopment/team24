@@ -72,6 +72,9 @@
     <update id="updateStudentNum">
         update course set curr_num =1+curr_num where cno=#{cno }
     </update>
+    <update id="rollbackStudentNum">
+        update course set curr_num =curr_num-1 where cno=#{cno }
+    </update>
     <!-- 수강등록 테이블에 해당 회원의 등록 여부 확인 -->
     <select id="isEnroll" resultType="kr.ed.haebeop.domain.Enroll">
         select * from enroll where id = #{id } and cno=#{cno}
