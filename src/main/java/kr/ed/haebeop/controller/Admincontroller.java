@@ -220,7 +220,7 @@ public class Admincontroller {
     @RequestMapping(value = "enrollDelete", method = RequestMethod.GET)
     public String enrollDelete(@RequestParam int eno) throws Exception {
         courseService.enrollDelete(eno);
-        return "redirect:/admin/EnrollList";
+        return "redirect:/admin/enrollList";
     }
 
     @GetMapping("courseList")

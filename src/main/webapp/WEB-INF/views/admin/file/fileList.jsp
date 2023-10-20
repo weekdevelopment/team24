@@ -31,11 +31,11 @@
         .item1, .item2, .item3 {font-size: 15px;}
         #tb1 { margin:40px auto; }
         #tb1 th {text-align: center;font-size: 17px;}
-        .item1 {width:10%;}
-        .item2 { width:50%; }
+        .item1 {width:20%;}
+        .item2 { width:60%; }
         .item2 .al {text-decoration-line: none;color: black;display: block;text-overflow: ellipsis;max-height: 2.8em;line-height: 3.4em;word-wrap: break-word;overflow: hidden;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;word-break: keep-all;}
         .button2 {text-decoration: none;border-radius: 20px;padding: 10px;float: right;background-color: #008CD6 ;border-color: #008CD6; color: #FFFFFF;}
-        .button3 {text-decoration: none;border-radius: 20px;margin-right: 10px;padding: 10px;float: right;background-color: #FF968A;border-color: #FF968A;color: #ffffff;}
+        .button3 {text-decoration: none;border-radius: 20px;padding: 10px;float: right;background-color: #FF968A;border-color: #FF968A;color: #ffffff;}
     </style>
 </head>
 <body>
@@ -139,6 +139,7 @@
                 </div>
             </div>
         </div>
+    </div>ㄴ
 
     </div>
 <script>
