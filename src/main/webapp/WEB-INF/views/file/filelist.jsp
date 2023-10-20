@@ -200,36 +200,42 @@
                 </p>
             </form>
         </div>
-        <div class="column is-2 is-offset-6 has-text-centered">
-            <c:if test= "${sid.equals('admin')}">
-                <a class="button is-link is-medium" href="${path1 }/file/fileupload1.do">등록하기</a>
-            </c:if>
+            <div class="column is-2 is-offset-6 has-text-centered">
+                <c:if test= "${sid.equals('admin')}">
+                    <a class="button is-link is-medium" href="${path1 }/file/fileupload1.do">등록하기</a>
+                </c:if>
+            </div>
+        </div>
+        <br>
+        <div class="box_wrap">
+            <table class="notice-list" id="tb1">
+                <thead>
+                <tr>
+                    <th class="item1">번호</th>
+                    <th class="item2">제목</th>
+                    <th class="item3">등록일</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="board" items="${fileboardList}" varStatus="status">
+                    <tr>
+                        <td class="item1">${board.fileBoard.postNo}</td>
+                        <td class="item2">
+                            <c:if test="${empty sid }">
+                                <p class="al">${board.fileBoard.title}</p>
+                            </c:if>
+                            <c:if test="${!empty sid || sid.equals('admin') }">
+                                <a href="${path1}/file/getFileboard.do?postNo=${board.fileBoard.postNo}" class="al">${board.fileBoard.title}</a>
+                            </c:if>
+                        </td>
+                        <td class="item3">${board.fileBoard.regdate}</td>
+                    </tr>
+                </c:forEach>
+
+                </tbody>
+            </table>
         </div>
     </div>
-    <br>
-    <div class="box_wrap">
-        <table class="notice-list" id="tb1">
-            <thead>
-            <tr>
-                <th class="item1">번호</th>
-                <th class="item2">제목</th>
-                <th class="item3">등록일</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="board" items="${fileboardList}" varStatus="status">
-                <tr>
-                    <td class="item1">${board.fileBoard.postNo}</td>
-                    <td class="item2">
-                        <a href="${path1}/file/getFileboard.do?postNo=${board.fileBoard.postNo}" class="al">${board.fileBoard.title}</a>
-                    </td>
-                    <td class="item3">${board.fileBoard.regdate}</td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-    </div>
-</div>
 <br>
 <br>
 <nav class="pagination is-rounded is-centered mb-6" role="navigation" aria-label="pagination">
