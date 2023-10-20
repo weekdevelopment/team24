@@ -112,4 +112,15 @@ public class CourseServiceImpl implements CourseService {
     public void cancel(int eno) {
         courseMapper.cancel(eno);
     }
+
+    @Override
+    public List<Enroll> cancelList(Page page) {
+        return courseMapper.cancelList(page);
+    }
+
+    @Override
+    public int countCancel(Page page) {
+        courseMapper.countCancel(page);
+        return 0;
+    }
 }
