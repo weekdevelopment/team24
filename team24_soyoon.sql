@@ -43,7 +43,8 @@ CREATE TABLE enroll (
 	complete BOOLEAN NOT NULL DEFAULT 0, -- 수강 완료 여부
 	book BOOLEAN NOT NULL DEFAULT 1, -- 교재 선택 여부 (기본값은 1이며, 0은 미선택 1은 선택)
 	enroll_price INT NOT NULL, -- 총 수강 가격 (교재 선택 여부에 따라 달라짐)
-	book_name VARCHAR(100) NOT NULL -- 교재 이름
+	book_name VARCHAR(100) NOT NULL, -- 교재 이름
+	cancel BOOLEAN NOT NULL DEFAULT 0 -- 수강 철회 여부 enroll
 );
 
-INSERT INTO enroll VALUES(DEFAULT, 1, "park", DEFAULT, DEFAULT, 141000, "리딩북");
+INSERT INTO enroll VALUES(DEFAULT, 1, "park", DEFAULT, DEFAULT, 141000, "리딩북", DEFAULT);

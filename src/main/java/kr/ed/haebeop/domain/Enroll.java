@@ -20,4 +20,6 @@ public class Enroll {
     private String end_date;
     private String imgsrc1;
     private String name;
+    private boolean cancel;
+    private int pt;
 }
