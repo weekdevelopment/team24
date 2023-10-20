@@ -26,6 +26,7 @@
         *{
             font-family: "Montserrat", sans-serif;
         }
+        .
         .card-header { font-size: 1.2em; font-family: "Nanum Gothic Coding"; font-weight: bolder; color:#00A2FF; margin-top:20px; margin-bottom: 20px; }
         .table td, .table th { font-size: 0.8em; }
         .hero.welcome .title, .hero.welcome .subtitle { font-family: "Nanum Gothic Coding";  }
@@ -56,7 +57,7 @@
 </head>
 <body>
 <jsp:include page="../include/header.jsp" />
-<div class="container">
+<div class="container" style="min-height: 62vh; ">
     <div class="columns">
         <div class="column is-3 ">
             <jsp:include page="../include/asideBar.jsp" />
