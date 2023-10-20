@@ -101,10 +101,10 @@
                                 <th>번호</th>
                                 <th>강의</th>
                                 <th>수강생</th>
-                                <th>수강완료</th>
-                                <th>교재구매</th>
+                                <th>수강 완료</th>
+                                <th>교재 구매</th>
                                 <th>구매가</th>
-                                <th>수강철회</th>
+                                <th>권한 삭제</th>
                             </tr>
                             </thead>
                             <tbody>

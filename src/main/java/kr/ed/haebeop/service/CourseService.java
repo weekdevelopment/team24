@@ -39,4 +39,5 @@ public interface CourseService {
     public int countEnroll(Page page);
     public void updateUserPt(User user);
     public void rollbackStudentNum(int cno);
+    public void cancel(int eno);
 }

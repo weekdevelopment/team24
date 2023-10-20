@@ -581,7 +581,7 @@
                                 <i>할인금액</i>
                                 <b id="discount_price" class="red">0원</b>
                             </p>-->
-                            <h4><i style="margin-top: 8px; margin-right: 16px;">총 결제금액</i><span class="pointColor price">
+                            <p style="border-top: 1px solid #ddd;"><i style="margin-top: 8px; margin-right: 16px;">총 결제금액</i><span class="pointColor price" style="float: right; ">
                                 <strong id="total_price" class="eng">
                                     <c:if test="${book == 1}">
                                         <fmt:formatNumber value="${course.book_price +course.price }" pattern="#,###" />원
@@ -589,7 +589,7 @@
                                     <c:if test="${book == 0}">
                                         <fmt:formatNumber value="${course.price }" pattern="#,###" />원
                                     </c:if>
-                                </strong></span></h4>
+                                </strong></span></p>
                         </div>
                         <div class="form-check">
                             <input type="checkbox" id="ck_item1" name="ck_item" class="form-check-input">

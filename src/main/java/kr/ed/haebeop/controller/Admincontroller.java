@@ -32,6 +32,14 @@ public class Admincontroller {
 
     BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public String adminPage(Model model) throws Exception {
+        Page page = new Page();
+        int totUser = userService.userCount(page);
+        model.addAttribute("totUser", totUser);
+        return "/admin/userList";
+    }
+
     @RequestMapping(value = "userList.do", method = RequestMethod.GET)
     public String userList(HttpServletRequest request, Model model) throws Exception {
         String type = request.getParameter("type");

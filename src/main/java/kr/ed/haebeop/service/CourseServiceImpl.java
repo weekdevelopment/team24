@@ -107,4 +107,9 @@ public class CourseServiceImpl implements CourseService {
     public void rollbackStudentNum(int cno) {
         courseMapper.rollbackStudentNum(cno);
     }
+
+    @Override
+    public void cancel(int eno) {
+        courseMapper.cancel(eno);
+    }
 }
