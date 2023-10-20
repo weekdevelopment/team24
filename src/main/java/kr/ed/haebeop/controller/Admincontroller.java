@@ -11,6 +11,7 @@ import kr.ed.haebeop.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,14 +31,6 @@ public class Admincontroller {
     private FileService fileService;
 
     BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    public String adminPage(Model model) throws Exception {
-        Page page = new Page();
-        int totUser = userService.userCount(page);
-        model.addAttribute("totUser", totUser);
-        return "/admin/userList";
-    }
 
     @RequestMapping(value = "userList.do", method = RequestMethod.GET)
     public String userList(HttpServletRequest request, Model model) throws Exception {
@@ -218,7 +211,8 @@ public class Admincontroller {
 
     //수강생 삭제
     @RequestMapping(value = "enrollDelete", method = RequestMethod.GET)
-    public String enrollDelete(@RequestParam int eno) throws Exception {
+    @Transactional
+    public String enrollDelete(@RequestParam int eno, @RequestParam int cno) throws Exception {
         courseService.enrollDelete(eno);
         return "redirect:/admin/enrollList";
     }

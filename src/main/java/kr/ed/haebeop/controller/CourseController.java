@@ -8,6 +8,7 @@ import kr.ed.haebeop.service.UserService;
 import kr.ed.haebeop.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -90,6 +91,7 @@ public class CourseController {
 
 
     @RequestMapping(value = "signIn", method = RequestMethod.POST)
+    @Transactional
     public String insertEnrollPro(Enroll enroll, String sid, Model model, int pt) throws Exception {
         courseService.insertEnroll(enroll);
         courseService.updateStudentNum(enroll.getCno());
@@ -98,7 +100,7 @@ public class CourseController {
         user.setId(id);
         user.setPt(pt);
         courseService.updateUserPt(user);
-        return "redirect:/";
+        return "redirect:/course/mypageCourse?complete=0";
     }
 
     //회원의 수강 신청 정보 보기

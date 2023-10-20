@@ -23,9 +23,10 @@
 
     @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
 
+    /*
     *{
         font-family: 'Nanum Gothic Coding', monospace;
-    }
+    } */
 
 
     .h2{
@@ -73,17 +74,18 @@
 <jsp:include page="../include/header.jsp"></jsp:include>
 <nav class="breadcrumb has-succeeds-separator is-medium is-right mt-3 p-4" style="background: #f1f4f9" aria-label="breadcrumbs">
     <ul class="mr-5">
-        <li><a style="color: black;" href="${path1}"><i class="xi-home is-size-3"></i></a></li>
-        <li><a style="color: black;">커뮤니티</a></li>
-        <li><a style="color: black; "href="${path1}/review/list.do">후기</a></li>
-        <li><a style="color: black; "href="${path1}/review/insert.do">후기 남기기</a></li>
+        <li><a href="${path1}"><i class="xi-home is-size-3"></i></a></li>
+        <li><a>커뮤니티</a></li>
+        <li><a href="${path1}/review/list.do">후기</a></li>
+        <li><a href="${path1}/review/insert.do">후기 남기기</a></li>
     </ul>
+    <p class="title has-text-centered mt-1 mb-2">후기 남기기</p>
 </nav>
 <div class="container is-fullhd">
     <div class="content" id="contents">
         <div class="row column1 text-center">
-            <h2 class="h2">후기 남기기</h2>
-            <hr>
+            <%--<h2 class="h2">후기 남기기</h2>
+            <hr>--%>
             <div class="container">
                 <form action="${path1 }/review/insert.do" method="post" onsubmit="return badwordcheck(this)">
                     <table id="table1">
@@ -113,18 +115,6 @@
                         </tbody>
                     </table>
                 </form>
-                <script>
-                    function joinCheck(f){
-                        if(f.pw.value!=f.pw2.value){
-                            alert("비밀번호와 비밀번호 확인이 서로 다릅니다.");
-                            f.pw.focus();
-                            return false;
-                        }
-                        if(f.idck.value!="yes"){
-                            alert("아이디 중복 체크를 하지 않으셨습니다.");
-                            return false;
-                        }
-                </script>
             </div>
         </div>
     </div>

@@ -12,6 +12,8 @@ public interface CourseService {
 
     public List<Course> courseList() throws Exception;
 
+    public List<Course> getNewCourses() throws Exception;
+
     public Course getCourse(int cno) throws Exception;
 
     public void insertCourse(Course course) throws Exception;
@@ -36,5 +38,5 @@ public interface CourseService {
     public void enrollDelete(int eno);
     public int countEnroll(Page page);
     public void updateUserPt(User user);
-
+    public void rollbackStudentNum(int cno);
 }

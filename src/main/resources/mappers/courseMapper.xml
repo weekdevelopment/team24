@@ -26,6 +26,11 @@
         select * from course
     </select>
 
+    <!-- 신규 강의 3개 -->
+    <select id="newCourses" resultType="kr.ed.haebeop.domain.Course">
+        select * from course order by cno desc limit 3;
+    </select>
+
     <select id="getCourse" resultType="kr.ed.haebeop.domain.Course">
         select * from course where cno = #{cno }
     </select>
@@ -66,6 +71,9 @@
     <!-- 등록할 때 강의 테이블의 현재 신청 인원 +1 추가-->
     <update id="updateStudentNum">
         update course set curr_num =1+curr_num where cno=#{cno }
+    </update>
+    <update id="rollbackStudentNum">
+        update course set curr_num =curr_num-1 where cno=#{cno }
     </update>
     <!-- 수강등록 테이블에 해당 회원의 등록 여부 확인 -->
     <select id="isEnroll" resultType="kr.ed.haebeop.domain.Enroll">

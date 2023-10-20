@@ -72,14 +72,14 @@ public class NoticeController {
         domain.setTitle(request.getParameter("title"));
         domain.setContent(request.getParameter("content"));
         noticeService.noticeInsert(domain);
-        return "redirect:list.do";
+        return "redirect:/admin/notice/list.do";
     }
 
     @GetMapping("delete.do")
     public String noticeDelete(HttpServletRequest request, Model model) throws Exception {
         int no = Integer.parseInt(request.getParameter("no"));
         noticeService.noticeDelete(no);
-        return "redirect:list.do";
+        return "redirect:/admin/notice/list.do";
     }
 
     @GetMapping("edit.do")
@@ -98,7 +98,7 @@ public class NoticeController {
         domain.setTitle(request.getParameter("title"));
         domain.setContent(request.getParameter("content"));
         noticeService.noticeEdit(domain);
-        return "redirect:list.do";
+        return "redirect:/admin/notice/list.do";
     }
 
     //ckeditor를 이용한 이미지 업로드

@@ -122,7 +122,7 @@
                                     <c:if test="${enroll.book == false }"> ❌ </c:if>
                                 </td>
                                 <td class="item6">${enroll.enroll_price }</td>
-                                <td class="item7"><a href="${path1 }/admin/enrollDelete?eno=${enroll.eno }"><button class="button is-danger is-rounded" style="scale: 70%;">삭제</button></a></td>
+                                <td class="item7"><a href="${path1 }/admin/enrollDelete?eno=${enroll.eno }&cno=${enroll.cno }"><button class="button is-danger is-rounded" style="scale: 70%;">삭제</button></a></td>
                             </tr>
                             </c:forEach>
                             </tbody>

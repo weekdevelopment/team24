@@ -26,6 +26,11 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
+    public List<Course> getNewCourses() throws Exception {
+        return courseMapper.newCourses();
+    }
+
+    @Override
     public Course getCourse(int cno) throws Exception {
         return courseMapper.getCourse(cno);
     }
@@ -96,5 +101,10 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public void updateUserPt(User user) {
         courseMapper.updateUserPt(user);
+    }
+
+    @Override
+    public void rollbackStudentNum(int cno) {
+        courseMapper.rollbackStudentNum(cno);
     }
 }

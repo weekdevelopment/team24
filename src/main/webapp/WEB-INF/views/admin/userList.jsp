@@ -161,7 +161,9 @@
               </p>
               <nav class="pagination is-rounded is-centered mb-6" role="navigation" aria-label="pagination">
 <%--                <c:if test="${curPage > page.pageCount }">--%>
+                    <c:if test="${(page.blockStartNum - 1) > 0}">
                   <a href="${path1 }/admin/userList.do?page=${page.blockStartNum - 1 }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-previous">Previous</a>
+                    </c:if>
 <%--                </c:if>--%>
                 <c:if test="${page.blockLastNum < page.totalPageCount }">
                   <a href="${path1 }/admin/userList.do?page=${page.blockLastNum + 1 }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-next">Next page</a>

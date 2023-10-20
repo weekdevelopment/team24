@@ -14,6 +14,8 @@ public interface CourseMapper {
 
     public List<Course> courseList();
 
+    public List<Course> newCourses();
+
     public Course getCourse(int cno);
 
     public void insertCourse(Course course);
@@ -39,4 +41,5 @@ public interface CourseMapper {
     public void enrollDelete(int eno);
     public int countEnroll(Page page);
     public void updateUserPt(User user);
+    public void rollbackStudentNum(int cno);
 }
