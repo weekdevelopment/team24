@@ -222,7 +222,6 @@ public class Admincontroller {
     @Transactional
     public String enrollDelete(@RequestParam int eno, @RequestParam int cno) throws Exception {
         courseService.enrollDelete(eno);
-        courseService.rollbackStudentNum(cno);
         return "redirect:/admin/enrollList";
     }
 
