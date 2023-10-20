@@ -49,50 +49,48 @@
 
 <jsp:include page="../include/header.jsp"></jsp:include>
 
-    <div class="content container" id="content">
-        <div class="container1" style="min-height: 60vh; margin-top: 10vh; ">
-            <div class="logo">
-                <a href="${path1 }/"><img src="${path1 }/resources/img/haebeop.png" alt="스마트해법 로고" /></a>
+<div class="container" style="width: 450px; min-height: 60vh; margin-top: 15vh;">
+    <div class="login_wrap">
+        <div style="text-align: center; ">
+            <a href="${path1 }/"><img src="${path1 }/resources/img/haebeop.png"></a>
+        </div>
+        <form action="${path1 }/user/login" method="post" name="loginForm">
+
+            <div class="field">
+                <div class="control">
+                    <input class="input" type="text" name="id" id="id" size="100" placeholder="아이디 입력" required>
+                </div>
             </div>
 
-            <form action="${path1 }/user/login" method="post" name="loginForm">
-                <div class="table_form_wrap">
-                    <table class="table_form">
-                        <tbody>
-                        <tr>
-                            <td><input type="text" name="id" id="id" size="100" class="single100" placeholder="아이디 입력" required>
-                                <!--  pattern="^[a-z0-9]+$"  -->
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><input type="password" name="pw" id="pw"  class="single100" placeholder="비밀번호 입력" required>
-                                <!--  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  -->
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <input type="submit" class="button" value="로그인" style="height: 55px; border-radius: 5px;">
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+            <div class="field">
+                <div class="control">
+                    <input class="input" type="password" name="pw" id="pw" placeholder="비밀번호 입력" required>
+                    <!--  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  -->
                 </div>
-            </form>
-            <div class="find_wrap">
+            </div>
+
+            <div class="field is-grouped" style="display: block">
+                <div class="control">
+                    <button class="button is-info" type="submit" style="width: 100%; border-radius: 5px; height: 40px; ">로그인</button>
+                </div>
+            </div>
+
+            <div class="find_wrap" style="text-align: center">
                 <a href="${path1 }/user/agree">회원가입</a>
                 <!-- <ul>
-                    <li><a href="">아이디 찾기</a></li>
-                    <li>|</li>
-                    <li><a href="${path1 }/user/agree">회원가입</a></li>
-                </ul> -->
+                <li><a href="">아이디 찾기</a></li>
+                <li>|</li>
+                <li><a href="${path1 }/user/agree">회원가입</a></li>
+            </ul> -->
             </div>
-            <script>
-                function loginFaiure() {
-                    alert("로그인 실패");
-                }
-            </script>
-        </div>
+        </form>
     </div>
+    <script>
+        function loginFaiure() {
+            alert("로그인 실패");
+        }
+    </script>
+</div>
 
 <jsp:include page="../include/footer.jsp"></jsp:include>
 
