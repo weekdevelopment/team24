@@ -16,7 +16,7 @@
         <div class="column is-6-desktop is-8-tablet">
           <div class="header-top-right has-text-right-tablet has-text-centered-mobile">
             <c:if test="${sid.equals('admin')}">
-              <a href="${path1}/admin/">
+              <a href="${path1}/admin/userList.do">
                 <i class="icofont-settings has-text-white"> 관리자페이지</i>
               </a>
             </c:if>

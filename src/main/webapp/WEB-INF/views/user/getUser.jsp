@@ -11,6 +11,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원 정보 보기</title>
+
+    <jsp:include page="../include/head.jsp"></jsp:include>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <script src="https://code.jquery.com/jquery-latest.js"></script>
     <link rel="stylesheet" href="resources/css/normalize.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">
@@ -26,22 +31,28 @@
 
         #content { width: 100%; height: 100%; overflow: hidden; margin: 0px; padding: 0px;}
         .title { width: 450px; margin: 10px auto; font-size: 2em; font-weight: bold; text-align: center; color:#00A2FF; padding-top:36px; padding-bottom:20px; }
-        .container { width: 450px; margin: 10px auto; padding: 24px; height:auto; overflow-y:auto; }
+        .container1 { width: 100%; margin: 10px auto; padding: 24px; height:auto; overflow-y:auto; }
         #frm1 { width : 400px; margin: 0px auto; }
         table tbody td { padding: 0px; }
 
         input[type="date"]:not(.has-value):before{ color: #cacaca; content: attr(placeholder); }
 
         .button { margin: 0 0.6rem 1rem 0; }
+
+        .content table td, .content table th { border: none; padding: 0px; }
+
+        [type=color], [type=date], [type=datetime-local], [type=datetime], [type=email], [type=month], [type=number], [type=password], [type=search], [type=tel], [type=text], [type=time], [type=url], [type=week], textarea {
+            margin-bottom: 0.5rem;
+        }
+
     </style>
 </head>
 <body>
-<header id="header">
 
-</header>
+<jsp:include page="../include/header.jsp"></jsp:include>
 
-<div class="content container" id="content">
-    <div class="container">
+<div class="content container1" id="content">
+    <div class="container1">
         <c:if test="${sid!='admin' }">
             <h2 class="title">회원 정보 수정</h2>
         </c:if>
@@ -52,7 +63,12 @@
                 <tr>
                     <td>
                         <input type="text" name="id" id="id" value="${user.id }" readonly required>
-                        <p id="msg" style="padding-left:0.5rem; font-size: 0.8em;">*비밀번호:영대/소문자, 특수문자, 숫자 조합 8~12글자</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" name="pt1" id="pt1" value="보유 포인트 : ${user.pt }pt" readonly required>
+                        <input type="hidden" name="pt" id="pt" value="${user.pt }">
                     </td>
                 </tr>
                 <tr>
@@ -65,6 +81,7 @@
                     <td>
                         <input type="password" name="pw2" id="pw2" value="${user.pw }" required>
                         <!-- pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,12}$"  -->
+                        <p id="msg" style="padding-left:0.5rem; font-size: 0.8em;">*비밀번호:영대/소문자, 특수문자, 숫자 조합 8~12글자</p>
                     </td>
                 </tr>
                 <tr>
@@ -100,9 +117,9 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="submit" class="submit success button" value="회원 정보 수정" style="background-color: #00A2FF; color: white; border-radius: 5px;" >
+                        <input type="submit" class="submit success button" value="회원 정보 수정" style="width: 100%; background-color: #00A2FF; color: white; border-radius: 5px;" >
                         <c:if test="${sid!='admin' }">
-                            <a href="${path1 }/user/delete.do?id=${sid }" class="button btn-danger" style="border-radius: 5px; width:100%; background-color: darkred; ">회원 탈퇴</a>
+                            <a href="${path1 }/user/userDelete.do?id=${sid }" class="button btn-danger" style="border-radius: 5px; width:100%; background-color: darkred; ">회원 탈퇴</a>
                         </c:if>
                     </td>
                 </tr>
@@ -137,8 +154,8 @@
         <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     </div>
 </div>
-<footer id="footer" class="footer-nav row expanded collapse">
 
-</footer>
+<jsp:include page="../include/footer.jsp"></jsp:include>
+
 </body>
 </html>

@@ -11,6 +11,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>회원 약관 동의</title>
+
+  <jsp:include page="../include/head.jsp"></jsp:include>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <script src="https://code.jquery.com/jquery-latest.js"></script>
   <link rel="stylesheet" href="resources/css/normalize.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">
@@ -26,9 +31,13 @@
     });
   </script>
   <style>
+    * { list-style: none; }
+
     input[type=checkbox] { transform : scale(2); }
 
     .title { width: 450px; margin: 10px auto; font-size: 2em; font-weight: bold; text-align: center; color:#00A2FF; padding-top:36px; padding-bottom:20px; }
+    .logo { margin: 0 auto; text-align: center; }
+
     .agree_fr { width: 450px; white-space:pre-wrap; margin: 10px auto;
       padding: 24px; height:300px; overflow-y:auto; }
     .form-check { width: 450px; margin: 10px auto; padding-left: 24px; padding-top: 10px; }
@@ -39,11 +48,13 @@
   </style>
 </head>
 <body>
-<header id="header">
 
-</header>
-<div class="content container" id="content">
-  <h2 class="title">스마트 해법</h2>
+<jsp:include page="../include/header.jsp"></jsp:include>
+
+<div class="content container1" id="content">
+  <div class="logo">
+    <a href="${path1 }/"><img src="${path1 }/resources/img/haebeop.png" alt="스마트해법 로고" /></a>
+  </div>
 
   <div class="form-check">
     <input type="checkbox" id="allagr" name="allagr" class="form-check-input" onclick="protocol()">
@@ -940,7 +951,7 @@
     <label for="ck_item2" class="form-check-label">개인정보처리방침에 동의</label><br><br>
   </div>
   <div class="btn-group">
-    <button type="button" id="sgbtn" class="sgbtn" style="border-radius: 5px;">다음 단계</button>
+    <button type="button" id="sgbtn" class="sgbtn" style="border-radius: 5px; width: 100%; ">다음 단계</button>
   </div>
   <script>
     var ck_item1 = document.getElementById("ck_item1");
@@ -978,8 +989,8 @@
     });
   </script>
 </div>
-<footer id="footer" class="footer-nav row expanded collapse">
 
-</footer>
+<jsp:include page="../include/footer.jsp"></jsp:include>
+
 </body>
 </html>

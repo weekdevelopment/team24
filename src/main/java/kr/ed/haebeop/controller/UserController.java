@@ -109,4 +109,11 @@ public class UserController {
         userService.userUpdate(user);
         return "redirect:/";
     }
+
+    @RequestMapping(value = "userDelete.do", method = RequestMethod.GET)
+    public String userDelete(@RequestParam String id, Model model, HttpSession session) throws Exception {
+        userService.userDelete(id);
+        session.invalidate();
+        return "redirect:/";
+    }
 }

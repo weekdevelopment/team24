@@ -15,7 +15,6 @@
   <script src="https://code.jquery.com/jquery-latest.js"></script>
   <style>
     <%-- 본문 영역 스타일 --%>
-    .wrap { background-color: #fffcf2; }
     .wrap .content .title { width: 450px; margin: 10px auto; font-family: Sans-Serif; font-size: 2em; font-weight: bold; text-align: center; color:#00A2FF; padding-top:20px; padding-bottom:34px; }
 
     .content { padding-top: 60px; }
