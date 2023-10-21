@@ -15,17 +15,17 @@
     <%-- 본문 영역 스타일 --%>
     .wrap .content .title { width: 450px; margin: 10px auto; font-family: Sans-Serif; font-size: 2em; font-weight: bold; text-align: center; color:#00A2FF; padding-top:20px; padding-bottom:34px; }
 
-    .content { padding-top: 60px; }
+    .content { padding-top: 30px; }
 
     .page_wrap { clear:both; width: 1200px; height: auto; margin:0 auto; }
 
   </style>
   <style>
     body { background:white; }
-    #kk-map {
+    .kk-map {
       position: relative;
       bottom: 10px;
-      left: 860px;
+      left: 880px;
       margin: 20px;
     }
     .mapBtn {
@@ -48,13 +48,18 @@
 </head>
 
 <body>
-<div class="wrap">
-  <header class="hd" id="hd">
-    <jsp:include page="../include/header.jsp" />
-  </header>
-  <div class="content container" id="content">
-    <h2 class="title">오시는 길</h2>
+<jsp:include page="../include/header.jsp" />
 
+<nav class="breadcrumb has-succeeds-separator is-medium is-right mt-3 p-4" style="background: #f1f4f9" aria-label="breadcrumbs">
+  <ul class="mr-5">
+    <li><a href="${path1}"><i class="xi-home is-size-3"></i></a></li>
+    <li><a href="${path1}/contact">오시는 길</a></li>
+  </ul>
+  <p class="title has-text-centered mt-1 mb-2">오시는 길</p>
+</nav>
+
+<div class="wrap">
+  <div class="content container" id="content">
     <div class="page_wrap">
       <div class="maparea">
         <div id="map" style="margin: 0 auto; text-align: center; width:800px;height:600px; background:white; "></div>
@@ -92,14 +97,13 @@
         <script type="text/javascript" src="http://s1.daumcdn.net/svc/attach/U03/cssjs/mapapidoc/1421136453605/service.min.js">
         </script>
       </div>
-      <div id="kk-map">
+
+      <div class="kk-map">
         <a href="https://map.kakao.com/?urlX=475439&urlY=1104677&urlLevel=3&itemId=8419265&q=%EC%B2%9C%EC%9E%ACit%EA%B5%90%EC%9C%A1%EC%84%BC%ED%84%B0&srcid=8419265&map_type=TYPE_MAP" target="_blank" class="mapBtn">지도 자세히보기</a>
       </div>
     </div>
   </div>
-  <footer class="ft" id="ft">
-    <jsp:include page="../include/footer.jsp" />
-  </footer>
 </div>
+<jsp:include page="../include/footer.jsp" />
 </body>
 </html>

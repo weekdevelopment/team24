@@ -237,7 +237,7 @@
 <nav class="breadcrumb has-succeeds-separator is-medium is-right mt-3 p-4" style="background: #f1f4f9" aria-label="breadcrumbs">
     <ul class="mr-5">
         <li><a href="${path1}"><i class="xi-home is-size-3"></i></a></li>
-        <li><a href="${path1}/course/list.do">수강신청</a></li>
+        <li><a href="${path1}/course/list.do">강의수강</a></li>
         <li><a href="${path1 }/course/getCourse?cno=${course.cno }" aria-current="page">수강신청</a></li>
         <li><a href="${path1}/course/signIn?cno=${course.cno}&book=${book }" aria-current="page">결제하기</a></li>
     </ul>

@@ -15,6 +15,7 @@
     }
     .table th {
       white-space: nowrap;
+      vertical-align: middle;
     }
     .table input[type="number"], .table input[type="date"]  {
       width: 13.6rem;

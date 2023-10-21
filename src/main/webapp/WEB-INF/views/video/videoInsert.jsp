@@ -58,6 +58,11 @@
         flex-shrink: 1;
         padding: 0.75rem;
     }
+
+    .table th {
+        white-space: nowrap;
+        vertical-align: middle;
+    }
 </style>
 
 <body>
@@ -150,7 +155,7 @@
                         <th>영상</th>
                         <td>
                             <input type="file" name="videofile" id="videofile" class="input" accept="video/mp4,video/mkv, video/x-m4v,video/*" placeholder="영상" required>
-                            <video id="video"></video>
+                            <%--<video id="video"></video>--%>
                         </td>
                     </tr>
                     <tr>

@@ -7,37 +7,32 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="Description" content="우리동네 1등 스마트 학원·공부방, 스마트해법">
+  <meta name="keywords" content="천재교육, 천재교과서, 스마트해법수학, 스마트해법영어, e해법수학, 해법영어교실, 수학학원, 영어학원, 수학공부방, 영어공부방, 프랜차이즈, 학원, 공부방, 수학문제은행, 학습지, 과외, 해법에듀, 해법, 해법수학, 초등공부, 초등수학, 초등영어, 중등공부, 중등수학, 중드영어, 초등학원, 중등학원, 내신">
   <title>회원가입</title>
+  <%--<jsp:include page="../include/head.jsp" />--%>
 
-  <%-- 불마 --%>
-  <link rel="stylesheet" href="${path1}/resources/plugins/bulma/bulma.min.css">
-  <link rel="stylesheet" href="${path1}/resources/css/style.css">
-  <link rel="stylesheet" href="${path1}/resources/css/ft.css" />
-
-  <%--아이콘--%>
-  <link rel="stylesheet" href="${path1}/resources/plugins/themify/css/themify-icons.css">
-  <link rel="stylesheet" href="${path1}/resources/plugins/icofont/icofont.css">
-  <link rel="stylesheet" href="${path1}/resources/plugins/magnific-popup/dist/magnific-popup.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-
-  <script src="https://code.jquery.com/jquery-latest.js"></script>
+  <%--<script src="https://code.jquery.com/jquery-latest.js"></script>--%>
   <link rel="stylesheet" href="resources/css/normalize.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-prototype.min.css">
   <link href='https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.js"></script>
+  <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>--%>
+  <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.js"></script>--%>
   <style>
     * { list-style: none; }
 
     td { height: 40px; margin: 0px;}
     input { width:400px; float:left; margin-bottom: 0px; }
-    .logo { margin: 0 auto; text-align: center; }
+    .logo { margin-top : 1rem; text-align: center; }
 
     #content { margin: 0px auto; }
-    .title { width: 450px; margin: 10px auto; font-size: 2em; font-weight: bold; text-align: center; color:#00A2FF; padding-top:36px; padding-bottom:20px; }
     .container1 { width: 500px; margin: 10px auto; padding: 24px; height:auto; overflow-y:auto; }
     #frm1 { width : 400px; margin: 0px auto; }
     table tbody td { padding: 0px; }
@@ -50,6 +45,9 @@
       margin-bottom: 0.5rem;
     }
 
+    table tbody tr:nth-child(even) {
+      background: #fefefe;;
+    }
   </style>
 </head>
 <body>
