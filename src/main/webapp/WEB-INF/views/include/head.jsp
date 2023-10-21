@@ -6,6 +6,10 @@
 <c:set var="path0" value="${pageContext.servletContext.contextPath }" />
 
 <!-- Required meta tags -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <meta name="Description" content="우리동네 1등 스마트 학원·공부방, 스마트해법">
 <meta name="keywords" content="천재교육, 천재교과서, 스마트해법수학, 스마트해법영어, e해법수학, 해법영어교실, 수학학원, 영어학원, 수학공부방, 영어공부방, 프랜차이즈, 학원, 공부방, 수학문제은행, 학습지, 과외, 해법에듀, 해법, 해법수학, 초등공부, 초등수학, 초등영어, 중등공부, 중등수학, 중드영어, 초등학원, 중등학원, 내신">
 

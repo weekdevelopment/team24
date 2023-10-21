@@ -7,9 +7,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>회원 약관 동의</title>
 
   <jsp:include page="../include/head.jsp"></jsp:include>
@@ -49,7 +46,7 @@
 </head>
 <body>
 
-<jsp:include page="../include/header.jsp"></jsp:include>
+<%--<jsp:include page="../include/header.jsp"></jsp:include>--%>
 
 <div class="content container1" id="content">
   <div class="logo">
@@ -966,21 +963,21 @@
       }
     });
     function protocol() {
-        if (allagr.checked) {
-          ck_item1.checked = true;
-          ck_item2.checked = true;
-        } else {
-          ck_item1.checked = false;
-          ck_item2.checked = false;
-        }
+      if (allagr.checked) {
+        ck_item1.checked = true;
+        ck_item2.checked = true;
+      } else {
+        ck_item1.checked = false;
+        ck_item2.checked = false;
+      }
     }
     $(".form-check").click(function () {
-        if(ck_item1.checked && ck_item2.checked){
-          $("#sgbtn").css("background-color","#0078e7");
-        } else {
-          $("#sgbtn").css("background-color","#7f8c8d");
-        }
-      });
+      if(ck_item1.checked && ck_item2.checked){
+        $("#sgbtn").css("background-color","#0078e7");
+      } else {
+        $("#sgbtn").css("background-color","#7f8c8d");
+      }
+    });
     $("#sgbtn").mouseover(function (){
       $(this).css("opacity", "0.8");
     });
@@ -990,7 +987,7 @@
   </script>
 </div>
 
-<jsp:include page="../include/footer.jsp"></jsp:include>
+<%--<jsp:include page="../include/footer.jsp"></jsp:include>--%>
 
 </body>
 </html>

@@ -7,21 +7,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>자료실 관리자 페이지</title>
     <jsp:include page="../../include/head.jsp"/>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.4/css/bulma.min.css" />
+    <%--<link rel="stylesheet" href="https://unpkg.com/bulma@0.9.4/css/bulma.min.css" />--%>
     <link rel="stylesheet" type="text/css" href="${path1 }/resources/css/admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
-        *{ font-family: 'Nanum Gothic Coding', monospace;}
+         *{ font-family: "Montserrat", sans-serif; }
         .title {font-family: 'Nanum Gothic Coding', monospace; font-weight: 700;}
         .notice-list th:nth-child(1) {width: 12%;}
         .box_wrap thead th {padding: 15px 5px;border-bottom: 1px solid #d0cfd5;text-align: center;}
@@ -139,7 +136,7 @@
                 </div>
             </div>
         </div>
-    </div>ㄴ
+    </div>
 
     </div>
 <script>

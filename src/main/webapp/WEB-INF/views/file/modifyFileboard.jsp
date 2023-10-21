@@ -7,19 +7,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>수정</title>
     <!-- 헤드 부분 인클루드 -->
-    <jsp:include page="../include/head.jsp"></jsp:include>
+    <jsp:include page="../include/head.jsp" />
     <script type="text/javascript" src="${path1 }/resources/ckeditor/ckeditor.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <style>
+    .breadcrumb a { color: #464646; }
     @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
-    *{font-family: 'Nanum Gothic Coding', monospace;}
+    /* *{font-family: 'Nanum Gothic Coding', monospace;} */
     .h2{font-weight: 400;line-height: 110px;text-align: center;font-size: 1.75em;margin-bottom: 0.5714em;}
     .button {text-decoration: none;border-radius: 20px;margin: 15px;padding: 10px;float: right;background-color: #008CD6;border-color: #008CD6;color: #ffffff;}
     .button3 {text-decoration: none;border-radius: 20px;margin: 15px;padding: 10px;float: right;background-color: #FF968A;border-color: #FF968A;color: #ffffff;}
@@ -30,16 +28,17 @@
 <jsp:include page="../include/header.jsp"></jsp:include>
 <nav class="breadcrumb has-succeeds-separator is-medium is-right mt-3 p-4" style="background: #f1f4f9" aria-label="breadcrumbs">
     <ul class="mr-5">
-        <li><a style="color: black;" href="${path1}"><i class="xi-home is-size-3"></i></a></li>
-        <li><a style="color: black;">자료실</a></li>
-        <li><a style="color: black; "href="${path1}/file/list.do">수정하기</a></li>
+        <li><a href="${path1}"><i class="xi-home is-size-3"></i></a></li>
+        <li><a>자료실</a></li>
+        <li><a href="${path1}/file/list.do">파일 자료 수정</a></li>
     </ul>
+    <p class="title has-text-centered mt-1 mb-2">파일 자료 수정</p>
 </nav>
 <div class="container is-fullhd">
     <div class="content" id="contents">
         <div class="row column1 text-center">
-            <h2 class="h2">파일 자료 수정하기</h2>
-            <hr>
+            <%--<h2 class="h2">파일 자료 수정하기</h2>
+            <hr>--%>
             <div class="container">
                 <form enctype="multipart/form-data" method="post" action="${path1}/file/modifyFileboard.do">
                     <input type="hidden" name="postNo" value="${postNo}" />
