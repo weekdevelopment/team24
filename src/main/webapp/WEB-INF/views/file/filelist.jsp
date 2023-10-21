@@ -46,7 +46,7 @@
         }
 
         .box_wrap {
-            border-top: #000 2px solid;
+            border-top: 1px solid #ddd;;
         }
 
         *, *:before, *:after {
@@ -217,7 +217,7 @@
                 <tbody>
                 <c:forEach var="board" items="${fileboardList}" varStatus="status">
                     <tr>
-                        <td class="item1">${board.fileBoard.postNo}</td>
+                        <td class="item1">${total - ((curPage - 1) * page.postCount + status.index) }</td>
                         <td class="item2">
                             <c:if test="${empty sid }">
                                 <p class="al">${board.fileBoard.title}</p>

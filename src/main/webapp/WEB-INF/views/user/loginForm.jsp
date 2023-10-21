@@ -50,7 +50,7 @@
     <p class="title has-text-centered mt-1 mb-2">로그인</p>
 </nav>
 
-<section class="section">
+<section class="section-sm">
     <div class="container">
         <div class="column is-4 is-offset-4">
             <div class="box has-text-centered">

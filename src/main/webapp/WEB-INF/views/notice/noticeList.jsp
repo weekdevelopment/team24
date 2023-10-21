@@ -213,7 +213,8 @@
                 <tbody>
                 <c:forEach var="noti" items="${noticeList }" varStatus="status">
                     <tr>
-                        <td class="item1">${status.count + ((curPage - 1) * page.postCount) }</td>
+                        <%--<td class="item1">${status.count + ((curPage - 1) * page.postCount) }</td>--%>
+                            <td class="item1">${total - ((curPage - 1) * page.postCount + status.index) }</td>
                         <td class="item2">
                             <a href="${path1 }/notice/detail.do?no=${noti.no }" class="al">${noti.title }</a>
                         </td>

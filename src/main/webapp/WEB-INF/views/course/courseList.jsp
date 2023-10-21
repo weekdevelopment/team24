@@ -39,7 +39,7 @@
 </nav>
 
 <div class="container">
-    <div class="columns is-multiline border-bottom mt-1">
+    <div class="columns is-multiline mt-1 mb-5">
         <div class="column is-4">
             <form action="${path1 }/course/list.do" method="get" class="field has-addons">
                 <p class="control">
@@ -65,8 +65,7 @@
         </div>
     </div>
 
-
-    <div class="columns is-multiline">
+    <div class="columns is-multiline border-top">
         <div class="column is-12">
             <c:forEach items="${courseList }" var="course">
                 <article class="columns is-multiline is-justify-content-center mb-3 border-bottom">

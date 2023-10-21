@@ -45,6 +45,7 @@ public class NoticeController {
         model.addAttribute("keyword", keyword);
         model.addAttribute("page", page);
         model.addAttribute("curPage", curPage);
+        model.addAttribute("total", total);
 
         List<Notice> noticeList = noticeService.noticeList(page);
         model.addAttribute("noticeList", noticeList);

@@ -133,7 +133,7 @@ public class FileController {
         model.addAttribute("keyword", keyword);
         model.addAttribute("page", page);
         model.addAttribute("curPage", curPage);
-
+        model.addAttribute("total", total);
 
         List<FileVO> fileboardList = fileService.getFileList(page);
         model.addAttribute("fileboardList", fileboardList);

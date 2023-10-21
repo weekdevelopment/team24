@@ -130,7 +130,7 @@
         .video-list {
             list-style: none;
             margin-top: 40px;
-            border-top: 2px solid #999;
+            border-top: 1px solid #ddd;;
         }
 
         .video-list li .exp > a {
