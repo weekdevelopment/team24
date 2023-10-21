@@ -62,6 +62,9 @@ public class VideoController {
 
         @GetMapping("insert.do")
         public String insertForm(HttpServletRequest request, Model model) throws Exception {
+            String site = request.getParameter("site");
+            model.addAttribute("site", site);
+
             return "/video/videoInsert";
         }
 
@@ -111,7 +114,13 @@ public class VideoController {
             }
 
             videoService.videoInsert(domain);
-            return "redirect:/admin/video/list.do";
+
+            String site = request.getParameter("site");
+            if(site.equals("admin")){
+                return "redirect:/admin/video/list.do";
+            } else {
+                return "redirect:/video/list.do";
+            }
 
 
         }

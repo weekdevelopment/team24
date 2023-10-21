@@ -132,6 +132,7 @@
     <div class="columns">
         <div class="column is-8 is-offset-2">
             <form action="${path1 }/video/insert.do" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="site" value="${site}" />
                 <table class="table is-centered is-fullwidth">
                     <tbody>
                     <tr>
