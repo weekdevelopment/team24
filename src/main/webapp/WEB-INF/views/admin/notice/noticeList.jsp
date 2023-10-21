@@ -222,7 +222,7 @@
                             <th>번호</th>
                             <th>제목</th>
                             <th>
-                                <a class="button2" href="${path1 }/notice/insert.do">글쓰기</a>
+                                <a class="button2" href="${path1 }/notice/insert.do?site=admin">글쓰기</a>
                             </th>
                             </thead>
                             <tbody>
