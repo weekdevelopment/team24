@@ -79,29 +79,40 @@ public class FileRepositoryImpl implements FileRepository {
         sqlSession.delete("fileboard.fileDelete", postNo);
     }
 
+//    @Transactional
+//    @Override
+//    public void editFileboard(FileVO fileboard) throws Exception {
+//        // 파일 게시물의 정보를 수정하기 위해 FileVO 객체를 사용
+//        FileBoard board = fileboard.getFileBoard();
+//
+//        // 파일 게시물 정보를 업데이트
+//        sqlSession.update("fileboard.editFileboard", board);
+//
+//        // 파일 정보가 변경된 경우, 기존 파일 삭제 및 새 파일 업로드 처리
+//        List<FileDTO> fileList = fileboard.getFileList();
+//        if (fileList != null && !fileList.isEmpty()) {
+//            int postNo = board.getPostNo();
+//
+//            // 기존 파일 삭제
+//            sqlSession.delete("fileboard.fileDelete", postNo);
+//
+//            // 새 파일 업로드
+//            for (FileDTO file : fileList) {
+//                file.setPostNo(postNo);
+//                sqlSession.insert("fileboard.fileInsert", file);
+//            }
+//        }
+//    }
     @Override
     public void editFileboard(FileVO fileboard) throws Exception {
-        // 파일 게시물의 정보를 수정하기 위해 FileVO 객체를 사용
         FileBoard board = fileboard.getFileBoard();
-
-        // 파일 게시물 정보를 업데이트
-        sqlSession.update("fileboard.editFileboard", board);
-
-        // 파일 정보가 변경된 경우, 기존 파일 삭제 및 새 파일 업로드 처리
         List<FileDTO> fileList = fileboard.getFileList();
-        if (fileList != null && !fileList.isEmpty()) {
-            int postNo = board.getPostNo();
-
-            // 기존 파일 삭제
-            sqlSession.delete("fileboard.fileDelete", postNo);
-
-            // 새 파일 업로드
-            for (FileDTO file : fileList) {
-                file.setPostNo(postNo);
-                sqlSession.insert("fileboard.fileInsert", file);
-            }
+        sqlSession.update("fileboard.fileboardEdit", board);
+        for(FileDTO file:fileList) {
+            sqlSession.update("fileboard.fileUpdate", file);
         }
     }
+
 
     @Override
     public void fileRemove(int no) throws Exception {

@@ -84,7 +84,7 @@
             <%--<h2 class="h2">후기 남기기</h2>
             <hr>--%>
             <div class="container">
-                <form action="${path1 }/review/insert.do" method="post" onsubmit="return badwordcheck(this)">
+                <form action="${path1 }/review/insert.do" method="post" onsubmit="return ckbad(this)">
                     <table id="table1">
                         <tbody>
                         <tr>

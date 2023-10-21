@@ -21,4 +21,5 @@ public class Enroll {
     private String imgsrc1;
     private String name;
     private boolean cancel;
+    private int pt;
 }

@@ -117,6 +117,27 @@
         order by e.eno desc LIMIT #{postStart}, #{postCount}
         ]]>
     </select>
+    <select id="cancelList" resultType="kr.ed.haebeop.domain.Enroll">
+        <![CDATA[
+        SELECT e.eno, e.cno, c.course_name, u.name,e.id, e.complete, e.book, e.enroll_price, e.cancel, u.pt
+        FROM enroll e INNER JOIN course c ON e.cno = c.cno INNER JOIN user u ON e.id = u.id where e.cancel=1
+        ]]>
+        <where>
+            <if test="searchType != null">
+                <choose>
+                    <when test="searchType == 'title'.toString()">
+                        course_name LIKE concat('%', #{searchKeyword}, '%')
+                    </when>
+                    <when test="searchType == 'content'.toString()">
+                        name LIKE concat('%', #{searchKeyword}, '%')
+                    </when>
+                </choose>
+            </if>
+        </where>
+        <![CDATA[
+        order by e.eno desc LIMIT #{postStart}, #{postCount}
+        ]]>
+    </select>
     <delete id="enrollDelete">
         DELETE FROM enroll WHERE eno =#{eno }
     </delete>
@@ -124,6 +145,24 @@
         <![CDATA[
         SELECT COUNT(*) FROM enroll e
             INNER JOIN course c ON e.cno = c.cno INNER JOIN user u ON e.id = u.id
+        ]]>
+        <where>
+            <if test="searchType != null">
+                <choose>
+                    <when test="searchType == 'title'.toString()">
+                        course_name LIKE concat('%', #{searchKeyword}, '%')
+                    </when>
+                    <when test="searchType == 'name'.toString()">
+                        name LIKE concat('%', #{searchKeyword}, '%')
+                    </when>
+                </choose>
+            </if>
+        </where>
+    </select>
+    <select id="countCancel" resultType="integer">
+        <![CDATA[
+        SELECT COUNT(*) FROM enroll e
+            INNER JOIN course c ON e.cno = c.cno INNER JOIN user u ON e.id = u.id WHERE e.cancel =1
         ]]>
         <where>
             <if test="searchType != null">
