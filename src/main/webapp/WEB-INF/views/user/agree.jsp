@@ -9,7 +9,7 @@
 <head>
   <title>회원 약관 동의</title>
 
-  <jsp:include page="../include/head.jsp" />
+  <jsp:include page="../include/head.jsp"></jsp:include>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -46,7 +46,7 @@
 </head>
 <body>
 
-<jsp:include page="../include/header.jsp"></jsp:include>
+<%--<jsp:include page="../include/header.jsp"></jsp:include>--%>
 
 <div class="content container1" id="content">
   <div class="logo">
@@ -963,21 +963,21 @@
       }
     });
     function protocol() {
-        if (allagr.checked) {
-          ck_item1.checked = true;
-          ck_item2.checked = true;
-        } else {
-          ck_item1.checked = false;
-          ck_item2.checked = false;
-        }
+      if (allagr.checked) {
+        ck_item1.checked = true;
+        ck_item2.checked = true;
+      } else {
+        ck_item1.checked = false;
+        ck_item2.checked = false;
+      }
     }
     $(".form-check").click(function () {
-        if(ck_item1.checked && ck_item2.checked){
-          $("#sgbtn").css("background-color","#0078e7");
-        } else {
-          $("#sgbtn").css("background-color","#7f8c8d");
-        }
-      });
+      if(ck_item1.checked && ck_item2.checked){
+        $("#sgbtn").css("background-color","#0078e7");
+      } else {
+        $("#sgbtn").css("background-color","#7f8c8d");
+      }
+    });
     $("#sgbtn").mouseover(function (){
       $(this).css("opacity", "0.8");
     });
@@ -987,7 +987,7 @@
   </script>
 </div>
 
-<jsp:include page="../include/footer.jsp"></jsp:include>
+<%--<jsp:include page="../include/footer.jsp"></jsp:include>--%>
 
 </body>
 </html>
