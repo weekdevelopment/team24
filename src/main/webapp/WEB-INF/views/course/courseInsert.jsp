@@ -46,7 +46,7 @@
       <form action="${path1 }/course/insert.do" method="post" enctype="multipart/form-data">
         <table class="table is-centered is-fullwidth">
           <tbody>
-          <tr>
+          <tr class="border-top">
             <th>강의명</th>
             <td>
               <input type="text" name="title" id="title" placeholder="강의명" class="input" maxlength="98" required>
@@ -106,7 +106,7 @@
               <input type="file" name="imgsrc1" id="imgsrc1" placeholder="강의 사진" accept=".jpg, .png" class="input" required>
             </td>
           </tr>
-          <tr>
+          <tr class="border-bottom">
             <th>교재 사진</th>
             <td>
               <input type="file" name="imgsrc2" id="imgsrc2" placeholder="교재 사진" accept=".jpg, .png" class="input" required>
@@ -120,7 +120,7 @@
           </tr>--%>
           </tbody>
         </table>
-        <button type="submit" class="button is-link mb-5">글 등록</button>
+        <button type="submit" class="button is-link mb-5">등록</button>
       </form>
     </div>
     <div class="column is-2"></div>

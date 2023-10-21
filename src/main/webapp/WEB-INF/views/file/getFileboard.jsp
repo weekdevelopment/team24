@@ -9,11 +9,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>자료실 상세보기</title>
     <!-- 헤드 부분 인클루드 -->
-    <jsp:include page="../include/head.jsp"></jsp:include>
+    <jsp:include page="../include/head.jsp" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <c:set var="path" value="<%=request.getContextPath() %>" />
     <%--  <%@ include file="../common.jsp"%>--%>
@@ -23,10 +21,10 @@
 
     @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
 
+    /*
     *{
         font-family: 'Nanum Gothic Coding', monospace;
-    }
-
+    } */
 
     .h2{
         font-family: 'Nanum Gothic Coding', monospace;
@@ -81,10 +79,11 @@
 <jsp:include page="../include/header.jsp"></jsp:include>
 <nav class="breadcrumb has-succeeds-separator is-medium is-right mt-3 p-4" style="background: #f1f4f9" aria-label="breadcrumbs">
     <ul class="mr-5">
-        <li><a style="color: black;" href="${path1}"><i class="xi-home is-size-3"></i></a></li>
-        <li><a style="color: black;">자료실</a></li>
-        <li><a style="color: black; "href="${path1}/file/getFileboard.do"> 파일 상세보기 </a></li>
+        <li><a href="${path1}"><i class="xi-home is-size-3"></i></a></li>
+        <li><a>자료실</a></li>
+        <li><a href="${path1}/file/getFileboard.do"> 파일 상세보기 </a></li>
     </ul>
+    <p class="title has-text-centered mt-1 mb-2">자료실</p>
 </nav>
 <div class="container is-fullhd">
     <div class="content" id="contents">

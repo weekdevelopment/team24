@@ -7,9 +7,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>스마트해법</title>
     <jsp:include page="./include/head.jsp" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
@@ -47,8 +44,8 @@
 
         .course-tit a { font-size: 1.3rem; }
         .course-tit a:hover { text-decoration: underline; color: initial }
-        .blog-item img { transition: transform 0.2s; }
-        .blog-item img:hover { transform: scale(1.03); }
+        /*.blog-item img { transition: transform 0.4s; }*/
+        .blog-item img:hover { box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) }
     </style>
 </head>
 <body>
