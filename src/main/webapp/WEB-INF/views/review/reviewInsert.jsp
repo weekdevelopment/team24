@@ -118,29 +118,6 @@
                         alert("${msg }");
                     };
                 </script>
-<%--                <script>--%>
-<%--                    function bdck(f) {--%>
-<%--                        var review = {--%>
-<%--                            title : $("#title").val(),--%>
-<%--                            content : $("#content").val()--%>
-<%--                        }--%>
-<%--                        $.ajax({--%>
-<%--                            url:"${path2 }/review/bdCheck",	// 제목, 내용이 전송되어질 곳--%>
-<%--                            type:"post",		//전송방식--%>
-<%--                            dataType:"json",	//데이터 반환 방식--%>
-<%--                            data:review,		//전송방식이 post인 경우 객체로 묶어서 전송--%>
-<%--                            success:function(result){--%>
-<%--                                console.log(result);--%>
-<%--                                var bdCk = result;	//true 또는 false를 받음--%>
-<%--                                if(bdCk==false){	// 비속어로 인해 사용할 수 없는 제목 또는 내용--%>
-<%--                                    alert("비속어는 제목 또는 내용으로 사용할 수 없습니다.");--%>
-<%--                                    $("#title").focus()--%>
-<%--                                    return false;--%>
-<%--                                }--%>
-<%--                            }--%>
-<%--                        });--%>
-<%--                    }--%>
-<%--                </script>--%>
             </div>
         </div>
     </div>

@@ -125,12 +125,28 @@ public class ReviewController {
     @PostMapping("edit.do")
     public String reviewEdit(HttpServletRequest request, Model model) throws Exception {
         int no = Integer.parseInt(request.getParameter("no"));
+        String title = request.getParameter("title");
+        String content = request.getParameter("content");
+        String msg = "";
+
         Review domain = new Review();
-        domain.setNo(no);
-        domain.setTitle(request.getParameter("title"));
-        domain.setContent(request.getParameter("content"));
-        reviewService.reviewEdit(domain);
-        return "redirect:list.do";
+
+        BadWordFilter filter = new BadWordFilter();
+
+        if (filter.check(title) || filter.check(content)) {
+            msg = "제목 또는 내용에 비속어를 사용할 수 없습니다.";
+            domain.setTitle(title);
+            domain.setContent(content);
+            model.addAttribute("domain", domain);
+            model.addAttribute("msg", msg);
+            return "/review/reviewEdit";
+        } else {
+            domain.setNo(no);
+            domain.setTitle(title);
+            domain.setContent(content);
+            reviewService.reviewEdit(domain);
+            return "redirect:list.do";
+        }
     }
 
     //ckeditor를 이용한 이미지 업로드
