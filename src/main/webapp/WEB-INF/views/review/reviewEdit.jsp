@@ -111,6 +111,11 @@
             </tbody>
           </table>
         </form>
+        <script>
+          if (${not empty msg } ) {
+            alert("${msg }");
+          };
+        </script>
       </div>
     </div>
   </div>

@@ -6,6 +6,7 @@ import kr.ed.haebeop.service.CommentService;
 import kr.ed.haebeop.service.ReviewService;
 import kr.ed.haebeop.util.BadWordFilter;
 import kr.ed.haebeop.util.Page;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -84,19 +85,19 @@ public class ReviewController {
 
     @PostMapping("insert.do")
     public String reviewInsert(HttpServletRequest request, Model model) throws Exception {
-        String msg = "";
-        String result = "";
-        boolean ckrt = false;
-
-        Review domain = new Review();
         String title = request.getParameter("title");
         String content = request.getParameter("content");
+        String msg = "";
+        Review domain = new Review();
 
         BadWordFilter filter = new BadWordFilter();
 
-        if(filter.check(title) || filter.check(content) ){
-            msg = "제목 또는 내용에 비속어가 포함되어 있습니다.";
-            ckrt = true;
+        if (filter.check(title) || filter.check(content)) {
+            msg = "제목 또는 내용에 비속어를 사용할 수 없습니다.";
+            model.addAttribute("title", title);
+            model.addAttribute("content", content);
+            model.addAttribute("msg", msg);
+            return "/review/reviewInsert";
         } else {
             domain.setTitle(title);
             domain.setContent(content);
@@ -104,7 +105,6 @@ public class ReviewController {
             reviewService.reviewInsert(domain);
             return "redirect:list.do";
         }
-        return "redirect:insert.do";
     }
 
     @GetMapping("delete.do")
@@ -125,12 +125,28 @@ public class ReviewController {
     @PostMapping("edit.do")
     public String reviewEdit(HttpServletRequest request, Model model) throws Exception {
         int no = Integer.parseInt(request.getParameter("no"));
+        String title = request.getParameter("title");
+        String content = request.getParameter("content");
+        String msg = "";
+
         Review domain = new Review();
-        domain.setNo(no);
-        domain.setTitle(request.getParameter("title"));
-        domain.setContent(request.getParameter("content"));
-        reviewService.reviewEdit(domain);
-        return "redirect:list.do";
+
+        BadWordFilter filter = new BadWordFilter();
+
+        if (filter.check(title) || filter.check(content)) {
+            msg = "제목 또는 내용에 비속어를 사용할 수 없습니다.";
+            domain.setTitle(title);
+            domain.setContent(content);
+            model.addAttribute("domain", domain);
+            model.addAttribute("msg", msg);
+            return "/review/reviewEdit";
+        } else {
+            domain.setNo(no);
+            domain.setTitle(title);
+            domain.setContent(content);
+            reviewService.reviewEdit(domain);
+            return "redirect:list.do";
+        }
     }
 
     //ckeditor를 이용한 이미지 업로드
