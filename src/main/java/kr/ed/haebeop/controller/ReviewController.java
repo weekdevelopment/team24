@@ -56,6 +56,7 @@ public class ReviewController {
         model.addAttribute("keyword", keyword);
         model.addAttribute("page", page);
         model.addAttribute("curPage", curPage);
+        model.addAttribute("total", total);
 
         List<Review> reviewList = reviewService.reviewList(page);
         model.addAttribute("reviewList", reviewList);

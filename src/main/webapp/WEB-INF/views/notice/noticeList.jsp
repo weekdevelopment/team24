@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions"%>
-
+<c:set var="path1" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,150 +12,35 @@
     <jsp:include page="../include/head.jsp" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <c:set var="path1" value="<%=request.getContextPath() %>" />
 <%--    <%@ include file="../common.jsp"%>--%>
-    <script src=""></script>
+    <%--<script src=""></script>--%>
 
     <style>
         .breadcrumb a { color: #464646; }
 
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
-        /*
-        *{
-            font-family: 'Nanum Gothic Coding', monospace;
-        } */
 
-        /*
-        .title {
-            font-family: 'Nanum Gothic Coding', monospace;
-            margin-top: 55px;
-            text-align: center;
-            font-weight: 700;
-        } */
-
-        /*
-        .contents {
-            font-family: 'Nanum Gothic Coding', monospace;
-            text-align: center;
-            font-weight: 200;
+        .table {
+            font-size: 1.25rem;
+            border-top: 2px solid #dee2e6;
+            border-bottom: 1px solid #dbdbdb;;
         }
-        */
-
-        .box_wrap {
-            margin-top: 15px;
-            position: relative;
-            max-width: 1280px;
-            min-height: 450px;
+        .table th {
+            white-space: nowrap;
+            background: #eff1f8;
+        }
+        .table td {
+            white-space: nowrap;
+        }
+        .table td, .table th {
+            padding: 0.75em 0.75em;
         }
 
-        .notice-list th:nth-child(1) {
-            width: 12%;
-        }
-
-        .box_wrap {
-            border-top: 2px solid #666;
-        }
-
-        .box_wrap thead th {
-            padding: 15px 5px;
-            border-bottom: 1px solid #d0cfd5;
-            text-align: center;
-        }
-
-
-        .box_wrap tbody td {
-            padding: 15px 5px;
-            border-bottom: 1px solid #d0cfd5;
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        .item2 .al{
-            text-decoration-line: none;
-            color: black;
-            display: block;
-            text-overflow: ellipsis;
-            max-height: 2.8em;
-            line-height: 1;
-            word-wrap: break-word;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            word-break: keep-all;
-        }
-
-        .paginate {
-            list-style-type: none;
-            width: 100%;
-            margin-top: 40px;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .paginate .page-item {
-            margin: 0 5px;
-        }
-
-        .paginate .page-link {
-            display: inline-block;
-            width: 34px;
-            height: 34px;
-            border: 1px solid #ddd;
-            background-color: #f8f9fa;
-            color: #333;
-            font-size: 14px;
-            line-height: 32px;
-            text-align: center;
-            text-decoration: none;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .paginate .page-link:hover {
-            background-color: #333;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        .item1, .item2, .item3 {
-            font-size: 18px;
-        }
-
-        #tb1 { width:980px; margin:40px auto; }
-        #tb1 th { background-color: #00A2FF; color:#fff;  font-size: 20px;}
-        .item1 { width:10%; }
-        .item2 { width:70%; }
+        .item1 { width:6%; }
+        .item2 { width:64%; }
         .item3 { width:10%; }
-        #page-nation1 { width: 960px; margin:20px auto; }
-
-        .item2 .al {
-            text-decoration-line: none;
-            color: black;
-            display: block;
-            text-overflow: ellipsis;
-            max-height: 2.8em;
-            line-height: 1;
-            word-wrap: break-word;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            word-break: keep-all;
-        }
-
-        .button2 {
-            text-decoration: none;
-            border-radius: 20px;
-            margin: 15px;
-            padding: 10px;
-            float: right;
-            background-color: #008CD6;
-            border-color: #008CD6;
-            color: #ffffff;
-        }
+        .item4 { width:10%; }
+        .item5 { width:10%; }
     </style>
 
 </head>
@@ -168,8 +53,9 @@
         <li><a href="${path1}/notice/list.do">공지사항</a></li>
     </ul>
     <p class="title has-text-centered mt-1 mb-2">공지사항</p>
-<%--    <h3 class="contents">일정 및 행사 안내, 이벤트 발표, 채널 등 해법의 커뮤니티 게시판입니다.</h3>--%>
+    <%--    <h3 class="contents">일정 및 행사 안내, 이벤트 발표, 채널 등 해법의 커뮤니티 게시판입니다.</h3>--%>
 </nav>
+
 <div class="container">
     <div class="columns is-multiline mt-1">
         <div class="column is-4">
@@ -198,66 +84,72 @@
                 <a class="button is-link is-medium" href="${path1 }/notice/insert.do">글쓰기</a>
             </c:if>
         </div>
-    </div>
-    <br>
-    <div class="container">
-        <div class="box_wrap">
-            <table class="notice-list" id="tb1">
+
+        <div class="column is-12">
+            <table class="table is-centered is-fullwidth">
                 <thead>
                 <tr>
-                    <th class="item1">번호</th>
-                    <th class="item2">제목</th>
-                    <th class="item3">등록일</th>
+                    <th class="item1">No</th>
+                    <th class="item2 has-text-centered">제목</th>
+                    <th class="item3 has-text-centered">등록일</th>
+                    <th class="item4 has-text-centered">작성자</th>
+                    <th class="item5 has-text-centered">조회수</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach var="noti" items="${noticeList }" varStatus="status">
                     <tr>
-                        <%--<td class="item1">${status.count + ((curPage - 1) * page.postCount) }</td>--%>
-                            <td class="item1">${total - ((curPage - 1) * page.postCount + status.index) }</td>
-                        <td class="item2">
+                            <%--<td class="item1">${status.count + ((curPage - 1) * page.postCount) }</td>--%>
+                        <td>${total - ((curPage - 1) * page.postCount + status.index) }</td>
+                        <td>
                             <a href="${path1 }/notice/detail.do?no=${noti.no }" class="al">${noti.title }</a>
                         </td>
-                        <td class="item3">${noti.resdate }</td>
+                        <fmt:parseDate value="${noti.resdate}" pattern="yyyy-MM-dd" var="formattedDate" />
+                        <td class="has-text-centered"><fmt:formatDate value="${formattedDate }" pattern="yyyy.MM.dd"/></td>
+                        <td class="has-text-centered">관리자</td>
+                        <td class="has-text-centered">${noti.visit }</td>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
-
-<%--            <c:if test= "${sid.equals('admin')}">--%>
-<%--            <div class="button-group">--%>
-<%--                <a class="button2" href="${path1 }/notice/insert.do">글쓰기</a>--%>
-<%--            </div>--%>
-<%--            </c:if>--%>
         </div>
     </div>
-    <nav class="pagination is-rounded is-centered mb-6" role="navigation" aria-label="pagination">
-        <c:if test="${curPage > page.pageCount }">
-            <a href="${path1 }/notice/list.do?page=${page.blockStartNum - 1 }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-previous">Previous</a>
-        </c:if>
-        <c:if test="${page.blockLastNum < page.totalPageCount }">
-            <a href="${path1 }/notice/list.do?page=${page.blockLastNum + 1 }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-next">Next page</a>
-        </c:if>
+    <br>
+    <%--<div class="container">
+        &lt;%&ndash;<div class="columns">
+            <div class="column is-10 is-offset-1">
+            </div>
+            <div class="column is-1"></div>
+        </div>&ndash;%&gt;
+    </div>--%>
+</div>
 
-        <ul class="pagination-list">
-            <c:forEach var="i" begin="${page.blockStartNum }" end="${page.blockLastNum }">
-                <c:choose>
-                    <c:when test="${i == curPage }">
-                        <li>
-                            <a href="${path1 }/notice/list.do?page=${i }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-link is-current" aria-label="Page ${i }" aria-current="page" >${i }</a>
-                        </li>
-                    </c:when>
-                    <c:otherwise>
-                        <li>
-                            <a href="${path1 }/notice/list.do?page=${i }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-link" aria-label="Page ${i }" aria-current="page">${i }</a>
-                        </li>
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>
-        </ul>
-    </nav>
-</div>
+<nav class="pagination is-rounded is-centered mb-6" role="navigation" aria-label="pagination">
+    <c:if test="${curPage > page.pageCount }">
+        <a href="${path1 }/notice/list.do?page=${page.blockStartNum - 1 }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-previous">Previous</a>
+    </c:if>
+    <c:if test="${page.blockLastNum < page.totalPageCount }">
+        <a href="${path1 }/notice/list.do?page=${page.blockLastNum + 1 }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-next">Next page</a>
+    </c:if>
+
+    <ul class="pagination-list">
+        <c:forEach var="i" begin="${page.blockStartNum }" end="${page.blockLastNum }">
+            <c:choose>
+                <c:when test="${i == curPage }">
+                    <li>
+                        <a href="${path1 }/notice/list.do?page=${i }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-link is-current" aria-label="Page ${i }" aria-current="page" >${i }</a>
+                    </li>
+                </c:when>
+                <c:otherwise>
+                    <li>
+                        <a href="${path1 }/notice/list.do?page=${i }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-link" aria-label="Page ${i }" aria-current="page">${i }</a>
+                    </li>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
+    </ul>
+</nav>
+
 <jsp:include page="../include/footer.jsp"></jsp:include>
-</div>
 </body>
 </html>

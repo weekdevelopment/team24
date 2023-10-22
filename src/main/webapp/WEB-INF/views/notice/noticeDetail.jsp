@@ -27,16 +27,6 @@
     font-family: 'Nanum Gothic Coding', monospace;
   } */
 
-
-  .h2{
-    font-family: 'Nanum Gothic Coding', monospace;
-    font-weight: 400;
-    line-height: 110px;
-    text-align: center;
-    font-size: 1.75em;
-    margin-bottom: 0.5714em;
-  }
-
   .content h2 {
     line-height: 120px;
     font-size: 1.75em;
@@ -65,11 +55,15 @@
     color: #ffffff;
   }
 
+  .single-blog-item {
+    min-height: 35vh;
+  }
 </style>
 
 <body>
 <!-- 헤더 부분 인클루드 -->
-<jsp:include page="../include/header.jsp"></jsp:include>
+<jsp:include page="../include/header.jsp" />
+
 <nav class="breadcrumb has-succeeds-separator is-medium is-right mt-3 p-4" style="background: #f1f4f9" aria-label="breadcrumbs">
   <ul class="mr-5">
     <li><a href="${path1}"><i class="xi-home is-size-3"></i></a></li>
@@ -78,47 +72,34 @@
   </ul>
   <p class="title has-text-centered mt-1 mb-2">공지사항</p>
 </nav>
-<div class="container is-fullhd">
-  <div class="content" id="contents">
-    <div class="row column1 text-center" style="margin-bottom: 80px;">
-      <h2 class="h2">${domain.title}</h2>
-      <hr>
-      <div class="container">
-        <table id="table1">
-          <tbody>
-          <tr>
-            <th style="text-align: center;background-color:#dcdcdc">내용</th>
-            <td class="p" style="text-align: center;"><p>${domain.content }</p></td>
-          </tr>
-          <tr>
-            <th style="text-align: center;background-color:#dcdcdc">작성일</th>
-            <td class="p" style="text-align: center;">${domain.resdate }</td>
-          </tr>
-          <tr>
-            <th style="text-align: center;background-color:#dcdcdc">조회수</th>
-            <td class="p" style="text-align: center;">${domain.visit }</td>
-          </tr>
-          </tbody>
-        </table>
 
-        <div class="button" style="float: right; ">
-          <a href="${path1 }/notice/list.do" class="button">목록으로</a>
-        </div>
+<div class="container">
+  <div class="columns is-multiline mt-1">
+    <div class="column is-12 mb-5">
+      <div class="single-blog-item">
+        <div class="blog-item-content ml-6 mt-3">
+          <%--<h2 class="mt-4">A place where start new life with peace</h2>--%>
+          <p class="is-size-3 has-text-black has-text-weight-semibold mt-1">${domain.title }</p>
 
-
-        <c:if test= "${sid.equals('admin')}">
-          <div class="button-group">
-<%--            <a class="button" href="${path1 }/notice/list.do">목록으로</a>--%>
-            <a class="button3" href="${path1 }/notice/delete.do?no=${domain.no}">삭제</a>
-            <a class="button3" href="${path1 }/notice/edit.do?no=${domain.no}">수정</a>
+          <div class="blog-item-meta py-2 mb-4">
+            <span class="is-size-5 mr-3">작성자
+              <span class="is-size-5 has-text-grey ml-1">관리자</span>
+            </span> |
+            <span class="is-size-5 mx-3">작성일
+              <span class="is-size-5 has-text-grey ml-1">${domain.resdate }</span>
+            </span> |
+            <span class="is-size-5 mx-3">조회수
+              <span class="is-size-5 has-text-grey ml-1">${domain.visit }</span>
+            </span>
           </div>
-        </c:if>
-
+          <hr>
+          <p class="is-size-5 mb-4 has-text-weight-normal text-black">${domain.content }</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
 <!-- 푸터 부분 인클루드 -->
-<jsp:include page="../include/footer.jsp"></jsp:include>
+<jsp:include page="../include/footer.jsp" />
 </body>
 </html>

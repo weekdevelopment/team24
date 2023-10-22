@@ -54,7 +54,7 @@ public class CourseController {
         model.addAttribute("curPage", curPage);
 
         List<Course> courseList = courseService.getCourseList(page);
-        System.out.println("courseList : " + courseList);
+        /*System.out.println("courseList : " + courseList);*/
         model.addAttribute("courseList", courseList);
         return "/course/courseList";
     }
