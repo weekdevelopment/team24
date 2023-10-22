@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path1" value="<%=request.getContextPath()%>" />
+<c:set var="path2" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -84,19 +85,19 @@
             <%--<h2 class="h2">후기 남기기</h2>
             <hr>--%>
             <div class="container">
-                <form action="${path1 }/review/insert.do" method="post" onsubmit="return ckbad(this)">
+                <form action="${path1 }/review/insert.do" method="post" >
                     <table id="table1">
                         <tbody>
                         <tr>
                             <th style="background-color:#dcdcdc">제목</th>
                             <td>
-                                <input type="text" name="title" id="title" class="input" placeholder="제목 입력" maxlength="98" required>
+                                <input type="text" name="title" id="title" class="input" value="${title }" placeholder="제목 입력" maxlength="98" required>
                             </td>
                         </tr>
                         <tr>
                             <th style="background-color:#dcdcdc">내용</th>
                             <td>
-                                <textarea name="content" id="content" class="textarea" placeholder="내용 입력" rows="8" cols="100" maxlength="1400" required></textarea>
+                                <textarea name="content" id="content" class="textarea" placeholder="내용 입력" rows="8" cols="100" maxlength="1400" required>${content }</textarea>
                                 <script>
                                     CKEDITOR.replace('content',	{filebrowserUploadUrl:'${path1}/review/imageUpload.do'});
                                 </script>
@@ -112,6 +113,34 @@
                         </tbody>
                     </table>
                 </form>
+                <script>
+                    if (${not empty msg } ) {
+                        alert("${msg }");
+                    };
+                </script>
+<%--                <script>--%>
+<%--                    function bdck(f) {--%>
+<%--                        var review = {--%>
+<%--                            title : $("#title").val(),--%>
+<%--                            content : $("#content").val()--%>
+<%--                        }--%>
+<%--                        $.ajax({--%>
+<%--                            url:"${path2 }/review/bdCheck",	// 제목, 내용이 전송되어질 곳--%>
+<%--                            type:"post",		//전송방식--%>
+<%--                            dataType:"json",	//데이터 반환 방식--%>
+<%--                            data:review,		//전송방식이 post인 경우 객체로 묶어서 전송--%>
+<%--                            success:function(result){--%>
+<%--                                console.log(result);--%>
+<%--                                var bdCk = result;	//true 또는 false를 받음--%>
+<%--                                if(bdCk==false){	// 비속어로 인해 사용할 수 없는 제목 또는 내용--%>
+<%--                                    alert("비속어는 제목 또는 내용으로 사용할 수 없습니다.");--%>
+<%--                                    $("#title").focus()--%>
+<%--                                    return false;--%>
+<%--                                }--%>
+<%--                            }--%>
+<%--                        });--%>
+<%--                    }--%>
+<%--                </script>--%>
             </div>
         </div>
     </div>
