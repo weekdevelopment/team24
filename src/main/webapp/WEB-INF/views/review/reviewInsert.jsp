@@ -25,8 +25,7 @@
         font-family: 'Nanum Gothic Coding', monospace;
     } */
 
-
-    .h2{
+/*    .h2{
         font-family: 'Nanum Gothic Coding', monospace;
         font-weight: 400;
         line-height: 110px;
@@ -63,6 +62,11 @@
         flex-grow: 1;
         flex-shrink: 1;
         padding: 0.75rem;
+    }*/
+
+    .table th {
+        white-space: nowrap;
+        vertical-align: middle;
     }
 </style>
 
@@ -74,15 +78,15 @@
         <li><a href="${path1}"><i class="xi-home is-size-3"></i></a></li>
         <li><a>커뮤니티</a></li>
         <li><a href="${path1}/review/list.do">후기</a></li>
-        <li><a href="${path1}/review/insert.do">후기 남기기</a></li>
+        <li><a href="${path1}/review/insert.do">후기 등록</a></li>
     </ul>
-    <p class="title has-text-centered mt-1 mb-2">후기 남기기</p>
+    <p class="title has-text-centered mt-1 mb-2">후기</p>
 </nav>
-<div class="container is-fullhd">
+<%--<div class="container is-fullhd">
     <div class="content" id="contents">
         <div class="row column1 text-center">
-            <%--<h2 class="h2">후기 남기기</h2>
-            <hr>--%>
+            &lt;%&ndash;<h2 class="h2">후기 남기기</h2>
+            <hr>&ndash;%&gt;
             <div class="container">
                 <form action="${path1 }/review/insert.do" method="post" onsubmit="return ckbad(this)">
                     <table id="table1">
@@ -115,7 +119,40 @@
             </div>
         </div>
     </div>
+</div>--%>
+
+<div class="container">
+    <div class="columns">
+        <div class="column is-10 is-offset-1">
+            <form action="${path1 }/review/insert.do" method="post" onsubmit="return ckbad(this)">
+                <table class="table is-centered is-fullwidth">
+                    <tbody>
+                    <tr class="border-top">
+                        <th class="has-text-centered">제목</th>
+                        <td>
+                            <input type="text" name="title" id="title" class="input" placeholder="제목 입력" maxlength="98" required>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th class="has-text-centered">내용</th>
+                        <td>
+                            <textarea name="content" id="content" class="textarea" placeholder="내용 입력" rows="8" cols="100" maxlength="1400" required></textarea>
+                            <script>
+                                CKEDITOR.replace('content',	{filebrowserUploadUrl:'${path1}/review/imageUpload.do'});
+                            </script>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="has-text-centered">
+                    <button type="submit" class="button is-link mb-5 p-5" style="border-radius: 1.5rem;">등록하기</button>
+                </div>
+            </form>
+        </div>
+        <div class="column is-1"></div>
+    </div>
 </div>
+
 <!-- 푸터 부분 인클루드 -->
 <jsp:include page="../include/footer.jsp"></jsp:include>
 </body>

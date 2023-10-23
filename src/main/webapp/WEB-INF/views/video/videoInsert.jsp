@@ -43,36 +43,36 @@
         <li><a href="${path1}/video/list.do">시범강의</a></li>
         <li><a href="${path1}/video/insert.do">영상 업로드</a></li>
     </ul>
-    <p class="title has-text-centered mt-1 mb-2">시범 강의 업로드</p>
+    <p class="title has-text-centered mt-1 mb-2">시범강의</p>
 </nav>
 
 <div class="container">
     <div class="columns">
-        <div class="column is-8 is-offset-2">
+        <div class="column is-10 is-offset-1">
             <form action="${path1 }/video/insert.do" method="post" enctype="multipart/form-data">
                 <table class="table is-centered is-fullwidth">
                     <tbody>
                     <tr class="border-top">
-                        <th>제목</th>
+                        <th class="has-text-centered">제목</th>
                         <td>
                             <input type="text" name="title" id="title" class="input" placeholder="제목" maxlength="98" required>
                         </td>
                     </tr>
                     <tr>
-                        <th>이미지</th>
+                        <th class="has-text-centered">이미지</th>
                         <td>
                             <input type="file" name="img" id="img" class="input" placeholder="이미지" required>
                         </td>
                     </tr>
                     <tr>
-                        <th>영상</th>
+                        <th class="has-text-centered">영상</th>
                         <td>
                             <input type="file" name="videofile" id="videofile" class="input" accept="video/mp4,video/mkv, video/x-m4v,video/*" placeholder="영상" required>
                             <%--<video id="video"></video>--%>
                         </td>
                     </tr>
                     <tr>
-                        <th>내용</th>
+                        <th class="has-text-centered">내용</th>
                         <td>
                             <textarea name="content" id="content" class="textarea" placeholder="내용 입력" rows="8" cols="100" maxlength="1400" required></textarea>
                             <script>
@@ -81,7 +81,7 @@
                         </td>
                     </tr>
                     <tr class="border-bottom">
-                        <th>선생님</th>
+                        <th class="has-text-centered">선생님</th>
                         <td>
                             <input type="text" name="teacher" id="teacher" class="input" placeholder="선생님" maxlength="98" style="width: 13.6rem;" required>
                         </td>
@@ -94,10 +94,12 @@
                     </tr>--%>
                     </tbody>
                 </table>
-                <button type="submit" class="button is-link mb-5">등록</button>
+                <div class="has-text-centered">
+                    <button type="submit" class="button is-link mb-5 p-5" style="border-radius: 1.5rem;">등록하기</button>
+                </div>
             </form>
         </div>
-        <div class="column is-2"></div>
+        <div class="column is-1"></div>
     </div>
 </div>
 
