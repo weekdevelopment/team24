@@ -171,7 +171,7 @@
                     <tr class="border-bottom">
                         <th class="has-text-centered">파일</th>
                         <td>
-                            <p class="has-text-black">파일 첨부</p>
+                            <%--<p class="has-text-black">파일 첨부</p>--%>
                             <div class="control">
                                 <label for="file1" class="file-label">
                                     <span style="padding: 5px; margin: 5px">파일1 : </span>
