@@ -74,47 +74,7 @@
     </ul>
     <p class="title has-text-centered mt-1 mb-2">공지사항</p>
 </nav>
-<%--
-<div class="container is-fullhd">
-    <div class="content" id="contents">
-        <div class="row column1 text-center">
-            &lt;%&ndash;<h2 class="h2">공지사항 글 등록</h2>
-            <hr>&ndash;%&gt;
-            <div class="container">
-                <form action="${path1 }/notice/insert.do" method="post">
-                    <input type="hidden" name="site" value="${site}" />
-                    <table id="table1">
-                        <tbody>
-                        <tr>
-                            <th style="background-color:#dcdcdc">제목</th>
-                            <td>
-                                <input type="text" name="title" id="title" class="input" placeholder="제목 입력" maxlength="98" required>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th style="background-color:#dcdcdc">내용</th>
-                            <td>
-                                <textarea name="content" id="content" class="textarea" placeholder="내용 입력" rows="8" cols="100" maxlength="1400" required></textarea>
-                                <script>
-                                    CKEDITOR.replace('content',	{filebrowserUploadUrl:'${path1}/notice/imageUpload.do'});
-                                </script>
-                            </td>
-                        </tr>
 
-                        <tr>
-                            <td colspan="2">
-                                <input type="submit" class="button2" value="등록" >
-                                <a class="button" href="${path1 }/notice/list.do">목록으로</a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
---%>
 <div class="container">
     <div class="columns">
         <div class="column is-10 is-offset-1">

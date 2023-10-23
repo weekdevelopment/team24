@@ -26,7 +26,6 @@
         *{
             font-family: "Montserrat", sans-serif;
         }
-        .
         .card-header { font-size: 1.2em; font-family: "Nanum Gothic Coding"; font-weight: bolder; color:#00A2FF; margin-top:20px; margin-bottom: 20px; }
         .table td, .table th { font-size: 0.8em; }
         .hero.welcome .title, .hero.welcome .subtitle { font-family: "Nanum Gothic Coding";  }
@@ -75,7 +74,7 @@
             <div class="columns">
                 <div class="column is-6">
                     <header class="card-header">
-                        「 수강신청 관리 」
+                        「 철회목록 관리 」
                     </header>
                     <form action="${path1 }/admin/cancelList" method="get" class="field has-addons has-addons-right">
                         <p class="control">
