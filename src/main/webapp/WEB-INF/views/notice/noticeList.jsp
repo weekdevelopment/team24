@@ -81,7 +81,7 @@
                 <a class="button is-link" href="${path1 }/video/insert.do">영상 올리기</a>
             </c:if>--%>
             <c:if test= "${sid.equals('admin')}">
-                <a class="button is-link is-medium" href="${path1 }/notice/insert.do">글쓰기</a>
+                <a class="button is-link is-medium" href="${path1 }/notice/insert.do?site=user" >글쓰기</a>
             </c:if>
         </div>
 

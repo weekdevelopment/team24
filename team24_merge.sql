@@ -1,5 +1,7 @@
 USE haebeop;
 
+DROP TABLE USER;
+
 create TABLE USER(
 id VARCHAR(20) PRIMARY KEY,
 pw VARCHAR(350) NOT NULL,
@@ -97,6 +99,9 @@ INSERT INTO USER VALUES ('ahn198', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6r
 
 
 -- 강사 - 강사코드, 강사명, 연락처, 이메일
+
+DROP TABLE teacher;
+
 CREATE TABLE teacher (
 	tid VARCHAR(50) PRIMARY KEY,
 	teacher_name VARCHAR(50) NOT NULL,
@@ -105,8 +110,6 @@ CREATE TABLE teacher (
 );
 
 INSERT INTO teacher VALUES("park", "박정우", "01012341234", "park@academy.com");
-
-
 
 CREATE TABLE course (
 	cno INT AUTO_INCREMENT PRIMARY KEY, -- 강의 코드
@@ -752,6 +755,56 @@ DEFAULT
 );
 
 SELECT * FROM faq;
+
+DROP TABLE comment;
+
+CREATE TABLE COMMENT(
+dno INT PRIMARY KEY AUTO_INCREMENT, -- 댓글 번호
+author VARCHAR(20) NOT NULL, -- 댓글 작성자
+content VARCHAR(500) NOT NULL, -- 댓글 내용
+regdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 댓글 등록일
+par INT(10) NOT NULL -- 해당 후기 번호
+);
+
+INSERT INTO comment VALUES(
+DEFAULT,
+'seo',
+'좋은 정보 감사합니다!',
+DEFAULT,
+'6'
+);
+
+INSERT INTO comment VALUES(
+DEFAULT,
+'leeeunyoung',
+'우왕~ 참고할게욧!',
+DEFAULT,
+'6'
+);
+
+INSERT INTO comment VALUES(
+DEFAULT,
+'leesoyoon',
+'스마트해법 짱ㅋ',
+DEFAULT,
+'6'
+);
+
+INSERT INTO comment VALUES(
+DEFAULT,
+'han',
+'허허,,, 그렇군요,,,',
+DEFAULT,
+'6'
+);
+
+INSERT INTO comment VALUES(
+DEFAULT,
+'oh',
+'엥',
+DEFAULT,
+'6'
+);
 
 
 CREATE TABLE fileinfo(

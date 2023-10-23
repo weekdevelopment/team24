@@ -82,6 +82,7 @@
             <hr>&ndash;%&gt;
             <div class="container">
                 <form action="${path1 }/notice/insert.do" method="post">
+                    <input type="hidden" name="site" value="${site}" />
                     <table id="table1">
                         <tbody>
                         <tr>
