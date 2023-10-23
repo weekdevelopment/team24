@@ -21,127 +21,28 @@
 
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
 
-        /*
-        *{
-            font-family: 'Nanum Gothic Coding', monospace;
-        } */
-
-        /*
-        .title {
-            font-family: 'Nanum Gothic Coding', monospace;
-            margin-top: 55px;
-            text-align: center;
-            font-weight: 700;
+        .table {
+            font-size: 1.25rem;
+            border-top: 2px solid #dee2e6;
+            border-bottom: 1px solid #dbdbdb;;
         }
-        */
-
-        .contents {
-            font-family: 'Nanum Gothic Coding', monospace;
-            text-align: center;
-            font-weight: 200;
+        .table th {
+            white-space: nowrap;
+            background: #eff1f8;
         }
-
-        .box_wrap {
-            margin-top: 15px;
-            position: relative;
-            max-width: 1280px;
-            min-height: 450px;
+        .table td {
+            white-space: nowrap;
         }
-
-        .review-list th:nth-child(1) {
-            width: 12%;
-        }
-
-        .box_wrap {
-            border-top: 2px solid #666;
-        }
-
-        .box_wrap thead th {
-            padding: 15px 5px;
-            border-bottom: 1px solid #d0cfd5;
-            text-align: center;
+        .table td, .table th {
+            padding: 0.75em 0.75em;
         }
 
 
-        .box_wrap tbody td {
-            padding: 15px 5px;
-            border-bottom: 1px solid #d0cfd5;
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        .item2 .al{
-            text-decoration-line: none;
-            color: black;
-            display: block;
-            text-overflow: ellipsis;
-            max-height: 2.8em;
-            line-height: 1;
-            word-wrap: break-word;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            word-break: keep-all;
-        }
-
-        .paginate {
-            list-style-type: none;
-            width: 100%;
-            margin-top: 40px;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .paginate .page-item {
-            margin: 0 5px;
-        }
-
-        .paginate .page-link {
-            display: inline-block;
-            width: 34px;
-            height: 34px;
-            border: 1px solid #ddd;
-            background-color: #f8f9fa;
-            color: #333;
-            font-size: 14px;
-            line-height: 32px;
-            text-align: center;
-            text-decoration: none;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .paginate .page-link:hover {
-            background-color: #333;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        .item1, .item2, .item3 {
-            font-size: 18px;
-        }
-
-        .button2 {
-            text-decoration: none;
-            border-radius: 20px;
-            margin: 15px;
-            padding: 10px;
-            float: right;
-            background-color: #008CD6;
-            border-color: #008CD6;
-            color: #ffffff;
-        }
-
-        #tb1 { width:980px; margin:40px auto; }
-        #tb1 th { background-color: #00A2FF; color:#fff; font-size: 20px;}
-        .item1 { width:10%; }
-        .item2 { width:65%; }
+        .item1 { width:6%; }
+        .item2 { width:64%; }
         .item3 { width:10%; }
-        .item4 { width:30%; }
-        #page-nation1 { width: 960px; margin:20px auto; }
-
+        .item4 { width:10%; }
+        .item5 { width:10%; }
     </style>
 
 </head>
@@ -156,10 +57,11 @@
     <p class="title has-text-centered mt-1 mb-2">후기</p>
 <%--    <h3 class="contents">해법의 장점과 특히 만족과 함께 성적 향상을 경험한 학생들의 솔직한 수업만족도 체험수기입니다.</h3>--%>
 </nav>
+
 <div class="container">
-    <div class="columns is-multiline mt-1">
+    <div class="columns is-multiline mt-1 mx-5">
         <div class="column is-4">
-            <form action="${path1 }/review/list.do" method="get" class="field has-addons">
+            <form action="${path1 }/notice/list.do" method="get" class="field has-addons">
                 <p class="control">
                 <span class="select">
                     <select id="type" name="type">
@@ -176,7 +78,7 @@
                 </p>
             </form>
         </div>
-        <div class="column is-2 is-offset-6 has-text-centered">
+        <div class="column is-2 is-offset-6 has-text-right">
             <c:choose>
                 <c:when test="${not empty sid }">
                     <a class="button is-link is-medium" href="${path1 }/review/insert.do">글쓰기</a>
@@ -186,43 +88,50 @@
                 </c:otherwise>
             </c:choose>
         </div>
-    </div>
-    <br>
-    <div class="container">
-        <div class="box_wrap">
-            <table class="review-list" id="tb1">
+
+        <div class="column is-12">
+            <table class="table is-centered is-fullwidth">
                 <thead>
                 <tr>
-                    <th class="item1">번호</th>
-                    <th class="item2">제목</th>
-                    <th class="item3">작성자</th>
-                    <th class="item4">등록일</th>
+                    <th class="item1">No</th>
+                    <th class="item2 has-text-centered">제목</th>
+                    <th class="item3 has-text-centered">등록일</th>
+                    <th class="item4 has-text-centered">작성자</th>
+                    <th class="item5 has-text-centered">조회수</th>
                 </tr>
                 </thead>
                 <tbody>
+                <%--<c:forEach var="noti" items="${noticeList }" varStatus="status">
+                    <tr>
+                        <td>${total - ((curPage - 1) * page.postCount + status.index) }</td>
+                        <td>
+                            <a href="${path1 }/notice/detail.do?no=${noti.no }" class="al">${noti.title }</a>
+                        </td>
+                        <fmt:parseDate value="${noti.resdate}" pattern="yyyy-MM-dd" var="formattedDate" />
+                        <td class="has-text-centered"><fmt:formatDate value="${formattedDate }" pattern="yyyy.MM.dd"/></td>
+                        <td class="has-text-centered">관리자</td>
+                        <td class="has-text-centered">${noti.visit }</td>
+                    </tr>
+                </c:forEach>--%>
                 <c:forEach var="review" items="${reviewList }" varStatus="status">
                     <tr>
-                        <td class="item1">${status.count + ((curPage - 1) * page.postCount) }</td>
-                        <td class="item2">
+                        <td>${total - ((curPage - 1) * page.postCount + status.index) }</td>
+                        <td>
                             <a href="${path1 }/review/detail.do?no=${review.no }" class="al">${review.title }</a>
                         </td>
-                        <td class="item3">${review.id }</td>
-                        <td class="item4">${review.resdate }</td>
+                        <fmt:parseDate value="${review.resdate}" pattern="yyyy-MM-dd" var="formattedDate" />
+                        <td class="has-text-centered"><fmt:formatDate value="${formattedDate }" pattern="yyyy.MM.dd"/></td>
+                        <td class="has-text-centered">${review.id }</td>
+                        <td class="has-text-centered">${review.visit }</td>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
         </div>
-        <%--<c:choose>
-            <c:when test="${not empty sid }">
-                <a class="button is-link" href="${path1 }/review/insert.do">글쓰기</a>
-            </c:when>
-            <c:otherwise>
-                <a class="button is-link" href="javascript:checkLogin()">글쓰기</a>
-            </c:otherwise>
-        </c:choose>--%>
     </div>
+    <br>
 </div>
+
 <nav class="pagination is-rounded is-centered mb-6" role="navigation" aria-label="pagination">
     <c:if test="${curPage > page.pageCount }">
         <a href="${path1 }/review/list.do?page=${page.blockStartNum - 1 }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-previous">Previous</a>

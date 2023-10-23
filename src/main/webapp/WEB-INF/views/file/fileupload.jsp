@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>수정</title>
+    <title>자료실</title>
     <!-- 헤드 부분 인클루드 -->
     <jsp:include page="../include/head.jsp" />
     <script type="text/javascript" src="${path1 }/resources/ckeditor/ckeditor.js"></script>
@@ -19,10 +19,20 @@
 
     @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
     /* *{font-family: 'Nanum Gothic Coding', monospace;} */
-    .h2{font-weight: 400;line-height: 110px;text-align: center;font-size: 1.75em;margin-bottom: 0.5714em;}
+    /*.
+    h2{font-weight: 400;line-height: 110px;text-align: center;font-size: 1.75em;margin-bottom: 0.5714em;}
     .button {text-decoration: none;border-radius: 20px;margin: 15px;padding: 10px;float: right;background-color: #008CD6;border-color: #008CD6;color: #ffffff;}
     .button3 {text-decoration: none;border-radius: 20px;margin: 15px;padding: 10px;float: right;background-color: #FF968A;border-color: #FF968A;color: #ffffff;}
     .column1 {text-align: center;display: block;flex-basis: 0;flex-grow: 1;flex-shrink: 1;padding: 0.75rem;}
+    */
+
+    .table th {
+        white-space: nowrap;
+        vertical-align: middle;
+    }
+    .table input[type="file"] {
+        width: 28rem;
+    }
 </style>
 <body>
 <!-- 헤더 부분 인클루드 -->
@@ -31,15 +41,17 @@
     <ul class="mr-5">
         <li><a href="${path1}"><i class="xi-home is-size-3"></i></a></li>
         <li><a>자료실</a></li>
-        <li><a href="${path1}/file/list.do">파일 자료 등록하기</a></li>
+        <li><a href="${path1}/file/list.do">파일 자료 등록</a></li>
     </ul>
-
+    <p class="title has-text-centered mt-1 mb-2">자료실</p>
 </nav>
-<div class="container is-fullhd">
+
+
+<%--<div class="container is-fullhd">
     <div class="content" id="contents">
         <div class="row column1 text-center">
-            <%--<h2 class="h2">파일 자료 등록하기</h2>
-            <hr>--%>
+            &lt;%&ndash;<h2 class="h2">파일 자료 등록하기</h2>
+            <hr>&ndash;%&gt;
             <div class="container">
                 <form enctype="multipart/form-data" method="post" action="${path1}/file/fileupload1.do">
                     <table id="table1">
@@ -133,7 +145,107 @@
             </div>
         </div>
     </div>
+</div>--%>
+<div class="container">
+    <div class="columns">
+        <div class="column is-10 is-offset-1">
+            <form enctype="multipart/form-data" method="post" action="${path1}/file/fileupload1.do">
+                <table class="table is-centered is-fullwidth">
+                    <tbody>
+                    <tr class="border-top">
+                        <th class="has-text-centered">제목 </th>
+                        <td>
+                            <input type="hidden" name="no" id="no" value="${fileboard.fileBoard.title}">
+                            <input type="text" name="title" id="title" class="input" placeholder="제목" value="${fileboard.fileBoard.title}" maxlength="98" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="has-text-centered">내용</th>
+                        <td>
+                            <textarea name="content" class="textarea" id="content" placeholder="내용" rows="8" cols="100" maxlength="800" required>${fileboard.fileBoard.content}</textarea>
+                            <script>
+                                CKEDITOR.replace('content',	{filebrowserUploadUrl:'${path1}/file/imageUpload.do'});
+                            </script>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th class="has-text-centered">파일</th>
+                        <td>
+                            <p class="has-text-black">파일 첨부</p>
+                            <div class="control">
+                                <label for="file1" class="file-label">
+                                    <span style="padding: 5px; margin: 5px">파일1 : </span>
+                                    <input type="file" name="file1" id="file1" class="file-input" required>
+                                    <span class="file-cta">
+                                                <span class="file-icon">
+                                                    <i class="fas fa-upload"></i>
+                                                </span>
+                                                <span class="file-label">
+                                                    <span id="file1Name">파일을 첨부해주세요</span>
+                                                </span>
+                                            </span>
+                                </label>
+                            </div>
+                            <div class="control">
+                                <label for="file2" class="file-label">
+                                    <span style="padding: 5px; margin: 5px">파일2 : </span>
+                                    <input type="file" name="file2" id="file2" class="file-input" required>
+                                    <span class="file-cta">
+                                                    <span class="file-icon">
+                                                        <i class="fas fa-upload"></i>
+                                                    </span>
+                                                <span class="file-label">
+                                                    <span id="file2Name">파일을 첨부해주세요</span>
+                                                </span>
+                                            </span>
+                                </label>
+                            </div>
+                            <div class="control">
+                                <label for="file3" class="file-label">
+                                    <span style="padding: 5px; margin: 5px">파일3 : </span>
+                                    <input type="file" name="file3" id="file3" class="file-input" required>
+                                    <span class="file-cta">
+                                                    <span class="file-icon">
+                                                        <i class="fas fa-upload"></i>
+                                                    </span>
+                                                <span class="file-label">
+                                                    <span id="file3Name">파일을 첨부해주세요</span>
+                                                </span>
+                                            </span>
+                                </label>
+                                <script>
+                                    document.getElementById('file1').addEventListener('change', function () {
+                                        document.getElementById('file1Name').textContent = this.files[0].name;
+                                    });
+
+                                    document.getElementById('file2').addEventListener('change', function () {
+                                        document.getElementById('file2Name').textContent = this.files[0].name;
+                                    });
+
+                                    document.getElementById('file3').addEventListener('change', function () {
+                                        document.getElementById('file3Name').textContent = this.files[0].name;
+                                    });
+                                </script>
+                            </div>
+                        </td>
+                    </tr>
+                    <%--<tr>
+                        <td colspan="2">
+                            <input type="submit" class="button3" value="파일업로드" >
+                            <a class="button" href="${path1 }/file/list.do">목록으로</a>
+                        </td>
+                    </tr>--%>
+                    </tbody>
+                </table>
+                <div class="has-text-centered">
+                    <button type="submit" class="button is-link mb-5 p-5" style="border-radius: 1.5rem;">등록하기</button>
+                </div>
+            </form>
+        </div>
+        <div class="column is-1"></div>
+    </div>
 </div>
+
 <!-- 푸터 부분 인클루드 -->
 <jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
