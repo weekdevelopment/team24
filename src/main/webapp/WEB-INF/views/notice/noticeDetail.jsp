@@ -45,6 +45,10 @@
     color: black;
     font-size: 1.25rem;
   }
+
+  .btns .button {
+      width: 6rem;
+  }
 </style>
 
 <body>
@@ -85,15 +89,26 @@
                     </p>
                 </div>
             </div>
-            <div class="has-text-centered">
-                <c:if test="${sid.equals('admin')}">
+            <div class="btns has-text-centered">
+                <%--<c:if test="${sid.equals('admin')}">
                     <a class="button is-info mx-1" href="${path1 }/notice/edit.do?no=${domain.no}">수정</a>
                     <a class="button is-danger mx-1" href="${path1 }/notice/delete.do?no=${domain.no}">삭제</a>
-                </c:if>
+                </c:if>--%>
+                <c:choose>
+                    <c:when test="${sid.equals('admin')}">
+                        <a class="button mx-1" style="background-color: #2B3A55; color: #fff;" href="${path1 }/notice/list.do">목록</a>
+                        <a class="button is-info mx-1" href="${path1 }/notice/edit.do?no=${domain.no}">수정</a>
+                        <a class="button is-danger mx-1" href="${path1 }/notice/delete.do?no=${domain.no}">삭제</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a class="button mx-1" style="background-color: #2B3A55; color: #fff;" href="${path1 }/file/list.do" href="${path1 }/notice/list.do">목록</a>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
     </div>
 </div>
+
 <!-- 푸터 부분 인클루드 -->
 <jsp:include page="../include/footer.jsp" />
 </body>

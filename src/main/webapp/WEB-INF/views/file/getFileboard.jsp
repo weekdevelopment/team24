@@ -84,6 +84,10 @@
         color: black;
         font-size: 1.25rem;
     }
+
+    .btns .button {
+        width: 6rem;
+    }
 </style>
 
 <body>
@@ -97,67 +101,6 @@
     </ul>
     <p class="title has-text-centered mt-1 mb-2">자료실</p>
 </nav>
-
-<%--
-<div class="container is-fullhd">
-    <div class="content" id="contents">
-        <div class="row column1 text-center" style="margin-bottom: 80px;">
-            <h2 class="h2">${fileboard.fileBoard.title}</h2>
-            <hr>
-            <div class="container">
-                <table id="table1">
-                    <tbody>
-                    <tr>
-                        <th style="text-align: center;background-color:#dcdcdc">내용</th>
-                        <td class="p" style="text-align: center;"><p>${fileboard.fileBoard.content}</p></td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: center;background-color:#dcdcdc">작성일</th>
-                        <td class="p" style="text-align: center;">${fileboard.fileBoard.regdate}</td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: center; background-color:#dcdcdc">첨부파일</th>
-                        <td style="text-align: center;">
-                            <ul style="list-style-type: none; /* 목록 스타일을 없앰 */ padding: 0; /* 왼쪽 여백을 없앰 */">
-                                <c:forEach var="file" items="${fileboard.fileList}">
-                                    <li>
-                                        <a href="${path1}/resources/upload/${file.originFile}" title="${file.fileSize}"
-                                           download>${file.originFile}</a>
-                                    </li>
-                                </c:forEach>
-                            </ul>
-                            <c:if test="${empty fileboard.fileList}">
-                                첨부된 파일이 없습니다.
-                            </c:if>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: center;background-color:#dcdcdc">조회수</th>
-                        <td class="p" style="text-align: center;">${fileboard.fileBoard.visited}</td>
-                    </tr>
-                    </tbody>
-                </table>
-
-                <div class="button" style="float: right; ">
-                    <a href="${path1 }/file/list.do" class="button">목록으로</a>
-                </div>
-
-
-                <c:if test="${sid.equals('admin')}">
-                    <div class="button-group">
-                            &lt;%&ndash;            <a class="button" href="${path1 }/notice/list.do">목록으로</a>&ndash;%&gt;
-                        <a href="${path1}/file/removeFileboard.do?postNo=${fileboard.fileBoard.postNo}" class="button3">자료
-                            삭제</a>
-                        <a href="${path1}/file/modifyFileboard.do?postNo=${fileboard.fileBoard.postNo}" class="button2">자료
-                            수정</a>
-                    </div>
-                </c:if>
-
-            </div>
-        </div>
-    </div>
-</div>
---%>
 
 <div class="container">
     <div class="columns is-multiline mt-1">
@@ -193,11 +136,18 @@
                     </div>
                 </div>
             </div>
-            <div class="has-text-centered">
-                <c:if test="${sid.equals('admin')}">
-                    <a class="button is-info mx-1" href="${path1}/file/modifyFileboard.do?postNo=${fileboard.fileBoard.postNo}">수정</a>
-                    <a class="button is-danger mx-1" href="${path1}/file/removeFileboard.do?postNo=${fileboard.fileBoard.postNo}">삭제</a>
-                </c:if>
+
+            <div class="btns has-text-centered">
+                <c:choose>
+                    <c:when test="${sid.equals('admin')}">
+                        <a class="button mx-1" style="background-color: #2B3A55; color: #fff;" href="${path1 }/file/list.do">목록</a>
+                            <a class="button is-info mx-1" href="${path1}/file/modifyFileboard.do?postNo=${fileboard.fileBoard.postNo}">수정</a>
+                        <a class="button is-danger mx-1" href="${path1}/file/removeFileboard.do?postNo=${fileboard.fileBoard.postNo}">삭제</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a class="button mx-1" style="background-color: #2B3A55; color: #fff;" href="${path1 }/file/list.do" href="${path1 }/notice/list.do">목록</a>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
     </div>
