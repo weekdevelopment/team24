@@ -33,7 +33,7 @@
     input[type=checkbox] { transform : scale(2); }
 
     .title { width: 450px; margin: 10px auto; font-size: 2em; font-weight: bold; text-align: center; color:#00A2FF; padding-top:36px; padding-bottom:20px; }
-    .logo { margin: 0 auto; text-align: center; }
+    .logo { margin-top: 1rem; text-align: center; }
 
     .agree_fr { width: 450px; white-space:pre-wrap; margin: 10px auto;
       padding: 24px; height:300px; overflow-y:auto; }

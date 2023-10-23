@@ -130,7 +130,7 @@
         .video-list {
             list-style: none;
             margin-top: 40px;
-            border-top: 2px solid #999;
+            border-top: 1px solid #ddd;;
         }
 
         .video-list li .exp > a {
@@ -193,7 +193,7 @@
     <p class="title has-text-centered mt-1 mb-2">시범강의</p>
 </nav>
 
-<div class="container-fluid">
+<div class="container">
     <h2 class="title"></h2>
     <div class="container" id="container">
         <div class="columns is-multiline mt-1">
@@ -215,9 +215,9 @@
                     </p>
                 </form>
             </div>
-            <div class="column is-2 is-offset-6 has-text-centered">
+            <div class="column is-2 is-offset-6 has-text-right">
                 <c:if test= "${sid.equals('admin')}">
-                    <a class="button is-link is-medium" href="${path1 }/video/insert.do?site=user">영상 올리기</a>
+                    <a class="button is-link is-medium" href="${path1 }/video/insert.do">영상 업로드</a>
                 </c:if>
             </div>
         </div>
