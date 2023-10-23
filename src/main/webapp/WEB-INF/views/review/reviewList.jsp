@@ -59,7 +59,7 @@
 </nav>
 
 <div class="container">
-    <div class="columns is-multiline mt-1">
+    <div class="columns is-multiline mt-1 mx-5">
         <div class="column is-4">
             <form action="${path1 }/notice/list.do" method="get" class="field has-addons">
                 <p class="control">
@@ -78,7 +78,7 @@
                 </p>
             </form>
         </div>
-        <div class="column is-2 is-offset-6 has-text-centered">
+        <div class="column is-2 is-offset-6 has-text-right">
             <c:choose>
                 <c:when test="${not empty sid }">
                     <a class="button is-link is-medium" href="${path1 }/review/insert.do">글쓰기</a>

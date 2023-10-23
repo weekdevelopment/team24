@@ -13,6 +13,8 @@
     <script src="https://code.jquery.com/jquery-latest.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <style>
+        .breadcrumb a { color: #464646; }
+
         .hero .nav, .hero.is-success .nav {
             -webkit-box-shadow: none;
             box-shadow: none;
