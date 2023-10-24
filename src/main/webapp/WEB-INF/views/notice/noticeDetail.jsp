@@ -101,7 +101,7 @@
                         <a class="button is-danger mx-1" href="${path1 }/notice/delete.do?no=${domain.no}">삭제</a>
                     </c:when>
                     <c:otherwise>
-                        <a class="button mx-1" style="background-color: #2B3A55; color: #fff;" href="${path1 }/file/list.do" href="${path1 }/notice/list.do">목록</a>
+                        <a class="button mx-1" style="background-color: #2B3A55; color: #fff;" href="${path1 }/notice/list.do">목록</a>
                     </c:otherwise>
                 </c:choose>
             </div>

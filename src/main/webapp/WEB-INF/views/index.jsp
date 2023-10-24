@@ -201,6 +201,7 @@
     </div>
 </div>
 
+
 <div class="container my-6">
     <div class="columns is-justify-content-center is-desktop">
         <div class="column is-7-desktop has-text-centered">
@@ -284,6 +285,7 @@
         --%>
     </div>
 </div>
+<script src="${path1 }/resources/js/tabs.js"></script>
 
 <!-- Footer Start -->
 <jsp:include page="./include/footer.jsp" />
@@ -313,8 +315,5 @@
         });
     });
 </script>
-<script src="${path1 }/resources/js/script.js"></script>
-<script src="${path1 }/resources/js/tabs.js"></script>
-<script src="${path1 }/resources/js/bulma.js"></script>
 </body>
 </html>

@@ -229,7 +229,7 @@ public class CourseController {
         return "redirect:list.do";
     }
 
-    @GetMapping("/schedule.do")
+    @GetMapping("schedule.do")
     public String scheduleList(Model model, HttpServletRequest request) throws Exception {
         List<Course> courses = courseService.courseList();
         request.setAttribute("courses", courses);
