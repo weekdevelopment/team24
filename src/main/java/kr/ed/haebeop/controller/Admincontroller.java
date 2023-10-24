@@ -397,4 +397,14 @@ public class Admincontroller {
         teacherService.teacherDelete(tno);
         return "redirect:/admin/teacherList";
     }
+
+    @PostMapping("insertTeacher")
+    public String insertTeacher(HttpServletRequest request, Model model) throws Exception {
+        Teacher teacher = new Teacher();
+        teacher.setTeacher_name(request.getParameter("teacher_name"));
+        teacher.setTel(request.getParameter("tel"));
+        teacher.setEmail(request.getParameter("email"));
+        teacherService.insertTeacher(teacher);
+        return "redirect:/admin/teacherList";
+    }
 }
