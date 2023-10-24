@@ -224,7 +224,7 @@
                             <thead>
                             <th>번호</th>
                             <th>제목</th>
-                            <th>선생님</th>
+                            <th>강사</th>
                             <th>
                                 <a class="button2" href="${path1 }/video/insert.do?site=admin">글쓰기</a>
                             </th>
