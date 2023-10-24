@@ -2,8 +2,11 @@ package kr.ed.haebeop.controller;
 
 import kr.ed.haebeop.domain.Course;
 import kr.ed.haebeop.domain.Enroll;
+import kr.ed.haebeop.domain.Teacher;
 import kr.ed.haebeop.domain.User;
 import kr.ed.haebeop.service.CourseService;
+import kr.ed.haebeop.service.FaqService;
+import kr.ed.haebeop.service.TeacherService;
 import kr.ed.haebeop.service.UserService;
 import kr.ed.haebeop.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,9 @@ public class CourseController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private TeacherService teacherService;
 
     @Autowired
     HttpSession session;
@@ -161,7 +167,9 @@ public class CourseController {
     }
 
     @GetMapping("insert.do")
-    public String insertForm(HttpServletRequest request, Model model) {
+    public String insertForm(HttpServletRequest request, Model model) throws Exception {
+        List<Teacher> teacherList = teacherService.teacherList();
+        model.addAttribute("teacherList", teacherList);
         return "/course/courseInsert";
     }
 

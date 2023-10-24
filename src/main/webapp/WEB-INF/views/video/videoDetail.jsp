@@ -167,7 +167,7 @@
                             <td class="p"><p style="word-break: keep-all;">${domain.content }</p></td>
                         </tr>
                         <tr>
-                            <th style="background-color:#dcdcdc">선생님</th>
+                            <th style="background-color:#dcdcdc">강사</th>
                             <td>${domain.teacher }</td>
                         </tr>
                         <tr>
