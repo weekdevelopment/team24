@@ -1,14 +1,12 @@
 -- 강사 - 강사코드, 강사명, 연락처, 이메일
 CREATE TABLE teacher (
-	tid VARCHAR(50) PRIMARY KEY,
+	tno INT AUTO_INCREMENT PRIMARY KEY,
 	teacher_name VARCHAR(50) NOT NULL,
 	tel VARCHAR(200),
 	email VARCHAR(150)
 );
 
-INSERT INTO teacher VALUES("park", "박정우", "01012341234", "park@academy.com");
-
-
+INSERT INTO teacher VALUES(DEFAULT , "박정우", "01012341234", "park@academy.com");
 
 CREATE TABLE course (
 	cno INT AUTO_INCREMENT PRIMARY KEY, -- 강의 코드

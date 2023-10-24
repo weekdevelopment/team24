@@ -92,33 +92,22 @@
                                 <thead>
                                 <tr>
                                     <th class="has-text-centered">강사명</th>
-                                    <th class="has-text-centered">강사 아이디</th>
                                     <th class="has-text-centered">전화번호</th>
                                     <th class="has-text-centered">이메일</th>
+                                    <th class="has-text-centered">관리</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <c:forEach var="teacher" items="${teacherList }" varStatus="status">
                                     <tr>
                                         <td class="has-text-centered">${teacher.teacher_name }</td>
-                                        <td class="has-text-centered">${teacher.tid } </td>
                                         <td class="has-text-centered">${teacher.tel }</td>
                                         <td class="has-text-centered">${teacher.email }</td>
-
-                                        <%--<td class="has-text-centered"><fmt:formatNumber value="${course.price }" pattern="#,###"/>원
-                                        </td>
-                                        <td class="has-text-centered"><fmt:formatNumber value="${course.book_price }" pattern="#,###"/>원
-                                        </td>
-                                        <td class="has-text-centered">
-                                                &lt;%&ndash;<a href="${path1 }/admin/courseDelete?cno=${course.cno }"><button class="button is-info is-rounded" style="scale: 70%;">수정</button></a>&ndash;%&gt;
-                                            <a href="${path1 }/admin/courseDelete?cno=${course.cno }">
-                                                <button class="button is-danger is-rounded" style="scale: 70%;">삭제
-                                                </button>
-                                            </a>
-                                        </td>--%>
+                                        <td class="has-text-centered"><a href="${path1 }/admin/teacherDelete?tno=${teacher.tno }"><button class="button is-danger is-rounded" style="scale: 70%;">삭제</button></a></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
+                                <a href="${path1 }/admin/teacherInsert"><button class="button is-link is-medium" style="scale: 70%;">강사 등록</button></a>
                             </table>
                         </div>
                     </div>

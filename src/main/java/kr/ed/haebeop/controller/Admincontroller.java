@@ -390,4 +390,11 @@ public class Admincontroller {
         model.addAttribute("teacherList", teacherList);
         return "admin/teacherList";
     }
+
+    @GetMapping("teacherDelete")
+    public String deleteTeacher(HttpServletRequest request, Model model) throws Exception {
+        int tno = Integer.parseInt(request.getParameter("tno"));
+        teacherService.teacherDelete(tno);
+        return "redirect:/admin/teacherList";
+    }
 }

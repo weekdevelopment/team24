@@ -10,9 +10,11 @@ public interface TeacherService {
 
     public List<Teacher> teacherList();
 
-    public Teacher getTeacher(String tid);
+    public Teacher getTeacher(int tno);
 
     public int countTeacher(Page page);
 
     public void insertTeacher();
+    public void teacherDelete(int tno);
+
 }
