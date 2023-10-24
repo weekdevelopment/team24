@@ -30,6 +30,9 @@ public class Admincontroller {
     @Autowired
     private FileService fileService;
 
+    @Autowired
+    private TeacherService teacherService;
+
     BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @RequestMapping(value = "", method = RequestMethod.GET)
@@ -81,7 +84,7 @@ public class Admincontroller {
         String id = request.getParameter("id");
         User user = userService.getUser(id);
         model.addAttribute("user", user);
-        return  "/admin/editUser";
+        return "/admin/editUser";
     }
 
     @RequestMapping(value = "userUpdate.do", method = RequestMethod.POST)
@@ -261,7 +264,7 @@ public class Admincontroller {
         courseService.rollbackStudentNum(cno);
         User user = new User();
         user.setId(id);
-        user.setPt(pt+enroll_price);
+        user.setPt(pt + enroll_price);
         courseService.updateUserPt(user);
         return "redirect:/admin/cancelList";
     }
@@ -339,7 +342,7 @@ public class Admincontroller {
         //파일 경로 지정
         String path = req.getRealPath("/resources/upload");
         List<FileDTO> fileList = fileService.getFileGroupList(postNo);
-        for(FileDTO fileobj : fileList) {
+        for (FileDTO fileobj : fileList) {
             File file = new File(path + "/" + fileobj.getOriginFile());
             if (file.exists()) { // 해당 파일이 존재하면
                 file.delete(); // 파일 삭제
@@ -360,6 +363,31 @@ public class Admincontroller {
         if (file.exists()) { // 해당 파일이 존재하면
             file.delete(); // 파일 삭제
         }
-        return "/file/getFileboard.do?postNo="+postNo;
+        return "/file/getFileboard.do?postNo=" + postNo;
+    }
+
+    @GetMapping("teacherList")
+    public String getTeacheList(HttpServletRequest request, Model model) throws Exception {
+        String type = request.getParameter("type");
+        String keyword = request.getParameter("keyword");
+        int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
+
+        Page page = new Page();
+        page.setSearchType(type);
+        page.setSearchKeyword(keyword);
+        int total = teacherService.countTeacher(page);
+
+        page.makeBlock(curPage, total);
+        page.makeLastPageNum(total);
+        page.makePostStart(curPage, total);
+
+        model.addAttribute("type", type);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("page", page);
+        model.addAttribute("curPage", curPage);
+
+        List<Teacher> teacherList = teacherService.getTeacherList(page);
+        model.addAttribute("teacherList", teacherList);
+        return "admin/teacherList";
     }
 }

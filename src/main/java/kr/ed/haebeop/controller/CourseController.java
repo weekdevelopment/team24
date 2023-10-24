@@ -168,7 +168,7 @@ public class CourseController {
 
     @GetMapping("insert.do")
     public String insertForm(HttpServletRequest request, Model model) throws Exception {
-        List<Teacher> teacherList = teacherService.getTeacherList();
+        List<Teacher> teacherList = teacherService.teacherList();
         model.addAttribute("teacherList", teacherList);
         return "/course/courseInsert";
     }

@@ -69,7 +69,7 @@ public class VideoController {
     public String insertForm(HttpServletRequest request, Model model) throws Exception {
         String site = request.getParameter("site");
         model.addAttribute("site", site);
-        List<Teacher> teacherList = teacherService.getTeacherList();
+        List<Teacher> teacherList = teacherService.teacherList();
         model.addAttribute("teacherList", teacherList);
         return "/video/videoInsert";
     }
