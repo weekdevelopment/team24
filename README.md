@@ -33,7 +33,6 @@
 ![heabeop](./sanchul/34.png)
 ![heabeop](./sanchul/35.png)
 ![heabeop](./sanchul/36.png)
-![heabeop](./sanchul/37.png)
 ![heabeop](./sanchul/38.png)
 ![heabeop](./sanchul/39.png)
 ![heabeop](./sanchul/40.png)
