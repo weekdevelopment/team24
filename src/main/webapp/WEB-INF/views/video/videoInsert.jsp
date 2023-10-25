@@ -32,6 +32,14 @@
     .table input[type="file"] {
         width: 28rem;
     }
+    .table .select {
+        box-shadow: inset 0 0.0625em 0.125em rgba(10,10,10,.05);
+        background-color: #fff;
+        border-color: #dbdbdb;
+        border-radius: 4px;
+        color: #363636;
+        padding: calc(0.5em - 1px);
+    }
 </style>
 
 <body>
@@ -82,9 +90,14 @@
                         </td>
                     </tr>
                     <tr class="border-bottom">
-                        <th class="has-text-centered">선생님</th>
+                        <th class="has-text-centered">강사</th>
                         <td>
-                            <input type="text" name="teacher" id="teacher" class="input" placeholder="선생님" maxlength="98" style="width: 13.6rem;" required>
+                            <%--<input type="text" name="teacher" id="teacher" class="input" placeholder="선생님" maxlength="98" style="width: 13.6rem;" required>--%>
+                            <select name="teacher_name" id="teacher_name" class="select" style="width: 13.6rem; font-size: 1rem;" required>
+                                <c:forEach items="${teacherList}" var="teacher">
+                                    <option value="${teacher.teacher_name}">${teacher.teacher_name}</option>
+                                </c:forEach>
+                            </select>
                         </td>
                     </tr>
                     <%--<tr>
