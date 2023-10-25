@@ -37,7 +37,22 @@
         .checkboxes {
             margin-left: -0.5rem;
         }
-
+        .cs-img {
+            border-radius: 20px;
+            width:300px;
+            max-height: 200px;
+            transition: transform 0.2s;
+        }
+        .cs-img:hover { box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); transform: scale(1.02); }
+        @keyframes blink {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        .blinking-text {
+            animation: blink 1.1s infinite;
+            white-space: nowrap;
+        }
     </style>
 
 </head>
@@ -107,7 +122,30 @@
             <c:forEach items="${courseList }" var="course">
                 <article class="columns is-multiline is-justify-content-center mb-3 border-bottom">
                     <div class="column is-3">
-                        <img src="${path1 }/resources/upload/${course.imgsrc1 }" alt="강의사진" style="border-radius: 20px; width:300px; max-height: 200px;" >
+                        <c:set var="closingSoon" value="${csMap[course.cno]}" />
+                        <div style="position: relative; display: inline-block;">
+                            <c:choose>
+                                <c:when test="${closingSoon}">
+                                    <%-- 마감 임박 강의에 대한 처리 --%>
+                                    <a href="${path1 }/course/getCourse?cno=${course.cno }">
+                                        <img src="${path1 }/resources/upload/${course.imgsrc1 }" alt="강의사진" class="blinking cs-img"
+                                             style=  >
+                                        <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); padding: 10px;">
+                                            <a href="${path1 }/course/getCourse?cno=${course.cno }" class="button is-danger blinking-text has-text-weight-semibold">마감 임박</a>
+                                        </div>
+                                    </a>
+                                </c:when>
+                                <c:otherwise>
+                                    <%-- 마감 임박하지 않은 강의에 대한 처리 --%>
+                                    <a href="${path1 }/course/getCourse?cno=${course.cno }">
+                                        <img src="${path1 }/resources/upload/${course.imgsrc1 }" alt="강의사진" class="cs-img"
+                                             style="border-radius: 20px; width:300px; max-height: 200px;" >
+                                    </a>
+                                </c:otherwise>
+                            </c:choose>
+                        </div>
+                        <%--<img src="${path1 }/resources/upload/${course.imgsrc1 }" alt="강의사진"
+                             style="border-radius: 20px; width:300px; max-height: 200px;" >--%>
                     </div>
                     <div class="column is-6" style="display: flex; flex-direction: column; justify-content: center;">
                         <p class="is-size-5" style="margin-top: -12px;">

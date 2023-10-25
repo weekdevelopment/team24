@@ -62,17 +62,20 @@ public class CourseController {
         model.addAttribute("page", page);
         model.addAttribute("curPage", curPage);
 
-        List<Course> courseList;
+        List<Course> courseList = courseService.getCourseList(page);
         if ("asc".equals(sort)) {
             courseList = courseService.getCoursesASC(page);
         } else if ("desc".equals(sort)) {
             courseList = courseService.getCoursesDESC(page);
-        } else {
-            courseList = courseService.getCourseList(page); // 기본 정렬 방식
         }
-        /*for (Course cs :courseList) {
-            System.out.printf("%s의 종강 여부 %b, 마감 여부 %b\n", cs, cs.isFinished(), cs.isClosed());
-        }*/
+        Map<Integer, Boolean> csMap = new HashMap<>();
+        for (Course course : courseList) {
+            int curNum = course.getCurr_num();
+            int totalNum = course.getTotal_num();
+            boolean isClosingSoon = curNum >= totalNum * 0.9 && curNum < totalNum;
+            csMap.put(course.getCno(), isClosingSoon);
+        }
+        model.addAttribute("csMap", csMap);
         model.addAttribute("courseList", courseList);
         return "/course/courseList";
     }
