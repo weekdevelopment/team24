@@ -13,144 +13,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
-
-        /** {*/
-        /*    font-family: 'Nanum Gothic Coding', monospace;*/
-        /*}*/
-
-        /*.title {*/
-        /*    font-family: 'Nanum Gothic Coding', monospace;*/
-        /*    margin-top: 55px;*/
-        /*    text-align: center;*/
-        /*    font-weight: 700;*/
-        /*}*/
-
-        /*.contents {*/
-        /*    font-family: 'Nanum Gothic Coding', monospace;*/
-        /*    text-align: center;*/
-        /*    font-weight: 200;*/
-        /*}*/
-
-/*        .container {
-            max-width: 1280px;
-            border-radius: 5px;
-            text-align: center; !* 컨테이너 내부의 요소들을 가운데 정렬 *!
-        }
-
-        .box_wrap {
-            margin-top: 15px;
-        }
-
-        .review-list th:nth-child(1) {
-            width: 12%;
-        }
-
-        .box_wrap {
-            border-top: 1px solid #ddd;;
-        }
-
-        *, *:before, *:after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        .box_wrap thead th {
-            padding: 15px 5px;
-            border-bottom: 1px solid #d0cfd5;
-            text-align: center;
-        }
-
-        .box_wrap tbody td {
-            padding: 15px 5px;
-            border-bottom: 1px solid #d0cfd5;
-            text-align: center;
-        }
-
-        .item2 .al {
-            text-decoration: none;
-            color: black;
-            display: block;
-            text-overflow: ellipsis;
-            max-height: 2.8em;
-            line-height: 3.4em;
-            word-wrap: break-word;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            word-break: keep-all;
-        }
-
-        .paginate {
-            list-style-type: none;
-            width: 100%;
-            margin-top: 40px;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .paginate .page-item {
-            margin: 0 5px;
-        }
-
-        .paginate .page-link {
-            display: inline-block;
-            width: 34px;
-            height: 34px;
-            border: 1px solid #ddd;
-            background-color: #f8f9fa;
-            color: #333;
-            font-size: 14px;
-            line-height: 32px;
-            text-align: center;
-            text-decoration: none;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .paginate .page-link:hover {
-            background-color: #333;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        .item1, .item2, .item3, .item4 {
-            font-size: 18px;
-        }
-        .item1 { width:10%; }
-        .item2 { width:70%; }
-        .item3 { width:10%; }
-
-        .button2 {
-            text-decoration: none;
-            border-radius: 20px;
-            margin: 15px;
-            padding: 10px;
-            float: right;
-            background-color: #008CD6;
-            border-color: #008CD6;
-            color: #ffffff;
-        }
-        table {
-            table-layout: fixed;
-            width: 100%;
-            border-collapse: collapse;
-            border-spacing: 0;
-        }
-
-        tbody {
-            display: table-row-group;
-            vertical-align: middle;
-            border-color: inherit;
-        }
-
-        thead {
-            display: table-header-group;
-            vertical-align: middle;
-            border-color: inherit;
-        }*/
         .table {
             font-size: 1.25rem;
             border-top: 2px solid #dee2e6;
@@ -255,6 +117,7 @@
     <c:if test="${curPage > page.pageCount }">
         <a href="${path1 }/file/list.do?page=${page.blockStartNum - 1 }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-previous">Previous</a>
     </c:if>
+
     <c:if test="${page.blockLastNum < page.totalPageCount }">
         <a href="${path1 }/file/list.do?page=${page.blockLastNum + 1 }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-next">Next page</a>
     </c:if>
@@ -267,6 +130,7 @@
                         <a href="${path1 }/file/list.do?page=${i }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-link is-current" aria-label="Page ${i }" aria-current="page" >${i }</a>
                     </li>
                 </c:when>
+
                 <c:otherwise>
                     <li>
                         <a href="${path1 }/file/list.do?page=${i }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-link" aria-label="Page ${i }" aria-current="page">${i }</a>

@@ -79,14 +79,12 @@
         </tr>
         <tr>
           <td>
-            <input type="password" name="pw" id="pw" placeholder="비밀번호" maxlength="12" required>
-            <!-- pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,12}$"  -->
+            <input type="password" name="pw" id="pw" placeholder="비밀번호" maxlength="12" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,12}$" required>
           </td>
         </tr>
         <tr>
           <td>
-            <input type="password" name="pw2" id="pw2" placeholder="비밀번호 확인" maxlength="12" required>
-            <!-- pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,12}$"  -->
+            <input type="password" name="pw2" id="pw2" placeholder="비밀번호 확인" maxlength="12" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,12}$" required>
           </td>
         </tr>
         <tr>

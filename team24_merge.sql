@@ -17,11 +17,11 @@ pt INT DEFAULT 500000,
 visited INT DEFAULT 0
 );
 
-INSERT INTO USER(id, pw, NAME) VALUES('admin','1234','관리자');
+INSERT INTO USER(id, pw, NAME) VALUES('admin','$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte','관리자');
 
-INSERT INTO user VALUES('leeeunyoung', '1234', '이은영', 'aa@heabeop.co.kr', '010-3333-3333', '서울', '금천구', '33-333', DEFAULT, '2000-10-18', DEFAULT, DEFAULT);
-INSERT INTO user VALUES('leesoyoon', '1234', '이소윤', 'aa@heabeop.co.kr', '010-5555-5555', '서울', '금천구', '55-555', DEFAULT, '1999-10-18', DEFAULT, DEFAULT);
-INSERT INTO user VALUES('han', '1234', '한선', 'aa@heabeop.co.kr', '010-6666-6666', '서울', '금천구', '66-666', DEFAULT, '1996-10-18', DEFAULT, DEFAULT);
+INSERT INTO user VALUES('leeeunyoung', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '이은영', 'aa@heabeop.co.kr', '010-3333-3333', '서울', '금천구', '33-333', DEFAULT, '2000-10-18', DEFAULT, DEFAULT);
+INSERT INTO user VALUES('leesoyoon', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '이소윤', 'aa@heabeop.co.kr', '010-5555-5555', '서울', '금천구', '55-555', DEFAULT, '1999-10-18', DEFAULT, DEFAULT);
+INSERT INTO user VALUES('han', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '한선', 'aa@heabeop.co.kr', '010-6666-6666', '서울', '금천구', '66-666', DEFAULT, '1996-10-18', DEFAULT, DEFAULT);
 
 INSERT INTO USER VALUES ('seo', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '서광', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00001', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
 INSERT INTO USER VALUES ('shin', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '신수현', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00001', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
@@ -38,14 +38,13 @@ INSERT INTO USER VALUES ('lim', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc
 INSERT INTO USER VALUES ('shin2', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '신지훈', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00011', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
 INSERT INTO USER VALUES ('jang', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '장지훈', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00012', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
 INSERT INTO USER VALUES ('yoon', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '윤지후', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00013', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
-INSERT INTO USER VALUES ('oh1', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '오서준', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00014', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
-INSERT INTO USER VALUES ('gwon1', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '권도현', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00015', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
-INSERT INTO USER VALUES ('jeon1', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '전재황', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00016', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
-INSERT INTO USER VALUES ('ryu1', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '류지호', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00017', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
-INSERT INTO USER VALUES ('oh1', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '오서준', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00018', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
-INSERT INTO USER VALUES ('han1', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '한지훈', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00019', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
+INSERT INTO USER VALUES ('oh11', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '오서준', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00014', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
+INSERT INTO USER VALUES ('gwon11', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '권도현', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00015', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
+INSERT INTO USER VALUES ('jeon11', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '전재황', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00016', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
+INSERT INTO USER VALUES ('ryu11', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '류지호', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00017', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
+INSERT INTO USER VALUES ('han11', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '한지훈', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00019', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
 INSERT INTO USER VALUES ('seo3', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '서주원', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00020', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
-INSERT INTO USER VALUES ('ahn1', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '안지호', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00021', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
+INSERT INTO USER VALUES ('ahn11', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '안지호', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00021', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
 
 
 INSERT INTO USER VALUES ('seo9', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '서광', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00001', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
@@ -63,14 +62,14 @@ INSERT INTO USER VALUES ('lim9', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTA
 INSERT INTO USER VALUES ('shin29', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '신지훈', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00011', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
 INSERT INTO USER VALUES ('jang9', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '장지훈', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00012', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
 INSERT INTO USER VALUES ('yoon9', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '윤지후', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00013', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
-INSERT INTO USER VALUES ('oh19', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '오서준', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00014', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
-INSERT INTO USER VALUES ('gwon19', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '권도현', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00015', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
-INSERT INTO USER VALUES ('jeon19', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '전재황', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00016', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
-INSERT INTO USER VALUES ('ryu19', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '류지호', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00017', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
-INSERT INTO USER VALUES ('oh19', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '오서준', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00018', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
-INSERT INTO USER VALUES ('han19', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '한지훈', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00019', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
-INSERT INTO USER VALUES ('seo39', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '서주원', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00020', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
-INSERT INTO USER VALUES ('ahn19', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '안지호', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00021', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
+INSERT INTO USER VALUES ('oh119', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '오서준', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00014', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
+INSERT INTO USER VALUES ('gwon119', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '권도현', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00015', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
+INSERT INTO USER VALUES ('jeon119', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '전재황', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00016', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
+INSERT INTO USER VALUES ('ryu119', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '류지호', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00017', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
+INSERT INTO USER VALUES ('oh1119', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '오서준', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00018', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
+INSERT INTO USER VALUES ('han119', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '한지훈', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00019', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
+INSERT INTO USER VALUES ('seo139', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '서주원', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00020', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
+INSERT INTO USER VALUES ('ahn119', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '안지호', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00021', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
 
 
 INSERT INTO USER VALUES ('seo98', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '서광', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00001', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
@@ -88,14 +87,14 @@ INSERT INTO USER VALUES ('lim98', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rT
 INSERT INTO USER VALUES ('shin298', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '신지훈', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00011', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
 INSERT INTO USER VALUES ('jang98', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '장지훈', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00012', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
 INSERT INTO USER VALUES ('yoon98', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '윤지후', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00013', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
-INSERT INTO USER VALUES ('oh198', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '오서준', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00014', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
-INSERT INTO USER VALUES ('gwon198', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '권도현', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00015', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
-INSERT INTO USER VALUES ('jeon198', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '전재황', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00016', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
-INSERT INTO USER VALUES ('ryu198', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '류지호', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00017', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
-INSERT INTO USER VALUES ('oh198', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '오서준', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00018', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
-INSERT INTO USER VALUES ('han198', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '한지훈', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00019', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
-INSERT INTO USER VALUES ('seo398', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '서주원', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00020', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
-INSERT INTO USER VALUES ('ahn198', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '안지호', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00021', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
+INSERT INTO USER VALUES ('oh111198', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '오서준', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00014', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
+INSERT INTO USER VALUES ('gwon11198', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '권도현', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00015', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
+INSERT INTO USER VALUES ('jeon11198', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '전재황', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00016', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
+INSERT INTO USER VALUES ('ryu11198', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '류지호', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00017', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
+INSERT INTO USER VALUES ('oh11198', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '오서준', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00018', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
+INSERT INTO USER VALUES ('han11198', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '한지훈', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00019', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
+INSERT INTO USER VALUES ('seo11398', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '서주원', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00020', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
+INSERT INTO USER VALUES ('ahn11198', '$2a$10$s2kwVax17AmPs1E7ScEf/e8aU/r0cPrrKuN6rTAc9B22Ho/7mPvte', '안지호', 'seo@haebeop.com', '010-1234-1234', '서울', '동구', '00021', DEFAULT, '2000-01-01', DEFAULT, DEFAULT);
 
 
 -- 강사 - 강사코드, 강사명, 연락처, 이메일

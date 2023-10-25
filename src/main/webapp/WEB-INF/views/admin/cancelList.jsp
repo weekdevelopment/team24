@@ -74,7 +74,7 @@
             <div class="columns">
                 <div class="column is-6">
                     <header class="card-header">
-                        「 철회목록 관리 」
+                        「 수강철회 관리 」
                     </header>
                     <form action="${path1 }/admin/cancelList" method="get" class="field has-addons has-addons-right">
                         <p class="control">
