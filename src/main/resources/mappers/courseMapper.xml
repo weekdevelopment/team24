@@ -23,49 +23,19 @@
     </select>
 
     <select id="getCoursesASC" resultType="kr.ed.haebeop.domain.Course">
-        <![CDATA[
-        select * from course
-        ]]>
-        <where>
-            <if test="searchType != null">
-                <choose>
-                    <when test="searchType == 'title'.toString()">
-                        course_name LIKE concat('%', #{searchKeyword}, '%')
-                    </when>
-                    <when test="searchType == 'content'.toString()">
-                        content LIKE concat('%', #{searchKeyword}, '%')
-                    </when>
-                </choose>
-            </if>
-        </where>
-        <![CDATA[
-        order by price LIMIT #{postStart}, #{postCount}
-        ]]>
+        select * from course order by price LIMIT #{postStart}, #{postCount}
     </select>
 
     <select id="getCoursesDESC" resultType="kr.ed.haebeop.domain.Course">
-        <![CDATA[
-        select * from course
-        ]]>
-        <where>
-            <if test="searchType != null">
-                <choose>
-                    <when test="searchType == 'title'.toString()">
-                        course_name LIKE concat('%', #{searchKeyword}, '%')
-                    </when>
-                    <when test="searchType == 'content'.toString()">
-                        content LIKE concat('%', #{searchKeyword}, '%')
-                    </when>
-                </choose>
-            </if>
-        </where>
-        <![CDATA[
-        order by price desc LIMIT #{postStart}, #{postCount}
-        ]]>
+        select * from course order by price desc LIMIT #{postStart}, #{postCount}
     </select>
 
     <select id="courseList" resultType="kr.ed.haebeop.domain.Course">
         select * from course
+    </select>
+
+    <select id="unfinishedCourses" resultType="kr.ed.haebeop.domain.Course">
+        SELECT * FROM course WHERE end_date >= CURDATE() order by cno desc LIMIT #{postStart}, #{postCount}
     </select>
 
     <!-- 신규 강의 3개 -->

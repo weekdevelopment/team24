@@ -16,6 +16,8 @@ public interface CourseService {
 
     public List<Course> courseList() throws Exception;
 
+    public List<Course> unfinishedCourses(Page page) throws Exception;
+
     public List<Course> getNewCourses() throws Exception;
 
     public Course getCourse(int cno) throws Exception;

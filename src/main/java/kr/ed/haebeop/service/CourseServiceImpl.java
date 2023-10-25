@@ -36,6 +36,11 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
+    public List<Course> unfinishedCourses(Page page) throws Exception {
+        return courseMapper.unfinishedCourses(page);
+    }
+
+    @Override
     public List<Course> getNewCourses() throws Exception {
         return courseMapper.newCourses();
     }

@@ -18,6 +18,8 @@ public interface CourseMapper {
 
     public List<Course> courseList();
 
+    public List<Course> unfinishedCourses(Page page);
+
     public List<Course> newCourses();
 
     public Course getCourse(int cno);

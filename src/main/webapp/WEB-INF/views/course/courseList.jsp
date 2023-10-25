@@ -87,6 +87,7 @@
                     <form action="${path1 }/course/list.do" method="get">
                         <select name="sort" id="sortOption" class="select" onchange="this.form.submit()">
                             <option value="">정렬</option>
+                            <option value="newest">최신 등록 순</option>
                             <option value="asc">가격 낮은 순</option>
                             <option value="desc">가격 높은 순</option>
                         </select>
