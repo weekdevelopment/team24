@@ -258,6 +258,7 @@
                     </c:when>
                     <c:when test="${not empty sid && sid eq domain.id}">
                         <a class="button mx-1" style="background-color: #2B3A55; color: #fff;" href="${path1 }/review/list.do">목록</a>
+                        <a class="button is-info" href="${path1 }/review/edit.do?no=${domain.no}">수정</a>
                         <a class="button is-danger mx-1" href="${path1 }/review/delete.do?no=${domain.no}">삭제</a>
                     </c:when>
                     <c:otherwise>

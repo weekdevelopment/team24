@@ -14,7 +14,11 @@
     <script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
     <script type="text/javascript" src="${path1 }/resources/ckeditor/ckeditor.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <script>
+        if (${not empty msg } ) {
+            alert("${msg }");
+        };
+    </script>
 
 </head>
 <style>
@@ -136,13 +140,13 @@
                     <tr class="border-top">
                         <th class="has-text-centered">제목</th>
                         <td>
-                            <input type="text" name="title" id="title" class="input" placeholder="제목 입력" maxlength="98" required>
+                            <input type="text" name="title" id="title" class="input" value="${title }"  placeholder="제목 입력" maxlength="98" required>
                         </td>
                     </tr>
                     <tr class="border-bottom">
                         <th class="has-text-centered">내용</th>
                         <td>
-                            <textarea name="content" id="content" class="textarea" placeholder="내용 입력" rows="8" cols="100" maxlength="1400" required></textarea>
+                            <textarea name="content" id="content" class="textarea" placeholder="내용 입력" rows="8" cols="100" maxlength="1400" required>${content }</textarea>
                             <script>
                                 CKEDITOR.replace('content',	{filebrowserUploadUrl:'${path1}/review/imageUpload.do'});
                             </script>
