@@ -367,7 +367,7 @@ public class Admincontroller {
     }
 
     @GetMapping("teacherList")
-    public String getTeacheList(HttpServletRequest request, Model model) throws Exception {
+    public String getTeacherList(HttpServletRequest request, Model model) throws Exception {
         String type = request.getParameter("type");
         String keyword = request.getParameter("keyword");
         int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;

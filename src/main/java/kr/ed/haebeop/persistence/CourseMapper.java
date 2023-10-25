@@ -12,6 +12,10 @@ import java.util.List;
 public interface CourseMapper {
     public List<Course> getCourseList(Page page);
 
+    public List<Course> getCoursesASC(Page page);
+
+    public List<Course> getCoursesDESC(Page page);
+
     public List<Course> courseList();
 
     public List<Course> newCourses();

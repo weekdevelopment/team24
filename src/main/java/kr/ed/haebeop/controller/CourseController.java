@@ -16,6 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -44,6 +46,7 @@ public class CourseController {
         String type = request.getParameter("type");
         String keyword = request.getParameter("keyword");
         int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
+        String sort = request.getParameter("sort");
 
         Page page = new Page();
         page.setSearchType(type);
@@ -59,8 +62,17 @@ public class CourseController {
         model.addAttribute("page", page);
         model.addAttribute("curPage", curPage);
 
-        List<Course> courseList = courseService.getCourseList(page);
-        /*System.out.println("courseList : " + courseList);*/
+        List<Course> courseList;
+        if ("asc".equals(sort)) {
+            courseList = courseService.getCoursesASC(page);
+        } else if ("desc".equals(sort)) {
+            courseList = courseService.getCoursesDESC(page);
+        } else {
+            courseList = courseService.getCourseList(page); // 기본 정렬 방식
+        }
+        /*for (Course cs :courseList) {
+            System.out.printf("%s의 종강 여부 %b, 마감 여부 %b\n", cs, cs.isFinished(), cs.isClosed());
+        }*/
         model.addAttribute("courseList", courseList);
         return "/course/courseList";
     }
@@ -160,6 +172,7 @@ public class CourseController {
         courseService.complete(eno);
         return "redirect:/course/mypageCourse?complete=0";
     }
+
     @RequestMapping(value = "cancel", method = RequestMethod.POST)
     public String cancelPro(int eno) throws Exception {
         courseService.cancel(eno);
@@ -243,4 +256,21 @@ public class CourseController {
         request.setAttribute("courses", courses);
         return "/course/scheduleList";
     }
+
+//    @RequestMapping(value = "getSortedCourses", method = RequestMethod.POST)
+//    public String getSortedCourses(@RequestParam String sortOption, RedirectAttributes redirectAttributes) throws Exception {
+//        List<Course> courseList = new ArrayList<>();
+//        if (sortOption.equals("priceASC")) {
+//            //products = productService.getProductsLowToHigh();
+//            courseList = courseService.getCoursesASC(new Page());
+//            System.out.println("오름차순 : " + courseList);
+//        } else if (sortOption.equals("priceDESC")) {
+//            //products = productService.getProductsHighToLow();
+//            courseList = courseService.getCoursesDESC(new Page());
+//            System.out.println("내림차순 : " + courseList);
+//        }
+//
+//        redirectAttributes.addFlashAttribute("courseList", courseList);
+//        return "redirect:list.do";
+//    }
 }

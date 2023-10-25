@@ -21,6 +21,16 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
+    public List<Course> getCoursesASC(Page page) throws Exception {
+        return courseMapper.getCoursesASC(page);
+    }
+
+    @Override
+    public List<Course> getCoursesDESC(Page page) throws Exception {
+        return courseMapper.getCoursesDESC(page);
+    }
+
+    @Override
     public List<Course> courseList() throws Exception {
         return courseMapper.courseList();
     }

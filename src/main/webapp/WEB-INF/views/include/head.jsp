@@ -49,10 +49,10 @@
 
 <!-- Essential Scripts =====================================-->
 <!-- Main jQuery -->
-<script defer src="${path0}/resources/plugins/jquery/jquery.js"></script>
+<%--<script defer src="${path0}/resources/plugins/jquery/jquery.js"></script>--%>
 <%--<script src="${path0}/resources/js/contact.js"></script>--%>
 <!--  Magnific Popup-->
-<script src="${path0}/resources/plugins/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+<%--<script src="${path0}/resources/plugins/magnific-popup/dist/jquery.magnific-popup.min.js"></script>--%>
 <!-- Slick Slider -->
 <%--<script src="${path0}/resources/plugins/slick-carousel/slick/slick.min.js"></script>--%>
 <!-- Counterup -->
@@ -62,7 +62,7 @@
 <%--<script src="${path0}/resources/plugins/modal-video/jquery-modal-video.min.js"></script>--%>
 
 <!-- Google Map -->
-<script src="${path0}/resources/plugins/google-map/map.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>
+<%--<script src="${path0}/resources/plugins/google-map/map.js"></script>--%>
+<%--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>--%>
 
 <script defer src="${path0}/resources/js/script.js"></script>
