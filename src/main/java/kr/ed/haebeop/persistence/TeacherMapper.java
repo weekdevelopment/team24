@@ -18,6 +18,6 @@ public interface TeacherMapper {
 
     public int countTeacher(Page page);
 
-    public void insertTeacher();
+    public void insertTeacher(Teacher teacher);
     public void teacherDelete(int tno);
 }
