@@ -22,4 +22,5 @@ public class Enroll {
     private String name;
     private boolean cancel;
     private int pt;
+    private int enroll_cash;
 }

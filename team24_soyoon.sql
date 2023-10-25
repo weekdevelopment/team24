@@ -46,3 +46,25 @@ CREATE TABLE enroll (
 );
 
 INSERT INTO enroll VALUES(DEFAULT, 1, "park123", DEFAULT, DEFAULT, 141000, "리딩북", DEFAULT);
+
+SELECT n.title, n.nno
+        FROM notice n
+        JOIN (
+            SELECT nno, COUNT(*) AS comment_count
+            FROM notice_comment
+            GROUP BY nno
+            ORDER BY comment_count DESC
+                LIMIT 5 -- 댓글이 많은 게시글 중에서 5개만 가져옵니다.
+        ) AS top_commented
+        ON n.nno = top_commented.nno ORDER BY comment_count DESC;
+        
+        SELECT n.title, n.nno
+        FROM notice n
+        JOIN (
+            SELECT nno, COUNT(*) AS comment_count
+            FROM notice_comment
+            GROUP BY nno
+            ORDER BY comment_count DESC
+                LIMIT 5 -- 댓글이 많은 게시글 중에서 5개만 가져옵니다.
+        ) AS top_commented
+        ON n.nno = top_commented.nno;

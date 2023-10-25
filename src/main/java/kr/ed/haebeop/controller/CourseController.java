@@ -98,7 +98,14 @@ public class CourseController {
 
     @RequestMapping(value = "signIn", method = RequestMethod.POST)
     @Transactional
-    public String insertEnrollPro(Enroll enroll, String sid, Model model, int pt) throws Exception {
+    public String insertEnrollPro(HttpServletRequest request, Model model, int pt) throws Exception {
+        Enroll enroll = new Enroll();
+        enroll.setCno(Integer.parseInt(request.getParameter("cno")));
+        enroll.setId(request.getParameter("id"));
+        enroll.setEnroll_price(Integer.parseInt(request.getParameter("enroll_price")));
+        enroll.setBook_name("book_name");
+        enroll.setEnroll_cash(Integer.parseInt(request.getParameter("enroll_cash")));
+
         courseService.insertEnroll(enroll);
         courseService.updateStudentNum(enroll.getCno());
         String id = (String) session.getAttribute("sid");

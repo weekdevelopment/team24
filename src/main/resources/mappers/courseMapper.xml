@@ -66,7 +66,7 @@
     </select>
 
     <insert id="insertEnroll">
-        INSERT INTO enroll VALUES(DEFAULT, #{cno }, #{id }, DEFAULT, DEFAULT, #{enroll_price },#{book_name }, DEFAULT)
+        INSERT INTO enroll VALUES(DEFAULT, #{cno }, #{id }, DEFAULT, DEFAULT, #{enroll_price },#{book_name }, DEFAULT, #{enroll_cash })
     </insert>
     <!-- 등록할 때 강의 테이블의 현재 신청 인원 +1 추가-->
     <update id="updateStudentNum">
