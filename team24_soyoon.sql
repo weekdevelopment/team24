@@ -46,4 +46,3 @@ CREATE TABLE enroll (
 
 INSERT INTO enroll VALUES(DEFAULT, 1, "admin", DEFAULT, DEFAULT, 30000, "리딩북", DEFAULT, 130000);
 
-   
