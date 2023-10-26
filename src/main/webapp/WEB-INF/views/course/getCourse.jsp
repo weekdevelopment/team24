@@ -423,7 +423,10 @@
                 alert("수강신청은 로그인 후 가능합니다.");
                 window.location.href = '${path1}/user/loginForm';
             } else if (${sid ne null && isEnroll eq false }){
-                if (${course.curr_num == course.total_num }) {
+                if (new Date('${course.end_date}') < new Date()) {
+                    alert("이미 종강한 강의입니다.");
+                    window.location.href = '${path1}/course/list.do';
+                } else if (${course.curr_num == course.total_num }) {
                     alert("모집이 마감된 강의입니다.");
                     window.location.href = '${path1}/course/list.do';
                 } else {

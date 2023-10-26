@@ -16,8 +16,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -260,7 +258,7 @@ public class CourseController {
         return "/course/scheduleList";
     }
 
-//    @RequestMapping(value = "getSortedCourses", method = RequestMethod.POST)
+    //    @RequestMapping(value = "getSortedCourses", method = RequestMethod.POST)
 //    public String getSortedCourses(@RequestParam String sortOption, RedirectAttributes redirectAttributes) throws Exception {
 //        List<Course> courseList = new ArrayList<>();
 //        if (sortOption.equals("priceASC")) {
@@ -276,4 +274,79 @@ public class CourseController {
 //        redirectAttributes.addFlashAttribute("courseList", courseList);
 //        return "redirect:list.do";
 //    }
+    @PostMapping("list.do")
+    public String applyFilters(HttpServletRequest request, Model model) throws Exception {
+        String excludeFullParam = request.getParameter("excludeFull");
+        String excludeFinishedParam = request.getParameter("excludeFinished");
+        //System.out.println(excludeFullParam + " " + excludeFinishedParam);
+
+        Boolean excludeFull = Boolean.parseBoolean(excludeFullParam);
+        Boolean excludeFinished = Boolean.parseBoolean(excludeFinishedParam);
+        //System.out.println(excludeFull + " " + excludeFinished);
+
+        // 여기에 체크박스의 값을 이용한 로직을 추가하세요.
+        // excludeFull과 excludeFinished의 값이 null이면 체크되지 않은 것입니다.
+
+        String type = request.getParameter("type");
+        String keyword = request.getParameter("keyword");
+        int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
+        //String sort = request.getParameter("sort");
+
+        Page page = new Page();
+        page.setSearchType(type);
+        page.setSearchKeyword(keyword);
+
+        List<Course> filteredCourseList = new ArrayList<>();
+        if (excludeFull && excludeFinished) {
+            List<Course> tempList1 = courseService.notFullCourses();
+            List<Course> tempList2 = courseService.unfinishedCourses();
+            List<Course> intersection = new ArrayList<>(tempList1);
+            intersection.retainAll(tempList2);
+            int total = intersection.size();
+            page.makeBlock(curPage, total);
+            page.makeLastPageNum(total);
+            page.makePostStart(curPage, total);
+            filteredCourseList = intersection;
+        } else if (excludeFull) { // !excludeFull || !excludeFinished
+            int total = courseService.notFullCourses().size();
+            page.makeBlock(curPage, total);
+            page.makeLastPageNum(total);
+            page.makePostStart(curPage, total);
+            filteredCourseList = courseService.getNotFullCourses(page);
+        } else if (excludeFinished) {
+            int total = courseService.unfinishedCourses().size();
+            page.makeBlock(curPage, total);
+            page.makeLastPageNum(total);
+            page.makePostStart(curPage, total);
+            filteredCourseList = courseService.getUnfinishedCourses(page);
+        } else {
+            int total = courseService.countCourse(page);
+            page.makeBlock(curPage, total);
+            page.makeLastPageNum(total);
+            page.makePostStart(curPage, total);
+            filteredCourseList = courseService.getCourseList(page);
+        }
+//        int total = courseService.unfinishedCourses().size();
+//        page.makeBlock(curPage, total);
+//        page.makeLastPageNum(total);
+//        page.makePostStart(curPage, total);
+        model.addAttribute("type", type);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("page", page);
+        model.addAttribute("curPage", curPage);
+
+        // 예를 들어, 해당 필터들을 사용하여 courseList를 얻어오는 코드를 작성할 수 있습니다.
+        //List<Course> filteredCourseList = courseService.getUnfinishedCourses(page);
+        // 모델에 필터링된 courseList를 추가합니다.
+        model.addAttribute("courseList", filteredCourseList);
+        Map<Integer, Boolean> csMap = new HashMap<>();
+        for (Course course : filteredCourseList) {
+            int curNum = course.getCurr_num();
+            int totalNum = course.getTotal_num();
+            boolean isClosingSoon = curNum >= totalNum * 0.9 && curNum < totalNum;
+            csMap.put(course.getCno(), isClosingSoon);
+        }
+        model.addAttribute("csMap", csMap);
+        return "/course/courseList";
+    }
 }

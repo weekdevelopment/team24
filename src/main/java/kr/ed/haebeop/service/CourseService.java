@@ -16,7 +16,13 @@ public interface CourseService {
 
     public List<Course> courseList() throws Exception;
 
-    public List<Course> unfinishedCourses(Page page) throws Exception;
+    public List<Course> getUnfinishedCourses(Page page) throws Exception;
+
+    public List<Course> unfinishedCourses() throws Exception;
+
+    public List<Course> getNotFullCourses(Page page) throws Exception;
+
+    public List<Course> notFullCourses() throws Exception;
 
     public List<Course> getNewCourses() throws Exception;
 

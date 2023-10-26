@@ -18,7 +18,13 @@ public interface CourseMapper {
 
     public List<Course> courseList();
 
-    public List<Course> unfinishedCourses(Page page);
+    public List<Course> getUnfinishedCourses(Page page);
+
+    public List<Course> unfinishedCourses();
+
+    public List<Course> getNotFullCourses(Page page);
+
+    public List<Course> notFullCourses();
 
     public List<Course> newCourses();
 

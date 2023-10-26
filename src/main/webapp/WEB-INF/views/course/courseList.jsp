@@ -95,9 +95,8 @@
                 <a class="button is-link is-medium" href="${path1 }/course/insert.do">강의 등록</a>
             </c:if>
         </div>
-
-        <div class="columns is-multiline is-vcentered">
-            <div class="column is-4">
+        <div class="columns is-12 is-multiline is-vcentered">
+            <div class="column is-3">
                 <div class="select-box">
                     <form action="${path1 }/course/list.do" method="get">
                         <select name="sort" id="sortOption" class="select" onchange="this.form.submit()">
@@ -109,11 +108,18 @@
                     </form>
                 </div>
             </div>
-            <div class="column is-8">
-                <%--<div class="checkboxes">
-                    <input type="checkbox" id="excludeFull" class="checkbox" /> 마감한 강의 제외
-                    <input type="checkbox" id="excludeFinished" class="checkbox ml-4" /> 종강한 강의 제외
-                </div>--%>
+            <div class="column is-9">
+                <div class="checkboxes">
+                    <form action="${path1}/course/list.do" method="post">
+                        <label>
+                            <input type="checkbox" name="excludeFull" value="true" class="checkbox ml-5" /> 마감된 강의 제외
+                        </label>
+                        <label>
+                            <input type="checkbox" name="excludeFinished" value="true" class="checkbox ml-3" /> 종강한 강의 제외
+                        </label>
+                        <input type="submit" class="button is-small ml-2" style="font-size: 0.8rem;" value="적용" />
+                    </form>
+                </div>
             </div>
         </div>
 
