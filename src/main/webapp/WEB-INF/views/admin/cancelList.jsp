@@ -102,7 +102,8 @@
                                 <th>강의</th>
                                 <th>수강생</th>
                                 <th>수강 완료</th>
-                                <th>구매가</th>
+                                <th>사용 포인트</th>
+                                <th>실구매가</th>
                                 <th>수강철회</th>
                             </tr>
                             </thead>
@@ -116,7 +117,8 @@
                                     <c:if test="${cancel.complete == true }"> ⭕ </c:if>
                                     <c:if test="${cancel.complete == false }"> ❌ </c:if>
                                 </td>
-                                <td class="item6">${cancel.enroll_price }</td>
+                                <td class="item5">${cancel.enroll_price }</td>
+                                <td class="item6">${cancel.enroll_cash }</td>
                                 <td class="item7"><a href="${path1 }/admin/cancelDelete?eno=${cancel.eno }&cno=${cancel.cno }&id=${cancel.id }&enroll_price=${cancel.enroll_price }&pt=${cancel.pt }"><button class="button is-danger is-rounded" style="scale: 70%;">수락</button></a></td>
                             </tr>
                             </c:forEach>

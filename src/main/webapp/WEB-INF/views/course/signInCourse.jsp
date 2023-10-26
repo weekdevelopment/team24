@@ -487,19 +487,20 @@
                                 <button id="apply" class="apply bgColor"><i class="icofont-credit-card"></i> 결제완료</button>
                             </div>
                             <!-- hidden으로 form 넘기기 -->
-                            <c:if test="${book == 1}">
-                                <input type="hidden" id="enroll_price" name="enroll_price" value="${course.book_price +course.price }">
-                                <input type="hidden" id="pt" name="pt" value="${user.pt -  (course.book_price +course.price)}">
-                            </c:if>
-                            <c:if test="${book == 0}">
-                                <input type="hidden" id="enroll_price" name="enroll_price" value="${course.price }">
-                                <input type="hidden" id="pt" name="pt" value="${user.pt - course.price }">
-                            </c:if>
-                            <input type="hidden" id="book" name="book" value="${book }">
+                                <input type="hidden" id="enroll_price" name="enroll_price" value="0">
+                                <input type="hidden" id="pt" name="pt" value="${user.pt}">
                             <input type="hidden" id="cno" name="cno" value="${course.cno }">
                             <input type="hidden" id="id" name="id" value="${sid }">
                             <input type="hidden" id="book_name" name="book_name" value="${course.book_name }">
-                            <input type="hidden" id="enroll_cash" name="enroll_cash" value="10000">
+
+                            <c:if test="${book == 1}">
+                                <input type="hidden" id="enroll_cash" name="enroll_cash" value="${course.book_price +course.price }">
+                                <input type="hidden" id="book" name="book" value="true">
+                            </c:if>
+                            <c:if test="${book == 0}">
+                                <input type="hidden" id="enroll_cash" name="enroll_cash" value="${course.price }">
+                                <input type="hidden" id="book" name="book" value="false">
+                            </c:if>
                         </form>
                         <div class="container">
                             <p id="paymentResult" style="color:red;font-size:28px;font-weight:800;">결제 전</p>
@@ -594,49 +595,64 @@
         var totalPay=0;
         var proName;
         $("#pay").click(function(){
-            var priceText = document.getElementById("cash_price").textContent; // 예시로 "12,000" 문자열
-            var priceWithoutCommas = priceText.replace(/,/g, ''); // 쉼표(,) 제거
-            var price = parseInt(priceWithoutCommas, 10); // 정수로 변환
-            proName = "상품";
-            totalPay = price
-            alert("결제할 금액 : "+totalPay);
-            //상품명_현재시간
-            var d = new Date();
-            var date = d.getFullYear()+''+(d.getMonth()+1)+''+d.getDate()+''+d.getHours()+''+d.getMinutes()+''+d.getSeconds();
-            IMP.init('imp11164187'); // 결제 API를 사용하기 위한 코드 입력!
-            IMP.request_pay({		//결제 요청
-                merchant_uid : '상품명_' + date, //상점 거래 ID
-                name : proName,				// 결제 명
-                amount : totalPay,					// 결제금액호
-            }, function(rsp){
-                if(rsp.success){
-                    console.log(rsp);
-                    var msg = '결제가 완료 되었습니다.';
-                    var r1 = '고유 아이디 : ' +rsp.imp_uid;
-                    var r2 = '상점 거래 아이디 : ' +rsp.merchant_uid;
-                    var r3 = '결제 금액 : ' +rsp.paid_amount;
-                    var r4 = '카드 승인 번호 : '+rsp.apply_num;
+            if (ck_item1.checked && ck_item2.checked ) {
+                var priceText = document.getElementById("cash_price").textContent; // 예시로 "12,000" 문자열
+                var priceWithoutCommas = priceText.replace(/,/g, ''); // 쉼표(,) 제거
+                var price = parseInt(priceWithoutCommas, 10); // 정수로 변환
+                proName = "상품";
+                totalPay = price
+                alert("결제할 금액 : " + totalPay);
+                //상품명_현재시간
+                var d = new Date();
+                var date = d.getFullYear() + '' + (d.getMonth() + 1) + '' + d.getDate() + '' + d.getHours() + '' + d.getMinutes() + '' + d.getSeconds();
+                IMP.init('imp11164187'); // 결제 API를 사용하기 위한 코드 입력!
+                IMP.request_pay({		//결제 요청
+                    merchant_uid: '상품명_' + date, //상점 거래 ID
+                    name: proName,				// 결제 명
+                    amount: totalPay,					// 결제금액호
+                }, function (rsp) {
+                    if (rsp.success) {
+                        console.log(rsp);
+                        var msg = '결제가 완료 되었습니다.';
+                        var r1 = '고유 아이디 : ' + rsp.imp_uid;
+                        var r2 = '상점 거래 아이디 : ' + rsp.merchant_uid;
+                        var r3 = '결제 금액 : ' + rsp.paid_amount;
+                        var r4 = '카드 승인 번호 : ' + rsp.apply_num;
 
-                    //$("#payCk").val("yes");
-                    //$("#payAmount").val(rsp.paid_amount);
-                    //$("#pmethod").val(rsp.pay_method);
-                    //$("#pcom").val(rsp.pg_provider);
-                    //$("#cnum").val(rsp.apply_num);
-                    //alert(msg);
-                    //$("#paymentResult").html(r1+"<br>"+r2+"<br>"+r3+"<br>"+r4);
-                } else{
-                    //$("#paymentResult").html('결제실패<br>'+'에러내용 : ' +rsp.error_msg);
-                }
-                //테스트용이므로 실패시에도 그냥 통과시킴
-                $("#payCk").val("yes");
-                $("#payAmount").val(totalPay);
-                $("#pmethod").val("신용카드");
-                $("#pcom").val("삼성카드");
-                $("#cnum").text("123-1234-1234-1278");
-                $("#paymentResult").text("결제 완료 : "+totalPay);
-                $("#apply").css("background-color","#0078e7");
-            });
+                        //$("#payCk").val("yes");
+                        //$("#payAmount").val(rsp.paid_amount);
+                        //$("#pmethod").val(rsp.pay_method);
+                        //$("#pcom").val(rsp.pg_provider);
+                        //$("#cnum").val(rsp.apply_num);
+                        //alert(msg);
+                        //$("#paymentResult").html(r1+"<br>"+r2+"<br>"+r3+"<br>"+r4);
+                    } else {
+                        //$("#paymentResult").html('결제실패<br>'+'에러내용 : ' +rsp.error_msg);
+                    }
+                    //테스트용이므로 실패시에도 그냥 통과시킴
+                    $("#payCk").val("yes");
+                    $("#payAmount").val(totalPay);
+                    $("#pmethod").val("신용카드");
+                    $("#pcom").val("삼성카드");
+                    $("#cnum").text("123-1234-1234-1278");
+                    $("#paymentResult").text("결제 완료 : " + totalPay);
+                    $("#apply").css("background-color", "#0078e7");
+                    //포인트 결제 금액 저장
+                    var ptPriceInput = document.getElementById("pt_price");
+                    var enrollPriceInput = document.getElementById("enroll_price");
+                    enrollPriceInput.value = ptPriceInput.value;
+
+                    //실결제 금액 저장
+                    var enrollCashInput = document.getElementById("enroll_cash");
+                    enrollCashInput.value = price;
+
+                });
+            } else {
+                alert("약관 및 환불 규정에 동의하지 않으셨습니다.");
+                event.preventDefault();
+            }
         });
+
     });
 </script>
 
