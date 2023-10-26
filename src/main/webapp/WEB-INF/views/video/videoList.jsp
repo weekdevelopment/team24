@@ -217,7 +217,7 @@
             </div>
             <div class="column is-2 is-offset-6 has-text-right">
                 <c:if test= "${sid.equals('admin')}">
-                    <a class="button is-link is-medium" href="${path1 }/video/insert.do">영상 업로드</a>
+                    <a class="button is-link is-medium" href="${path1 }/video/insert.do?site=user">영상 업로드</a>
                 </c:if>
             </div>
         </div>
