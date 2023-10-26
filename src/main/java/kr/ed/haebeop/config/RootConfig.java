@@ -42,9 +42,9 @@ public class RootConfig {
     public BasicDataSource dataSource() {   //데이터베이스 설정
         BasicDataSource basicDataSource = new BasicDataSource();
         basicDataSource.setDriverClassName("org.mariadb.jdbc.Driver");
-        basicDataSource.setUrl("jdbc:mariadb://localhost:3306/haebeop");
-        basicDataSource.setUsername("root");
-        basicDataSource.setPassword("1234");
+        basicDataSource.setUrl("jdbc:mariadb://10.41.1.198/team24");
+        basicDataSource.setUsername("team24");
+        basicDataSource.setPassword("team24");
         return basicDataSource;
     }
     @Bean
