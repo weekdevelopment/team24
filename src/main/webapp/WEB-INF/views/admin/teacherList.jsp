@@ -218,10 +218,10 @@
         //     // 모달 닫기
         //     $('#myModal').removeClass('is-active');
         // });
-        var apply = document.getElementById("apply");
-        apply.addEventListener("click", function(){
-            document.getElementById("teacherForm").submit();
-        });
+        //var apply = document.getElementById("apply");
+        //apply.addEventListener("click", function(){
+        //    document.getElementById("teacherForm").submit();
+        //});
     });
 </script>
 
