@@ -98,6 +98,7 @@
                                     <option value="${teacher.teacher_name}">${teacher.teacher_name}</option>
                                 </c:forEach>
                             </select>
+                            <input type="hidden" name="teacher" value="" id="teacher" class="input" placeholder="선생님" maxlength="98" style="width: 13.6rem;" required>
                         </td>
                     </tr>
                     <%--<tr>
@@ -116,7 +117,20 @@
         <div class="column is-1"></div>
     </div>
 </div>
+<script>
+    // select 요소와 hidden input 요소에 대한 참조를 가져옵니다.
+    var selectElement = document.getElementById("teacher_name");
+    var hiddenInput = document.getElementById("teacher");
 
+    // select 요소의 변경 이벤트를 수신 대기합니다.
+    selectElement.addEventListener("change", function() {
+        // 선택된 옵션의 값을 가져와서 hidden input의 값을 설정합니다.
+        hiddenInput.value = selectElement.value;
+    });
+
+    // 초기 설정: 페이지가 로드될 때도 실행하여 초기 값을 설정합니다.
+    hiddenInput.value = selectElement.value;
+</script>
 
 <!-- 푸터 부분 인클루드 -->
 <jsp:include page="../include/footer.jsp"></jsp:include>
