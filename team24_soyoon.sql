@@ -1,14 +1,12 @@
 -- 강사 - 강사코드, 강사명, 연락처, 이메일
 CREATE TABLE teacher (
-	tid VARCHAR(50) PRIMARY KEY,
+	tno INT AUTO_INCREMENT PRIMARY KEY,
 	teacher_name VARCHAR(50) NOT NULL,
 	tel VARCHAR(200),
 	email VARCHAR(150)
 );
 
-INSERT INTO teacher VALUES("park", "박정우", "01012341234", "park@academy.com");
-
-
+INSERT INTO teacher VALUES(DEFAULT , "박정우", "01012341234", "park@academy.com");
 
 CREATE TABLE course (
 	cno INT AUTO_INCREMENT PRIMARY KEY, -- 강의 코드
@@ -38,13 +36,14 @@ CREATE TABLE enroll (
 	eno INT AUTO_INCREMENT PRIMARY KEY, -- 수강코드
 	cno int NOT NULL, -- 수강신청한 강의 코드
 	id VARCHAR(20) NOT NULL, -- 수강신청한 회원의 아이디 
-	-- total_time INT NOT NULL, -- 총 강의 시간 
-	-- curr_time INT NOT NULL, -- 수강한 시간
 	complete BOOLEAN NOT NULL DEFAULT 0, -- 수강 완료 여부
 	book BOOLEAN NOT NULL DEFAULT 1, -- 교재 선택 여부 (기본값은 1이며, 0은 미선택 1은 선택)
-	enroll_price INT NOT NULL, -- 총 수강 가격 (교재 선택 여부에 따라 달라짐)
+	enroll_price INT NOT NULL DEFAULT 0, -- 사용 포인트
 	book_name VARCHAR(100) NOT NULL, -- 교재 이름
-	cancel BOOLEAN NOT NULL DEFAULT 0 -- 수강 철회 여부 enroll
+	cancel BOOLEAN NOT NULL DEFAULT 0, -- 수강 철회 여부 enroll
+	enroll_cash INT NOT NULL  -- 실결제 금액 
 );
 
-INSERT INTO enroll VALUES(DEFAULT, 1, "park123", DEFAULT, DEFAULT, 141000, "리딩북", DEFAULT);
+INSERT INTO enroll VALUES(DEFAULT, 1, "admin", DEFAULT, DEFAULT, 30000, "리딩북", DEFAULT, 130000);
+
+   

@@ -8,7 +8,8 @@
 <html>
 <head>
   <title>메인</title>
-  <jsp:include page="../include/head.jsp" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <jsp:include page="../include/head.jsp" />
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
@@ -92,36 +93,72 @@
                                 <thead>
                                 <tr>
                                     <th class="has-text-centered">강사명</th>
-                                    <th class="has-text-centered">강사 아이디</th>
                                     <th class="has-text-centered">전화번호</th>
                                     <th class="has-text-centered">이메일</th>
+                                    <th class="has-text-centered">관리</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <c:forEach var="teacher" items="${teacherList }" varStatus="status">
                                     <tr>
                                         <td class="has-text-centered">${teacher.teacher_name }</td>
-                                        <td class="has-text-centered">${teacher.tid } </td>
                                         <td class="has-text-centered">${teacher.tel }</td>
                                         <td class="has-text-centered">${teacher.email }</td>
-
-                                        <%--<td class="has-text-centered"><fmt:formatNumber value="${course.price }" pattern="#,###"/>원
-                                        </td>
-                                        <td class="has-text-centered"><fmt:formatNumber value="${course.book_price }" pattern="#,###"/>원
-                                        </td>
-                                        <td class="has-text-centered">
-                                                &lt;%&ndash;<a href="${path1 }/admin/courseDelete?cno=${course.cno }"><button class="button is-info is-rounded" style="scale: 70%;">수정</button></a>&ndash;%&gt;
-                                            <a href="${path1 }/admin/courseDelete?cno=${course.cno }">
-                                                <button class="button is-danger is-rounded" style="scale: 70%;">삭제
-                                                </button>
-                                            </a>
-                                        </td>--%>
+                                        <td class="has-text-centered"><a href="${path1 }/admin/teacherDelete?tno=${teacher.tno }"><button class="button is-danger is-rounded" style="scale: 70%;">삭제</button></a></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
+                                <button id="teacherInsert" class="button is-link is-medium" style="scale: 70%;">강사 등록</button>
                             </table>
                         </div>
                     </div>
+                    <div class="modal" id="myModal">
+                        <div class="modal-background"></div>
+                        <div class="modal-card">
+                            <header class="modal-card-head" style="background-image: url('${path1}/resources/images/modal_bg.png'); ">
+                                <p class="modal-card-title has-text-white">강사 등록</p>
+                                <button class="delete" aria-label="close"></button>
+                            </header>
+                            <section class="modal-card-body">
+                                <!-- 모달 내용 -->
+                                <form action="${path1 }/admin/insertTeacher" id="teacherForm" method="post" >
+                                    <table class="table is-centered is-fullwidth">
+                                        <tbody>
+                                        <tr class="border-top">
+                                            <th class="has-text-centered">강사명</th>
+                                            <td>
+                                                <input type="text" name="teacher_name" id="teacher_name" placeholder="강사명" class="input" maxlength="98" required>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-top">
+                                            <th class="has-text-centered">전화번호</th>
+                                            <td>
+                                                <input type="text" name="tel" id="tel" placeholder="전화번호" class="input" maxlength="98" required>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-top">
+                                            <th class="has-text-centered">이메일</th>
+                                            <td>
+                                                <input type="email" name="email" id="email" placeholder="이메일" class="input" maxlength="98" required>
+                                            </td>
+                                        </tr>
+                                        <%--<tr>
+                                          <td colspan="2">
+                                            <input type="submit" class="button2" value="등록" >
+                                            <a class="button" href="${path1 }/video/list.do">목록으로</a>
+                                          </td>
+                                        </tr>--%>
+                                        </tbody>
+                                    </table>
+                                    <div class="column is-4 is-offset-4 has-text-centered">
+                                        <button type="submit" id="apply" class="button is-info" >등록하기</button>
+                                    </div>
+                                </form>
+
+                            </section>
+                        </div>
+                    </div>
+
                     <br>
                     <nav class="pagination is-rounded is-centered mb-6" role="navigation" aria-label="pagination">
                         <c:if test="${curPage > page.pageCount }">
@@ -161,6 +198,33 @@
     </div>
 </div>
 <script async type="text/javascript" src="${path1 }/resources/js/bulma.js"></script>
+<!-- 버튼을 클릭했을 때 모달을 열도록 합니다 -->
+<script>
+    $(document).ready(function () {
+        // 'teacherInsert' 버튼을 클릭할 때 모달을 엽니다.
+        $('#teacherInsert').click(function () {
+            // 모달 열기
+            $('#myModal').addClass('is-active');
+        });
+
+        // '모달 닫기' 버튼을 클릭할 때 모달을 닫습니다.
+        $('.delete').click(function () {
+            // 모달 닫기
+            $('#myModal').removeClass('is-active');
+        });
+        //
+        // // 모달 외부를 클릭했을 때 모달을 닫습니다.
+        // $('.modal-background').click(function () {
+        //     // 모달 닫기
+        //     $('#myModal').removeClass('is-active');
+        // });
+        var apply = document.getElementById("apply");
+        apply.addEventListener("click", function(){
+            document.getElementById("teacherForm").submit();
+        });
+    });
+</script>
+
 <jsp:include page="../include/footer.jsp"/>
 </body>
 </html>

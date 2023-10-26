@@ -32,8 +32,9 @@
         .item3 { width : 15%; }
         .item4 { width : 15%; }
         .item5 { width : 15%; }
-        .item6 { width : 20%; }
-        .item7 { width : 5%; }
+        .item6 { width : 10%; }
+        .item7 { width : 10%; }
+        .item8 { width : 5%; }
 
         .card:hover {
             transform: none;
@@ -100,7 +101,8 @@
                                 <th>수강생</th>
                                 <th>수강 완료</th>
                                 <th>교재 구매</th>
-                                <th>구매가</th>
+                                <th>사용 포인트</th>
+                                <th>실구매가</th>
                                 <th>권한 삭제</th>
                             </tr>
                             </thead>
@@ -119,7 +121,8 @@
                                     <c:if test="${enroll.book == false }"> ❌ </c:if>
                                 </td>
                                 <td class="item6">${enroll.enroll_price }</td>
-                                <td class="item7"><a href="${path1 }/admin/enrollDelete?eno=${enroll.eno }&cno=${enroll.cno }"><button class="button is-danger is-rounded" style="scale: 70%;">삭제</button></a></td>
+                                <td class="item7">${enroll.enroll_cash }</td>
+                                <td class="item8"><a href="${path1 }/admin/enrollDelete?eno=${enroll.eno }&cno=${enroll.cno }"><button class="button is-danger is-rounded" style="scale: 70%;">삭제</button></a></td>
                             </tr>
                             </c:forEach>
                             </tbody>

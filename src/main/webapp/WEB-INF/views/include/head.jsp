@@ -49,7 +49,7 @@
 
 <!-- Essential Scripts =====================================-->
 <!-- Main jQuery -->
-<script defer src="${path0}/resources/plugins/jquery/jquery.js"></script>
+<%--<script defer src="${path0}/resources/plugins/jquery/jquery.js"></script>--%>
 <%--<script src="${path0}/resources/js/contact.js"></script>--%>
 <!--  Magnific Popup-->
 <script src="${path0}/resources/plugins/magnific-popup/dist/jquery.magnific-popup.min.js"></script>

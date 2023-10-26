@@ -13,6 +13,7 @@
     <!-- 헤드 부분 인클루드 -->
     <jsp:include page="../include/head.jsp" />
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
     <style>
         .content ul {
             list-style-type: none;
@@ -229,6 +230,11 @@
         .form-check {
             margin: 0 30px 0px 30px;
         }
+        .table {
+            background-color: #fff;
+            color: #363636;
+            min-width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -265,7 +271,7 @@
                         <article class="agree_fr">
                             <strong style="font-size: 30px;">[이용약관]</strong>
                             제 1 조 (목적)
-                            이 약관은 (주)진수어학원(이하 “회사”라 함)이 제공하는 제반 서비스의 이용에 관한 조건 및 절차에 관한 기본적인 사항과 기타 필요한 사항을 규정함을 목적으로 한다.
+                            이 약관은 (주)스마트 해법(이하 “회사”라 함)이 제공하는 제반 서비스의 이용에 관한 조건 및 절차에 관한 기본적인 사항과 기타 필요한 사항을 규정함을 목적으로 한다.
 
                             제 2 조 (정의)
                             ① 이 약관에서 사용하는 용어의 정의는 다음과 같다.
@@ -307,164 +313,8 @@
                             제 7 조 (개인정보보호 의무)
                             회사는 정보통신망법 등 관계 법령이 정하는 바에 따라 회원의 개인정보를 보호하기 위해 노력한다. 개인정보의 보호 및 사용에 대해서는 관련법 및 회사의 개인정보취급방침이 적용된다. 다만, 회사의 공식 사이트 이외의 링크된 사이트에서는 회사의 개인정보취급방침이 적용되지 않는다.
 
-                            제 8 조 ("회원"의 "아이디" 및 "비밀번호"의 관리에 대한 의무)
-                            ①회원의 아이디와 비밀번호에 관한 관리책임은 회원에게 있으며, 이를 제3자가 이용하도록 하여서는 안 된다.
-                            ②회사는 회원의 아이디가 개인정보 유출 우려가 있거나, 반사회적 또는 미풍양속에 어긋나거나 회사 및 회사의 운영자로 오인할 우려가 있는 경우, 해당 아이디의 이용을 제한할 수 있다.
-                            ③회원은 아이디 및 비밀번호가 도용되거나 제3자가 사용하고 있음을 인지한 경우에는 이를 즉시 회사에 통지하고 회사의 안내에 따라야 한다.
-                            ④제3항의 경우에 해당 회원이 회사에 그 사실을 통지하지 않거나, 통지한 경우에도 회사의 안내에 따르지 않아 발생한 불이익에 대하여 회사는 책임지지 않는다.
-                            제 9 조 ("회원"에 대한 통지)
-                            ①회사가 회원에 대한 통지를 하는 경우 이 약관에 별도 규정이 없는 한 회원이 지정한 전자우편주소, 서비스 내 전자메모 등으로 할 수 있다.
-                            ②회사는 회원 전체에 대한 통지의 경우 7일 이상 회사의 게시판에 게시함으로써 제1항의 통지에 갈음할 수 있다.
-                            제 10 조 ("학교"의 의무)
-                            ①회사는 관련법과 이 약관이 금지하거나 미풍양속에 반하는 행위를 하지 않으며, 계속적이고 안정적으로 서비스를 제공하기 위하여 최선을 다하여 노력한다.
-                            ②회사는 회원이 안전하게 서비스를 이용할 수 있도록 개인정보(신용정보 포함)보호를 위해 보안시스템을 갖추어야 하며 개인정보취급방침을 공시하고 준수한다.
-                            ③회사는 회원 개인의 정보를 본인의 승낙 없이 제3자에게 누설, 배포하지 않는 것을 원칙으로 한다. 단, 아래 사항에 해당하는 겨우는 예외로 인정한다.
-                            1.정보통신망법 등 법률의 규정에 의해 국가기관의 요구가 있는 경우
-                            2.범죄에 대해 수사상의 목적이 있거나 정보통신윤리위원회의 요청이 있는 경우
-                            3.기타 관계법령이 정한 절차에 따른 요청이 있는 경우
-                            ④회사는 서비스 이용과 관련하여 회원으로부터 제기된 의견이나 불만이 정당하다고 인정할 경우에는 이를 처리하여야 한다. 회원이 제기한 의견이나 불만사항에 대해서는 게시판을 활용하거나 전자우편 등을 통하여 회원에게 처리과정 및 결과를 전달한다.
-                            제 11 조 ("회원"의 의무)
-                            ①회원은 서비스를 이용할 때 다음의 행위를 하여서는 안 된다.
-                            1.신청 또는 변경 시 허위내용의 등록
-                            2.타인의 정보도용
-                            3.회사가 게시한 정보의 변경
-                            4.회사와 기타 제3자의 저작권 등 지적재산권에 대한 침해
-                            5.회사 및 기타 제3자의 명예를 손상시키거나 업무를 방해하는 행위
-                            6.외설 또는 폭력적인 메시지, 화상, 음성, 기타 공서양속에 반하는 정보를 서비스에 공개 또는 게시하는 행위
-                            7.회사의 동의 없이 영리를 목적으로 서비스를 사용하는 행위
-                            8.서비스의 이용권한, 기타 이용 계약상 지위 및 권리를 타인에게 양도, 증여하는 행위
-                            9.다른 회원의 개인정보를 수집, 저장, 공개하는 행위
-                            10.법령에 의하여 그 전송 또는 게시가 금지되는 정보(컴퓨터 프로그램 포함)의 전송 또는 게시하는 행위
-                            11.회사의 직원이나 운영자를 사칭하거나 타인의 명의를 도용하여 글을 게시 하거나 메일을 발송하는 행위
-                            12.컴퓨터 소프트웨어, 하드웨어, 전기통신 장비의 정상적인 가동을 방해, 파괴할 목적으로 고안된 소프트웨어 바이러스 및 기타 다른 컴퓨터 코드, 파일, 프로그램을 포함하고 있는 자료를 게시하거나 전송하는 행위
-                            13.기타 불법적이거나 부당한 행위
-                            ②회원은 관계법, 이 약관의 규정, 이용안내 및 서비스와 관련하여 공지한 주의사항, 회사가 통지하는 사항 등을 준수하여야 하며, 기타 회사의 업무에 방해되는 행위를 하여서는 안 된다.
-                            제 12 조 ("서비스"의 제공 등)
-                            ①회사는 회원에게 아래와 같은 서비스를 제공한다.
-                            1.온라인 교육 콘텐츠
-                            2.기타 회사가 추가 개발하거나 저작권을 가진 디지털 컨텐츠 및 창작물 등 회원에게 제공하는 일체의 서비스
-                            ②회사는 서비스를 일정범위로 분할하여 각 범위 별로 이용가능시간을 별도로 지정할 수 있다. 다만, 이러한 경우에는 그 내용을 사전에 공지한다.
-                            ③서비스는 연중무휴, 1일 24시간 제공함을 원칙으로 한다.
-                            ④회사는 컴퓨터 등 정보통신설비의 보수점검, 교체 및 고장, 통신두절 또는 운영상 상당한 이유가 있는 경우 서비스의 제공을 일시적으로 중단할 수 있다. 이 경우 회사는 제9조(회원에 대한 통지)에 정한 방법으로 회원에게 통지한다. 다만, 회사가 사전에 통지할 수 없는 부득이한 사유가 있는 경우 사후에 통지할 수 있다.
-                            ⑤회사는 서비스의 제공에 필요한 경우 정기점검을 실시할 수 있으며, 정기점검시간은 서비스 제공화면에 공지한 바에 따른다.
-                            제 13 조 ("서비스"의 변경)
-                            ①회사는 운영상, 기술상의 필요에 따라 제공하고 있는 전부 또는 일부 서비스를 변경할 수 있다.
-                            ②서비스의 내용, 이용방법, 이용시간에 대하여 변경이 있는 경우에는 변경사유, 변경될 서비스의 내용 및 제공일자 등은 그 변경 전 7일 이상 해당 서비스 초기화면에 게시하여야 한다.
-                            ③회사는 무료로 제공되는 서비스의 일부 또는 전부를 학교의 정책 및 운영의 필요상 수정, 중단, 변경할 수 있으며, 이에 대하여 관련법에 특별한 규정이 없는 한 회원에게 별도의 보상을 하지 않는다.
-                            제 14 조 (정보의 제공 및 광고의 게재)
-                            ①회사는 회원이 서비스 이용 중 필요하다고 인정되는 다양한 정보를 공지사항이나 전자우편 등의 방법으로 회원에게 제공할 수 있다. 다만, 회원은 관련법에 따른 거래관련 정보 및 고객문의 등에 대한 답변 등을 제외하고는 언제든지 전자우편 등에 대해서 수신 거절을 할 수 있다.
-                            ②제1항의 정보를 전화 및 모사전송기기에 의하여 전송하려고 하는 경우에는 회원의 사전 동의를 받아서 전송한다. 다만, 회원의 거래관련 정보 및 고객문의 등에 대한 회신에 있어서는 제외된다.
-                            ③회사는 서비스의 운영과 관련하여 서비스화면, 홈페이지, 전자우편, 카카오톡 플러스친구 등에 광고를 게재할 수 있다. 광고가 게재된 전자우편 등을 수신한 회원은 수신거절을 회사에게 할 수 있다.
-                            제 15 조 (수강 승인)
-                            ①회사는 규정한 결제방법을 사용하여 이용요금을 납입한 사실이 확인되면 지체없이 수강신청을 승인한다.
-                            ②회사는 아래에 해당하는 경우 수강 신청에 대한 승인을 제한할 수 있고, 그 사유가 해소될 때까지 승인을 유보할 수 있다.
-                            1.이용요금을 납입하지 않은 경우
-                            2.이용요금 입금 금액 총액이 신청 금액 총애게 미달되는 경우
-                            3.기타 회사가 필요하다고 인정되는 경우
-                            ③제2항에 의하여 수강 신청의 승인을 유보하거나 승인하지 아니하는 경우, 회사는 이를 수강 신청자에게 알려야 한다.
-                            제 16 조 (수강 취소 및 환불)
-                            1. 단과(정규과정) 상품 환불정책
-                            1–1.단과(정규과정)
-                            ① 수강시작 후 7일 미만 & 5강 미만 수강 시에는 100% 환불 가능
-                            ② 수강시작 후 7일 이상 또는 5강 이상 수강 시에는 잔여일에 대한 일할 계산 환불 가능
-                            ③ 수강시작 후 수강기간 또는 수강한 강의수가 전체의 50% 이상 경과한 경우 환불 불가
-                            ※ 환불금액 = 결제금액 – {정상가*(실제 수강일/전체 수강일)}
-                            단, 할인적용 등록 시 정상가를 기준으로 환불됨을 숙지해주세요.
-                            ※ 전체 수강일은 복습기간을 제외한 수강일입니다.
-                            정상수강 예시) 판매가격 104,000원 [카르페디엠1] 결제하고, 전체 수강일 30일 중 18일을 수강 하였을 경우,
-                            – 환불금액 = 104,000 – {104,000*(18일/30일)}
-                            – 최종 환불 금액 = 41,600원(십원 단위 버림)
-                            할인수강 예시) 정상가격 104,000원에 20%할인 83,200원에 [카르페디엠1] 결제하고, 전체 수강일 30일 중 18일을 수강 하였을 경우,
-                                – 환불금액 = 83,200 – {104,000*(18일/30일)}
-                                – 최종 환불 금액 = 20,800원(십원 단위 버림)
-                                2. 단기완성(패키지) 상품 환불정책
-                                ① 수강시작 후 7일 미만, 5강 미만 수강 시에는 100% 환불 가능
-                                ② 수강시작 후 7일 이상 또는 5강 이상 수강 시 잔여일에 대한 환불이 가능
-                                ※ 환불금액 = 결제금액 – {정상가*(실제 수강일/전체 수강일)}
-                                *패키지 상품의 경우 할인율이 선적용 되어 있는 상품으로
-                                환불시에는 정상가가 적용됨을 필히 숙지부탁드립니다
-                                ※ 전체 수강일은 복습기간을 제외한 수강일입니다.
-                                [단기완성(패키지) 상품 수강기간 정책]
-                                진수어학원 인강에서 판매하는 단기완성(패키지) 상품의 총 학습기간은 기본적으로 수강기간 30일로 이루어져 있으며,
-                                이벤트와 기타 사유로 연장된 추가 학습기간 등은 무료 학습기간으로 제공 됩니다.
-                                최대 3회/총 60일 동안에 걸쳐 강의 일시정지(휴강신청)가 가능합니다
-                                ※ 판매중인 각 단기완성(패키지)별 수강기간은 [수강신청] – [전체 강좌 보기] 메뉴 및 각 상품 페이지 하단의 유의사항에서 필히 확인해주세요.
-                                * 판촉물이 포함된 상품의 환불요청 시에는 받아보신 추가 제공된 판촉물의 금액을 차감 하거나 새제품이 아닌 훼손된 상태일 때에는 해당 금액 역시 차감됩니다.
-                                3. 도서 반품 안내(추가 항목)
-                                ① 출고 전 상품은 100% 환불이 가능합니다.
-                                ② 출고 후 15일 이전 입고 확인 후 100% 환불이 가능합니다. 다만 교재에 사용한 흔적이 있거나 훼손된 경우에는 반품이 불가합니다.(반품 시 왕복 배송료 5,000원 회원 부담)
-                                ③ 출고 후 15일 경과 후에는 환불이 불가합니다
-                                ※ 도서는 다른 상품과 달리 외형보다 그 속에 담겨있는 내용에 가치가 있는 것이기 때문에 반품기간이 정해져 있습니다. 구매 후 복사 또는 촬영 등의 내용 훼손이 이루어질 가능성이 있으므로, 반품기간을 15일로 규정합니다.(소비자 보호원 및 공정거래위원회 규정 표준약관에 근거)
-                                4. 환불 요청 시 및 반품 안내
-                                당일 오후 3시 이전에 결제 → 당일 오후 3시 이전에 취소 요청
-                                당일 오후 3시 이후에 결제 → 익일 오후 3시 이전에 취소 요청
-                                * 교재는 매일 오후 3시에 발송되며 이미 발송된 후 환불 요청을 해주시면 물건 반품, 왕복 배송비 5,000원을 추가 차감 후 환불 됩니다.
-                                * 홈페이지 1:1문의 게시판이나 카카오톡플친으로 요청하시는 경우는 순차적으로 답변해 드리고 있기 때문에 접수가 늦어질 수 있으니 환불 요청의 경우 드림팩토리(042-484–9050)로 연락 주시면 빠른 처리 도와 드리도록 하겠습니다.
-                                5. 가상계좌(무통장 입금), 실시간 계좌이체 결제 시
-                                회원님께서 요청하시는 계좌로 환불이 가능합니다. 드림팩토리(042-484–9050)나 1:1문의 게시판, 카카오톡 플러스친구 문의 등으로 환불요청과 함께 환불 받으실 은행명과 예금주, 계좌번호를 알려주시면 영업일 기준 7~10일 내에 해당 계좌로 환불 금액을 입금해 드리도록 하겠습니다.
-                                6. 신용카드 결제 시
-                                결제하신 내역에 대한 카드 승인취소 처리는 바로 가능하며 카드사의 사정에 따라 입금까지는 며칠 소요되실 수 있는 점 참고 부탁드립니다.
-                                7. 기타 유의사항
-                                ※ 수강일은 수강 시작일부터 환불 접수 발생 시점을 기준으로 산출됩니다.
-                                ※ 구매하신 강의 및 교재 상품 외 제공받은 사은품, 장학금은 기타소득으로 분류되며 소득세를 원천징수할 의무가 있습니다. 50,000원을 초과하는 기타소득의 경우 22%에 해당하는 금액을 제외 후 지급해드리고 있으며, 소득세 신고를 위한 신분증 사본 제출을 요청드리고 있습니다.
-                                [수강권 상품 환불정책]
-                                    - 구매 후 수령한 수강권은 구매하신 구매처 청약철회기간 내 사용하여 이상 여부를 확인해보시길 권장드립니다.
-                                    - 미등록된 수강권에 대해서는 발송일 + 상품의 학습기간 동안 등록 유예기간을 제공해드립니다. 유예 기간 이후에는 사용된 수강권으로 간주되니 이점 유의하시고 관련 문의 사항이 있는 경우 드림팩토리로 연락주시기 바랍니다.
-                                    (ex. 기본 수강기간 1년, 미션 수행 시 평생 수강 가능한 상품의 경우 수강권 등록 유예기간 = 수강권 발송일+수강기간 1년(365일) / 수강권 발송일+366일째 되는 날 부터는 사용한 수강권으로 간주)
-                                    제 17 조 (게시물의 저작권)
-                                    ①서비스에 대한 저작권 및 지적재산권은 회사에 귀속된다. 단, 회원의 게시물 및 제휴계약에 따라 제공된 저작물 등은 제외한다.
-                                    ②회원이 서비스 내에 게시한 게시물의 저작권은 해당 게시물의 저작자에게 귀속된다.
-                                    ③회원이 서비스 내에 게시하는 게시물은 검색결과 내지 서비스 프로모션 등에 노출될 수 있으며, 해당 노출을 위해 필요한 범위 내에서는 일부 수정, 편집되어 게시될 수 있다. 이 경우, 회원은 언제든지 고객센터를 통해 해당 게시물에 대해 삭제, 검색결과 제외, 비공개 등의 조치를 취할 수 있다.
-                                    ④회사는 제3항 이외의 방법으로 회원의 게시물을 이용하고자 하는 경우에는 전화, 팩스, 전자우편 등을 통해 사전에 회원의 동의를 얻어야 한다.
-                                    제 18 조 (게시물의 관리)
-                                    ①회원의 게시물이 정보통신망법 및 저작권법등 관련법에 위반되는 내용을 포함하는 경우, 권리자는 관련법이 정한 절차에 따라 해당 게시물의 게시중단 및 삭제 등을 요청할 수 있으며, 회사는 관련법에 따라 조치를 취하여야 한다.
-                                    ②회사는 전항에 따른 권리자의 요청이 없는 경우라도 권리침해가 인정될 만한 사유가 있거나 기타 학교 정책 및 관련법에 위반되는 경우에는 관련법에 따라 해당 게시물에 대해 임시조치 등을 취할 수 있다.
-                                    ③회사는 회원이 게재 또는 등록한 내용물이 다음 각 호에 해당된다고 판단되는 경우에 회원의 동의 없이 그 내용을 삭제할 수 있다.
-                                    1.다른 회원 또는 제 3자를 비방하거나 중상모략 함으로써 타인의 명예를 훼손시킨 경우
-                                    2.공공질서 및 미풍양속에 위반되는 경우
-                                    3.범죄적 행위에 결부된다고 인정되는 경우
-                                    4.제 3자의 저작 등 기타 권리를 침해하는 경우
-                                    5.기타 관계 법령이나 회사가 정한 규정에 위배되는 경우
-                                    제 19 조 (계약 해지)
-                                    ①회원은 언제든지 서비스 초기화면의 고객센터 또는 내 정보 관리 메뉴 등을 통하여 이용계약 해지 신청을 할 수 있으며, 회사는 관련법 등이 정하는 바에 따라 이를 즉시 처리하여야 한다.
-                                    ②회원이 계약을 해지할 경우, 관련법 및 개인정보취급방침에 따라 아래와 같이 회사가 관계법령규정 또는 교육이력 유지를 위한 최소한의 개안정보(이름, 주민등록번호 등) 등 보존할 필요가 있는 경우를 제외하고는 해지 즉시 회원의 모든 데이터는 소멸된다.
-                                    1.사용료 결제 및 콘텐츠 서비스 등의 공급에 관한 기록
-                                    -보존근거 : 전자상거래 등에서의 소비자보호에 관한 법률
-                                    -보존기간 : 5년
-                                    2.계약 또는 청약철회에 관한 기록
-                                    -보존근거 : 전자상거래 등에서의 소비자보호에 관한 법률
-                                    -보존기간 : 5년
-                                    3.소비자의 불만 또는 분쟁처리에 관한 기록
-                                    -보존근거 : 전자상거래 등에서의 소비자보호에 관한 법률
-                                    -보존기간 : 3년
-                                    4.신용정보의 수집, 처리 및 이용 등에 관한 기록
-                                    -보존근거 : 신용정보의 이용 및 보호에 관한 법률
-                                    -보존기간 : 3년
-                                    5.방문에 관한 기록
-                                    -보존근거 : 통신비밀보호법
-                                    -보존기간 : 3개월
-                                    ③회원이 계약을 해지하는 경우, 회원이 작성한 게시물 중 메일, 블로그 등과 같이 본인 계정에 등록된 게시물 일체는 삭제된다. 다만, 타인에 의해 담기, 스크랩 등이 되어 재게시되거나, 공용게시판에 등록된 게시물 등은 삭제되지 않으니 사전에 삭제 후 탈퇴하여야 한다.
-                                    제 20 조 (이용제한)
-                                    ①회사는 회원이 이 약관의 의무를 위반하거나 서비스의 정상적인 운영을 방해한 경우, 경고, 일시정지, 영구이용정지 등으로 서비스 이용을 단계적으로 제한할 수 있다.
-                                    ②회사는 전항에도 불구하고, 주민등록법을 위반한 명의도용 및 결제도용, 저작권법 및 컴퓨터프로그램보호법을 위반한 불법프로그램의 제공 및 운영방해, 정보통신망법을 위반한 불법통신 및 해킹, 악성프로그램의 배포, 접속권한 초과행위 등과 같이 관련법을 위반한 경우에는 즉시 영구이용정지를 할 수 있다. 본 항에 따른 영구이용정지 시 서비스 이용을 통해 획득한 쿠폰 및 기타 혜택 등도 모두 소멸되며, 회사는 이에 대해 별도로 보상하지 않는다.
-                                    ③회사는 회원이 계속해서 6개월 이상 로그인하지 않는 경우, 회원정보의 보호 및 운영의 효율성을 위해 이용을 제한할 수 있다.
-                                    ④회사는 본 조의 이용제한 범위 내에서 제한의 조건 및 세부내용은 이용제한정책 및 개별 서비스상의 운영정책에서 정하는 바에 의한다.
-                                    ⑤본 조에 따라 서비스 이용을 제한하거나 계약을 해지하는 경우에는 회사는 제9조[회원에 대한 통지]에 따라 통지한다.
-                                    ⑥회원은 본 조에 따른 이용제한 등에 대해 회사가 정한 절차에 따라 이의신청을 할 수 있다. 이 때 이의가 정당하다고 회사가 인정하는 경우 회사는 즉시 서비스의 이용을 재개한다.
-                                    제 21 조 (책임제한)
-                                    ①회사는 천재지변 또는 이에 준하는 불가항력으로 인하여 서비스를 제공할 수 없는 경우에는 서비스 제공에 관한 책임이 면제된다.
-                                    ②회사는 회원의 귀책사유로 인한 서비스 이용의 장애에 대하여는 책임을 지지 않는다.
-                                    ③회사는 회원이 서비스와 관련하여 게재한 정보, 자료, 사실의 신뢰도, 정확성 등의 내용에 관하여는 책임을 지지 않는다.
-                                    ④회사는 회원 간 또는 회원과 제3자 상호간에 서비스를 매개로 하여 거래 등을 한 경우에는 책임이 면제된다.
-                                    ⑤회사는 무료로 제공되는 서비스 이용과 관련하여 관련법에 특별한 규정이 없는 한 책임을 지지 않는다.
-                                    제 22 조 (준거법 및 재판관할)
-                                    ①회사와 회원 간 제기된 소송은 대한민국법을 준거법으로 한다.
-                                    ②회사와 회원 간 발생한 분쟁에 관한 소송은 민사소송법 상의 관할법원에 제소한다.
-                                    제 23 조 (규정의 준용)
-                                    이용약관에 명시되지 않은 사항에 대해서는 전자상거래 등에서의 소비자 보호에 관한 법률 등 관계 법령에 의하며, 법에 명시 되지 않은 사안에 대해서는 관례에 따른다.
 
-                                    부칙
-                                    ①이 약관은 2019년 06월 24일부터 적용된다.
+
                         </article>
                         <article class="agree_fr">
                             <strong style="font-size: 30px;">[환불규정]</strong>
@@ -479,49 +329,17 @@
                             -환불금액 = 104,000 - {104,000*(14일/30일)}
                             -최종 환불 금액 = 55,500원(십원 단위 버림)
                             할인수강 예시) 정상가격 104,000원에 20%할인 83,200원에 [카르페디엠1] 결제하고, 전체 수강일 30일 중 14일을 수강 하였을 경우,
-                                -환불금액 = 83,200 - {104,000*(14일/30일)}
-                                -최종 환불 금액 = 34,700원(십원 단위 버림)
-                                2. 단기완성(패키지) 상품 환불정책
-                                ① 수강시작 후 7일 미만, 5강 미만 수강 시에는 100% 환불 가능
-                                ② 수강시작 후 7일 이상 또는 5강 이상 수강 시 잔여일에 대한 환불이 가능
-                                ※ 환불금액 = 결제금액 - {정상가*(실제 수강일/전체 수강일)}
-                                *패키지 상품의 경우 할인율이 선적용 되어 있는 상품으로
-                                환불시에는 정상가가 적용됨을 필히 숙지부탁드립니다
-                                ※ 전체 수강일은 복습기간을 제외한 수강일입니다.
-                                [단기완성(패키지) 상품 수강기간 정책]
-                                진수어학원 인강에서 판매하는 단기완성(패키지) 상품의 총 학습기간은 기본적으로 수강기간 45일로 이루어져 있으며,
-                                이벤트와 기타 사유로 연장된 추가 학습기간 등은 무료 학습기간으로 제공 됩니다.
-                                최대 3회/총 40일 동안에 걸쳐 강의 일시정지(휴강신청)가 가능합니다
-                                ※ 판매중인 각 단기완성(패키지)별 수강기간은 [수강신청] - [전체 강좌 보기] 메뉴 및 각 상품 페이지 하단의 유의사항에서 필히 확인해주세요.
-                                * 판촉물이 포함된 상품의 환불요청 시에는 받아보신 추가 제공된 판촉물의 금액을 차감 하거나 새제품이 아닌 훼손된 상태일 때에는 해당 금액 역시 차감됩니다.
-                                3. 도서 반품 안내(추가 항목)
-                                ① 출고 전 상품은 100% 환불이 가능합니다.
-                                ② 출고 후 15일 이전 입고 확인 후 100% 환불이 가능합니다.
-                                다만 교재에 사용한 흔적이 있거나 훼손된 경우에는 반품이 불가합니다.(반품 시 왕복 배송료 5,000원 회원 부담)
-                                ③ 출고 후 15일 경과 후에는 환불이 불가합니다
-                                ※ 도서는 다른 상품과 달리 외형보다 그 속에 담겨있는 내용에 가치가 있는 것이기 때문에 반품기간이 정해져 있습니다.
-                                구매 후 복사 또는 촬영 등의 내용 훼손이 이루어질 가능성이 있으므로, 반품기간을 15일로 규정합니다.(소비자 보호원 및 공정거래위원회 규정 표준약관에 근거)
-                                4. 환불 요청 시 및 반품 안내
-                                당일 오후 3시 이전에 결제 → 당일 오후 3시 이전에 취소 요청
-                                당일 오후 3시 이후에 결제 → 익일 오후 3시 이전에 취소 요청
-                                * 교재는 매일 오후 3시에 발송되며 이미 발송된 후 환불 요청을 해주시면 물건 반품, 왕복 배송비 5,000원을 추가 차감 후 환불 됩니다.
-                                * 홈페이지 1:1문의 게시판이나 카카오톡플친으로 요청하시는 경우는 순차적으로 답변해 드리고 있기 때문에 접수가 늦어질 수 있으니 환불 요청의 경우
-                                드림팩토리(042-484-9050)로 연락 주시면 빠른 처리 도와 드리도록 하겠습니다.
-                                5. 가상계좌(무통장 입금), 실시간 계좌이체 결제 시
-                                회원님께서 요청하시는 계좌로 환불이 가능합니다. 드림팩토리(042-484-9050)나 1:1문의 게시판, 카카오톡 플러스친구 문의 등으로
-                                환불요청과 함께 환불 받으실 은행명과 예금주, 계좌번호를 알려주시면 영업일 기준 7~10일 내에 해당 계좌로 환불 금액을 입금해 드리도록 하겠습니다.
-                                6. 신용카드 결제 시
-                                결제하신 내역에 대한 카드 승인취소 처리는 바로 가능하며 카드사의 사정에 따라 입금까지는 며칠 소요되실 수 있는 점 참고 부탁드립니다.
-                                7. 기타 유의사항
-                                ※ 수강일은 수강 시작일부터 환불 접수 발생 시점을 기준으로 산출됩니다.
-                                ※ 구매하신 강의 및 교재 상품 외 제공받은 사은품, 장학금은 기타소득으로 분류되며 소득세를 원천징수할 의무가 있습니다.
-                                50,000원을 초과하는 기타소득의 경우 22%에 해당하는 금액을 제외 후 지급해드리고 있으며, 소득세 신고를 위한 신분증 사본 제출을 요청드리고 있습니다.
-                                [수강권 상품 환불정책]
-                                    -구매 후 수령한 수강권은 구매하신 구매처 청약철회기간 내 사용하여 이상 여부를 확인해보시길 권장드립니다.
-                                    -미등록된 수강권에 대해서는 발송일 + 상품의 학습기간 동안 등록 유예기간을 제공해드립니다.
-                                    유예 기간 이후에는 사용된 수강권으로 간주되니 이점 유의하시고 관련 문의 사항이 있는 경우 드림팩토리로 연락주시기 바랍니다.
-                                    (ex. 기본 수강기간 1년, 미션 수행 시 평생 수강 가능한 상품의 경우 수강권 등록 유예기간 = 수강권 발송일+수강기간 1년(365일) / 수강권 발송일+366일째 되는 날 부터는 사용한 수강권으로 간주)
-                        </article>
+                            -환불금액 = 83,200 - {104,000*(14일/30일)}
+                            -최종 환불 금액 = 34,700원(십원 단위 버림)
+                            2. 단기완성(패키지) 상품 환불정책
+                            ① 수강시작 후 7일 미만, 5강 미만 수강 시에는 100% 환불 가능
+                            ② 수강시작 후 7일 이상 또는 5강 이상 수강 시 잔여일에 대한 환불이 가능
+                            ※ 환불금액 = 결제금액 - {정상가*(실제 수강일/전체 수강일)}
+                            *패키지 상품의 경우 할인율이 선적용 되어 있는 상품으로
+                            환불시에는 정상가가 적용됨을 필히 숙지부탁드립니다
+                            ※ 전체 수강일은 복습기간을 제외한 수강일입니다.
+                            [단기완성(패키지) 상품 수강기간 정책]
+                            </article>
                         <p style="padding: 20px 100px; min-height: 100px; font-size: 18px;">
                             ${course.content }
                         </p>
@@ -587,6 +405,36 @@
                                         <fmt:formatNumber value="${course.price }" pattern="#,###" />원
                                     </c:if>
                                 </strong></span></p>
+                            <p>
+                                <i>포인트 결제</i>
+                                <b id="point_price">
+                                    <c:if test="${book == 1 && user.pt > course.book_price +course.price }">
+                                        <input type="number" name="pt_price" id="pt_price" placeholder="사용할 포인트" value="0" class="input" max="${course.book_price +course.price }" required>
+                                    </c:if>
+                                    <c:if test="${book == 1 && user.pt <= course.book_price +course.price }">
+                                        <input type="number" name="pt_price" id="pt_price" placeholder="사용할 포인트" value="0" class="input" max="${user.pt }" required>
+                                    </c:if>
+                                    <c:if test="${book == 0 && user.pt > course.price }">
+                                        <input type="number" name="pt_price" id="pt_price" placeholder="사용할 포인트" value="0" class="input" max="${course.price }" required>
+                                    </c:if>
+                                    <c:if test="${book == 0 && user.pt <= course.price }">
+                                        <input type="number" name="pt_price" id="pt_price" placeholder="사용할 포인트" value="0" class="input" max="${user.pt }" required>
+                                    </c:if>
+                                </b>
+                            </p>
+                            <p>
+                                <i>실결제 금액</i>
+                                <b id="cash_price2">
+                                    <strong id="cash_price" class="eng">
+                                        <c:if test="${book == 1}">
+                                            <fmt:formatNumber value="${course.book_price +course.price }" pattern="#,###" />원
+                                        </c:if>
+                                        <c:if test="${book == 0}">
+                                            <fmt:formatNumber value="${course.price }" pattern="#,###" />원
+                                        </c:if>
+                                    </strong>
+                                </b>
+                            </p>
                         </div>
                         <div class="form-check">
                             <input type="checkbox" id="ck_item1" name="ck_item" class="form-check-input">
@@ -597,25 +445,66 @@
                             <label for="ck_item2" class="form-check-label">환불규정에 동의합니다.</label><br><br>
                         </div>
                         <!-- 신청 버튼-->
+                        <div class="total">
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <th>결제 수단</th>
+                                    <td>
+                                        <select name="pmethod" id="pmethod" class="form-control">
+                                            <option value="신용카드">신용카드</option>
+                                            <option value="체크카드">체크카드</option>
+                                            <option value="계좌이체">계좌이체</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>결제사</th>
+                                    <td>
+                                        <select name="pcom" id="pcom" class="form-control">
+                                            <option value="선택안함">선택안함</option>
+                                        </select>
+                                        <input type="hidden" name="pcom2" id="pcom2" value="">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>결제 번호</th>
+                                    <td>
+                                        <p id="cnum" style="font-weight:800; font-size: 16px;"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <input type="button" id="pay" value="결제진행" class="btn btn-primary">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                         <form action="${path1 }/course/signIn" method="post" id="applyForm">
                             <div class="applyBtn">
                                 <a href="${path1 }/course/getCourse?cno=${course.cno }" class="cart pointColor pointBorder"><i class="fa-solid fa-cart-shopping"></i>취소</a>
-                                <button id="apply" class="apply bgColor"><i class="icofont-credit-card"></i> 결제하기</button>
+                                <button id="apply" class="apply bgColor"><i class="icofont-credit-card"></i> 결제완료</button>
                             </div>
                             <!-- hidden으로 form 넘기기 -->
-                            <c:if test="${book == 1}">
-                                <input type="hidden" id="enroll_price" name="enroll_price" value="${course.book_price +course.price }">
-                                <input type="hidden" id="pt" name="pt" value="${user.pt -  (course.book_price +course.price)}">
-                            </c:if>
-                            <c:if test="${book == 0}">
-                                <input type="hidden" id="enroll_price" name="enroll_price" value="${course.price }">
-                                <input type="hidden" id="pt" name="pt" value="${user.pt - course.price}">
-                            </c:if>
-                            <input type="hidden" id="book" name="book" value="${book }">
+                                <input type="hidden" id="enroll_price" name="enroll_price" value="0">
+                                <input type="hidden" id="pt" name="pt" value="${user.pt}">
                             <input type="hidden" id="cno" name="cno" value="${course.cno }">
                             <input type="hidden" id="id" name="id" value="${sid }">
                             <input type="hidden" id="book_name" name="book_name" value="${course.book_name }">
+
+                            <c:if test="${book == 1}">
+                                <input type="hidden" id="enroll_cash" name="enroll_cash" value="${course.book_price +course.price }">
+                                <input type="hidden" id="book" name="book" value="true">
+                            </c:if>
+                            <c:if test="${book == 0}">
+                                <input type="hidden" id="enroll_cash" name="enroll_cash" value="${course.price }">
+                                <input type="hidden" id="book" name="book" value="false">
+                            </c:if>
                         </form>
+                        <div class="container">
+                            <p id="paymentResult" style="color:red;font-size:28px;font-weight:800;">결제 전</p>
+                        </div>
                     </li>
                 </ul>
             </aside>
@@ -623,34 +512,61 @@
     </div>
 </div>
 <script>
+    // DOM 요소를 가져오는 함수
+    function getElement(id) {
+        return document.getElementById(id);
+    }
+
+    // pt_price 입력란을 가져옵니다.
+    var ptPriceInput = getElement("pt_price");
+
+    // cash_price를 업데이트하는 함수
+    function updateCashPrice() {
+        // pt_price 입력란에서 값을 가져옵니다.
+        var ptPrice = parseInt(ptPriceInput.value, 10) || 0; // 값이 숫자가 아니면 0으로 설정
+
+        // total_price를 가져옵니다. 이 부분은 HTML에 따라 다를 수 있으므로 실제 ID를 사용하세요.
+        var total_price = parseFloat(getElement("total_price").innerText.replace(",", "").replace("원", "")) || 0;
+
+        // cash_price를 계산합니다.
+        var cashPrice = total_price - ptPrice;
+
+        // cash_price를 HTML에 업데이트합니다.
+        getElement("cash_price").innerText = formatPrice(cashPrice); // formatPrice 함수는 숫자를 특정 형식에 맞게 포맷하는 함수입니다.
+    }
+
+    // pt_price 입력란에 이벤트 리스너를 추가합니다.
+    ptPriceInput.addEventListener("input", updateCashPrice);
+
+    // 초기로드 시 cash_price 업데이트
+    updateCashPrice();
+
+    // 숫자를 특정 형식에 맞게 포맷하는 함수 (예: 천 단위 쉼표)
+    function formatPrice(price) {
+        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+</script>
+
+<script>
     var ck_item1 = document.getElementById("ck_item1");
     var ck_item2 = document.getElementById("ck_item2");
     var apply = document.getElementById("apply");
+    var paymentResult = document.getElementById("paymentResult");
+
     apply.addEventListener("click", function(){
-        if(ck_item1.checked && ck_item2.checked){
-            if (${book == 1 }) {
-                if (${user.pt >= course.book_price +course.price }) {
-                    document.getElementById("applyForm").submit();
-                } else {
-                    alert("포인트가 부족합니다.");
-                    event.preventDefault();
-                    window.location.href = window.location.href;
-                }
+        if (ck_item1.checked && ck_item2.checked ) {
+            if(paymentResult.textContent === "결제 전"){
+                alert("결제를 먼저 진행하세요.");
+                event.preventDefault();
             } else {
-                if (${user.pt >= course.price }) {
-                    document.getElementById("applyForm").submit();
-                } else {
-                    alert("포인트가 부족합니다.");
-                    event.preventDefault();
-                    window.location.href = window.location.href;
-                }
+                document.getElementById("applyForm").submit();
             }
         } else {
-            alert("약관 및 개인정보처리 방침에 동의하지 않으셨습니다.");
+            alert("약관 및 환불 규정에 동의하지 않으셨습니다.");
             event.preventDefault();
-            window.location.href = window.location.href;
         }
     });
+
     function protocol() {
         if (allagr.checked) {
             ck_item1.checked = true;
@@ -660,14 +576,122 @@
             ck_item2.checked = false;
         }
     }
-    $(".form-check").click(function () {
-        if(ck_item1.checked && ck_item2.checked){
-            $("#apply").css("background-color","#0078e7");
-        } else {
+    //$(".form-check").click(function () {
+    //    if(ck_item1.checked && ck_item2.checked){
+    //        $("#apply").css("background-color","#0078e7");
+    //    } else {
+    //        $("#apply").css("background-color","#7f8c8d");
+    //    }
+    //});
+
+        if(paymentResult.textContent === "결제 전"){
             $("#apply").css("background-color","#7f8c8d");
+        } else {
+            $("#apply").css("background-color","#0078e7");
         }
+
+    //결제모듈 API 연동
+    $(document).ready(function(){
+        var totalPay=0;
+        var proName;
+        $("#pay").click(function(){
+            if (ck_item1.checked && ck_item2.checked ) {
+                var priceText = document.getElementById("cash_price").textContent; // 예시로 "12,000" 문자열
+                var priceWithoutCommas = priceText.replace(/,/g, ''); // 쉼표(,) 제거
+                var price = parseInt(priceWithoutCommas, 10); // 정수로 변환
+                proName = "상품";
+                totalPay = price
+                alert("결제할 금액 : " + totalPay);
+                //상품명_현재시간
+                var d = new Date();
+                var date = d.getFullYear() + '' + (d.getMonth() + 1) + '' + d.getDate() + '' + d.getHours() + '' + d.getMinutes() + '' + d.getSeconds();
+                IMP.init('imp11164187'); // 결제 API를 사용하기 위한 코드 입력!
+                IMP.request_pay({		//결제 요청
+                    merchant_uid: '상품명_' + date, //상점 거래 ID
+                    name: proName,				// 결제 명
+                    amount: totalPay,					// 결제금액호
+                }, function (rsp) {
+                    if (rsp.success) {
+                        console.log(rsp);
+                        var msg = '결제가 완료 되었습니다.';
+                        var r1 = '고유 아이디 : ' + rsp.imp_uid;
+                        var r2 = '상점 거래 아이디 : ' + rsp.merchant_uid;
+                        var r3 = '결제 금액 : ' + rsp.paid_amount;
+                        var r4 = '카드 승인 번호 : ' + rsp.apply_num;
+
+                        //$("#payCk").val("yes");
+                        //$("#payAmount").val(rsp.paid_amount);
+                        //$("#pmethod").val(rsp.pay_method);
+                        //$("#pcom").val(rsp.pg_provider);
+                        //$("#cnum").val(rsp.apply_num);
+                        //alert(msg);
+                        //$("#paymentResult").html(r1+"<br>"+r2+"<br>"+r3+"<br>"+r4);
+                    } else {
+                        //$("#paymentResult").html('결제실패<br>'+'에러내용 : ' +rsp.error_msg);
+                    }
+                    //테스트용이므로 실패시에도 그냥 통과시킴
+                    $("#payCk").val("yes");
+                    $("#payAmount").val(totalPay);
+                    $("#pmethod").val("신용카드");
+                    $("#pcom").val("삼성카드");
+                    $("#cnum").text("123-1234-1234-1278");
+                    $("#paymentResult").text("결제 완료 : " + totalPay);
+                    $("#apply").css("background-color", "#0078e7");
+                    //포인트 결제 금액 저장
+                    var ptPriceInput = document.getElementById("pt_price");
+                    var enrollPriceInput = document.getElementById("enroll_price");
+                    enrollPriceInput.value = ptPriceInput.value;
+
+                    //실결제 금액 저장
+                    var enrollCashInput = document.getElementById("enroll_cash");
+                    enrollCashInput.value = price;
+
+                });
+            } else {
+                alert("약관 및 환불 규정에 동의하지 않으셨습니다.");
+                event.preventDefault();
+            }
+        });
+
     });
 </script>
+
+<script>
+    $(document).ready(function(){
+        var cardArr1 = ["현대카드","농협카드","BC카드","KB카드"];
+        var cardArr2 = ["하나카드","농협카드","BC카드"];
+        var bankArr = ["카카오뱅크","농협은행","신한은행","기업은행","국민은행"];
+        $("#pmethod").change(function(){
+            var th = $(this).val();
+            if(th==="신용카드"){
+                for(var i=0;i<cardArr1.length;i++) {
+                    $("#pcom").append("<option value='" + cardArr1[i] + "'>" + cardArr1[i] + "</option>");
+                }
+            } else if(th==="체크카드"){
+                for(var i=0;i<cardArr2.length;i++) {
+                    $("#pcom").append("<option value='"+cardArr2[i]+"'>"+cardArr2[i]+"</option>");
+                }
+            } else {
+                for(var i=0;i<bankArr.length;i++) {
+                    $("#pcom").append("<option value='"+bankArr[i]+"'>"+bankArr[i]+"</option>");
+                }
+            }
+        }).change();
+        $("#pcom").change(function(){
+            $("#pcom2").val($(this).val());
+        });
+    });
+</script>
+<script>
+    function payCheck(f){
+        var payCk = f.payCk.value;
+        if(payCk!="yes"){
+            alert("아직 결제 전 입니다.");
+            return;
+        }
+    }
+</script>
+
 <!-- 푸터 부분 인클루드 -->
 <jsp:include page="../include/footer.jsp"></jsp:include>
 </body>

@@ -9,7 +9,7 @@
             <if test="searchType != null">
                 <choose>
                     <when test="searchType == 'tid'.toString()">
-                        tid LIKE concat('%', #{searchKeyword}, '%')
+                        teacher_name LIKE concat('%', #{searchKeyword}, '%')
                     </when>
                     <when test="searchType == 'tel'.toString()">
                         tel LIKE concat('%', #{searchKeyword}, '%')
@@ -28,7 +28,7 @@
     </select>
 
     <select id="getTeacher" resultType="kr.ed.haebeop.domain.Teacher">
-        select * from teacher where tid = #{tid }
+        select * from teacher where tno  = #{tno }
     </select>
 
     <!-- 강사 수 카운트 -->
@@ -40,7 +40,7 @@
             <if test="searchType != null">
                 <choose>
                     <when test="searchType == 'tid'.toString()">
-                        tid LIKE concat('%', #{searchKeyword}, '%')
+                        teacher_name LIKE concat('%', #{searchKeyword}, '%')
                     </when>
                     <when test="searchType == 'tel'.toString()">
                         tel LIKE concat('%', #{searchKeyword}, '%')
@@ -51,8 +51,9 @@
     </select>
 
     <insert id="insertTeacher">
-        insert into teacher values(default, #{tid }, #{teacher_name }, #{tel }, #{email })
+        insert into teacher values(default, #{teacher_name }, #{tel }, #{email })
     </insert>
-
-
+    <delete id="teacherDelete">
+        DELETE FROM teacher WHERE tno = #{tno }
+    </delete>
 </mapper>

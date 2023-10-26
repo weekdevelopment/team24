@@ -415,7 +415,6 @@
             $("#apply").on("click", function() { fn3() });
     });
  */
-
     $(document).ready(function(){
         $("#apply").click(function(){
             // 회원만 수강 신청 가능
