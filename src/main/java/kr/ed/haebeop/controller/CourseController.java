@@ -44,6 +44,7 @@ public class CourseController {
         String type = request.getParameter("type");
         String keyword = request.getParameter("keyword");
         int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
+        String sort = request.getParameter("sort");
 
         Page page = new Page();
         page.setSearchType(type);
@@ -60,7 +61,19 @@ public class CourseController {
         model.addAttribute("curPage", curPage);
 
         List<Course> courseList = courseService.getCourseList(page);
-        /*System.out.println("courseList : " + courseList);*/
+        if ("asc".equals(sort)) {
+            courseList = courseService.getCoursesASC(page);
+        } else if ("desc".equals(sort)) {
+            courseList = courseService.getCoursesDESC(page);
+        }
+        Map<Integer, Boolean> csMap = new HashMap<>();
+        for (Course course : courseList) {
+            int curNum = course.getCurr_num();
+            int totalNum = course.getTotal_num();
+            boolean isClosingSoon = curNum >= totalNum * 0.9 && curNum < totalNum;
+            csMap.put(course.getCno(), isClosingSoon);
+        }
+        model.addAttribute("csMap", csMap);
         model.addAttribute("courseList", courseList);
         return "/course/courseList";
     }
@@ -171,6 +184,7 @@ public class CourseController {
         courseService.complete(eno);
         return "redirect:/course/mypageCourse?complete=0";
     }
+
     @RequestMapping(value = "cancel", method = RequestMethod.POST)
     public String cancelPro(int eno) throws Exception {
         courseService.cancel(eno);
@@ -253,5 +267,97 @@ public class CourseController {
         List<Course> courses = courseService.courseList();
         request.setAttribute("courses", courses);
         return "/course/scheduleList";
+    }
+
+    //    @RequestMapping(value = "getSortedCourses", method = RequestMethod.POST)
+//    public String getSortedCourses(@RequestParam String sortOption, RedirectAttributes redirectAttributes) throws Exception {
+//        List<Course> courseList = new ArrayList<>();
+//        if (sortOption.equals("priceASC")) {
+//            //products = productService.getProductsLowToHigh();
+//            courseList = courseService.getCoursesASC(new Page());
+//            System.out.println("오름차순 : " + courseList);
+//        } else if (sortOption.equals("priceDESC")) {
+//            //products = productService.getProductsHighToLow();
+//            courseList = courseService.getCoursesDESC(new Page());
+//            System.out.println("내림차순 : " + courseList);
+//        }
+//
+//        redirectAttributes.addFlashAttribute("courseList", courseList);
+//        return "redirect:list.do";
+//    }
+    @PostMapping("list.do")
+    public String applyFilters(HttpServletRequest request, Model model) throws Exception {
+        String excludeFullParam = request.getParameter("excludeFull");
+        String excludeFinishedParam = request.getParameter("excludeFinished");
+        //System.out.println(excludeFullParam + " " + excludeFinishedParam);
+
+        Boolean excludeFull = Boolean.parseBoolean(excludeFullParam);
+        Boolean excludeFinished = Boolean.parseBoolean(excludeFinishedParam);
+        //System.out.println(excludeFull + " " + excludeFinished);
+
+        // 여기에 체크박스의 값을 이용한 로직을 추가하세요.
+        // excludeFull과 excludeFinished의 값이 null이면 체크되지 않은 것입니다.
+
+        String type = request.getParameter("type");
+        String keyword = request.getParameter("keyword");
+        int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
+        //String sort = request.getParameter("sort");
+
+        Page page = new Page();
+        page.setSearchType(type);
+        page.setSearchKeyword(keyword);
+
+        List<Course> filteredCourseList = new ArrayList<>();
+        if (excludeFull && excludeFinished) {
+            List<Course> tempList1 = courseService.notFullCourses();
+            List<Course> tempList2 = courseService.unfinishedCourses();
+            List<Course> intersection = new ArrayList<>(tempList1);
+            intersection.retainAll(tempList2);
+            int total = intersection.size();
+            page.makeBlock(curPage, total);
+            page.makeLastPageNum(total);
+            page.makePostStart(curPage, total);
+            filteredCourseList = intersection;
+        } else if (excludeFull) { // !excludeFull || !excludeFinished
+            int total = courseService.notFullCourses().size();
+            page.makeBlock(curPage, total);
+            page.makeLastPageNum(total);
+            page.makePostStart(curPage, total);
+            filteredCourseList = courseService.getNotFullCourses(page);
+        } else if (excludeFinished) {
+            int total = courseService.unfinishedCourses().size();
+            page.makeBlock(curPage, total);
+            page.makeLastPageNum(total);
+            page.makePostStart(curPage, total);
+            filteredCourseList = courseService.getUnfinishedCourses(page);
+        } else {
+            int total = courseService.countCourse(page);
+            page.makeBlock(curPage, total);
+            page.makeLastPageNum(total);
+            page.makePostStart(curPage, total);
+            filteredCourseList = courseService.getCourseList(page);
+        }
+//        int total = courseService.unfinishedCourses().size();
+//        page.makeBlock(curPage, total);
+//        page.makeLastPageNum(total);
+//        page.makePostStart(curPage, total);
+        model.addAttribute("type", type);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("page", page);
+        model.addAttribute("curPage", curPage);
+
+        // 예를 들어, 해당 필터들을 사용하여 courseList를 얻어오는 코드를 작성할 수 있습니다.
+        //List<Course> filteredCourseList = courseService.getUnfinishedCourses(page);
+        // 모델에 필터링된 courseList를 추가합니다.
+        model.addAttribute("courseList", filteredCourseList);
+        Map<Integer, Boolean> csMap = new HashMap<>();
+        for (Course course : filteredCourseList) {
+            int curNum = course.getCurr_num();
+            int totalNum = course.getTotal_num();
+            boolean isClosingSoon = curNum >= totalNum * 0.9 && curNum < totalNum;
+            csMap.put(course.getCno(), isClosingSoon);
+        }
+        model.addAttribute("csMap", csMap);
+        return "/course/courseList";
     }
 }

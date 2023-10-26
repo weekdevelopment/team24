@@ -18,22 +18,22 @@
     });
   }
 
-  $(".videoplay").modalVideo();
-  $(".portfolio-single-slider").slick({
+  //$(".videoplay").modalVideo();
+  /*$(".portfolio-single-slider").slick({
     infinite: true,
     arrows: false,
     autoplay: true,
     autoplaySpeed: 2000,
-  });
+  });*/
 
-  $(".clients-logo").slick({
+  /*$(".clients-logo").slick({
     infinite: true,
     arrows: false,
     autoplay: true,
     autoplaySpeed: 2000,
-  });
+  });*/
 
-  $(".testimonial-wrap").slick({
+  /*$(".testimonial-wrap").slick({
     slidesToShow: 2,
     slidesToScroll: 2,
     infinite: true,
@@ -73,9 +73,9 @@
         },
       },
     ],
-  });
+  });*/
 
-  $(".gallery-wrap").each(function () {
+  /*$(".gallery-wrap").each(function () {
     $(this)
       .find(".gallery-popup")
       .magnificPopup({
@@ -84,11 +84,11 @@
           enabled: true,
         },
       });
-  });
+  });*/
 
-  var map;
+  //var map;
 
-  function initialize() {
+  /*function initialize() {
     var mapOptions = {
       zoom: 13,
       center: new google.maps.LatLng(50.97797382271958, -114.107718560791),
@@ -98,9 +98,9 @@
       document.getElementById("map-canvas"),
       mapOptions
     );
-  }
+  }*/
 
-  var google_map_canvas = $("#map-canvas");
+  /*var google_map_canvas = $("#map-canvas");
 
   if (google_map_canvas.length) {
     google.maps.event.addDomListener(window, "load", initialize);
@@ -111,5 +111,5 @@
   $(".counter-stat").counterUp({
     delay: 10,
     time: 1000,
-  });
+  });*/
 })(jQuery);

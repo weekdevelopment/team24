@@ -10,7 +10,19 @@ import java.util.List;
 public interface CourseService {
     public List<Course> getCourseList(Page page) throws Exception;
 
+    public List<Course> getCoursesASC(Page page) throws Exception;
+
+    public List<Course> getCoursesDESC(Page page) throws Exception;
+
     public List<Course> courseList() throws Exception;
+
+    public List<Course> getUnfinishedCourses(Page page) throws Exception;
+
+    public List<Course> unfinishedCourses() throws Exception;
+
+    public List<Course> getNotFullCourses(Page page) throws Exception;
+
+    public List<Course> notFullCourses() throws Exception;
 
     public List<Course> getNewCourses() throws Exception;
 
@@ -33,13 +45,22 @@ public interface CourseService {
     public void complete(int eno);
 
     public User getUserName(String id);
+
     public Enroll isEnroll(Enroll enroll);
+
     public List<Enroll> enrollList(Page page);
+
     public void enrollDelete(int eno);
+
     public int countEnroll(Page page);
+
     public void updateUserPt(User user);
+
     public void rollbackStudentNum(int cno);
+
     public void cancel(int eno);
+
     public List<Enroll> cancelList(Page page);
+
     public int countCancel(Page page);
 }

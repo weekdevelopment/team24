@@ -12,7 +12,19 @@ import java.util.List;
 public interface CourseMapper {
     public List<Course> getCourseList(Page page);
 
+    public List<Course> getCoursesASC(Page page);
+
+    public List<Course> getCoursesDESC(Page page);
+
     public List<Course> courseList();
+
+    public List<Course> getUnfinishedCourses(Page page);
+
+    public List<Course> unfinishedCourses();
+
+    public List<Course> getNotFullCourses(Page page);
+
+    public List<Course> notFullCourses();
 
     public List<Course> newCourses();
 

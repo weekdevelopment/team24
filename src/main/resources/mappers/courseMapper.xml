@@ -22,9 +22,34 @@
         ]]>
     </select>
 
+    <select id="getCoursesASC" resultType="kr.ed.haebeop.domain.Course">
+        select * from course order by price LIMIT #{postStart}, #{postCount}
+    </select>
+
+    <select id="getCoursesDESC" resultType="kr.ed.haebeop.domain.Course">
+        select * from course order by price desc LIMIT #{postStart}, #{postCount}
+    </select>
+
     <select id="courseList" resultType="kr.ed.haebeop.domain.Course">
         select * from course
     </select>
+
+    <select id="getUnfinishedCourses" resultType="kr.ed.haebeop.domain.Course">
+        SELECT * FROM course WHERE end_date >= CURDATE() order by cno desc LIMIT #{postStart}, #{postCount}
+    </select>
+
+    <select id="unfinishedCourses" resultType="kr.ed.haebeop.domain.Course">
+        SELECT * FROM course WHERE end_date >= CURDATE() order by cno desc
+    </select>
+
+    <select id="getNotFullCourses" resultType="kr.ed.haebeop.domain.Course">
+        SELECT * FROM course WHERE total_num > curr_num order by cno desc LIMIT #{postStart}, #{postCount}
+    </select>
+
+    <select id="notFullCourses" resultType="kr.ed.haebeop.domain.Course">
+        SELECT * FROM course WHERE total_num > curr_num order by cno desc
+    </select>
+
 
     <!-- 신규 강의 3개 -->
     <select id="newCourses" resultType="kr.ed.haebeop.domain.Course">
