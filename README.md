@@ -46,5 +46,3 @@
 ![heabeop](./sanchul/45.png)
 ![heabeop](./sanchul/46.png)
 ![heabeop](./sanchul/47.png)
-![heabeop](./sanchul/48.png)
-
