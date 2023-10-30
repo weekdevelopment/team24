@@ -46,3 +46,6 @@
 ![heabeop](./sanchul/45.png)
 ![heabeop](./sanchul/46.png)
 ![heabeop](./sanchul/47.png)
+
+## Guest 기능 영상
+![기능구현 GIF](./functionRecord/team23_1.gif)
