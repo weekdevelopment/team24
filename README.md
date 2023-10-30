@@ -48,4 +48,10 @@
 ![heabeop](./sanchul/47.png)
 
 ## Guest 기능 영상
-![기능구현 GIF](./functionRecord/team23_1.gif)
+![기능구현 GIF](./functionRecord/team24_1.gif)
+
+# 회원 가입, 수정 기능 영상
+![기능구현 GIF](./functionRecord/team24_2.gif)
+
+# 회원 수강신청, 후기작성, 자료실 열람 기능 영상
+![기능구현 GIF](./functionRecord/team24_3.gif)
