@@ -7,6 +7,7 @@ CREATE TABLE teacher (
 );
 
 
+
 INSERT INTO teacher VALUES(DEFAULT , "박정우", "01012341234", "park@academy.com");
 
 CREATE TABLE course (
